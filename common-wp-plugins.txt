@@ -1,0 +1,60 @@
+Common Plugins
+
+Gravity Form
+- creating forms and few CRM
+
+Category Posts
+- widget displays posts in a category
+
+WooCommerce
+- shopping plugin
+
+Advanced Custom Fields
+- Create custom fields for post/pages
+
+WP-Pagenavi
+- Numbered pagination
+
+WooSidebars
+- Create and replace widget areas per page/post/taxonomy
+
+Lock out
+- Under construction page
+
+Page Links To
+- redirect page/post link
+
+Yet Another Related Post Plugin
+- shows related posts on each post
+
+Magento WordPress Integration
+- Magento to WP
+
+Duplicate Post
+- Clone a post/page
+
+Regenerate Thumbnails
+- recreate thumbnail sizes. Works well with Woocommerce
+
+Image Widget
+- adds image to widget
+
+PS Auto Sitemap
+- auto generation of Sitemap using shortcode
+
+Gecka Submenu
+- auto add submenu to widget
+
+Comprehensive Google Map Plugin
+- adds google map
+
+JW Player Plugin For WordPress
+- Video player
+
+Category Meta plugin
+- Add custom meta on categories including images
+
+All In One SEO Pack
+- SEO related
+
+

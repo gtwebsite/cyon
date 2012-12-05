@@ -1,0 +1,90 @@
+
+/* =Page Layout on Smaller Screens
+----------------------------------------------- */
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px){
+	.wrapper {
+		max-width:768px;
+	}
+	.general-2right #primary, .general-2left #primary {
+		width:508px;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width:767px) {
+	#page {
+		width:auto; max-width:767px;
+	}
+	.widget, #secondary, .general-2right #primary, .general-2left #primary, .wrapper, #branding hgroup, #access {
+		width:auto!important; float:none!important; margin-left:0!important; text-align:left;
+	}
+	#primary input[type=text], #primary input[type=email], #primary input[type=phone], #primary textarea, #primary select {
+		width:95%!important; display:block; margin-bottom:5px;
+	}
+	#primary select {
+		width:98%!important;
+	}
+	#respond label {
+		float:none;
+	}
+	ol.commentlist .children textarea {
+		width:95%;
+	}
+}
+
+/* Landscape phones and down */
+@media only screen and (max-width:480px) {
+	#top div, #top p {
+		float:none; text-align:left; width:auto; margin-bottom:10px; margin-left:0; text-align:left;
+	}
+	#access ul.menu > li {
+		float:none; margin-left:0;
+	}
+	#access ul.menu > li ul { 
+		display:none!important; 
+	}
+	#colophon .copyright, #access2, #access2 ul {
+		width:auto!important; float:none!important; margin-left:0!important; text-align:left;
+	}
+	#respond label {
+		float:none;
+	}
+	#primary input[type=text], #primary input[type=email], #primary input[type=phone], #primary textarea, #primary select {
+		width:95%!important; display:block; margin-bottom:5px;
+	}
+	#primary select {
+		width:98%!important;
+	}
+	.ginput_complex .ginput_left, .ginput_complex .ginput_right {
+		float:none; margin-right:0;
+	}
+	ol.commentlist .children textarea {
+		width:95%;
+	}
+	.gallery dl {
+		float:none; width:100%; margin:0 0 5px 0;
+	}
+	.tabs .tab_nav li {
+		float:none; margin-right:0;
+	}
+	.grid .span2 {
+		display:none;
+	}
+	.grid .span10 {
+		width:100%; margin-left:0;
+	}
+	.grid .price h2 {
+		font-size:130%;
+	}
+	.grid article header {
+		height:auto;
+	}
+	.grid hgroup h4 {
+		display:none;
+	}
+	.grid article footer, .grid article section > ul li, .grid article header hgroup {
+		padding:10px 5px;
+	}
+}

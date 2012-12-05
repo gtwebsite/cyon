@@ -1,0 +1,15 @@
+/* Only for IE 8 and below */
+
+.flex-direction-nav a {
+	filter:alpha(opacity=0);
+}
+.flexslider:hover .flex-direction-nav a {
+	filter:alpha(opacity=80);
+}
+.flexslider:hover .flex-direction-nav a:hover {
+	filter:alpha(opacity=100);
+}
+
+.cyon-newsletter label {
+	display:block;
+}
