@@ -419,12 +419,12 @@ add_action('cyon_before_body_wrapper','cyon_breadcrumb_hook',10);
 /* =After Primary hooks
 ----------------------------------------------- */
 /* Comments */
-function cyon_after_primary_hook(){
+function cyon_comments_hook(){
 	if(of_get_option('content_comment')=='enable' && (is_page() || is_single())) {
 		comments_template( '', true );
 	}
 }
-add_action('cyon_primary_after','cyon_after_primary_hook',10);
+add_action('cyon_primary_after','cyon_comments_hook',10);
 
 /* =Before Content Header hooks
 ----------------------------------------------- */

@@ -147,24 +147,51 @@
 * fancybox_buttons
 * lazyload
 * mousewheel
+* flexislider
+* supersized
+* tubular
+* cloud_zoom
+* uniform
+* poshytip
+* mediaelement
+* gmap_api
+* gmap
 
 
 == Custom Hooks ==
+
 * cyon_before_header
 * cyon_header
+	Top Columns: cyon_header_columns_hook, 10
+	Logo: cyon_header_logo_hook, 20
+	Main Nav: cyon_header_mainnav_hook, 30
 * cyon_before_body
 * cyon_after_body
 * cyon_before_body_wrapper
+	Breadcrumb: cyon_breadcrumb_hook, 10
 * cyon_after_body_wrapper
 * cyon_primary_before
 * cyon_primary_after
+	Comments: cyon_comments_hook, 10
 * cyon_sidebar_before
 * cyon_sidebar_after
 * cyon_post_header_before
 * cyon_post_header_after
 * cyon_post_content_before
+	Featured Image: cyon_post_content_featured_image, 10
 * cyon_post_content_after
+	Read more: cyon_readmore, 10
+	Social Buttons: cyon_socialshare_hook, 20
 * cyon_post_footer
+	Author: cyon_author_hook, 10
 * cyon_home_content
+	Home Banner: cyon_banner_hook, 10
+	Home Middle Block: cyon_homepage_middle_block_hook, 20
+	Home Widgets: cyon_homepage_columns_hook, 30
+	Home Content: cyon_homepage_content_hook, 40
 * cyon_footer
+	Footer Widgets: cyon_footer_columns_hook, 10
+	Copyright: cyon_footer_copyright_hook, 20
+	Subfooter: cyon_footer_subfooter_hook, 30
+	Back to Top: cyon_footer_backtotop_hook, 40
 * cyon_after_footer
