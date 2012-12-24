@@ -5,16 +5,38 @@
 == Description ==
 
 == Future Updates ==
+slider add thumbnail
+slider feature list
+slider with nivo
+column like isotope/masonry
+contact page
+different page / bg
+testimonials
+table header add colspan
 
 == Changelog ==
 
+= 1.3.2 =
+* Added Ad widget
+* Added Post Formats (Aside, Image)
+* Added simple SEO function 
+* Added Popup blank page template
+* Updated Map Widget, added text
+* Updated Subpage shortcode
+* Updated Forms
+* Fixed PHP bug
+* Fixed Theme options CSS bug
+
+
 = 1.3.1 =
 * Added Tax-meta-class
-* Added Category Layout option
+* Added Category page layout option
+* Added Category list layout option
 * Added Newsletter widget
 * Added Tab widget
 * Added 3 Custom Widget area
-* Update social bookmarking
+* Updated social bookmarking
+* Improved page layout
 * Fixed few css/php issues
 
 = 1.3.0 =
@@ -156,7 +178,7 @@
 * mediaelement
 * gmap_api
 * gmap
-
+* masonry
 
 == Custom Hooks ==
 
@@ -177,6 +199,7 @@
 * cyon_sidebar_after
 * cyon_post_header_before
 * cyon_post_header_after
+	Single Meta: cyon_post_header_single_meta_hook, 10
 * cyon_post_content_before
 	Featured Image: cyon_post_content_featured_image, 10
 * cyon_post_content_after

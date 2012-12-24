@@ -70,21 +70,23 @@ class CyonTabsWidget extends WP_Widget {
 	<script type="text/javascript">
 		// Tabs
 		jQuery(document).ready(function(){
-			jQuery('.cyon-tabs .tab_nav li:first-child').addClass('active');
-			jQuery(jQuery('.tab_nav li.active a').attr('href')).show();
-			jQuery('.tab_nav li a').click(function(){
-				var prev = jQuery(this).parent().parent().find('li.active a').attr('href');
-				if (!jQuery(this).parent().hasClass('active')) {
-					jQuery(this).parent().parent().find('li.active').removeClass('active');
-					jQuery(this).parent().addClass('active');
-				}
-				var current = jQuery(this).attr('href');
-				if(jQuery(jQuery(this).attr('href')).is(':hidden')){
-					jQuery(prev).slideUp('slow', function(){
-						jQuery(current).slideDown(500);
-					});
-				}
-				event.preventDefault();
+			jQuery('.cyon-tabs').each(function(){
+				jQuery(this).find('.tab_nav li:first-child').addClass('active');
+				jQuery(jQuery(this).find('.tab_nav li.active a').attr('href')).show();
+				jQuery(this).find('.tab_nav li a').click(function(){
+					var prev = jQuery(this).parent().parent().find('li.active a').attr('href');
+					if (!jQuery(this).parent().hasClass('active')) {
+						jQuery(this).parent().parent().find('li.active').removeClass('active');
+						jQuery(this).parent().addClass('active');
+					}
+					var current = jQuery(this).attr('href');
+					if(jQuery(jQuery(this).attr('href')).is(':hidden')){
+						jQuery(prev).slideUp('slow', function(){
+							jQuery(current).slideDown(500);
+						});
+					}
+					event.preventDefault();
+				});
 			});
 		});
 	</script> 

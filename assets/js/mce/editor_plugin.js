@@ -18,7 +18,8 @@
 										a.addImmediate(c,"Tab Content",'[tab title="Title Here" active="false"]Some content here.[/tab]' );
 										a.addImmediate(c,"Box", '[box icon="" color="" close="no" title="Title Here" width="" align="" quote="no"]Some content here.[/box]' );
 										a.addImmediate(c,"Tooltip", '[tip text="Some content here."]Hover here.[/tip]');
-										a.addImmediate(c,"Toggle", '[toggle title="Title Here"]Some content here.[/toggle]' );
+										a.addImmediate(c,"Sub Pages", '[subpages excerpt="yes" thumbnail="no" id="" cols=""]' );
+										a.addImmediate(c,"Newsletter", '[newsletter name="yes"]Get the latest tips, news, and special offers delivered to your inbox.[/newsletter]' );
 								
 								c=b.addMenu({title:"Media"});
 										a.addImmediate(c,"Video",'[video src="" width="" height="" poster="" subtitles="" chapters=""]' );
@@ -38,7 +39,7 @@
 								c=b.addMenu({title:"Table"});
 										a.addImmediate(c,"Table",'[table caption="" headers="Column 1|Column 2" footers="Footer 1|Footer 2"]<br/>[row color=""]<br/>[data color=""]Data 1[/data]<br/>[data color=""]Data 2[/data]<br/>[/row]<br/>[/table]' );
 										a.addImmediate(c,"Table Row",'[row color=""]<br/>[data color=""]Data[/data]<br/>[/row]' );
-										a.addImmediate(c,"Table Data",'[data color=""]Data[/data]' );
+										a.addImmediate(c,"Table Data",'[data color="" rows="" cols=""]Data[/data]' );
 
 								c=b.addMenu({title:"Columns"});
 										a.addImmediate(c,"One Half","[one_half][/one_half]" );
@@ -63,6 +64,10 @@
 										a.addImmediate(c,"One Sixth Last","[one_sixth_last][/one_sixth_last]" );
 										a.addImmediate(c,"Five Sixth","[five_sixth][/five_sixth]" );
 										a.addImmediate(c,"Five Sixth Last","[five_sixth_last][/five_sixth_last]" );
+										a.addImmediate(c,"One Seventh","[one_seventh][/one_seventh]" );
+										a.addImmediate(c,"One Seventh Last","[one_seventh_last][/one_seventh_last]" );
+										a.addImmediate(c,"One Eighth","[one_eighth][/one_eighth]" );
+										a.addImmediate(c,"One Eighth Last","[one_eighth_last][/one_eighth_last]" );
 
 								c=b.addMenu({title:"Price Grid"});
 										a.addImmediate(c,"New Price Grid",'[pricegrid labels="Setup,Updates" columns="2" bgcolor="#03BCEE"]<br/>[gridcolumn title="Starter" price="$0.00" period="Yearly" link_url="http://" highlighted="yes" best_value="Yes"]<br/>[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]<br/>[/gridcolumn]<br/>[/pricegrid]' );

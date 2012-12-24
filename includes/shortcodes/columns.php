@@ -114,6 +114,26 @@ function cyon_five_sixth_last( $atts, $content = null ) {
 }
 add_shortcode('five_sixth_last', 'cyon_five_sixth_last');
 
+function cyon_one_seventh( $atts, $content = null ) {
+   return '<div class="one_seventh">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('one_seventh', 'cyon_one_seventh');
+
+function cyon_one_seventh_last( $atts, $content = null ) {
+   return '<div class="one_seventh last">' . do_shortcode($content) . '</div><div class="clearboth"></div>';
+}
+add_shortcode('one_seventh_last', 'cyon_one_seventh_last');
+
+function cyon_one_eighth( $atts, $content = null ) {
+   return '<div class="one_eighth">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('one_eighth', 'cyon_one_eighth');
+
+function cyon_one_eighth_last( $atts, $content = null ) {
+   return '<div class="one_eighth last">' . do_shortcode($content) . '</div><div class="clearboth"></div>';
+}
+add_shortcode('one_eighth_last', 'cyon_one_eighth_last');
+
 function cyon_formatter($content) {
 	$new_content = '';
 

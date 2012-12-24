@@ -3,7 +3,7 @@ Theme Name: 	Theme Cyon
 Description: 	A framework theme with a complete theme options panel.
 Author:			Greater Than Website
 Author 			URI: http://gtwebsite.com/
-Version: 		1.3.0a
+Version: 		1.3.2
 */
 
 /* =Reset default browser CSS.
@@ -167,10 +167,10 @@ nav .nav-next {
 }
 
 /* Form */
-input.input-text, input[type=text], input[type=email], input[type=phone], input[type=submit], input[type=button], textarea, select, button, .button, .btn { 
+.cyonform input[type=text], .cyonform input[type=email], .cyonform input[type=phone], .cyonform input[type=password], .cyonform input[type=submit], .cyonform input[type=button], .cyonform textarea, .cyonform select, .cyonform button, .cyonform .button, .btn { 
 	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; text-shadow:1px 1px 0 #fff; 
 }
-input.input-text, input[type=text], input[type=email], input[type=phone], textarea, select {
+.cyonform input[type=text], .cyonform input[type=email], .cyonform input[type=phone], .cyonform input[type=phone], .cyonform textarea, .cyonform select {
 	box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
 	background: rgb(255,255,255); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -183,13 +183,13 @@ input.input-text, input[type=text], input[type=email], input[type=phone], textar
 	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-8 */
 }
-input.input-text:focus, input[type=text]:focus, input[type=email]:focus, input[type=phone]:focus, input[type=submit]:focus, input[type=button]:focus, textarea:focus, select:focus {
+.cyonform input[type=text]:focus, .cyonform input[type=email]:focus, .cyonform input[type=phone]:focus, .cyonform input[type=phone]:focus, .cyonform input[type=submit]:focus, .cyonform input[type=button]:focus, .cyonform textarea:focus, .cyonform select:focus {
 	box-shadow:0 0 6px rgba(0,0,0,.1); background:#fff; color:#222; 
 }
-select {
+.cyonform select {
 	padding-top:4px; padding-bottom:4px;
 }
-button, input[type=submit], input[type=reset], input[type=button], .button, .btn {
+.cyonform button, .cyonform input[type=submit], .cyonform input[type=reset], .cyonform input[type=button], .cyonform .button, .btn {
 	cursor:pointer; border-color:#c1c1c1; color:#666; padding:0 10px; height:30px; line-height:30px; display:inline-block; text-transform:uppercase; font-size:95%; box-shadow:1px 1px 3px rgba(0,0,0,.1); border-radius:5px;
 	background: rgb(252,255,244); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -202,7 +202,7 @@ button, input[type=submit], input[type=reset], input[type=button], .button, .btn
 	background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#c1c1c1',GradientType=0 ); /* IE6-8 */
 }
-button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover, .button:hover, .btn:hover {
+.cyonform button:hover, .cyonform input[type=submit]:hover, .cyonform input[type=reset]:hover, .cyonform input[type=button]:hover, .cyonform .button:hover, .btn:hover {
 	color:#222; border-color:#aaa; text-shadow:1px 1px 0 #fff;
 	background: rgb(240,249,255); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -215,7 +215,7 @@ button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=butt
 	background: linear-gradient(to bottom,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 99%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#cbebff',GradientType=0 ); /* IE6-8 */
 }
-button:active, input[type=submit]:active, input[type=reset]:active, input[type=button]:active, .button:active, .btn:active {
+.cyonform button:active, .cyonform input[type=submit]:active, .cyonform input[type=reset]:active, .cyonform input[type=button]:active, .cyonform .button:active, .btn:active {
 	position:relative; top:1px; left:1px;
 }
 form.form-sending {
@@ -230,7 +230,7 @@ form.form-sending fieldset {
 :-moz-placeholder {
 	color:#ccc;
 }
-input.error::-webkit-input-placeholder {
+.cyonforminput.error::-webkit-input-placeholder {
 	color:#fff;
 }
 input.error:-moz-placeholder {
@@ -294,11 +294,11 @@ div.alignleft:empty, div.alignright:empty {
 .category-header h1 {
 	font-size:140%;
 }
-.entry-header, .entry-content h1 {
+.entry-header, .page-content h1 {
 	margin-bottom:10px;
 }
-.entry-header h1 {
-	font-size:200%; font-family: "Segoe UI Light";
+.page-header h1, .entry-header h1 {
+	font-size:200%; font-family: "Segoe UI Light"; line-height:1em; margin-bottom:5px;
 }
 .meta {
 	font-size:90%; color:#999;
@@ -311,53 +311,64 @@ article {
 article:last-child {
 	border-bottom:0; padding-bottom:0;
 }
-.entry-content h2 {
+.page-content h2 {
 	font-size:220%; margin-bottom:10px; font-family: "Segoe UI Light";
 }
-.entry-content h3 {
+.page-content h3 {
 	font-size:180%; margin-bottom:7px; font-family: "Segoe UI Light";
 }
-.entry-content h4 {
+.page-content h4 {
 	font-size:150%; margin-bottom:3px;
 }
-.entry-content h5 {
+.page-content h5 {
 	font-size:130%; margin-bottom:3px;
 }
-.entry-content h6 {
+.page-content h6 {
 	font-size:100%; margin-bottom:3px; font-weight:bold;
 }
-.entry-content p {
+.page-content p {
 	margin-bottom:20px;
 }
-.entry-content ul, .entry-content ol {
+.page-content ul, .page-content ol {
 	margin:0 0 20px 0;
 }
-.entry-content ul li {
+.page-content ul li {
 	list-style:disc; margin-left:20px;
 }
-.entry-content ul li ol li {
+.page-content ul li ol li {
 	list-style:square; margin-left:20px;
 }
-.entry-content ol li {
+.page-content ol li {
 	list-style:decimal; margin-left:20px;
 }
-.entry-content ol li ol li {
+.page-content ol li ol li {
 	list-style:lower-alpha;
 }
-.entry-content table p {
+.page-content table p {
 	margin-bottom:2px;
 }
-.entry-content form p {
+.page-content form p {
 	margin-bottom:5px;
 }
-.entry-content img {
+.entry-content img, .page-content img, .entry-featured-image img {
 	max-width:100%; height:auto;
 }
-.entry-featured-image {
+.page-featured-image {
 	margin-bottom:10px;
 }
-.entry-content .share {
+.page-content .share, .entry-content .share  {
 	margin-bottom:10px;
+}
+.blog-list-1 .entry-featured-image {
+	float:left; width:25%; margin:0 10px 10px 0;
+}
+
+/* Formats */
+article.format-aside .entry-header h1 {
+	font-size:130%;
+}
+article.format-aside .categories-links, article.format-aside .tag-links, article.format-image .readmore {
+	display:none;
 }
 
 /* Author */
@@ -486,140 +497,172 @@ p.nocomments {
 
 /* =Gravity Form
 ----------------------------------------------- */
-.gform_wrapper br {
+
+.cyonform br {
 	display:none;
 }
-.gform_wrapper .gsection_title {
+.cyonform .gsection_title {
 	font-size:18px; border-bottom:1px dashed #efefef; padding-bottom:5px; margin-bottom:10px; margin-top:20px;
 }
-.gform_heading {
+.cyonform .gform_heading {
 	margin-bottom:10px;
 }
-.gform_body { 
+.cyonform .gform_body { 
 	margin-bottom:20px; 
 }
-.gform_footer, .gform_page_footer {
+.cyonform .gform_footer, .cyonform .gform_page_footer {
 	position:relative; display:inline;
 }
-.gform_ajax_spinner {
+.cyonform .gform_ajax_spinner {
 	position:absolute; right:-20px; top:0;
 }
-.ginput_complex .ginput_left, .ginput_complex .ginput_right {
+.cyonform .ginput_complex .ginput_left, .cyonform .ginput_complex .ginput_right {
 	float:left; margin-right:10px;
 }
-.ginput_complex label {
+.cyonform .ginput_complex label {
 	display:block; color:#999; font-size:11px; font-style:italic;
 }
 
 /* Fields */
-.gform_wrapper .gform_fields {
+.cyonform .gform_fields {
 	margin:0; padding:0;
 }
-.gform_wrapper .gform_fields > li {
-	list-style:none; margin-bottom:6px; padding:10px; position:relative;
+.cyonform .gform_fields > li {
+	list-style:none; margin-bottom:6px; margin-left:0; padding:10px; position:relative;
 }
-.gform_wrapper .gform_fields .gfield_label {
+.cyonform .gform_fields .gfield_label {
 	float:left; width:22%
-	}
-.gform_wrapper .gform_fields .ginput_container {
+}
+.cyonform .gform_fields .ginput_container {
 	float:left; width:78%;
 }
-.gform_wrapper .gform_fields .gsection {
+.cyonform .gform_fields .gsection {
 	padding:0;
 }
-.gform_wrapper .gform_fields .gfield_required {
+.cyonform .gform_fields .gfield_required {
 	color:#ff0000; position:absolute; left:20%;
 }
-.gform_wrapper .gform_fields ul li, .entry-content .gform_fields ul {
+.entry-content .cyonform .gform_fields ul li, .entry-content .cyonform .gform_fields ul {
 	list-style:none; padding:0; margin:0;
 }
-.gform_wrapper .gform_fields .small {
+.cyonform .gform_fields .small {
 	width:25%;
 }
-.gform_wrapper .gform_fields .medium {
+.cyonform .gform_fields .medium {
 	width:50%;
 }
-.gform_wrapper .gform_fields .large {
+.cyonform .gform_fields .large {
 	width:96%;
 }
-.gform_wrapper .gform_fields select{
+.cyonform .gform_fields select{
 	width:auto!important;
 }
-.gform_wrapper .gfield_error {
+.cyonform .gfield_error {
 	background:#fff5f5;
 }
-.gform_wrapper .gfield_error input[type=text], .gform_wrapper .gfield_error input[type=email], .gform_wrapper .gfield_error select, .gform_wrapper .gfield_error textarea, input.error {
+.cyonform .gfield_error input[type=text], .cyonform .gfield_error input[type=email], .cyonform .gfield_error select, .cyonform .gfield_error textarea, .cyonform input.error {
 	background:#ffb2b2; border-color:#ffb2b2; color:#fff; text-shadow:none;
 }
-
-.gform_wrapper .gform_fields .validation_message {
+.cyonform .gform_fields .validation_message {
 	clear:both; margin-left:22%; margin-top:5px; color:#ff0000; font-size:11px; font-weight:bold;
 }
+.cyonform .ui-datepicker-trigger {
+	position:relative; left:-23px; top:3px; cursor:pointer;
+}
+.ui-datepicker-control, .ui-datepicker-links {
+	display:none;
+}
 
-/* Progress Bar */
-.gform_wrapper .gf_progressbar_wrapper {
+/* Gform Date picker */
+#ui-datepicker-div {
+	z-index:20; padding:10px; background:#fff; box-shadow:1px 1px 3px rgba(0,0,0,.1); border:1px solid #ccc;  border-radius:5px; margin:5px 0 0 0;
+}
+#ui-datepicker-div table {
+	width:15em;
+}
+#ui-datepicker-div table a {
+	color:inherit; cursor:pointer;
+}
+#ui-datepicker-div table a:hover {
+	color:#c1460a;
+}
+#ui-datepicker-div table thead td a {
+	color:#999;
+}
+#ui-datepicker-div table td {
+	text-align:center;
+}
+#ui-datepicker-div table td.ui-datepicker-today {
+	background:#efefef;
+}
+#ui-datepicker-div table td.ui-datepicker-current-day {
+	background:#1e7ec8; color:#fff;
+}
+
+/* Gform Progress Bar */
+.cyonform .gf_progressbar_wrapper {
 	clear:both; width:99%;	margin:0 0 8px 0; padding:0 0 16px 0;
 }
-.gform_wrapper .gf_progressbar_wrapper h3.gf_progressbar_title {
+.cyonform .gf_progressbar_wrapper h3.gf_progressbar_title {
 	font-size:13px; line-height:1em !important; margin:0 0 6px 0!important; padding:0!important; clear:both; filter:alpha(opacity=60); -moz-opacity:0.6; -khtml-opacity:0.6; opacity:0.6;
 }
-.gform_wrapper .gf_progressbar {
+.cyonform .gf_progressbar {
 	width:99%; height:20px; overflow:hidden; line-height:20px!important; border:1px solid #ACACAC; border-right:1px solid #959595; border-bottom:1px solid #959595;	background-image:url(assets/images/percentbar_bg.png); background-repeat:repeat-x; background-position:bottom; background-color:#FFF; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;
 }
-.gform_wrapper .gf_progressbar_percentage {
+.cyonform .gf_progressbar_percentage {
 	height:20px; text-align:right; text-shadow: 0 1px 1px rgba(0,0,0,0.50);
 }
-.gform_wrapper .gf_progressbar_percentage span {
+.cyonform .gf_progressbar_percentage span {
 	margin-right:5px; margin-left:5px;
 }
-.gform_wrapper .gf_progressbar_percentage.percentbar_0 span {
+.cyonform .gf_progressbar_percentage.percentbar_0 span {
 	color:#959595; text-shadow:none;
 }
-.gform_wrapper .percentbar_blue {
+.cyonform .percentbar_blue {
 	background-image:url(assets/images/percentbar_blue.png); background-repeat:repeat-x; background-color:#0072BC; color:#FFF;
 }
-.gform_wrapper .percentbar_gray {
+.cyonform .percentbar_gray {
 	background-image:url(assets/images/percentbar_gray.png); background-repeat:repeat-x; background-color:#666; color:#FFF;
 }
-.gform_wrapper .percentbar_green { 
+.cyonform .percentbar_green { 
 	background-image:url(assets/images/percentbar_green.png); background-repeat:repeat-x; background-color:#94DC21; color:#FFF;
 }
-.gform_wrapper .percentbar_orange {
+.cyonform .percentbar_orange {
 	background-image:url(assets/images/percentbar_orange.png); background-repeat:repeat-x; background-color:#DC7021; color:#FFF;
 }
-.gform_wrapper .percentbar_red {
+.cyonform .percentbar_red {
 	background-image:url(assets/images/percentbar_red.png); background-repeat:repeat-x; background-color:#DC2521; color:#FFF;
 }
-.gform_wrapper .percentbar_custom {
+.cyonform .percentbar_custom {
 	background-image:url(assets/images/percentbar_custom.png); background-repeat:repeat-x;
 }
 
 /* Widget */
-.widget .gform_wrapper .gform_fields > li { 
+.widget .cyonform .gform_fields > li { 
 	padding:0;
 }
-.widget .gform_wrapper .gform_fields .ginput_container, .widget .gform_wrapper .gform_fields .gfield_label {
+.widget .cyonform .gform_fields .ginput_container, .widget .cyonform .gform_fields .gfield_label {
 	float:none; width:auto;
 }
-.widget .gform_wrapper .gform_fields .validation_message {
+.widget .cyonform .gform_fields .validation_message {
 	margin-left:0;
 }
-.widget .gform_wrapper .gform_fields .gfield_required { 
+.widget .cyonform .gform_fields .gfield_required { 
 	position:static; padding-left:5px;
 }
-.widget .gform_wrapper li.gfield_error {
+.widget .cyonform li.gfield_error {
 	padding:5px 10px;
 }
-.widget .gform_wrapper input[type=text], .widget .gform_wrapper input[type=email], .widget .gform_wrapper textarea {
+.widget .cyonform input[type=text], .widget .cyonform input[type=email], .widget .cyonform textarea {
 	width:95%!important;
 }
-.widget .gform_wrapper select { 
+.widget .cyonform select { 
 	width:100%!important;
 }
-.widget .ginput_complex .ginput_left, .widget .ginput_complex .ginput_right {
+.widget .cyonform .ginput_complex .ginput_left, .widget .cyonform .ginput_complex .ginput_right {
 	float:none; margin-right:0;
 }
-.widget .gform_wrapper .gform_body {
+.widget .cyonform .gform_body {
 	margin-bottom:10px;
 }
 
@@ -632,7 +675,7 @@ p.nocomments {
 	position:absolute; top:4px; left:0;
 }
 
-/* =Newsletter widget
+/* =Newsletter
 ----------------------------------------------- */
 .cyon-newsletter p {
 	margin-bottom:5px;
@@ -642,6 +685,12 @@ p.nocomments {
 }
 .cyon-newsletter p input {
 	width:95%;
+}
+.newsletter-shortcode {
+	border:1px solid #efefef; padding:10px;
+}
+.newsletter-shortcode p input {
+	width:98%;
 }
 
 /* =Tab Widget
@@ -684,6 +733,33 @@ p.nocomments {
 	margin-right:-2px;
 }
 
+/* =Ads
+----------------------------------------------- */
+.cyon-ads {
+	margin-bottom:0;
+}
+.cyon-ads h3.widget-title {
+	margin:0 0 10px 0; padding:0; border:0; border-bottom:1px solid #efefef; font-size:100%; text-align:center;
+}
+.cyon-ads ul.widget-content {
+	padding:0; margin:0; border:0;
+}
+.cyon-ads ul.widget-content li {
+	padding:0; margin-bottom:10px; border:0; text-align:center;
+}
+.cyon-ads ul.widget-content li.no-margin {
+	margin-left:0; clear:left;
+}
+.cyon-ads ul.widget-content li span {
+	display:block;
+}
+.cyon-ads ul.float li {
+	float:left; margin-left:10px;
+}
+.cyon-ads ul.float li img {
+	width:20px; height:auto;
+}
+
 /* =Shortcodes
 ----------------------------------------------- */
 /* Fluid Columns */
@@ -720,11 +796,35 @@ p.nocomments {
 .five_sixth{
 	width:82.67%;
 }
-.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.two_fifth,.three_fifth,.four_fifth,.one_sixth,.five_sixth{
+.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.two_fifth,.three_fifth,.four_fifth,.one_sixth,.five_sixth,.one_seventh,.one_eighth{
 	position:relative; margin-right:4%; float:left;
+}
+.one_seventh, .one_eighth {
+	margin-right:2%
+}
+.one_seventh {
+	width:12.55%;
+}
+.one_eighth {
+	width:10.75%;
 }
 .last{
 	margin-right:0 !important; clear:right;
+}
+
+/* =Subpages
+----------------------------------------------- */
+.subpages {
+	margin-bottom:10px; padding:0;
+}
+.entry-content .subpages > li {
+	list-style:none;
+}
+.entry-content .subpages h4 {
+	line-height:normal; margin:0;
+}
+.entry-content .subpages .page-thumb img {
+	width:100%; height:auto;
 }
 
 /* =Toggle & Accordion
@@ -1018,11 +1118,11 @@ ul.cols6 li {
 .row-fluid:before,.row-fluid:after{
 	display:table;content:"";line-height:0;
 }
-.row-fluid:after{
+.row-fluid:after, .row-fluid .first-child{
 	clear:both;
 }
 .row-fluid [class*="span"]{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.127659574468085%;*margin-left:2.074468085106383%;}
-.row-fluid [class*="span"]:first-child{margin-left:0;}
+.row-fluid [class*="span"]:first-child,.row-fluid .first-child{margin-left:0;}
 .row-fluid .controls-row [class*="span"]+[class*="span"]{margin-left:2.127659574468085%;}
 .row-fluid .span12{width:100%;*width:99.94680851063829%;margin-left:0;}
 .row-fluid .span11{width:91.48936170212765%;*width:91.43617021276594%;}
@@ -1313,6 +1413,15 @@ span.hastip, em.hastip, strong.hastip {
 .widget > ul > li, .widget > ol > li {
 	padding:10px; border-top:1px solid #efefef;
 }
+.widget > ul > li > ul > li {
+	padding-left:10px;
+}
+.widget > ul > li > ul > li a {
+	color:inherit; font-size:90%;
+}
+.widget > ul > li > ul > li a:hover {
+	text-decoration:underline;
+}
 .widget img {
 	max-width:100%; height:auto;
 }
@@ -1530,7 +1639,9 @@ span.hastip, em.hastip, strong.hastip {
 
 /* =Page Specifics
 ----------------------------------------------- */
-
+#popup {
+	padding:20px;
+}
 
 /* =Cufon
 ----------------------------------------------- */
@@ -1552,7 +1663,7 @@ span.hastip, em.hastip, strong.hastip {
 .clearfix:after{
 	clear:both;
 }
-#top:after, #footer-buckets:after, .wrapper:after, nav:after, #respond p:after, #home-buckets:after, .widget-content:after, .page-content:after, .entry-content:after, #bottom:after, .navigation:after, dl:after, .widget li:after, .widget > div:after, .widget > form:after, .gform_wrapper .gform_fields > li:after, .gform_wrapper .ginput_complex:after, .wp-pagenavi:after, .grid:after, #author-info:after,
+#top:after, #footer-buckets:after, .wrapper:after, nav:after, #respond p:after, #home-buckets:after, .widget-content:after, .page-content:after, .entry-content:after, article:after, #bottom:after, .navigation:after, dl:after, .widget li:after, .widget > div:after, .widget > form:after, .gform_wrapper .gform_fields > li:after, .gform_wrapper .ginput_complex:after, .wp-pagenavi:after, .grid:after, #author-info:after,
 .tabs .tab_nav:after, .box:after, .cyon-tabs .tab_nav:after {
 	display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden;
 }

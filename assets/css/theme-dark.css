@@ -20,15 +20,15 @@ pre, em {
 /* Borders */
 #top p, #branding hgroup, #access ul.menu > li > a, #access .menu > ul > li > a, #access ul.menu > li ul, #access .menu > ul > li ul, #access ul.menu > li > ul > li a, #access .menu > ul > li > ul > li a,
 #primary, #middle, #breadcrumb, .widget h3, .widget > div, .widget > form, .widget > ul, .widget > ol, .widget > ul > li, .widget > ol > li, #access2 ul, #colophon .copyright p, #subfooter, #backtotop,
-pre, hr, hr.dashed, abbr, dfn, .entry-content blockquote, .box-content, .box-note, table thead th, table tbody td, dl.separator dt, dl.separator dd, #respond, .navigation, ol.commentlist li,
+pre, hr, hr.dashed, abbr, dfn, .entry-content blockquote, .box-content, .box-note, table thead th, table tbody td, dl.separator dt, dl.separator dd, #respond, .navigation, ol.commentlist li, .newsletter-shortcode,
 .toggle h3, .accordion h3, .toggle .toggle-content, .accordion .accordion-content, .toggle h3.toggle-active, .accordion h3.accordion-active, aside.widget_shopping_cart p.total, aside.widget_shopping_cart p.buttons,
-.tabs .tab_nav li a, .tabs .panel, article, #container, .products li, .wp-pagenavi .current, .wp-pagenavi a, .cart-collaterals .cross-sells, .cart-collaterals .cross-sells .products, .cart-collaterals .shipping_calculator section,
+.tabs .tab_nav li a, .tabs .panel, .cyon-tabs .tab_nav li a, article, #container, .products li, .wp-pagenavi .current, .wp-pagenavi a, .cart-collaterals .cross-sells, .cart-collaterals .cross-sells .products, .cart-collaterals .shipping_calculator section,
 .cart-collaterals .cart_totals, .cart-collaterals .shipping_calculator, .cart-collaterals .cart_totals table, .cart-collaterals .cart_totals tr.total td, .cart-collaterals .cart_totals tr.total th, #author-info {
 	border-color:#444;
 }
 
 /* Boxes */
-div.box, span.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .validation_error {
+div.box, span.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .validation_error, .entry-content blockquote {
 	background:#444; text-shadow:1px 1px rgba(0,0,0,.3); box-shadow:1px 1px 5px rgba(0,0,0,.4);
 }
 .box-blue {
@@ -47,7 +47,7 @@ div.box, span.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .val
 
 #access ul.menu > li a:hover, #access ul.menu li:hover > a, #access ul.menu li.current-menu-item > a, #access ul.menu > li.current-menu-parent > a, #access ul.menu > li > ul > li a, #access .menu > ul > li > ul > li a,
 #access .menu > ul > li a:hover, #access .menu > ul > li:hover > a, #access .menu > ul > li.current-menu-item > a, #access .menu > ul > li.current-menu-parent > a, #access .menu > ul > li.current_page_item > a,
-.row-fluid .span10, .box-content, .box-note, table thead th, #respond, ol.commentlist li, .toggle h3, .accordion h3, .tabs .tab_nav li a, .wp-pagenavi .current, .wp-pagenavi a {
+.row-fluid .span10, .box-content, .box-note, table thead th, #respond, ol.commentlist li, .toggle h3, .accordion h3, .tabs .tab_nav li a, .cyon-tabs .tab_nav li a, .wp-pagenavi .current, .wp-pagenavi a {
 	background:#333;
 	filter:none;
 }
@@ -56,7 +56,7 @@ div.box, span.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .val
 	color:#666;
 }
 
-ol.commentlist li.bypostauthor, .toggle h3:hover, .accordion h3:hover, .toggle h3.toggle-active, .accordion h3.accordion-active, .tabs .tab_nav li.active a, .tabs .panel {
+ol.commentlist li.bypostauthor, .toggle h3:hover, .accordion h3:hover, .toggle h3.toggle-active, .accordion h3.accordion-active, .tabs .tab_nav li.active a, .tabs .panel, .cyon-tabs .tab_nav li.active a, .type-product form.cart {
 	background:#444;
 	filter:none;
 }

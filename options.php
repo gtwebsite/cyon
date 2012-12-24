@@ -486,13 +486,6 @@ function optionsframework_options() {
 	$options[] = array( 'name' 		=> __( 'Content' ),
 						'type' 		=> 'section_start');
 
-	$options[] = array( 'name' 		=> __('Content display on blog listing page'),
-						'desc' 		=> '',
-						'id' 		=> 'content_blog_post',
-						'std'		=> 'excerpt',
-						'type' 		=> 'radio',
-						'options' 	=> array('excerpt'=>__('Excerpt only'), 'full'=>__('Full content')));			
-
 	$options[] = array( 'name' 		=> __('Display author'),
 						'desc' 		=> '',
 						'id' 		=> 'content_author',
@@ -520,6 +513,37 @@ function optionsframework_options() {
 						'std'		=> 'default',
 						'type' 		=> 'radio',
 						'options' 	=> array('default'=>__('Use default'), 'slider_only'=>__('Slider only'), 'slider_carousel'=>__('Slider with carousel')));			
+
+	$options[] = array( 'type'		=> 'section_end'); 
+
+	$options[] = array( 'name' 		=> __( 'Blog List Display' ),
+						'type' 		=> 'section_start');
+
+	$options[] = array( 'name' 		=> __('Content display'),
+						'desc' 		=> '',
+						'id' 		=> 'content_blog_post',
+						'std'		=> 'excerpt',
+						'type' 		=> 'radio',
+						'options' 	=> array('excerpt'=>__('Excerpt only'), 'full'=>__('Full content')));			
+
+	$options[] = array( 'name' 		=> __( 'List layout' ),
+						'desc' 		=> __(''),
+						'id' 		=> 'blog_list_layout',
+						'std' 		=> 'list-1column',
+						'type' 		=> 'images',
+						'options' => array(
+							'list-1column' => $imagepath . 'bucket-1col.gif',
+							'list-2columns' => $imagepath . 'bucket-2col.gif',
+							'list-3columns' => $imagepath . 'bucket-3col.gif',
+							'list-4columns' => $imagepath . 'bucket-4col.gif')
+						);
+
+	$options[] = array( 'name' 		=> __('Thumbnail size'),
+						'desc' 		=> '',
+						'id' 		=> 'content_thumbnail_size',
+						'std'		=> 'large',
+						'type' 		=> 'radio',
+						'options' 	=> array('small'=>__('Small'), 'medium'=>__('Medium'), 'large'=>__('Large'), 'full'=>__('Full')));			
 
 	$options[] = array( 'type'		=> 'section_end'); 
 
@@ -813,6 +837,23 @@ function optionsframework_options() {
 						'id' 		=> 'social_twitter',
 						'desc'		=> __(''),
 						'std' 		=> 'twitter',
+						'type' 		=> 'text');
+
+	$options[] = array( 'type'		=> 'section_end'); 
+
+	$options[] = array( 'name' 		=> __( 'SEO' ),
+						'type' 		=> 'section_start');
+
+	$options[] = array( 'name' 		=> __( 'Activate SEO' ),
+						'desc' 		=> __( 'Activates SEO options to all pages and posts.' ),
+						'id' 		=> 'seo_activate',
+						'std' 		=> '1',
+						'type' 		=> 'checkbox');
+
+	$options[] = array( 'name'		=> __( 'Page Title Format' ),
+						'id' 		=> 'seo_title_format',
+						'desc' 		=> __('Accepts').': {PAGETITLE}, {BLOGTITLE}, {BLOGTAGLINE}',
+						'std' 		=> '{PAGETITLE} | {BLOGTITLE}',
 						'type' 		=> 'text');
 
 	$options[] = array( 'type'		=> 'section_end'); 

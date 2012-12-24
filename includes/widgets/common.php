@@ -14,3 +14,4 @@ require_once (CYON_FILEPATH . '/includes/widgets/contact.php');				// Contact
 require_once (CYON_FILEPATH . '/includes/widgets/social.php');				// Social Links
 require_once (CYON_FILEPATH . '/includes/widgets/newsletter.php');			// Newsletter
 require_once (CYON_FILEPATH . '/includes/widgets/tabs.php');				// Tabs
+require_once (CYON_FILEPATH . '/includes/widgets/ads.php');					// Ads

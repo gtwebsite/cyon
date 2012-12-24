@@ -2,9 +2,6 @@
 
 class CyonContactWidget extends WP_Widget {
 
-	// Declare widget-wide variable
-	protected $var1, $var2;
-
 	// Creating your widget
 	function CyonContactWidget(){
 		$widget_ops = array('classname' => 'cyon-contact', 'description' => __('Displays contact information') );

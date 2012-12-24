@@ -138,34 +138,39 @@ function cyon_tabs_js_css(){
 	<script type="text/javascript">
 		// Tabs
 		jQuery(document).ready(function(){
-			jQuery('.tabs .tab_nav li:first-child').addClass('active');
-			jQuery(jQuery('.tab_nav li.active a').attr('href')).show();
-			jQuery('.tab_nav li a').click(function(){
-				var prev = jQuery(this).parent().parent().find('li.active a').attr('href');
-				if (!jQuery(this).parent().hasClass('active')) {
-					jQuery(this).parent().parent().find('li.active').removeClass('active');
-					jQuery(this).parent().addClass('active');
-				}
-				var current = jQuery(this).attr('href');
-				if(jQuery(jQuery(this).attr('href')).is(':hidden')){
-					jQuery(prev).slideUp('slow', function(){
-						jQuery(current).slideDown(500);
-					});
-				}
-				event.preventDefault();
+			jQuery('.tabs').each(function(){
+				jQuery(this).find('.tab_nav li:first-child').addClass('active');
+				jQuery(jQuery(this).find('.tab_nav li.active a').attr('href')).show();
+				jQuery(this).find('.tab_nav li a').click(function(){
+					var prev = jQuery(this).parent().parent().find('li.active a').attr('href');
+					if (!jQuery(this).parent().hasClass('active')) {
+						jQuery(this).parent().parent().find('li.active').removeClass('active');
+						jQuery(this).parent().addClass('active');
+					}
+					var current = jQuery(this).attr('href');
+					if(jQuery(jQuery(this).attr('href')).is(':hidden')){
+						jQuery(prev).slideUp('slow', function(){
+							jQuery(current).slideDown(500);
+						});
+					}
+					event.preventDefault();
+				});
 			});
 		});
 	</script> 
 <?php }
 
 /* =Show Subpages
-use [subpages excerpt='yes']
+use [subpages excerpt='yes' thumbnail='no' id='' cols='' classname='']
 ----------------------------------------------- */
 function cyon_subpages( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
-			excerpt => 'yes',
-			id 		=> get_the_ID()
+			excerpt 	=> 'yes',
+			thumbnail 	=> 'no',
+			classname 	=> '',
+			cols	 	=> '',
+			id 			=> get_the_ID()
 		), $atts);
 	$args = array(
 		'sort_order' 	=> 'ASC',
@@ -175,18 +180,47 @@ function cyon_subpages( $atts, $content = null ) {
 	);
 	$subpages = get_pages($args);
 	$result = '';
+	if($atts['cols']>1){
+		global $subpage_cols;
+		$subpage_cols = $atts['cols'];
+		$cols = 12 / $atts['cols'];
+		$classli = ' class="span'.$cols.'"';
+	}
 	foreach ( $subpages as $page ) {
-		$result .= '<li>';
-		$result .= '<h3><a href="' . get_page_link( $page->ID ) . '">' . $page->post_title . '</a></h3>';
+		$result .= '<li'.$classli.'>';
+		if($atts['thumbnail']=='yes'){
+			$result .= '<div class="page-thumb"><a href="' . get_page_link( $page->ID ) . '">'.get_the_post_thumbnail( $page->ID, 'thumbnail' ).'</a></div>';
+		}
+		$result .= '<h4><a href="' . get_page_link( $page->ID ) . '">' . $page->post_title . '</a></h4>';
 		if($atts['excerpt']=='yes'){
 			$result .= do_shortcode($page->post_excerpt);
 		}
 		$result .= '</li>';
 		echo $option;
 	}
-	return '<ul class="subpages">'.$result.'</ul>';
+	$class = 'subpages';
+	if($atts['classname']){
+		$class .= ' '.$atts['classname'];
+	}
+	if($atts['cols']>1){
+		$class .= ' row-fluid';
+		ob_start();
+			add_action('wp_footer','cyon_cyon_subpages_js_css',10);
+		ob_get_clean();
+	}
+	return '<ul class="'.$class.'">'.$result.'</ul>';
 }
 add_shortcode('subpages','cyon_subpages'); 
+
+function cyon_cyon_subpages_js_css(){
+		global $subpage_cols;
+?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.subpages > li:nth-of-type(<?php echo $subpage_cols; ?>n+1)').addClass('first-child');
+			});
+		</script>
+<?php }
 
 /* =Map
 use [map width='' height='350' zoom='14' long='' lat='' address='New York, USA'] xxx [/map]
@@ -422,6 +456,7 @@ function cyon_inline_icon( $atts, $content = null ) {
 			icon		=> ''
 		), $atts);
 	$classname = '';
+	$element = $atts['element'];
 	if($atts['classname']){
 		$classname .= ' '.$atts['classname'];
 	}
@@ -431,17 +466,19 @@ function cyon_inline_icon( $atts, $content = null ) {
 		$title = ' title="'. $atts['title'] . '"';
 	}
 	$url = '';
-	if($atts['url'] && $atts['element']=='a'){
+	if($atts['url'] || $atts['element']=='a'){
 		$url = ' href="'. $atts['url'] . '"';
+		$element = 'a';
 	}
-	if($atts['icon']=='' && $atts['element']=='a'){
+	if($atts['icon']=='' && ($atts['url'] || $atts['element']=='a')){
 		$icon = 'icon-share';
+		$element = 'a';
 	}elseif($atts['icon']==''){
 		$icon = 'icon-question-sign';
 	}else{
 		$icon = 'icon-'.$atts['icon'];
 	}
-	$html = '<'.$atts['element'].' class="has-icon'.$classname.'"'.$title.$url.'><span class="'.$icon.'"></span> ' . $content . '</'.$atts['element'].'>';
+	$html = '<'.$element.' class="has-icon'.$classname.'"'.$title.$url.'><span class="'.$icon.'"></span> ' . $content . '</'.$element.'>';
 	return $html;
 }
 add_shortcode('icon','cyon_inline_icon'); 
@@ -580,19 +617,28 @@ function cyon_table_data( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			classname	=> '',
+			rows		=> '',
+			cols		=> '',
 			color		=> ''
 		), $atts);
 	$classname = '';
+	$attributes = '';
 	if($atts['color']!=''){
 		$classname .= 'data-'.$atts['color'];
 	}
 	if($atts['classname']){
 		$classname .= ' '.$atts['classname'];
 	}
+	if($atts['rows']){
+		$attributes .= ' colspan="'.$atts['rows'].'"';
+	}
+	if($atts['cols']){
+		$attributes .= ' colspan="'.$atts['cols'].'"';
+	}
 	if($classname!=''){
 		$class = ' class="'.$classname.'"';
 	}
-	$data_content = array('<td'.$class.'>'. do_shortcode($content) .'</td>');
+	$data_content = array('<td'.$class.$attributes.'>'. do_shortcode($content) .'</td>');
 	foreach ($data_content as $value){
 		return $value ;
 	}
@@ -685,3 +731,103 @@ function cyon_tip( $atts, $content = null ) {
 	return $html;
 }
 add_shortcode('tip','cyon_tip'); 
+
+
+/* =Newsletter
+use [newsletter email="" name="no" align="" width=""] xxx [/newsletter]
+----------------------------------------------- */
+function cyon_newsletter( $atts, $content = null ) {
+	$nonce = wp_create_nonce('cyon_newsletter_nonce');
+	$atts = shortcode_atts(
+		array(
+			email	=> get_bloginfo('admin_email'),
+			name	=> 'no'
+		), $atts);
+	$html = '<div class="cyon-newsletter newsletter-shortcode"><form action="" method="post" class="cyonform">';
+	$html .= '<fieldset>';
+	if($content!=''){
+		$html .= '<legend>'.$content.'</legend>';
+	}
+	$html .= '<div class="box"></div><input type="hidden" class="nonce" name="nonce" value="'.$nonce.'" /><input type="hidden" class="emailto" name="emailto" value="'.$atts['email'].'" />';
+	if($atts['name']=='yes'){
+		$html .= '<p><label for="newsletter_name">'.__('Name').':</label> <input type="text" id="newsletter_name" name="name" placeholder="'.__('Name').'" /></p>';
+	}
+	$html .= '<p><label for="newsletter_email">'.__('Email').':</label> <input type="email" id="newsletter_email" name="email" placeholder="'.__('Email').'" /></p>';
+	$html .= '<button type="submit" name="newsletter_submit">'.__('Submit').'</button>';
+	$html .= '</fieldset>';
+	$html .= '</form></div>';
+	ob_start();
+		add_action('wp_footer','cyon_newsletter_ajax');
+		add_action('wp_ajax_cyon_newsletter_action', 'cyon_newsletter_email');
+		add_action('wp_ajax_nopriv_cyon_newsletter_action', 'cyon_newsletter_email');
+	ob_get_clean();
+	return $html;
+}
+add_shortcode('newsletter','cyon_newsletter'); 
+
+if(!function_exists('cyon_newsletter_ajax')) {
+function cyon_newsletter_ajax(){ ?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.cyon-newsletter form').each(function(){
+					jQuery(this).submit(function(){
+						if(jQuery(this).find('input[type=email]').val()=='') {
+							jQuery(this).find('.box').addClass('box-red').removeClass('box-green').text('<?php _e('Please enter your email address.'); ?>');
+							jQuery(this).find('input[type=email]').addClass('error');
+							return false;
+						} else {
+							var emailto = jQuery(this).find('input.emailto').val();
+							var name = jQuery(this).find('input[type=text]').val();
+							var email = jQuery(this).find('input[type=email]').val();
+							var nonce = jQuery(this).find('input.nonce').val();
+							if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+								jQuery(this).find('.box').addClass('box-red').removeClass('box-green').text('<?php _e('Please enter a valid email address.'); ?>');
+								jQuery(this).find('input[type=email]').addClass('error');
+								return false;
+							} else {
+								var data = {
+									action: 'cyon_newsletter_action',
+									emailto: emailto,
+									nonce: nonce,
+									name: name,
+									email: email
+								};
+								jQuery(this).find('button').hide();
+								jQuery(this).addClass('form-sending');
+								jQuery.ajax({
+									url		: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+									type	: 'POST',
+									data	: data,
+									success	: function( results ) {
+										jQuery('.cyon-newsletter form').removeClass('form-sending');
+										jQuery('.cyon-newsletter button').show();
+										jQuery('.cyon-newsletter .box').removeClass('box-red').addClass('box-green').text(results);
+										jQuery('.cyon-newsletter input[type=email]').removeClass('error');
+										jQuery('.cyon-newsletter input[type=email]').val('');
+									}
+			
+								});
+								return false;
+							}
+						} 
+					});
+				});
+			});
+		</script>
+<?php } }
+if(!function_exists('cyon_newsletter_email')) {
+function cyon_newsletter_email() {
+	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_newsletter_nonce') ) die(__('Security check')); 
+	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
+		$subject = __('New subscriber from').' '.get_bloginfo('name');
+		$body = __('Name').': '.$_REQUEST['email'];
+		$body .= __('Email').': '.$_REQUEST['email'];
+		$success = mail($_REQUEST['emailto'], $subject, $body);
+		if(!empty($success)) {
+			echo __('Your email is subscribed to our mailing list.');
+		} else {
+			echo __('There was a problem. Please try again.');
+		}
+	}
+	die();
+} }

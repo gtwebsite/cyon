@@ -173,14 +173,7 @@
 }
 #optionsframework .controls input.upload_button {
 	float:right;
-	width:45px;
-	border-color:#BBBBBB;
-	cursor:pointer;
-	height:16px;
-}
-#optionsframework .controls input.upload_button:hover {
-	border-color:#666666;
-	color:#000;
+	width:15%;
 }
 #optionsframework .screenshot {
 	float:left;

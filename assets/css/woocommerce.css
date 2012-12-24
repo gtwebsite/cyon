@@ -134,6 +134,7 @@ ins { padding:0; background:none; }
 .type-product form.cart .single_variation_wrap { border-top:1px solid #efefef; padding-top:10px; }
 .type-product form.cart .single_variation { float:left; width:40%; }
 .type-product form.cart .quantity button.button { float:left; }
+.quantity input[type=button] { cursor:pointer; }
 .type-product form.cart .variations_button { float:right; width:55%; }
 .type-product form.cart .variations_button .quantity { float:left; }
 .type-product form.cart .variations_button button.button { float:right; }
@@ -152,16 +153,17 @@ article .login .form-row { float:left; }
 article .login label { display:block; }
 article .login br, article .checkout br { display:none; }
 article .login input[type=submit] { margin-right:10px; }
-.woocommerce-checkout article .login, .woocommerce-checkout article .checkout_coupon { padding:10px; border:1px solid #efefef; position:absolute; z-index:3; width:360px; background:#fff; float:left; box-shadow:2px 2px 2px rgba(0,0,0,.1); }
+.woocommerce-checkout article .login, .woocommerce-checkout article .checkout_coupon { padding:10px; border:1px solid #efefef; z-index:3; width:360px; background:#fff; box-shadow:2px 2px 2px rgba(0,0,0,.1); margin-bottom:20px; }
 article .checkout_coupon { width:280px; }
 article .checkout_coupon .form-row-first { float:left; margin-right:10px; }
 
 article .form-row abbr { border-bottom:0; cursor:auto; }
 article .form-row { float:left; width:45%; overflow:visible; }
+article .form-row br { display:none; height:0; }
 article .form-row-first { margin-right:5%; }
 article .form-row input[type=text], article .form-row input[type=email], article .form-row input[type=password], article .checkout .form-row input[type=password], article .checkout .form-row textarea { width:96%; }
 article .checkout .country_select { float:none; margin-bottom:0; }
-article .checkout label { display:none; }
+article .checkout label, .form-row label { display:none; }
 article .checkout .checkbox { display:inline; }
 
 article .create-account { clear:both; }
@@ -216,9 +218,74 @@ article .create-account .form-row-first, article .create-account .form-row-last 
 #payment .place-order .form-row input { float:left; margin-right:5px; }
 #payment .place-order input[type=submit] { font-weight:bold; float:right; }
 
+dl.customer_details {
+	margin-bottom:15px;
+}
+dl.customer_details dt {
+	float:left; clear:both; width:150px; border-top:1px solid #efefef;
+}
+dl.customer_details dd {
+	margin:0 0 5px 150px; border-left:3px solid #efefef; padding:5px 0 5px 10px; font-style:italic;
+}
+
 .col2-set { margin-bottom:20px; }
 .col2-set .col-1 { float:left; width:47%; overflow:visible; }
-.col2-set .col-2 { float:right; width:47%; overflow:visible; }
+.col2-set .col-2 { float:right; width:47%; overflow:visible; margin-top:-22px; }
+.col2-set .col-2 .notes { width:97%; }
+.addresses .col-2 { margin-top:0; }
+
+/* Forms */
+.woocommerce_ordering select, .variations_form select, .variations_form input, .variations_form button, .add_to_cart_button, .cart input, .cart button, #commentform input, #commentform textarea, .shipping_calculator input, .shipping_calculator select, .shipping_calculator button, .checkout input[type=text], .checkout input[type=password], .checkout input[type=submit], .checkout select, .checkout textarea, .login input, .checkout_coupon input, .form-row input, .button, #billing_country, .edit { 
+	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; text-shadow:1px 1px 0 #fff; 
+}
+.woocommerce_ordering select, .variations_form select, .shipping_calculator select, .checkout select, .variations_form input, .cart input, #commentform input, #commentform textarea, .shipping_calculator input, .checkout input[type=text], .checkout input[type=password], .checkout select, .checkout textarea, .login input[type=text], .login input[type=password], .checkout_coupon input[type=text], .form-row input, #billing_country {
+	box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
+	background: rgb(255,255,255); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMmYyZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-8 */
+}
+.woocommerce_ordering select:focus, .variations_form select:focus, .variations_form input:focus, .cart input:focus, #commentform input:focus, #commentform textarea:focus, .shipping_calculator input:focus, .shipping_calculator select:focus, .checkout input[type=text]:focus, .checkout textarea:focus, .login input[type=text]:focus, .login input[type=password]:focus, .checkout_coupon input[type=text]:focus, .form-row input:focus, #billing_country:focus {
+	box-shadow:0 0 6px rgba(0,0,0,.1); background:#fff; color:#222; 
+}
+.woocommerce_ordering select, .variations_form select, .shipping_calculator select, .checkout select, #billing_country {
+	padding-top:4px; padding-bottom:4px;
+}
+.variations_form button, .add_to_cart_button, .cart button, .cart input[type=submit], #commentform input[type=submit], .shipping_calculator button, .checkout input[type=submit], .login input[type=submit], .checkout_coupon input[type=submit], .button, .edit {
+	cursor:pointer; border-color:#c1c1c1; color:#666; padding:0 10px; height:30px; line-height:30px; display:inline-block; text-transform:uppercase; font-size:95%; box-shadow:1px 1px 3px rgba(0,0,0,.1); border-radius:5px;
+	background: rgb(252,255,244); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZjZmZmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUlIiBzdG9wLWNvbG9yPSIjZjJmMmYyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iOTQlIiBzdG9wLWNvbG9yPSIjZGRkZGRkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2MxYzFjMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(242,242,242,1) 5%, rgba(221,221,221,1) 94%, rgba(193,193,193,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,244,1)), color-stop(5%,rgba(242,242,242,1)), color-stop(94%,rgba(221,221,221,1)), color-stop(100%,rgba(193,193,193,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#c1c1c1',GradientType=0 ); /* IE6-8 */
+}
+.variations_form button:hover, .add_to_cart_button:hover, .cart button:hover, #commentform input[type=submit]:hover, .cart input[type=submit]:hover, .shipping_calculator button:hover, .checkout input[type=submit]:hover, .login input[type=submit]:hover, .checkout_coupon input[type=submit]:hover, .button:hover, .edit:hover {
+	color:#222; border-color:#aaa; text-shadow:1px 1px 0 #fff;
+	background: rgb(240,249,255); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjlmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2NiZWJmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top,  rgba(240,249,255,1) 0%, rgba(203,235,255,1) 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,249,255,1)), color-stop(99%,rgba(203,235,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 99%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 99%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 99%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 99%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#cbebff',GradientType=0 ); /* IE6-8 */
+}
+.variations_form button:active, .add_to_cart_button:active, .cart button:active, #commentform input[type=submit]:active, .cart input[type=submit]:active, .shipping_calculator button:active, .checkout input[type=submit]:active, .login input[type=submit]:active, .checkout_coupon input[type=submit]:active, .button:active, .edit:active {
+	position:relative; top:1px; left:1px;
+}
 
 .products:after, .woocommerce_tabs ul:after, .type-product:after, .single_variation_wrap:after, .type-product .thumbnails:after, #review_form form p:after, .cart-collaterals:after, .col2-set:after, #order_review:after
 { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }

@@ -2,9 +2,6 @@
 
 class CyonMapWidget extends WP_Widget {
 
-	// Declare widget-wide variable
-	protected $var1, $var2;
-
 	// Creating your widget
 	function CyonMapWidget(){
 		$widget_ops = array('classname' => 'cyon-map', 'description' => __('Displays Google Map') );
@@ -20,7 +17,8 @@ class CyonMapWidget extends WP_Widget {
 			'zoom'			=> '14',
 			'lat'			=> '',
 			'long'			=> '',
-			'address'		=> 'New York, USA'
+			'address'		=> 'New York, USA',
+			'text' 		=> ''
 		) );
 		$title = $instance['title'];
 		$height = $instance['height'];
@@ -28,6 +26,7 @@ class CyonMapWidget extends WP_Widget {
 		$lat = $instance['lat'];
 		$long = $instance['long'];
 		$address = $instance['address'];
+		$text = $instance['text'];
 
 		?>
 		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
@@ -36,6 +35,7 @@ class CyonMapWidget extends WP_Widget {
 		  <p><label for="<?php echo $this->get_field_id('lat'); ?>"><?php _e('Latitude') ?>: <input class="widefat" id="<?php echo $this->get_field_id('lat'); ?>" name="<?php echo $this->get_field_name('lat'); ?>" type="text" value="<?php echo attribute_escape($lat); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('long'); ?>"><?php _e('Longetitude') ?>: <input class="widefat" id="<?php echo $this->get_field_id('long'); ?>" name="<?php echo $this->get_field_name('long'); ?>" type="text" value="<?php echo attribute_escape($long); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('address'); ?>"><?php _e('Address') ?>: <input class="widefat" id="<?php echo $this->get_field_id('address'); ?>" name="<?php echo $this->get_field_name('address'); ?>" type="text" value="<?php echo attribute_escape($address); ?>" /></label></p>
+		  <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Text') ?>: <textarea class="widefat" rows="5" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" type="text"><?php echo attribute_escape($text); ?></textarea></label></p>
 
 		<?php
 	}
@@ -50,6 +50,7 @@ class CyonMapWidget extends WP_Widget {
 		$instance['lat'] = $new_instance['lat'];
 		$instance['long'] = $new_instance['long'];
 		$instance['address'] = $new_instance['address'];
+		$instance['text'] = $new_instance['text'];
 
 		return $instance;
 	}
@@ -64,6 +65,7 @@ class CyonMapWidget extends WP_Widget {
 		$lat = $instance['lat'];
 		$long = $instance['long'];
 		$address = $instance['address'];
+		$text = $instance['text'];
 
 
 		// Start widget
@@ -74,8 +76,11 @@ class CyonMapWidget extends WP_Widget {
 			echo $before_title . $title . $after_title;;
 		}
 		echo '<div class="widget-content">';
-		echo '<div class="gmap" data-address="'.$address.'" data-lat="'.$lat.'" data-long="'.$long.'" data-zoom="'.$zoom.'" style="width: 100%; height: '.$height.'px;"></div>';
+		echo '<div class="gmap" data-address="'.$address.'" data-lat="'.$lat.'" data-long="'.$long.'" data-zoom="'.$zoom.'" style="width: 100%; height: '.$height.'px;">'.$text.'</div>';
     	// Widget code here
+ 		if($text){
+			echo '<div class="map-text">'.$text.'</div>';
+		}
  
 		// End widget
 		echo '</div>';

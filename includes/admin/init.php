@@ -107,6 +107,7 @@ wp_register_script('poshytip',get_template_directory_uri().'/assets/js/jquery.po
 wp_register_script('mediaelement',get_template_directory_uri().'/assets/js/jquery.mediaelement.min.js',array('jquery'),'2.10.0',false);
 wp_register_script('gmap_api','http://maps.google.com/maps/api/js?sensor=false',array('jquery'),'1.0.0',false);
 wp_register_script('gmap',get_template_directory_uri().'/assets/js/jquery.gmap.min.js',array('gmap_api'),'3.3.0',false);
+wp_register_script('masonry',get_template_directory_uri().'/assets/js/jquery.masonry.min.js',array('jquery'),'1.0.5',false);
 
 wp_register_style('responsive_css', get_template_directory_uri().'/assets/css/responsive.css',array(),'1.0.0');
 wp_register_style('fancybox_css', get_template_directory_uri().'/assets/css/jquery.fancybox.css',array(),'2.0.6');
@@ -161,154 +162,6 @@ if(of_get_option('admin_plugin_updates')==1){
 	add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
 }
 
-/* =Create sample page
------------------------------------------------ */
-if (isset($_GET['activated']) && is_admin()){
-        $new_page_title = 'Hide this page';
-        $new_page_content = '
-You can create some beautiful content by using some simple HTML elements. The Warp theme framework offers some neat styles for all HTML elements and a great set of CSS classes to style your content. Basic HTML is very easy to learn and this small guide shows you how to use all styles provided by the Warp framework.
-<h2>Basic HTML Elements</h2>
-Here is a short demonstration of text-level semanticts. The &lt;p&gt; element creates a new paragraph. It will have some space before and after itself. To turn your text into hypertext just use the <a href="#">&lt;a&gt; element</a>.
-<h3>Text-Level Semantics</h3>
-You can emphasize text using the <em>&lt;em&gt; element</em> or to imply any extra importance the <strong>&lt;strong&gt; element</strong>. Highlight text with no semantic meaning using the <mark>&lt;mark&gt; element</mark>. Markup document changes like inserted or deleted text with the <del>&lt;del&gt; element</del> or <ins>&lt;ins&gt; element</ins>. To define an abbreviation use the <abbr title="Abbreviation Element">&lt;abbr&gt; element</abbr> and to define a definition term use the <dfn title="Defines a definition term">&lt;dfn&gt; element</dfn>.
-<h3>Short List with Links</h3>
-<ul>
-	<li><a href="http://www.yootheme.com" target="_blank">YOOtheme</a> – Premium Joomla Templates and WordPress Themes</li>
-	<li><a href="http://www.yootheme.com/warp" target="_blank">Warp Framework</a> – Fast and Slick Theme Framework</li>
-	<li><a href="http://www.yootheme.com/zoo" target="_blank">ZOO</a> – Content Application Builder</li>
-	<li><a href="http://www.yootheme.com/icons" target="_blank">Stock Icons</a> – For Web and Print Projects</li>
-</ul>
-<h3>Quotations and Code</h3>
-Inline quotations can be defined by using the <q>&lt;q&gt; element</q>.
-<blockquote>The &lt;blockquote&gt; element defines a long quotation which also creates a new block by inserting white space before and after the blockquote element.</blockquote>
-To define a short inline computer code use the <code>&lt;code&gt; element</code>. For a larger code snippet use the &lt;pre&gt; element which defines preformatted text. It creates a new text block which preserves both spaces and line breaks.
-<pre>pre {
-    margin: 15px 0;
-    padding: 10px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 12px;
-    line-height: 18px;
-    white-space: pre-wrap;
-}</pre>
-<small>Use the &lt;small&gt; element for side comments and small print.</small>
-
-<hr />
-
-<h2>Useful CSS Classes</h2>
-Here is a short demonstration of all style related CSS classes provided by the Warp framework.
-<h3>Highlight Content</h3>
-<p class="dropcap">Drop caps are the first letter of a paragraph which are displayed bigger than the rest of the text. You can create a drop cap using the CSS class <code>dropcap</code>. To emphasize text with some small boxes use <em class="box">&lt;em&gt; element</em> with the CSS class <code>box</code>.</p>
-
-<div class="box-content">This simple box is intended to group large parts of your content using the CSS class <code>box-content</code>.</div>
-<div class="box-note">This is a simple box to highlight some text using the CSS class <code>box-note</code>.</div>
-<div class="box-info">This is a simple box with useful information using the CSS class <code>box-info</code>.</div>
-<div class="box-warning">This is a simple box with important notes and warnings using the CSS class <code>box-warning</code>.</div>
-<div class="box-hint">This is a simple box with additional hints using the CSS class <code>box-hint</code>.</div>
-<div class="box-download">This is a simple box with download information using the CSS class <code>box-download</code>.</div>
-Use the CSS class <code>dashed</code> to create a dashed horizontal rule.
-
-<hr class="dashed" />
-
-<h3>Tables</h3>
-Create a zebra stripped table using using the CSS class <code>zebra</code>.
-<table class="zebra"><caption>Table caption</caption>
-<thead>
-<tr>
-<th>Table Heading</th>
-<th>Table Heading</th>
-<th class="center">Table Heading</th>
-</tr>
-</thead>
-<tfoot>
-<tr>
-<td>Table Footer</td>
-<td>Table Footer</td>
-<td class="center">Table Footer</td>
-</tr>
-</tfoot>
-<tbody>
-<tr class="odd">
-<td>Table Data</td>
-<td>Table Data</td>
-<td class="center">Data Centered</td>
-</tr>
-<tr>
-<td class="bold">Data Bold</td>
-<td>Table Data</td>
-<td class="center">Data Centered</td>
-</tr>
-<tr class="odd">
-<td>Table Data</td>
-<td>Table Data</td>
-<td class="center">Data Centered</td>
-</tr>
-</tbody>
-</table>
-<h3>Definition Lists</h3>
-Create a nice looking definition list separated with a line by using the CSS class <code>separator</code>.
-
-<dl class="separator"><dt>Definition List</dt><dd>A definition list is a list of terms and corresponding definitions. To create a definition list use the &lt;dl&gt; element in conjunction with &lt;dt&gt; to define the definition term and &lt;dd&gt; to define the definition description.</dd><dt>Definition Term</dt><dd>This is a definition description.</dd><dt>Definition Term</dt><dd>This is a definition description.</dd><dd>This is another definition description.</dd></dl>
-<h2>Gallery Style</h2>
-Use <code>gallery</code> same as the default to get this effect below:
-[gallery link="file" columns="4"]
-<h2>Toggle Sample</h2>
-[toggle]Wow! is pretty amazing[/toggle]
-[toggle title="This is sparta"]Im loving this[/toggle]
-[toggle title="I want more"]
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-[/toggle]
-<h2>Accordion Sample</h2>
-[accordion]Wow! is pretty amazing[/accordion]
-
-[accordion title="This is sparta"]Im loving this[/accordion]
-
-[accordion title="I want more"]
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-[/accordion]
-[pricegrid labels="Setup,Updates,Disk Space,Traffic" columns="4" bgcolor="#03BCEE"]
-[gridcolumn title="Starter" price="$49.90" period="Yearly" link_url="http://"]
-[gridoption text="$599.00" tooltip_title="Setup and Design" tooltip_text="Website com design configurado e básico. Designs mais complexos e/ou mídias podem aumentar o custo." /]
-[gridoption checked="no" /]
-[gridoption text="500MB" /]
-[gridoption text="500GB" /]
-[/gridcolumn][gridcolumn highlighted="yes" title="Personal" best_value="Preço Melhor!" price="$99.90" period="Yearly" link_url="http://"]
-[gridoption text="$599.00" tooltip_title="Setup and Design" tooltip_text=" Website com design configurado e básico. Designs mais complexos e/ou mídias podem aumentar o custo."]
-[gridoption checked="yes"]
-[gridoption text="1GB"]
-[gridoption text="1000GB"]
-[/gridcolumn][gridcolumn title="Professional" price="$159.90" period="Yearly" link_url="http://"][gridoption text="$599.00" tooltip_title="Setup and Design" tooltip_text=" Website com design configurado e básico. Designs mais complexos e/ou mídias podem aumentar o custo."][gridoption checked="yes"]
-[gridoption text="2Gb"]
-[gridoption text="2000GB"]
-[/gridcolumn][gridcolumn title="Enterprise" price="$499.90" period="Yearly" link_url="http://"]
-[gridoption text="$599.00" tooltip_title="Setup and Design" tooltip_text=" Website com design configurado e básico. Designs mais complexos e/ou mídias podem aumentar o custo."]
-[gridoption checked="yes"]
-[gridoption text="10Gb"]
-[gridoption text="Ilimitado"]
-[/gridcolumn][/pricegrid]
-';
-        $new_page_template = ''; 
-        $page_check = get_page_by_title($new_page_title);
-        $new_page = array(
-                'post_type' => 'page',
-                'post_title' => $new_page_title,
-                'post_content' => $new_page_content,
-                'post_status' => 'publish',
-                'post_author' => 1,
-        );
-        if(!isset($page_check->ID)){
-                $new_page_id = wp_insert_post($new_page);
-                if(!empty($new_page_template)){
-                        update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
-                }
-        }
-}
-
-
 /* =Adding Meta Boxes
 ----------------------------------------------- */
 global $cyon_meta_boxes;
@@ -317,27 +170,61 @@ $prefix = 'cyon_';
 $cyon_meta_boxes = array();
 
 $cyon_meta_boxes[] = array(
+	// Settings
 	'id' => 'settings',
-	'title' => 'Settings',
+	'title' => __('Cyon Settings'),
 	'pages' => array('post','page'), // multiple post types, accept custom post types
 	'context' => 'normal', // normal, advanced, side (optional)
-	'priority' => 'high', // high, low (optional)
 	'fields' => array(
 		array(
-			'name' => 'Layout',
+			'name' => __('Layout'),
 			'id' => $prefix .'layout',
 			'type' => 'radio',
 			'std' => 'default', 
 			'options' => array( // array of name, value pairs for radio options
-				'default' => 'Default',
-				'general-1column' => '1 Column',
-				'general-2left' => '2 Columns Left',
-				'general-2right' => '2 Columns Right'
+				'default' => __('Default'),
+				'general-1column' => __('1 Column'),
+				'general-2left' => __('2 Columns Left'),
+				'general-2right' => __('2 Columns Right')
 			)
 		)
 	)
 );
 
+if(of_get_option('seo_activate')==1){
+	$cyon_meta_boxes[] = array(
+		// SEO
+		'id' => 'seo',
+		'title' => __('Cyon SEO'),
+		'pages' => array('post','page'), // multiple post types, accept custom post types
+		'context' => 'normal', // normal, advanced, side (optional)
+		'fields' => array(
+			array(
+				'name' => __('Page Title'),
+				'id' => $prefix .'meta_title',
+				'type' => 'text',
+				'std' => ''
+			),
+			array(
+				'name' => __('Description'),
+				'id' => $prefix .'meta_desc',
+				'type' => 'textarea',
+				'std' => ''
+			),
+			array(
+				'name' => __('Keywords'),
+				'id' => $prefix .'meta_keywords',
+				'type' => 'text',
+				'std' => ''
+			),
+			array(
+				'name' => __('Hide from search engines'),
+				'id' => $prefix .'robot',
+				'type' => 'checkbox'
+			)
+		)
+	);
+}
 
 function cyon_register_meta_boxes(){
 	global $cyon_meta_boxes;
@@ -356,7 +243,7 @@ if (is_admin()){
 		$prefix = 'cyon_';
 		$config = array(
 			'id' => 'tax_meta_category',         
-			'title' => 'Demo Meta Box',       
+			'title' => 'Category Meta Box',       
 			'pages' => array('category'), 
 			'context' => 'normal',        
 			'fields' => array(),          
@@ -373,14 +260,34 @@ if (is_admin()){
 								'general-2right'	=> __('2 Columns Right', 'cyon')
 						),
 						array(
-								'name' => __('Layout', 'cyon'),
+								'name' => __('Page Layout', 'cyon'),
 								'std'=> array('default')
 						));
-						
+
+		$new_cat_meta->addSelect( $prefix.'cat_layout_listing',
+						array(
+								'default' 			=> __('Default', 'cyon'),
+								'list-1column'		=> __('1 Column', 'cyon'),
+								'list-2columns'		=> __('2 Columns', 'cyon'),
+								'list-3columns'		=> __('3 Columns', 'cyon'),
+								'list-4columns'		=> __('4 Columns', 'cyon')
+						),
+						array(
+								'name' => __('Listing Layout', 'cyon'),
+								'std'=> array('default')
+						));
+					
 		$new_cat_meta->Finish();
 	}
 }
-//add_action( 'admin_init', 'cyon_register_tax_meta' );
+// Get Term ID
+function cyon_term_id(){
+	$current_cat = get_query_var('cat');
+	$term_slug = get_category ($current_cat);
+	$current_term = get_term_by( 'slug', $term_slug->slug, 'category' );
+	define( 'CYON_TERM_ID', $current_term->term_id );
+}
+add_action ( 'wp_head', 'cyon_term_id',10);
 
 /* =Adding MCE button
 ----------------------------------------------- */

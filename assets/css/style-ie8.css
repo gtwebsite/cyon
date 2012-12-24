@@ -10,6 +10,6 @@
 	filter:alpha(opacity=100);
 }
 
-.cyon-newsletter label {
+.cyon-newsletter label, article .checkout label {
 	display:block;
 }

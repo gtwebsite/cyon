@@ -13,7 +13,7 @@
 		<h1 class="page-title"><?php the_title(); ?></h1>
 		<?php cyon_post_header_after(); ?>
 	</header>
-	<div class="entry-content">
+	<div class="page-content">
 		<?php cyon_post_content_before(); ?>
 		<?php the_content(); ?>
 		<?php cyon_post_content_after(); ?>

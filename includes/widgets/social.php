@@ -12,7 +12,7 @@ class CyonSocialWidget extends WP_Widget {
 	function form($instance){
 		// Start adding your fields here
 		$instance = wp_parse_args( (array) $instance, array(
-			'title' 		=> 'Socialize',
+			'title' 		=> __('Socialize'),
 			'facebook'		=> '',
 			'google_plus'	=> '',
 			'twitter'		=> '',

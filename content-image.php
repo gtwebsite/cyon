@@ -27,7 +27,8 @@
 	<!-- For category View -->
 	<header class="entry-header">
 		<?php cyon_post_header_before(); ?>
-		<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<?php $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' ); ?>
+		<h1 class="entry-title"><a href="<?php echo $image_attributes[0]; ?>" class="fancybox"><?php the_title(); ?></a></h1>
 		<?php cyon_post_header_after(); ?>
 	</header>
 	<div class="entry-content">

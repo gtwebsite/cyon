@@ -16,16 +16,19 @@ class CyonNewsletterWidget extends WP_Widget {
 		// Start adding your fields here
 		$instance = wp_parse_args( (array) $instance, array(
 			'title' 		=> __('Newsletter Signup'),
+			'text'			=> __('Get the latest tips, news, and special offers delivered to your inbox.'),
 			'email'			=> get_bloginfo('admin_email')
 		) );
 		$title = $instance['title'];
 		$showname = $instance['showname'];
 		$email = $instance['email'];
+		$text = $instance['text'];
 
 		?>
 		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email') ?>: <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo attribute_escape($email); ?>" /></label></p>
 		  <p><input type="checkbox" name="<?php echo $this->get_field_name('showname'); ?>" id="<?php echo $this->get_field_id('showname'); ?>" value="1" <?php echo ($showname == "true" ? "checked='checked'" : ""); ?> /> <label for="<?php echo $this->get_field_id('showname'); ?>"><?php _e('Show Name') ?></label></p>
+		  <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Text') ?>: <textarea class="widefat" rows="5" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" type="text"><?php echo attribute_escape($text); ?></textarea></label></p>
 		<?php
 	}
 
@@ -36,6 +39,7 @@ class CyonNewsletterWidget extends WP_Widget {
 		$instance['title'] = $new_instance['title'];
 		$instance['email'] = $new_instance['email'];
 		$instance['showname'] = (bool)$new_instance['showname'];
+		$instance['text'] = $new_instance['text'];
 		return $instance;
 	}
 
@@ -53,10 +57,14 @@ class CyonNewsletterWidget extends WP_Widget {
 		if (!empty($title)){
 			echo $before_title . $title . $after_title;;
 		}
-		echo '<form action="" method="post" class="widget-content">';
+		echo '<form action="" method="post" class="widget-content cyonform">';
 		
     	// Widget code here
-		echo '<fieldset><div class="box"></div><input type="hidden" class="nonce" name="nonce" value="'.$this->nonce.'" /><input type="hidden" class="emailto" name="emailto" value="'.$this->emailto.'" />';
+		echo '<fieldset>';
+		if($instance['text']!=''){
+			echo '<legend>'.$instance['text'].'</legend>';
+		}
+		echo '<div class="box"></div><input type="hidden" class="nonce" name="nonce" value="'.$this->nonce.'" /><input type="hidden" class="emailto" name="emailto" value="'.$this->emailto.'" />';
 		if($showname=='true'){
 		echo '<p><label for="newsletter_name">'.__('Name').':</label> <input type="text" id="newsletter_name" name="name" placeholder="'.__('Name').'" /></p>';
 		}
@@ -108,6 +116,7 @@ class CyonNewsletterWidget extends WP_Widget {
 										jQuery('.cyon-newsletter button').show();
 										jQuery('.cyon-newsletter .box').removeClass('box-red').addClass('box-green').text(results);
 										jQuery('.cyon-newsletter input[type=email]').removeClass('error');
+										jQuery('.cyon-newsletter input[type=email]').val('');
 									}
 			
 								});
@@ -127,6 +136,7 @@ add_action( 'widgets_init', create_function('', 'return register_widget("CyonNew
 // Sending email
 add_action('wp_ajax_cyon_newsletter_action', 'cyon_newsletter_email');
 add_action('wp_ajax_nopriv_cyon_newsletter_action', 'cyon_newsletter_email');
+if(!function_exists('cyon_newsletter_email')) {
 function cyon_newsletter_email() {
 	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_newsletter_nonce') ) die(__('Security check')); 
 	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
@@ -141,5 +151,4 @@ function cyon_newsletter_email() {
 		}
 	}
 	die();
-}
-
+} }

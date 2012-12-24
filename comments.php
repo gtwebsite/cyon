@@ -4,7 +4,7 @@
  * @subpackage Cyon Theme
  */
 ?>
-<div id="comments">
+<div id="comments" class="cyonform">
 
 	<?php if ( post_password_required() ) { ?>
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'cyon' ); ?></p>

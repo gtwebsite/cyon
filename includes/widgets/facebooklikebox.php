@@ -2,9 +2,6 @@
 
 class CyonFbWidget extends WP_Widget {
 
-	// Declare widget-wide variable
-	protected $var1, $var2;
-
 	// Creating your widget
 	function CyonFbWidget(){
 		$widget_ops = array('classname' => 'cyon-facebook-box', 'description' => __('Displays FB Likes') );

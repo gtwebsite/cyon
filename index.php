@@ -11,7 +11,7 @@ get_header(); ?>
 				<!-- Center -->
 				<div id="primary">
 					<?php cyon_primary_before(); ?>
-					<div id="content" role="main">
+					<div id="content" role="main"<?php echo CYON_BLOG_LIST_LAYOUT!=1 ? ' class="row-fluid"' : ''; ?>>
 					<?php if ( have_posts() ) { ?>
 						<?php if ( is_archive() ) { ?>
 								<header class="category-header">
@@ -48,7 +48,8 @@ get_header(); ?>
 						<?php } ?>
 
 						<?php while ( have_posts() ) : the_post(); ?>
-							<?php get_template_part( 'content', 'single' ); ?>
+							<?php $format = get_post_format(); if ( false === $format ) $format = 'single'; ?>
+							<?php get_template_part( 'content', $format ); ?>
 						<?php endwhile; ?>
 						<?php cyon_content_nav(); ?>
 						

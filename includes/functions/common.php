@@ -18,7 +18,7 @@ function cyon_breadcrumb() {
 			?> </div> <?php
 		}else{
 			echo '<dl id="breadcrumb"  itemprop="breadcrumb">';
-			echo '<dt>You are here:</dt>';
+			echo '<dt>'.__('You are here').':</dt>';
 			echo '<dd><a href="'.get_option('home').'">'.__('Home').'</a></dd>';
 			if (is_category() || is_single()) {
 				$cat_title = get_the_category('title_li=');
@@ -63,11 +63,11 @@ function cyon_breadcrumb() {
 			}elseif (is_author()){
 				global $author;
 				$userdata = get_userdata($author);
-				echo '<dd>&raquo; Articles posted by: '.$userdata->display_name.'</dd>';
+				echo '<dd>&raquo; '.__('Articles posted by').': '.$userdata->display_name.'</dd>';
 			}elseif (is_tag()){
-				echo '<dd>&raquo; Posts tagged: '.single_tag_title('', false).'</dd>';
+				echo '<dd>&raquo; '.__('Posts tagged').': '.single_tag_title('', false).'</dd>';
 			}elseif (is_404()){
-				echo '<dd>&raquo; Error 404</dd>';
+				echo '<dd>&raquo; '.__('Error 404').'</dd>';
 			}
 			echo '</dl>';
 		}
@@ -144,6 +144,23 @@ function cyon_common_scripts(){
 }
 add_action('wp_enqueue_scripts', 'cyon_common_scripts',100);
 
+/* Check page layout */
+function cyon_check_page_layout(){
+	global $post;
+	if(is_front_page()) {
+		$page_layout = of_get_option('homepage_layout');
+	}elseif(is_home() && get_post_meta(get_option('page_for_posts', true),'cyon_layout',true)!='default'){
+		$page_layout = get_post_meta(get_option('page_for_posts', true),'cyon_layout',true);
+	}elseif(is_category() && get_tax_meta(CYON_TERM_ID,'cyon_cat_layout')!='default' && get_tax_meta(CYON_TERM_ID,'cyon_cat_layout')!=''){
+		$page_layout = get_tax_meta(CYON_TERM_ID,'cyon_cat_layout');
+	}elseif( get_post_meta($post->ID,'cyon_layout',true)=='default' || !get_post_meta($post->ID,'cyon_layout',true) ){
+		$page_layout = of_get_option('general_layout');
+	}else{
+		$page_layout = get_post_meta($post->ID,'cyon_layout',true);
+	}
+	define('CYON_PAGE_LAYOUT',$page_layout);
+}
+add_action('wp_head','cyon_check_page_layout',30);
 
 /* Hook JS/CSS script Header */
 function cyon_header_js_css_hook(){ ?>
@@ -191,30 +208,30 @@ function cyon_header_js_css_hook(){ ?>
 	<!-- Google Fonts -->	
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=<?php echo of_get_option('secondary_font_google'); ?>" />
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .entry-content h2, .products h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .products h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
 	</style>
 	<?php }elseif(of_get_option('secondary_font')!='default' && of_get_option('secondary_font')!='google'){ ?>
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .entry-content h2, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
 	</style>
 	<?php } ?>
 
 
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
-					
+
 			// Uniform Support
-			jQuery('input[type=radio], input[type=checkbox], input[type=file], select:not(#rating)').uniform();
+			jQuery('.cyonform input[type=radio], .cyonform input[type=checkbox], .cyonform input[type=file], .cyonform select:not(#rating)').uniform();
 				<?php if (is_plugin_active('woocommerce/woocommerce.php')) { ?>
 				// Check woocommerce
 				jQuery('.payment_methods input.input-radio').live('click', function() {
-					jQuery('input[type=radio], input[type=checkbox], input[type=file], select:not(#rating)').uniform();
+					jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file], .checkout select:not(#rating)').uniform();
 				});
 				<?php } ?>
 				<?php if (is_plugin_active('gravityforms/gravityforms.php')) { ?>
 				// Check gravity form
 				jQuery(document).bind('gform_post_render', function(){
-					jQuery('input[type=radio], input[type=checkbox], input[type=file], select:not(#rating)').uniform();
+					jQuery('.cyonform input[type=radio], .cyonform input[type=checkbox], .cyonform input[type=file], .cyonform select:not(#rating)').uniform();
 				});
 				<?php } ?>
 
@@ -323,7 +340,12 @@ function cyon_header_js_css_hook(){ ?>
 			});
 			<?php } ?>
 			<?php } ?>
-
+	
+			<?php if(CYON_BLOG_LIST_LAYOUT!=1){ ?>
+			// Post list columns
+			jQuery('.row-fluid > article:nth-of-type(<?php echo CYON_BLOG_LIST_LAYOUT; ?>n+1)').addClass('first-child');
+			<?php } ?>
+			
 		});
 	</script> 
 <?php
@@ -344,6 +366,50 @@ function cyon_footer_js_css_hook(){
 <?php }
 add_action ( 'wp_footer', 'cyon_footer_js_css_hook', 100);
 
+
+/* =SEO hooks
+----------------------------------------------- */
+/* Page Title */
+function cyon_wp_title($title){
+	global $post;
+
+	$BLOGTITLE = get_bloginfo( 'name' );
+	$BLOGTAGLINE = get_bloginfo( 'description' );
+	if(of_get_option('seo_activate')==1){
+		if(is_page() || is_single()){
+			if(get_post_meta($post->ID,'cyon_meta_title',true)!=''){
+				$PAGETITLE = get_post_meta($post->ID,'cyon_meta_title',true);
+			}else{
+				$PAGETITLE = get_the_title($post->ID);
+			}
+		}else{
+			$PAGETITLE = $title;
+		}
+		$filtered_title = preg_replace('/\{([A-Z]+)\}/e', '$$1', of_get_option('seo_title_format'));
+	}else{
+		if(is_home() || is_front_page()){
+			$filtered_title = $BLOGTITLE.' | '.$BLOGTAGLINE;
+		}else{
+			$filtered_title = $title.' | '.$BLOGTITLE;
+		}
+	}
+	$filtered_title .= ( 2 <= $paged || 2 <= $page ) ? ' | ' . sprintf( __( 'Page %s' ), max( $paged, $page ) ) : '';
+	return $filtered_title;
+}
+add_filter( 'wp_title', 'cyon_wp_title' );
+
+/* Meta */
+function cyon_header_meta(){
+	global $post;
+	if(of_get_option('seo_activate')==1 && (is_page() || is_single())){
+		echo get_post_meta($post->ID,'cyon_meta_desc',true)!='' ? '<meta name="description" content="'.get_post_meta($post->ID,'cyon_meta_desc',true).'" />' : '';
+		echo get_post_meta($post->ID,'cyon_meta_keywords',true)!='' ? '<meta name="keywords" content="'.get_post_meta($post->ID,'cyon_meta_keywords',true).'" />' : '';
+		if(get_post_meta($post->ID,'cyon_robot',true)){
+			add_action('wp_head','wp_no_robots');
+		}
+	}
+}
+add_action('wp_head','cyon_header_meta',1);
 
 /* =Header hooks
 ----------------------------------------------- */
@@ -420,7 +486,7 @@ add_action('cyon_before_body_wrapper','cyon_breadcrumb_hook',10);
 ----------------------------------------------- */
 /* Comments */
 function cyon_comments_hook(){
-	if(of_get_option('content_comment')=='enable' && (is_page() || is_single())) {
+	if(of_get_option('content_comment')=='enable' && (is_home() || is_front_page() || is_page() || is_single())) {
 		comments_template( '', true );
 	}
 }
@@ -435,19 +501,32 @@ add_action('cyon_primary_after','cyon_comments_hook',10);
 /* =Before Content Post hooks
 ----------------------------------------------- */
 /* Featured image on Posts/Pages */
-function cyon_post_content_featured_image(){
+function cyon_post_content_featured_image_content(){
 	$pages = of_get_option('content_featured_image' ); ?>
 	<?php if(has_post_thumbnail() && (is_single() && $pages['posts']==1) || (is_page() && $pages['pages']==1)){ ?>
 		<div class="entry-featured-image">
-			<?php the_post_thumbnail();?>
+			<?php the_post_thumbnail('large');?>
 		</div>
-	<?php }elseif(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1){ ?>
+	<?php }elseif(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1 && !has_post_format('image') ){ ?>
 		<div class="entry-featured-image">
-			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(of_get_option('content_thumbnail_size' )); ?></a>
 		</div>
 	<?php } ?>
 <?php }
-add_action('cyon_post_content_before','cyon_post_content_featured_image',10);
+add_action('cyon_post_content_before','cyon_post_content_featured_image_content',10);
+
+function cyon_post_content_featured_image_header(){
+	global $post;
+	$pages = of_get_option('content_featured_image' );
+	$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' );
+	?>
+	<?php if(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1 && has_post_format('image')){ ?>
+		<div class="entry-featured-image">
+			<a href="<?php echo $image_attributes[0]; ?>" class="fancybox"><?php the_post_thumbnail(of_get_option('content_thumbnail_size' )); ?></a>
+		</div>
+	<?php } ?>
+<?php }
+add_action('cyon_post_header_before','cyon_post_content_featured_image_header',10);
 
 
 /* =After Content Post hooks
@@ -645,14 +724,68 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 ----------------------------------------------- */
 function cyon_get_ancestor_class($classes) {
 	global $post;
-	$parents = array_reverse(get_post_ancestors( $post->ID ));
-	if( is_page() && !is_front_page() && $parents[0]<>'' ) { 
-		$classes[] = 'page-ancestor-'.$parents[0];
+	if(!is_404() || !is_front_page()){
+		$parents = array_reverse(get_post_ancestors( $post->ID ));
+		if( is_page() && $parents[0]<>'' ) { 
+			$classes[] = 'page-ancestor-'.$parents[0];
+		}
+	}
+	if(is_archive() || is_home()){
+		$classes[] = 'blog-list-'.CYON_BLOG_LIST_LAYOUT;
 	}
 	return $classes;
 }
 add_filter('body_class','cyon_get_ancestor_class');
 
+
+/* =Add CSS for Blog listing if multiple columns
+----------------------------------------------- */
+function cyon_post_layout_class($classes) {
+	global $post;
+	if(CYON_BLOG_LIST_LAYOUT==2){
+		$classes[] = 'span6';
+	}elseif(CYON_BLOG_LIST_LAYOUT==3){
+		$classes[] = 'span4';
+	}elseif(CYON_BLOG_LIST_LAYOUT==4){
+		$classes[] = 'span3';
+	}
+	return $classes;
+}
+
+add_filter('post_class','cyon_post_layout_class');
+
+function cyon_check_list_layout(){
+	$cols = 1;
+	if(is_category()){
+		if(get_tax_meta(CYON_TERM_ID,'cyon_cat_layout_listing')=='list-1column'){
+			$cols = '1';
+		}elseif(get_tax_meta(CYON_TERM_ID,'cyon_cat_layout_listing')=='list-2columns'){
+			$cols = '2';
+		}elseif(get_tax_meta(CYON_TERM_ID,'cyon_cat_layout_listing')=='list-3columns'){
+			$cols = '3';
+		}elseif(get_tax_meta(CYON_TERM_ID,'cyon_cat_layout_listing')=='list-4columns'){
+			$cols = '4';
+		}else{
+			if(of_get_option('blog_list_layout')=='list-2columns'){
+				$cols = '2';
+			}elseif(of_get_option('blog_list_layout')=='list-3columns'){
+				$cols = '3';
+			}elseif(of_get_option('blog_list_layout')=='list-4columns'){
+				$cols = '4';
+			}
+		}
+	}elseif(is_front_page() || is_home() || is_archive() || is_category() && of_get_option('blog_list_layout')!='list-1column'){
+		if(of_get_option('blog_list_layout')=='list-2columns'){
+			$cols = '2';
+		}elseif(of_get_option('blog_list_layout')=='list-3columns'){
+			$cols = '3';
+		}elseif(of_get_option('blog_list_layout')=='list-4columns'){
+			$cols = '4';
+		}
+	}
+	define('CYON_BLOG_LIST_LAYOUT',$cols);
+}
+add_action('wp_head','cyon_check_list_layout',20);
 
 /* =Register new widgets
 ----------------------------------------------- */
@@ -711,13 +844,23 @@ add_action( 'widgets_init', 'cyon_custom_widgets_init' );
 /* Hook widgets */
 function cyon_custom_widget_hooks() {
 	if(strlen(of_get_option('widget_1_name'))>0){
-		add_action(of_get_option('widget_1_location'), function(){ echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_1_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_1_name')))); echo '</div></div>'; },of_get_option('widget_1_location'));
+		add_action(of_get_option('widget_1_location'), 'cyon_widget_1', (int)of_get_option('widget_1_order'));
 	}
 	if(strlen(of_get_option('widget_2_name'))>0){
-		add_action(of_get_option('widget_2_location'), function(){ echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_2_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_2_name')))); echo '</div></div>'; },of_get_option('widget_2_location'));
+		add_action(of_get_option('widget_2_location'), 'cyon_widget_2', (int)of_get_option('widget_2_order'));
 	}
 	if(strlen(of_get_option('widget_3_name'))>0){
-		add_action(of_get_option('widget_3_location'), function(){ echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_3_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_3_name')))); echo '</div></div>'; },of_get_option('widget_3_location'));
+		add_action(of_get_option('widget_3_location'), 'cyon_widget_3', (int)of_get_option('widget_3_order'));
 	}
 }
 add_action('init','cyon_custom_widget_hooks');
+
+function cyon_widget_1(){
+	echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_1_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_1_name')))); echo '</div></div>';
+}
+function cyon_widget_2(){
+	echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_2_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_2_name')))); echo '</div></div>';
+}
+function cyon_widget_3(){
+	echo '<div class="widget-custom" id="cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_3_name'))).'" role="complimentary"><div class="widget-wrapper">'; dynamic_sidebar('cyon-'.str_replace(' ', '-', strtolower(of_get_option('widget_3_name')))); echo '</div></div>';
+}

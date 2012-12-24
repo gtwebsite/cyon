@@ -42,6 +42,9 @@ if ( ! function_exists( 'cyon_setup' ) ){
 		// Add default posts and comments RSS feed links to <head>.
 		add_theme_support( 'automatic-feed-links' );
 
+		// This theme supports a variety of post formats. , 'link', 'quote', 'video', 'audio', 'gallery'
+		add_theme_support( 'post-formats', array( 'aside', 'image' ) );
+
 		// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 		add_theme_support( 'post-thumbnails' );
 		
@@ -233,6 +236,7 @@ function cyon_comment( $comment, $args, $depth ) {
 
 /* Sample Unhook Actions */
 function unhook_cyon_functions() {
+	global $post;
 	/* Change the order of the hook  */
 	// remove_action('cyon_header','cyon_header_mainnav_hook',30);
 	// add_action('cyon_header','cyon_header_mainnav_hook',10);
