@@ -43,7 +43,7 @@ if ( ! function_exists( 'cyon_setup' ) ){
 		add_theme_support( 'automatic-feed-links' );
 
 		// This theme supports a variety of post formats. , 'link', 'quote', 'video', 'audio', 'gallery'
-		add_theme_support( 'post-formats', array( 'aside', 'image' ) );
+		add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'video', 'audio' ) );
 
 		// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 		add_theme_support( 'post-thumbnails' );

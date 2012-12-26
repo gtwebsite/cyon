@@ -222,6 +222,69 @@ function cyon_cyon_subpages_js_css(){
 		</script>
 <?php }
 
+/* =Show Blog
+use [blog excerpt="yes" thumbnail="yes" cols="" items="4" cat_id="1" classname=""]
+----------------------------------------------- */
+function cyon_blog( $atts, $content = null ) {
+	$atts = shortcode_atts(
+		array(
+			excerpt 	=> 'yes',
+			thumbnail 	=> 'yes',
+			items 		=> 4,
+			classname 	=> '',
+			cols	 	=> '',
+			cat_id 		=> 1
+		), $atts);
+	$args = array(
+		'numberposts' 	=> $atts['items'],
+		'category' 		=> $atts['cat_id']
+	);
+	$posts = get_posts($args);
+	$result = '';
+	if($atts['cols']>1){
+		global $blog_cols;
+		$blog_cols = $atts['cols'];
+		$cols = 12 / $atts['cols'];
+		$classli = ' class="span'.$cols.'"';
+	}
+	foreach ( $posts as $post ) {
+		setup_postdata($post);
+		$result .= '<li'.$classli.'>';
+		if($atts['thumbnail']=='yes'){
+			$result .= '<div class="entry-featured-image"><a href="' . get_page_link( $post->ID ) . '">'.get_the_post_thumbnail( $post->ID, of_get_option('content_thumbnail_size' ) ).'</a></div>';
+		}
+		$result .= '<h4><a href="' . get_page_link( $post->ID ) . '">' . $post->post_title . '</a></h4>';
+		if($atts['excerpt']=='yes'){
+			$result .= get_the_excerpt();
+		}
+		$result .= '</li>';
+		echo $option;
+	}
+	$class = 'postlist';
+	if($atts['classname']){
+		$class .= ' '.$atts['classname'];
+	}
+	if($atts['cols']>1){
+		$class .= ' row-fluid';
+		ob_start();
+			add_action('wp_footer','cyon_cyon_blog_js_css',10);
+		ob_get_clean();
+	}
+	wp_reset_query();
+	return '<ul class="'.$class.'">'.$result.'</ul>';
+}
+add_shortcode('blog','cyon_blog'); 
+
+function cyon_cyon_blog_js_css(){
+		global $blog_cols;
+?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.postlist > li:nth-of-type(<?php echo $blog_cols; ?>n+1)').addClass('first-child');
+			});
+		</script>
+<?php }
+
 /* =Map
 use [map width='' height='350' zoom='14' long='' lat='' address='New York, USA'] xxx [/map]
 ----------------------------------------------- */
@@ -734,7 +797,7 @@ add_shortcode('tip','cyon_tip');
 
 
 /* =Newsletter
-use [newsletter email="" name="no" align="" width=""] xxx [/newsletter]
+use [newsletter email="" name="no"] xxx [/newsletter]
 ----------------------------------------------- */
 function cyon_newsletter( $atts, $content = null ) {
 	$nonce = wp_create_nonce('cyon_newsletter_nonce');
@@ -801,9 +864,14 @@ function cyon_newsletter_ajax(){ ?>
 									success	: function( results ) {
 										jQuery('.cyon-newsletter form').removeClass('form-sending');
 										jQuery('.cyon-newsletter button').show();
-										jQuery('.cyon-newsletter .box').removeClass('box-red').addClass('box-green').text(results);
+										if(results==1){
+											jQuery('.cyon-newsletter .box').removeClass('box-red').addClass('box-green').text('<?php _e('Your email has been subscribed to our mailing list.'); ?>');
+										}else{
+											jQuery('.cyon-newsletter .box').addClass('box-red').text('<?php _e('There was a problem in the server. Please try again later.'); ?>');
+										}
 										jQuery('.cyon-newsletter input[type=email]').removeClass('error');
 										jQuery('.cyon-newsletter input[type=email]').val('');
+										jQuery('.cyon-newsletter input[type=text]').val('');
 									}
 			
 								});
@@ -822,12 +890,221 @@ function cyon_newsletter_email() {
 		$subject = __('New subscriber from').' '.get_bloginfo('name');
 		$body = __('Name').': '.$_REQUEST['email'];
 		$body .= __('Email').': '.$_REQUEST['email'];
-		$success = mail($_REQUEST['emailto'], $subject, $body);
-		if(!empty($success)) {
-			echo __('Your email is subscribed to our mailing list.');
+		if( mail($_REQUEST['emailto'], $subject, $body) ) {
+			echo 1;
 		} else {
-			echo __('There was a problem. Please try again.');
+			echo 0;
 		}
 	}
 	die();
 } }
+
+/* =Contact Form
+use [contact email=""] xxx [/contact]
+----------------------------------------------- */
+function cyon_contact_form( $atts, $content = null ) {
+	$nonce = wp_create_nonce('cyon_contact_nonce');
+	$atts = shortcode_atts(
+		array(
+			email	=> get_bloginfo('admin_email')
+		), $atts);
+	$html = '<div class="cyon-contact-form contact-form-shortcode"><form action="" method="post" class="cyonform">';
+	$html .= '<fieldset>';
+	if($content!=''){
+		$html .= '<legend>'.$content.'</legend>';
+	}
+	$html .= '<div class="box"></div><input type="hidden" class="nonce" name="nonce" value="'.$nonce.'" /><input type="hidden" class="emailto" name="emailto" value="'.$atts['email'].'" />';
+	$html .= '<dl class="field"><dt class="label"><label for="contact_name">'.__('Name').':</label></dt><dd class="inputs"><input type="text" id="contact_name" name="name" class="medium" /></dd></dl>';
+	$html .= '<dl class="field"><dt class="label"><label for="contact_email">'.__('Email').':</label></dt><dd class="inputs"><input type="email" id="contact_email" name="email" class="medium" /></dd></dl>';
+	$html .= '<dl class="field"><dt class="label"><label for="contact_phone">'.__('Phone').':</label></dt><dd class="inputs"><input type="phone" id="contact_phone" name="phone" class="medium" /></dd></dl>';
+	$html .= '<dl class="field"><dt class="label"><label for="contact_message">'.__('Messsage').':</label></dt><dd class="inputs"><textarea id="contact_message" name="message" class="medium"></textarea></dd></dl>';
+	$html .= '<p class="submit"><button type="submit" name="contact_submit">'.__('Submit').'</button></p>';
+	$html .= '</fieldset>';
+	$html .= '</form></div>';
+	ob_start();
+		add_action('wp_footer','cyon_contact_ajax');
+		add_action('wp_ajax_cyon_contact_action', 'cyon_contact_email');
+		add_action('wp_ajax_nopriv_cyon_contact_action', 'cyon_contact_email');
+	ob_get_clean();
+	return $html;
+}
+add_shortcode('contact','cyon_contact_form'); 
+
+if(!function_exists('cyon_contact_ajax')) {
+function cyon_contact_ajax(){ ?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.cyon-contact-form form').each(function(){
+					jQuery(this).submit(function(){
+						var success = true;
+						if(jQuery(this).find('input[type=email]').val()=='') {
+							jQuery(this).find('input[type=email]').addClass('error');
+							success = false;
+						}else{
+							jQuery(this).find('input[type=email]').removeClass('error');
+						}
+						if(jQuery(this).find('textarea').val()=='') {
+							jQuery(this).find('textarea').addClass('error');
+							success = false;
+						}else{
+							jQuery(this).find('textarea').removeClass('error');
+						}
+						if(success){
+							var emailto = jQuery(this).find('input.emailto').val();
+							var name = jQuery(this).find('#contact_name').val();
+							var phone = jQuery(this).find('input[type=phone]').val();
+							var message = jQuery(this).find('textarea').val();
+							var email = jQuery(this).find('input[type=email]').val();
+							var nonce = jQuery(this).find('input.nonce').val();
+							if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+								jQuery(this).find('.box').addClass('box-red').removeClass('box-green').text('<?php _e('Please enter a valid email address.'); ?>');
+								jQuery(this).find('input[type=email]').addClass('error');
+								return false;
+							} else {
+								var data = {
+									action: 'cyon_contact_action',
+									emailto: emailto,
+									nonce: nonce,
+									name: name,
+									phone: phone,
+									message: message,
+									email: email
+								};
+								jQuery(this).find('button').hide();
+								jQuery(this).addClass('form-sending');
+								jQuery.ajax({
+									url		: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+									type	: 'POST',
+									data	: data,
+									success	: function( results ) {
+										jQuery('.cyon-contact-form form').removeClass('form-sending');
+										jQuery('.cyon-contact-form button').show();
+										if(results==1){
+											jQuery('.cyon-contact-form .box').removeClass('box-red').addClass('box-green').text('<?php _e('Your inquiry has been sent. We will get back to you shortly'); ?>');
+										}else{
+											jQuery('.cyon-contact-form .box').addClass('box-red').text('<?php _e('There was a problem in the server. Please try again later.'); ?>');
+										}
+										jQuery('.cyon-contact-form input[type=email]').removeClass('error');
+										jQuery('.cyon-contact-form input[type=text]').val('');
+										jQuery('.cyon-contact-form input[type=email]').val('');
+										jQuery('.cyon-contact-form input[type=phone]').val('');
+										jQuery('.cyon-contact-form textarea').val('');
+									}
+			
+								});
+								return false;
+							}
+						} else {
+							jQuery(this).find('.box').addClass('box-red').removeClass('box-green').text('<?php _e('Empty field(s) required.'); ?>');
+							return false;
+						} 
+					});
+				});
+			});
+		</script>
+<?php } }
+if(!function_exists('cyon_contact_email')) {
+function cyon_contact_email() {
+	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_contact_nonce') ) die(__('Security check')); 
+	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
+		$subject = __('New inquiry from').' '.get_bloginfo('name');
+		$body = __('Name').': '.$_REQUEST['email'];
+		$body .= __('Email').': '.$_REQUEST['email'];
+		$body .= __('Phone').': '.$_REQUEST['phone'];
+		$body .= __('Message').': '.$_REQUEST['message'];
+		if( mail($_REQUEST['emailto'], $subject, $body) ) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
+	die();
+} }
+
+/* =Custom Form
+For viewing purpose only, no actual function
+----------------------------------------------- */
+function cyon_custom_form($atts, $content = null){
+	$html = '<form action="" method="post" class="cyonform">
+				<fieldset>
+					<legend>Simple Fields</legend>
+					<dl class="field">
+						<dt class="label"><label for="formtext">Text</label></dt>
+						<dd class="inputs">
+							<input type="text" id="formtext" name="formtext" value="" class="medium" />
+							<div class="description">This is a description</div>
+						</dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formemail">Email</label></dt>
+						<dd class="inputs"><input type="email" id="formemail" name="formemail" value="" class="medium" /></dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formphone">Phone</label></dt>
+						<dd class="inputs"><input type="text" id="formphone" name="formphone" value="" class="medium" /></dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formfile">File</label></dt>
+						<dd class="inputs"><input type="file" id="formfile" name="formfile" value="" /></dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formerror">Error <span class="required">*</span></label></dt>
+						<dd class="inputs"><input type="text" id="formerror" name="formerror" class="medium error" value="" /></dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label>Multiple</label></dt>
+						<dd class="inputs"><input type="text" name="multi1" class="small" value="" placeholder="Field 1" /> <input type="text" name="multi2" class="small" value="" placeholder="Field 2" /> <input type="text" name="multi3" class="small" value="" placeholder="Field 3" /></dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formselect">Select</label></dt>
+						<dd class="inputs">
+							<select name="formselect" id="formselect">
+								<option value="">- Please select -</option>
+								<option>Option 1</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+							</select>
+						</dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label>Checkboxes</label></dt>
+						<dd class="inputs">
+							<ul class="selection">
+								<li>
+									<input type="checkbox" name="formcheckbox[]" id="formcheck1" /> <label for="formcheck1">Checkbox 1</label>
+								</li>
+								<li>
+									<input type="checkbox" name="formcheckbox[]" id="formcheck2" /> <label for="formcheck2">Checkbox 2</label>
+								</li>
+								<li>
+									<input type="checkbox" name="formcheckbox[]" id="formcheck3" /> <label for="formcheck3">Checkbox 3</label>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label>Radio Buttons</label></dt>
+						<dd class="inputs">
+							<ul class="selection">
+								<li>
+									<input type="radio" name="formradio[]" id="formradio1" /> <label for="formradio1">Radio 1</label>
+								</li>
+								<li>
+									<input type="radio" name="formradio[]" id="formradio2" /> <label for="formradio2">Radio 2</label>
+								</li>
+								<li>
+									<input type="radio" name="formradio[]" id="formradio3" /> <label for="formradio3">Radio 3</label>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="field">
+						<dt class="label"><label for="formtextarea">Textarea</label></dt>
+						<dd class="inputs"><textarea id="formtextarea" name="formtextarea" rows="5" class="large"></textarea></dd>
+					</dl>
+				</fieldset>
+				<p class="submit"><button type="submit" class="button">'.__('Submit Form').'</submit></p>
+			</form>';
+	return $html;
+}
+add_shortcode('custom_form','cyon_custom_form'); 

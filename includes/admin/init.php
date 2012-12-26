@@ -107,7 +107,6 @@ wp_register_script('poshytip',get_template_directory_uri().'/assets/js/jquery.po
 wp_register_script('mediaelement',get_template_directory_uri().'/assets/js/jquery.mediaelement.min.js',array('jquery'),'2.10.0',false);
 wp_register_script('gmap_api','http://maps.google.com/maps/api/js?sensor=false',array('jquery'),'1.0.0',false);
 wp_register_script('gmap',get_template_directory_uri().'/assets/js/jquery.gmap.min.js',array('gmap_api'),'3.3.0',false);
-wp_register_script('masonry',get_template_directory_uri().'/assets/js/jquery.masonry.min.js',array('jquery'),'1.0.5',false);
 
 wp_register_style('responsive_css', get_template_directory_uri().'/assets/css/responsive.css',array(),'1.0.0');
 wp_register_style('fancybox_css', get_template_directory_uri().'/assets/css/jquery.fancybox.css',array(),'2.0.6');
@@ -276,6 +275,20 @@ if (is_admin()){
 								'name' => __('Listing Layout', 'cyon'),
 								'std'=> array('default')
 						));
+
+		$new_cat_meta->addSelect( $prefix.'cat_masonry',
+						array(
+								'default' 			=> __('Default', 'cyon'),
+								'yes'				=> __('Yes', 'cyon'),
+								'no'				=> __('No', 'cyon')
+						),
+						array(
+								'name' => __('Use Masonry', 'cyon'),
+								'std'=> array('default')
+						));
+						
+		$new_cat_meta->addImage( $prefix.'cat_image', 
+						array('name'=> 'Image Banner' ));
 					
 		$new_cat_meta->Finish();
 	}

@@ -11,7 +11,7 @@ get_header(); ?>
 				<!-- Center -->
 				<div id="primary">
 					<?php cyon_primary_before(); ?>
-					<div id="content" role="main"<?php echo CYON_BLOG_LIST_LAYOUT!=1 ? ' class="row-fluid"' : ''; ?>>
+					<div id="content" role="main"<?php if (CYON_BLOG_LIST_LAYOUT!=1  && CYON_BLOG_LIST_MASONRY==0 ) { echo ' class="row-fluid"'; } ?>>
 					<?php if ( have_posts() ) { ?>
 						<?php if ( is_archive() ) { ?>
 								<header class="category-header">
@@ -35,9 +35,15 @@ get_header(); ?>
 										<?php endif; ?>
 									</h1>
 									<?php
+										$category_meta = '';
+										$category_image = get_tax_meta(CYON_TERM_ID,'cyon_cat_image');
+										if ( ! empty( $category_image['id'] ) )
+											$category_meta .= apply_filters( 'category_archive_image', wp_get_attachment_image( $category_image['id'], 'large' ) );
 										$category_description = category_description();
 										if ( ! empty( $category_description ) )
-											echo apply_filters( 'category_archive_meta', '<div class="category-archive-meta">' . $category_description . '</div>' );
+											$category_meta .= apply_filters( 'category_archive_meta', $category_description );
+										if( !empty($category_meta))
+											echo '<div class="category-archive-meta">'.$category_meta.'</div>';
 									?>
 								</header>
 						<?php } ?>
@@ -46,11 +52,12 @@ get_header(); ?>
 									<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'cyon' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 								</header>
 						<?php } ?>
-
+						<?php echo CYON_BLOG_LIST_MASONRY==1 ? '<div class="masonry">' : ''; ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 							<?php $format = get_post_format(); if ( false === $format ) $format = 'single'; ?>
 							<?php get_template_part( 'content', $format ); ?>
 						<?php endwhile; ?>
+						<?php echo CYON_BLOG_LIST_MASONRY==1 ? '</div>' : ''; ?>
 						<?php cyon_content_nav(); ?>
 						
 					<?php }else{ ?>

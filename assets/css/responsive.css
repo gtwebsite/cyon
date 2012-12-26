@@ -23,6 +23,9 @@
 	#primary input[type=text], #primary input[type=email], #primary input[type=phone], #primary textarea, #primary select {
 		width:95%!important; display:block; margin-bottom:5px;
 	}
+	#primary .cyonform .ui-datepicker-trigger {
+		display:none;
+	}
 	#primary select {
 		width:98%!important;
 	}
@@ -48,8 +51,11 @@
 	#colophon .copyright, #access2, #access2 ul {
 		width:auto!important; float:none!important; margin-left:0!important; text-align:left;
 	}
-	#respond label {
-		float:none;
+	#respond label, .cyonform .field .label, .cyonform .gfield_label, .cyonform .inputs, .cyonform .gform_fields .ginput_container {
+		float:none; width:100%!important;
+	}
+	#primary .cyonform .gform_fields .validation_message {
+		margin-left:0;
 	}
 	#primary input[type=text], #primary input[type=email], #primary input[type=phone], #primary textarea, #primary select {
 		width:95%!important; display:block; margin-bottom:5px;

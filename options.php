@@ -538,6 +538,12 @@ function optionsframework_options() {
 							'list-4columns' => $imagepath . 'bucket-4col.gif')
 						);
 
+	$options[] = array( 'name' 		=> __('Use Masonry (a dynamic grid layout)'),
+						'desc' 		=> 'Yes, use Masonry as default layout',
+						'id' 		=> 'blog_list_masonry',
+						'std' 		=> '0',
+						'type' 		=> 'checkbox');
+
 	$options[] = array( 'name' 		=> __('Thumbnail size'),
 						'desc' 		=> '',
 						'id' 		=> 'content_thumbnail_size',

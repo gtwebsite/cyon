@@ -112,6 +112,7 @@ function cyon_common_scripts(){
 			wp_enqueue_style('fancybox_buttons_css');
 		}
 	}
+
 	
 	/* Supersized */
 	if(of_get_option('background_style')=='full' && of_get_option('background_style_image')<>''){
@@ -272,7 +273,15 @@ function cyon_header_js_css_hook(){ ?>
 				}
 			}
 			<?php } ?>
-			
+			<?php if(CYON_BLOG_LIST_MASONRY==1){ ?>
+			jQuery('.masonry').masonry({
+				itemSelector: 'article',
+				columnWidth: function( containerWidth ) {
+					return containerWidth / <?php echo CYON_BLOG_LIST_LAYOUT; ?>;
+				}
+			});
+			<?php } ?>
+
 			<?php if(of_get_option('lightbox_activate')==1){ ?>
 			// Fancy Box Support
 			jQuery('a img.size-medium, a img.size-thumbnail, a img.size-large').parent().addClass("fancybox");
@@ -341,7 +350,7 @@ function cyon_header_js_css_hook(){ ?>
 			<?php } ?>
 			<?php } ?>
 	
-			<?php if(CYON_BLOG_LIST_LAYOUT!=1){ ?>
+			<?php if(CYON_BLOG_LIST_LAYOUT!=1 || CYON_BLOG_LIST_MASONRY=='no'){ ?>
 			// Post list columns
 			jQuery('.row-fluid > article:nth-of-type(<?php echo CYON_BLOG_LIST_LAYOUT; ?>n+1)').addClass('first-child');
 			<?php } ?>
@@ -507,9 +516,13 @@ function cyon_post_content_featured_image_content(){
 		<div class="entry-featured-image">
 			<?php the_post_thumbnail('large');?>
 		</div>
-	<?php }elseif(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1 && !has_post_format('image') ){ ?>
+	<?php }elseif(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1 && !has_post_format('image') && !has_post_format('video') && !has_post_format('audio') ){ ?>
 		<div class="entry-featured-image">
-			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(of_get_option('content_thumbnail_size' )); ?></a>
+			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?></a>
+		</div>
+	<?php }elseif((is_archive() || is_home()) && (has_post_format('video') || has_post_format('audio'))){ ?>
+		<div class="entry-featured-image">
+			<?php the_content(); ?>
 		</div>
 	<?php } ?>
 <?php }
@@ -518,7 +531,7 @@ add_action('cyon_post_content_before','cyon_post_content_featured_image_content'
 function cyon_post_content_featured_image_header(){
 	global $post;
 	$pages = of_get_option('content_featured_image' );
-	$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' );
+	$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), of_get_option('content_thumbnail_size' ) );
 	?>
 	<?php if(has_post_thumbnail() && (is_archive() || is_home()) && $pages['listings']==1 && has_post_format('image')){ ?>
 		<div class="entry-featured-image">
@@ -724,14 +737,16 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 ----------------------------------------------- */
 function cyon_get_ancestor_class($classes) {
 	global $post;
-	if(!is_404() || !is_front_page()){
-		$parents = array_reverse(get_post_ancestors( $post->ID ));
-		if( is_page() && $parents[0]<>'' ) { 
-			$classes[] = 'page-ancestor-'.$parents[0];
+	if(!is_404()){
+		if(!is_404() || !is_front_page()){
+			$parents = array_reverse(get_post_ancestors( $post->ID ));
+			if( is_page() && $parents[0]<>'' ) { 
+				$classes[] = 'page-ancestor-'.$parents[0];
+			}
 		}
-	}
-	if(is_archive() || is_home()){
-		$classes[] = 'blog-list-'.CYON_BLOG_LIST_LAYOUT;
+		if(is_archive() || is_home()){
+			$classes[] = 'blog-list-'.CYON_BLOG_LIST_LAYOUT;
+		}
 	}
 	return $classes;
 }
@@ -784,6 +799,23 @@ function cyon_check_list_layout(){
 		}
 	}
 	define('CYON_BLOG_LIST_LAYOUT',$cols);
+
+	$masonry = '';
+	if(is_category() && CYON_BLOG_LIST_LAYOUT!='1'){
+		if(get_tax_meta(CYON_TERM_ID,'cyon_cat_masonry')=='yes'){
+			$masonry = 1;
+		}elseif(get_tax_meta(CYON_TERM_ID,'cat_masonry')=='no'){
+			$masonry = 0;
+		}else{
+			$masonry = of_get_option('blog_list_masonry');
+		}
+	}elseif(is_front_page() || is_home() || is_archive() && of_get_option('blog_list_layout')!='list-1column'){
+		$masonry = of_get_option('blog_list_masonry');
+	}
+	define('CYON_BLOG_LIST_MASONRY',$masonry);
+	if(CYON_BLOG_LIST_MASONRY==1){
+		wp_enqueue_script('jquery-masonry');
+	}
 }
 add_action('wp_head','cyon_check_list_layout',20);
 

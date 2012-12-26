@@ -7,7 +7,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>><div class="article-wrapper">
 	
 	<?php if(is_single()){ ?>
 	<!-- For individual View -->
@@ -45,5 +45,6 @@
 	<footer class="entry-meta">
 		<?php cyon_post_footer(); ?>
 		<?php edit_post_link( __( 'Edit', 'cyon' ), '<span class="edit-link">', '</span>' ); ?>
+
 	</footer>
-</article>
+</div></article>

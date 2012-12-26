@@ -7,7 +7,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>><div class="article-wrapper">
 	<header class="page-header">
 		<?php cyon_post_header_before(); ?>
 		<h1 class="page-title"><?php the_title(); ?></h1>
@@ -22,5 +22,6 @@
 	<footer class="entry-meta">
 		<?php cyon_post_footer(); ?>
 		<?php edit_post_link( __( 'Edit', 'cyon' ), '<span class="edit-link">', '</span>' ); ?>
+
 	</footer>
-</article>
+</div></article>
