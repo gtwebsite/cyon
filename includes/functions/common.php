@@ -115,7 +115,7 @@ function cyon_common_scripts(){
 
 	
 	/* Supersized */
-	if(of_get_option('background_style')=='full' && of_get_option('background_style_image')<>''){
+	if(of_get_option('background_style')=='full' && CYON_PAGE_BG_IMAGE<>''){
 		wp_enqueue_script('supersized');
 		wp_enqueue_style('supersized_css');
 	}
@@ -163,6 +163,26 @@ function cyon_check_page_layout(){
 }
 add_action('wp_head','cyon_check_page_layout',30);
 
+/* Check page background */
+function cyon_check_page_bg(){
+	global $post;
+	if(is_home() && get_post_meta(get_option('page_for_posts', true),'cyon_background',true)!=''){
+		$image_attributes = wp_get_attachment_image_src( get_post_meta(get_option('page_for_posts', true),'cyon_background',true),'full' );
+		$page_bg = $image_attributes[0];
+	}elseif(is_category() && is_array(get_tax_meta(CYON_TERM_ID,'cyon_cat_background'))){
+		$image_id = get_tax_meta(CYON_TERM_ID,'cyon_cat_background');
+		$image_attributes = wp_get_attachment_image_src( $image_id['id'],'full' );
+		$page_bg = $image_attributes[0];
+	}elseif(get_post_meta($post->ID,'cyon_background',true)!=''){
+		$image_attributes = wp_get_attachment_image_src( get_post_meta($post->ID,'cyon_background',true),'full' );
+		$page_bg = $image_attributes[0];
+	}else{
+		$page_bg = of_get_option('background_style_image');
+	}
+	define('CYON_PAGE_BG_IMAGE',$page_bg);
+}
+add_action('wp_head','cyon_check_page_bg',30);
+
 /* Hook JS/CSS script Header */
 function cyon_header_js_css_hook(){ ?>
 	<?php if(of_get_option('responsive')==1){ wp_enqueue_style('responsive_css'); } ?>
@@ -186,10 +206,10 @@ function cyon_header_js_css_hook(){ ?>
 	<style type="text/css">
 		body {
 			background:<?php echo of_get_option('background_color'); ?>
-		<?php if(of_get_option('background_style_image')!='' && of_get_option('background_style')=='pattern'){ ?>
-			url(<?php echo of_get_option('background_style_image'); ?>)
+			<?php if(CYON_PAGE_BG_IMAGE!='' && of_get_option('background_style')=='pattern'){ ?>
+			url(<?php echo CYON_PAGE_BG_IMAGE; ?>)
 			<?php echo of_get_option('background_style_pattern_position'); ?> <?php echo of_get_option('background_style_pattern_repeat'); ?>
-		<?php } ?>
+			<?php } ?>
 	</style>
 
 
@@ -244,10 +264,10 @@ function cyon_header_js_css_hook(){ ?>
 			});
 			<?php } ?>
 
-			<?php if(of_get_option('background_style')=='full' && of_get_option('background_style_image')<>''){ ?>
+			<?php if(of_get_option('background_style')=='full' && CYON_PAGE_BG_IMAGE<>''){ ?>
 			// Supersized Support
 			jQuery.supersized({ 
-				slides  :  	[ {image : '<?php echo of_get_option('background_style_image') ?>', title : ''} ]
+				slides  :  	[ {image : '<?php echo CYON_PAGE_BG_IMAGE ?>', title : ''} ]
 			});
 			<?php } ?>
 

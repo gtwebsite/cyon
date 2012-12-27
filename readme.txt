@@ -1,11 +1,3 @@
-2.127659574468085%
-.row-fluid .span6{width:48.93617021276595%;*width:48.88297872340425%;}
-.row-fluid .span5{width:40.42553191489362%;*width:40.37234042553192%;}
-.row-fluid .span4{width:31.914893617021278%;*width:31.861702127659576%;}
-.row-fluid .span3{width:23.404255319148934%;*width:23.351063829787233%;}
-.row-fluid .span2{width:14.893617021276595%;*width:14.840425531914894%;}
-
-
 === THEME Cyon ===
 
 * by the Greater Than Website team, http://gtwebsite.com/
@@ -17,7 +9,6 @@ slider add thumbnail
 slider feature list
 slider with nivo
 contact page
-different page / bg
 testimonials
 table header add colspan
 
@@ -27,6 +18,7 @@ table header add colspan
 * Added Contact form widget / shortcode
 * Added Masonry blog layout
 * Added image banner on blog categories
+* Added background image on pages, posts, and categories
 * Added Blog post shortcode
 * Added Ad widget
 * Added Post Formats (Standard, Aside, Image, Link, Quote, Video, Audio)
@@ -35,6 +27,7 @@ table header add colspan
 * Updated Map Widget, added text
 * Updated Subpage shortcode
 * Updated Forms
+* Updated Google fonts
 * Fixed PHP bug
 * Fixed Theme options CSS bug
 

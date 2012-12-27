@@ -10,6 +10,9 @@ require_once (RWMB_DIR . 'meta-box.php');
 /* Tax Meta Class */
 require_once( CYON_FILEPATH .'/includes/admin/tax-meta-class/Tax-meta-class.php' );
 
+/* Widget Image Field */
+//require_once( CYON_FILEPATH .'/includes/admin/widget-image-field/widget-image-field.php' );
+
 
 /* Hook for some js and css files not working on localhost */
 
@@ -186,6 +189,12 @@ $cyon_meta_boxes[] = array(
 				'general-2left' => __('2 Columns Left'),
 				'general-2right' => __('2 Columns Right')
 			)
+		),
+		array(
+			'name' => __('Background Image'),
+			'id' => $prefix .'background',
+			'type' => 'thickbox_image',
+			'std' => ''
 		)
 	)
 );
@@ -289,6 +298,9 @@ if (is_admin()){
 						
 		$new_cat_meta->addImage( $prefix.'cat_image', 
 						array('name'=> 'Image Banner' ));
+
+		$new_cat_meta->addImage( $prefix.'cat_background', 
+						array('name'=> 'Background Image' ));
 					
 		$new_cat_meta->Finish();
 	}

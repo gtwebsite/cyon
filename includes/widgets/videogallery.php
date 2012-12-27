@@ -49,7 +49,7 @@ class CyonVideoGalleryWidget extends WP_Widget {
 		for( $i=0; $i<count($videoids); $i++){
 			$video = 'http://i4.ytimg.com/vi/'.$videoids[$i].'/hqdefault.jpg';
 			echo '<li>';
-			echo '<a href="http://www.youtube.com/embed/'.$videoids[$i].'/?autoplay=1" class="fancybox iframe"><img src="'.$video.'" /></a>';
+			echo '<a href="http://www.youtube.com/embed/'.$videoids[$i].'/?autoplay=1" class="iframe"><img src="'.$video.'" /></a>';
 			echo '</li>';
 		}
 		

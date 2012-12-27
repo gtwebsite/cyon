@@ -1,13 +1,13 @@
 <?php
 
 class CyonAdsWidget extends WP_Widget {
-
+	
 	// Creating your widget
 	function CyonAdsWidget(){
 		$widget_ops = array('classname' => 'cyon-ads', 'description' => __('Displays advertising images/urls') );
 		$this->WP_Widget('CyonAdsWidget', __('Cyon Ads'), $widget_ops);
 	}
- 
+
  	// Widget form in WP Admin
 	function form($instance){
 		// Start adding your fields here
@@ -51,7 +51,7 @@ class CyonAdsWidget extends WP_Widget {
 		$open = $instance['open'];
 		$cols = $instance['cols'];
 		$num = (int)$instance['num'];
-
+		
 		?>
 		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('cols'); ?>"><?php _e('Columns') ?>: <input class="widefat" id="<?php echo $this->get_field_id('cols'); ?>" name="<?php echo $this->get_field_name('cols'); ?>" type="text" value="<?php echo attribute_escape($cols); ?>" /></label></p>
