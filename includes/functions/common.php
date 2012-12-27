@@ -115,7 +115,7 @@ function cyon_common_scripts(){
 
 	
 	/* Supersized */
-	if(of_get_option('background_style')=='full' && CYON_PAGE_BG_IMAGE<>''){
+	if(of_get_option('background_style')=='full'){
 		wp_enqueue_script('supersized');
 		wp_enqueue_style('supersized_css');
 	}
