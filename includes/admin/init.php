@@ -13,7 +13,6 @@ require_once( CYON_FILEPATH .'/includes/admin/tax-meta-class/Tax-meta-class.php'
 /* Widget Image Field */
 //require_once( CYON_FILEPATH .'/includes/admin/widget-image-field/widget-image-field.php' );
 
-
 /* Hook for some js and css files not working on localhost */
 
 add_action('init', 'optionsframework_rolescheck2' );

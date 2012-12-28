@@ -79,6 +79,10 @@
 										a.addImmediate(c,"Column Highlighted",'[gridcolumn title="Starter" price="$0.00" period="Yearly" link_url="http://"]<br/>[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]<br/>[/gridcolumn]' );
 										a.addImmediate(c,"Option Text",'[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]' );
 										a.addImmediate(c,"Option Check",'[gridoption checked="yes" tooltip_title="" tooltip_text="" /]' );
+								
+								c=b.addMenu({title:"Visuals"});
+										a.addImmediate(c,"2 Columns", '<div class="row-fluid"><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
+										a.addImmediate(c,"3 Columns", '<div class="row-fluid"><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
 
 
 							});

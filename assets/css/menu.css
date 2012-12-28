@@ -3,5 +3,5 @@ span.mce_cyon_plugin {
 }
 
 .mceButtonMenu div[role="presentation"] { 
-	max-height:170px!important; max-width:150px; overflow:auto; overflow-x: hidden;
+	max-height:200px!important; max-width:150px; overflow:auto; overflow-x: hidden;
 }

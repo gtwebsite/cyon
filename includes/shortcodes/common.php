@@ -888,8 +888,8 @@ function cyon_newsletter_email() {
 	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_newsletter_nonce') ) die(__('Security check')); 
 	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
 		$subject = __('New subscriber from').' '.get_bloginfo('name');
-		$body = __('Name').': '.$_REQUEST['email'];
-		$body .= __('Email').': '.$_REQUEST['email'];
+		$body = __('Name').': <b>'.$_REQUEST['email'].'</b><br>';
+		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
 		if( mail($_REQUEST['emailto'], $subject, $body) ) {
 			echo 1;
 		} else {
@@ -1008,10 +1008,10 @@ function cyon_contact_email() {
 	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_contact_nonce') ) die(__('Security check')); 
 	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
 		$subject = __('New inquiry from').' '.get_bloginfo('name');
-		$body = __('Name').': '.$_REQUEST['email'];
-		$body .= __('Email').': '.$_REQUEST['email'];
-		$body .= __('Phone').': '.$_REQUEST['phone'];
-		$body .= __('Message').': '.$_REQUEST['message'];
+		$body = __('Name').': <b>'.$_REQUEST['email'].'</b><br>';
+		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
+		$body .= __('Phone').': <b>'.$_REQUEST['phone'].'</b><br>';
+		$body .= __('Message').': <b>'.$_REQUEST['message'].'</b>';
 		if( mail($_REQUEST['emailto'], $subject, $body) ) {
 			echo 1;
 		} else {
