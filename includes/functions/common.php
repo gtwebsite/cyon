@@ -233,7 +233,7 @@ function cyon_header_js_css_hook(){ ?>
 	</style>
 	<?php }elseif(of_get_option('secondary_font')!='default' && of_get_option('secondary_font')!='google'){ ?>
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .page-content h3, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
 	</style>
 	<?php } ?>
 

@@ -551,7 +551,7 @@ p.nocomments {
 	margin:0; padding:0;
 }
 .cyonform .gform_fields > li, .cyonform .field {
-	margin-bottom:6px; padding:10px; position:relative;
+	margin-bottom:6px; padding:10px; position:relative; list-style:none; margin-left:0;
 }
 .cyonform .field {
 	padding:0; margin-bottom:10px;
