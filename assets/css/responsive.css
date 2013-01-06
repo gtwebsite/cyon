@@ -14,6 +14,15 @@
 
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width:767px) {
+	#access ul.menu {
+		display:none;
+	}
+	#access div.selector span {
+		background-position:99% 50%;
+	}
+	#drop-nav {
+		display:block;
+	}
 	#page {
 		width:auto; max-width:767px;
 	}
@@ -39,17 +48,11 @@
 
 /* Landscape phones and down */
 @media only screen and (max-width:480px) {
-	#top div, #top p {
+	#top div, #top p, #bottom .copyright, #access2 {
 		float:none; text-align:left; width:auto; margin-bottom:10px; margin-left:0; text-align:left;
 	}
-	#access ul.menu > li {
-		float:none; margin-left:0;
-	}
-	#access ul.menu > li ul { 
-		display:none!important; 
-	}
-	#colophon .copyright, #access2, #access2 ul {
-		width:auto!important; float:none!important; margin-left:0!important; text-align:left;
+	#access2 ul { 
+		text-align:left;
 	}
 	#respond label, .cyonform .field .label, .cyonform .gfield_label, .cyonform .inputs, .cyonform .gform_fields .ginput_container {
 		float:none; width:100%!important;
@@ -66,11 +69,23 @@
 	.ginput_complex .ginput_left, .ginput_complex .ginput_right {
 		float:none; margin-right:0;
 	}
+	.has-icon-list li, .has-icon2x-list li {
+		padding:0 0 0 20px; float:none!important; width:auto!important;
+	}
 	ol.commentlist .children textarea {
 		width:95%;
 	}
 	.gallery dl {
 		float:none; width:100%; margin:0 0 5px 0;
+	}
+	.flexslider .flex-caption {
+		display:none;
+	}
+	.masonry article {
+		float:none!important; position:static!important; width:100%!important; border-bottom:1px solid #efefef; margin-bottom:10px;
+	}
+	.masonry article .article-wrapper {
+		padding:0; box-shadow:none; border:0; border-radius:none;
 	}
 	.tabs .tab_nav li {
 		float:none; margin-right:0;

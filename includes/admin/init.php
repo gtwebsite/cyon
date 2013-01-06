@@ -78,6 +78,7 @@ function cyon_about_page(){ ?>
 		<ul>
 			<li>WPTheming.com for <a href="http://wptheming.com/options-framework-theme/" target="_blank">Options Framework Theme</a></li>
 			<li>Rilwis for <a href="http://www.deluxeblogtips.com/2010/04/how-to-create-meta-box-wordpress-post.html" target="_blank">metaboxes script</a></li>
+			<li>Ohad Raz for <a href="http://en.bainternet.info/2012/wordpress-taxonomies-extra-fields-the-easy-way" target="_blank">Tax Meta Class</a></li>
 			<li>WooThemes for <a href="http://www.woothemes.com/flexslider/" target="_blank">FlexSlider</a></li>
 			<li>Fancyapps.com for <a href="http://fancyapps.com/fancybox/" target="_blank">fancyBox</a></li>
 			<li>Mika Tuupola for <a href="http://www.appelsiini.net/projects/lazyload" target="_blank">LazyLoad</a></li>
@@ -121,12 +122,12 @@ wp_register_style('uniform_css',get_template_directory_uri().'/assets/css/unifor
 wp_register_style('mediaelement_css',get_template_directory_uri().'/assets/css/mediaelementplayer.css',array(),'1.0.0',false);
 wp_register_style('icons_css',get_template_directory_uri().'/assets/css/icons.css',array(),'1.0.0',false);
 
-function cyon_admin_menu_styles() {
-	wp_register_style( 'cyon_admin_menu_styles', get_template_directory_uri() . '/assets/css/menu.css' );
-	wp_enqueue_style( 'cyon_admin_menu_styles' );
+function cyon_admin_scripts_styles() {
+	wp_enqueue_script('cyon_custom_admin_script',  get_template_directory_uri() . '/assets/js/jquery.admin.js', array('jquery'));
+	wp_enqueue_style( 'cyon_custom_admin_style',  get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
 
-add_action( 'admin_enqueue_scripts', 'cyon_admin_menu_styles' );
+add_action( 'admin_enqueue_scripts', 'cyon_admin_scripts_styles' );
 
 
 /* =Remove core and plugin updates
@@ -171,9 +172,9 @@ $prefix = 'cyon_';
 $cyon_meta_boxes = array();
 
 $cyon_meta_boxes[] = array(
-	// Settings
+	// Page Settings
 	'id' => 'settings',
-	'title' => __('Cyon Settings'),
+	'title' => __('Page Settings'),
 	'pages' => array('post','page'), // multiple post types, accept custom post types
 	'context' => 'normal', // normal, advanced, side (optional)
 	'fields' => array(
@@ -198,11 +199,98 @@ $cyon_meta_boxes[] = array(
 	)
 );
 
+$cyon_meta_boxes[] = array(
+	// Post Format - Link
+	'id' => 'gallery-settings',
+	'title' => __('Gallery Settings'),
+	'pages' => array('post'), // multiple post types, accept custom post types
+	'context' => 'normal', // normal, advanced, side (optional)
+	'fields' => array(
+		array(
+			'name' => __('Images to show on listing'),
+			'id' => $prefix .'gallery_images',
+			'type' => 'thickbox_image',
+			'std' => ''
+		)
+	)
+);
+
+$cyon_meta_boxes[] = array(
+	// Post Format - Link
+	'id' => 'link-settings',
+	'title' => __('Link Settings'),
+	'pages' => array('post'), // multiple post types, accept custom post types
+	'context' => 'normal', // normal, advanced, side (optional)
+	'fields' => array(
+		array(
+			'name' => __('URL'),
+			'id' => $prefix .'link_url',
+			'type' => 'text',
+			'std' => ''
+		)
+	)
+);
+
+$cyon_meta_boxes[] = array(
+	// Post Format - Quote
+	'id' => 'quote-settings',
+	'title' => __('Quote Settings'),
+	'pages' => array('post'), // multiple post types, accept custom post types
+	'context' => 'normal', // normal, advanced, side (optional)
+	'fields' => array(
+		array(
+			'name' => __('Author'),
+			'id' => $prefix .'quote_author',
+			'type' => 'text',
+			'std' => ''
+		),
+		array(
+			'name' => __('Position / Company'),
+			'id' => $prefix .'quote_title',
+			'type' => 'text',
+			'std' => ''
+		)
+	)
+);
+
+$cyon_meta_boxes[] = array(
+	// Post Format - Audio
+	'id' => 'audio-settings',
+	'title' => __('Audio Settings'),
+	'pages' => array('post'), // multiple post types, accept custom post types
+	'context' => 'normal', // normal, advanced, side (optional)
+	'fields' => array(
+		array(
+			'name' => __('URL'),
+			'id' => $prefix .'audio_url',
+			'type' => 'text',
+			'std' => ''
+		)
+	)
+);
+
+$cyon_meta_boxes[] = array(
+	// Post Format - Video
+	'id' => 'video-settings',
+	'title' => __('Video Settings'),
+	'pages' => array('post'), // multiple post types, accept custom post types
+	'context' => 'normal', // normal, advanced, side (optional)
+	'fields' => array(
+		array(
+			'name' => __('URL'),
+			'id' => $prefix .'video_url',
+			'type' => 'text',
+			'desc' => __('Supports Youtube, Vimeo, Metacafe, Dailymotion, Twitvid and local video files such as mp4, m4v, mov, wmv, flv, webm, ogv'),
+			'std' => ''
+			)
+	)
+);
+
 if(of_get_option('seo_activate')==1){
 	$cyon_meta_boxes[] = array(
 		// SEO
 		'id' => 'seo',
-		'title' => __('Cyon SEO'),
+		'title' => __('SEO Options'),
 		'pages' => array('post','page'), // multiple post types, accept custom post types
 		'context' => 'normal', // normal, advanced, side (optional)
 		'fields' => array(

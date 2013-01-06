@@ -4,8 +4,8 @@ class CyonTabsWidget extends WP_Widget {
 
 	// Creating your widget
 	function CyonTabsWidget(){
-		$widget_ops = array('classname' => 'cyon-tabs', 'description' => __('Displays Widgets in Tabs') );
-		$this->WP_Widget('CyonTabsWidget', __('Cyon Tabs'), $widget_ops);
+		$widget_ops = array('classname' => 'cyon-tabs', 'description' => __('Displays Widgets in Tabs', 'cyon') );
+		$this->WP_Widget('CyonTabsWidget', __('Cyon Tabs', 'cyon'), $widget_ops);
 	}
  
  	// Widget form in WP Admin
@@ -18,7 +18,7 @@ class CyonTabsWidget extends WP_Widget {
 
 		?>
 		  <p>
-		  	<label for="<?php echo $this->get_field_id('widgetarea'); ?>"><?php _e('Widget Area') ?></label>
+		  	<label for="<?php echo $this->get_field_id('widgetarea'); ?>"><?php _e('Widget Area', 'cyon') ?></label>
 			<select id="<?php echo $this->get_field_id('widgetarea'); ?>" name="<?php echo $this->get_field_name('widgetarea'); ?>">
 				<option value="">- Please select -</option>
 				<?php foreach ($GLOBALS['wp_registered_sidebars'] as $val) { ?>

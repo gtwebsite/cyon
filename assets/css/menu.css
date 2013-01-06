@@ -1,7 +1,0 @@
-span.mce_cyon_plugin {
-	background:url(../images/ico-settings.png) 50% 50% no-repeat!important;
-}
-
-.mceButtonMenu div[role="presentation"] { 
-	max-height:200px!important; max-width:150px; overflow:auto; overflow-x: hidden;
-}

@@ -19,11 +19,7 @@ if ( ! function_exists( 'cyon_setup' ) ){
 	function cyon_setup() {
 		
 		// Languages
-		load_theme_textdomain( 'cyon', get_template_directory() . '/lang' );
-		$locale = get_locale();
-		$locale_file = get_template_directory() . "/lang/$locale.php";
-		if ( is_readable( $locale_file ) )
-			require_once( $locale_file );
+		load_theme_textdomain( 'cyon', get_template_directory() . '/languages' );
 
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 		add_editor_style();
@@ -42,8 +38,8 @@ if ( ! function_exists( 'cyon_setup' ) ){
 		// Add default posts and comments RSS feed links to <head>.
 		add_theme_support( 'automatic-feed-links' );
 
-		// This theme supports a variety of post formats. , 'link', 'quote', 'video', 'audio', 'gallery'
-		add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'video', 'audio' ) );
+		// This theme supports a variety of post formats.
+		add_theme_support( 'post-formats', array( 'image', 'link', 'quote', 'video', 'audio', 'gallery' ) );
 
 		// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 		add_theme_support( 'post-thumbnails' );
@@ -151,7 +147,7 @@ function cyon_post_header_single_meta_hook(){
 				echo '<span class="posted-month">'.esc_html( get_the_time('M') ).'</span> ';
 				echo '<span class="posted-year">'.esc_html( get_the_time('Y') ).'</span>';
 			echo '</span> ';
-			echo '<span class="posted-by">'.__('by').' <a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ).'">'.get_the_author().'</a></span> ';
+			echo '<span class="posted-by">'.__('by','cyon').' <a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ).'">'.get_the_author().'</a></span> ';
 			if(count(get_the_category())>1){
 				$catps = 'ies';
 			}else{
@@ -159,16 +155,16 @@ function cyon_post_header_single_meta_hook(){
 			}
 			echo '<span class="categories-links">'.__('in categor'.$catps).' '.get_the_category_list( __( ', ', 'cyon' ) ).'</span> ';
 			if(get_the_tag_list()){
-				echo '<span class="tag-links">'.__('and tagged').' '.get_the_tag_list( '', __( ', ', 'cyon' ) ).'</span> ';
+				echo '<span class="tag-links">'.__('and tagged','cyon').' '.get_the_tag_list( '', __( ', ', 'cyon' ) ).'</span> ';
 			}
 			if(of_get_option('content_comment')=='enable') {
 				$comments = wp_count_comments(get_the_ID());
 				if($comments->approved==0){
-					echo '<span class="comments"> | '.__('Be the first to').' <a href="'.get_permalink().'#respond">'.__('comment here').'</a>.</span>';
+					echo '<span class="comments"> | '.__('Be the first to','cyon').' <a href="'.get_permalink().'#respond">'.__('comment here','cyon').'</a>.</span>';
 				}elseif($comments->approved==1){
-					echo '<span class="comments">with <a href="'.get_permalink().'#comments">'.$comments->approved.' '.__('comment').'</a></span>';
+					echo '<span class="comments">'.__('with','cyon').' <a href="'.get_permalink().'#comments">'.$comments->approved.' '.__('comment','cyon').'</a></span>';
 				}else{
-					echo '<span class="comments">with <a href="'.get_permalink().'#comments">'.$comments->approved.' '.__('comments)').'</a></span>';
+					echo '<span class="comments">'.__('with','cyon').' <a href="'.get_permalink().'#comments">'.$comments->approved.' '.__('comments)','cyon').'</a></span>';
 				}
 			}
 		echo '</p>';

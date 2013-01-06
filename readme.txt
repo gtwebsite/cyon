@@ -10,15 +10,30 @@ slider feature list
 slider with nivo
 contact page
 testimonials
+sitemap
 table header add colspan
+divider / with go top
+drop cap
+sub page
+Widgets - to which page appear
+
 
 == Changelog ==
 
-= 1.3.2 =
-* Added Contact form widget / shortcode
+= 1.3.3 =
 * Added Masonry blog layout
-* Added image banner on blog categories
+* Added Contact form widget / shortcode
 * Added background image on pages, posts, and categories
+* Added Localization
+* Updated Post Format
+* Updated Google fonts
+* Updated Homepage slider
+* Updated menu for mobile
+* Updated Meta box to 4.2.3
+* Fixed few css/php issues
+
+= 1.3.2 =
+* Added image banner on blog categories
 * Added Blog post shortcode
 * Added Ad widget
 * Added Post Formats (Standard, Aside, Image, Link, Quote, Video, Audio)
@@ -27,7 +42,6 @@ table header add colspan
 * Updated Map Widget, added text
 * Updated Subpage shortcode
 * Updated Forms
-* Updated Google fonts
 * Fixed PHP bug
 * Fixed Theme options CSS bug
 

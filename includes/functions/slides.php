@@ -139,23 +139,40 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 					$pleft = 'auto';
 					$pright = 'auto';
 					$pbottom = 'auto';
+					$pwidth = '100%';
+					$palign = 'center';
+					if(of_get_option('homepage_slider_pagination_layout')=='top-center'){
+						$ptop = '10px';
+					}
 					if(of_get_option('homepage_slider_pagination_layout')=='top-right'){
 						$ptop = '10px';
 						$pright = '10px';
+						$pwidth = 'auto';
+						$palign = 'right';
 					}
 					if(of_get_option('homepage_slider_pagination_layout')=='top-left'){
 						$ptop = '10px';
 						$pleft = '10px';
+						$pwidth = 'auto';
+						$palign = 'left';
+					}
+					if(of_get_option('homepage_slider_pagination_layout')=='bottom-center'){
+						$pbottom = '10px';
 					}
 					if(of_get_option('homepage_slider_pagination_layout')=='bottom-left'){
 						$pbottom = '10px';
 						$pleft = '10px';
+						$pwidth = 'auto';
+						$palign = 'left';
 					}
 					if(of_get_option('homepage_slider_pagination_layout')=='bottom-right'){
 						$pbottom = '10px';
 						$pright = '10px';
+						$pwidth = 'auto';
+						$palign = 'right';
 					}
 				?>
+				<?php if(of_get_option('homepage_slider_animation')==0){ ?>
 				<div class="flex-caption" style="width:<?php echo of_get_option('homepage_slider_caption_width')-6; ?>%; top:<?php echo $ctop; ?>; left:<?php echo $cleft; ?>; right:<?php echo $cright; ?>; bottom:<?php echo $cbottom; ?>;">
 					<h3 class="flex-title"><?php the_title(); ?></h3>
 					<div class="flex-content">
@@ -165,13 +182,13 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 					<p class="readmore"><a href="<?php echo get_post_meta(get_the_ID(), 'cyon_banner_url', true); ?>"><?php _e('Read more'); ?></a></p>
 					<?php } ?>
 				</div>
-				<?php } ?>
+				<?php } } ?>
 			</li>
 			<?php endwhile; ?>
 		</ul>
 		<?php if(of_get_option('homepage_slider_pagination')==1){ ?>
 			<style type="text/css" media="screen">
-				.flexslider .flex-control-nav { top:<?php echo $ptop; ?>; left:<?php echo $pleft; ?>; right:<?php echo $pright; ?>; bottom:<?php echo $pbottom; ?>; }
+				.flexslider .flex-control-nav { top:<?php echo $ptop; ?>; left:<?php echo $pleft; ?>; right:<?php echo $pright; ?>; bottom:<?php echo $pbottom; ?>; width:<?php echo $pwidth; ?>; text-align:<?php echo $palign; ?>; }
 			</style>
 		<?php } ?>
 	<?php

@@ -32,7 +32,7 @@
 	</header>
 	<div class="entry-content">
 		<?php cyon_post_content_before(); ?>
-		<blockquote class="box"><?php echo get_the_content(); ?></blockquote>
+		<blockquote class="box has-icon-box"><span class="icon-box icon2x-chat"></span><?php echo get_the_content(); ?></blockquote>
 		<?php cyon_post_content_after(); ?>
 	</div>
 	

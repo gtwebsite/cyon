@@ -18,8 +18,7 @@
 	</header>
 	<div class="page-content">
 		<?php cyon_post_content_before(); ?>
-		<p><a href="<?php echo get_the_content(); ?>" class="has-icon" target="_blank"><span class="icon-share"></span> <?php echo get_the_content(); ?></a></p>
-		<?php the_excerpt(); ?>
+		<?php the_content(); ?>
 		<?php cyon_post_content_after(); ?>
 	</div>
 	
@@ -28,12 +27,16 @@
 	<!-- For category View -->
 	<header class="entry-header">
 		<?php cyon_post_header_before(); ?>
-		<h1 class="entry-title"><a href="<?php echo get_the_content(); ?>" target="_blank"><?php the_title(); ?></a></h1>
+		<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		<?php cyon_post_header_after(); ?>
 	</header>
 	<div class="entry-content">
 		<?php cyon_post_content_before(); ?>
+		<?php if(of_get_option('content_blog_post')=='excerpt'){ ?>
 		<?php the_excerpt(); ?>
+		<?php }else{ ?>
+		<?php the_content(); ?>
+		<?php } ?>
 		<?php cyon_post_content_after(); ?>
 	</div>
 	

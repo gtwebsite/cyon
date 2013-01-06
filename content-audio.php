@@ -32,7 +32,11 @@
 	</header>
 	<div class="entry-content">
 		<?php cyon_post_content_before(); ?>
+		<?php if(of_get_option('content_blog_post')=='excerpt'){ ?>
 		<?php the_excerpt(); ?>
+		<?php }else{ ?>
+		<?php the_content(); ?>
+		<?php } ?>
 		<?php cyon_post_content_after(); ?>
 	</div>
 	

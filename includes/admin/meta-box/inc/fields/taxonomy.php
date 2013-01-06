@@ -13,18 +13,12 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 		 */
 		static function admin_enqueue_scripts()
 		{
-			wp_enqueue_style(
-				'rwmb-taxonomy',
-				RWMB_CSS_URL . 'taxonomy.css',
-				RWMB_VER
-			);
-			wp_enqueue_script(
-				'rwmb-taxonomy',
-				RWMB_JS_URL . 'taxonomy.js',
-				array( 'jquery', 'wp-ajax-response' ),
-				RWMB_VER,
-				true
-			);
+			wp_enqueue_style( 'select2', RWMB_CSS_URL . 'select2/select2.css', array(), '3.2' );
+			wp_enqueue_style( 'rwmb-select-advanced', RWMB_CSS_URL . 'select-advanced.css', array(), RWMB_VER );
+			wp_register_script( 'select2',  RWMB_JS_URL . 'select2/select2.min.js', array(), '3.2', true );
+			wp_register_script( 'select_advanced',  RWMB_JS_URL . 'select-advanced.js', array('select2'), RWMB_VER, true );
+			wp_enqueue_style( 'rwmb-taxonomy', RWMB_CSS_URL . 'taxonomy.css', array(), RWMB_VER );
+			wp_enqueue_script( 'rwmb-taxonomy', RWMB_JS_URL . 'taxonomy.js', array( 'jquery', 'select_advanced', 'wp-ajax-response' ), RWMB_VER, true );
 		}
 
 		/**
@@ -36,6 +30,15 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 		 */
 		static function normalize_field( $field )
 		{
+			$field = wp_parse_args( $field, array(
+				'js_options' => array(),
+			) );
+
+			$field['js_options'] = wp_parse_args( $field['js_options'], array(
+				'allowClear' => true,
+				'width' => 'resolve',
+				'placeholder' => "Select a Value"
+			) );
 			// Default query arguments for get_terms() function
 			$default_args = array(
 				'hide_empty' => false,
@@ -58,7 +61,7 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 			}
 
 			// For select tree: display it as a normal select box (no multiple attribute), but allows to save multiple values
-			if ( 'select_tree' == $field['options']['type'] )
+			if ( 'select_tree' == $field['options']['type'] || ('select_advanced' == $field['options']['type'] && $field['multiple'] == true) )
 				$field['field_name'] = "{$field['id']}[]";
 
 			if ( in_array( $field['options']['type'], array( 'checkbox_tree', 'select_tree' ) ) )
@@ -97,10 +100,16 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 			if ( 'checkbox_list' === $options['type'] )
 			{
 				$html = array();
+				$tpl = '<label><input type="checkbox" name="%s" value="%s" %s /> %s</label>';
 				foreach ( $terms as $term )
 				{
-					$checked = checked( in_array( $term->slug, $meta ), true, false );
-					$html[]  = "<label><input type='checkbox' name='{$field['field_name']}' value='{$term->slug}'{$checked} /> {$term->name}</label>";
+					$html[] = sprintf(
+						$tpl,
+						$field['field_name'],
+						$term->slug,
+						checked( in_array( $term->slug, $meta ), true, false ),
+						$term->name
+					);
 				}
 				$html = implode( '<br />', $html );
 			}
@@ -117,14 +126,41 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 				$html    .= self::walk_select_tree( $meta, $field, $elements, $field['options']['parent'], '', true );
 			}
 			// Select
+			elseif ( 'select_advanced' === $options['type'] ) {
+				$html = sprintf(
+					'<select class="rwmb-select-advanced" name="%s" id="%s"%s data-options ="%s">',
+					$field['field_name'],
+					$field['id'],
+					$field['multiple'] ? ' multiple="multiple"' : '',
+					esc_attr( json_encode( $field['js_options'] ))
+				);
+				$option = '<option value="%s" %s>%s</option>';
+	
+				foreach ( $terms as $term )
+				{
+					$html .= sprintf(
+						$option,
+						$term->slug,
+						selected( in_array( $term->slug, $meta ), true, false ),
+						$term->name
+					);
+				}
+				$html .= '</select>';
+			}
 			else
 			{
 				$multiple = $field['multiple'] ? " multiple='multiple' style='height: auto;'" : '';
 				$html    .= "<select name='{$field['field_name']}'{$multiple}>";
+				$option = '<option value="%s" %s>%s</option>';
 				foreach ( $terms as $term )
 				{
-					$selected = selected( in_array( $term->slug, $meta ), true, false );
-					$html    .= "<option value='{$term->slug}'{$selected}>{$term->name}</option>";
+					$html .= sprintf(
+						$option,
+						$term->slug,
+						/* selected( in_array( $term->slug, $meta ), true, false ), */
+						selected( in_array( $term->slug, (array)$meta ), true, false ),
+						$term->name
+					);
 				}
 				$html .= '</select>';
 			}
@@ -151,11 +187,17 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 			$hidden = ( !$active ? 'hidden' : '' );
 
 			$html = "<ul class = 'rw-taxonomy-tree {$hidden}'>";
+			$li = '<li><label><input type="checkbox" name="%s" value="%s" %s /> %s</label>';
 			foreach ( $terms as $term )
 			{
-				$checked = checked( in_array( $term->slug, $meta ), true, false );
-				$html   .= "<li><label><input type='checkbox' name='{$field['field_name']}' value='{$term->slug}'{$checked} /> {$term->name}</label>";
-				$html   .= self::walk_checkbox_tree( $meta, $field, $elements, $term->term_id, ( in_array( $term->slug, $meta ) ) && $active ) . '</li>';
+				$html .= sprintf(
+					$li,
+					$field['field_name'],
+					$term->slug,
+					checked( in_array( $term->slug, $meta ), true, false ),
+					$term->name
+				);
+				$html .= self::walk_checkbox_tree( $meta, $field, $elements, $term->term_id, ( in_array( $term->slug, $meta ) ) && $active ) . '</li>';
 			}
 			$html .= '</ul>';
 
@@ -187,10 +229,16 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 			$html  = "<div{$id} class='rw-taxonomy-tree {$hidden}'>";
 			$html .= "<select name='{$field['field_name']}'{$disabled}{$multiple}>";
 			$html .= "<option value=''>None</option>";
+
+			$option = '<option value="%s" %s>%s</option>';
 			foreach ( $terms as $term )
 			{
-				$selected = selected( in_array( $term->slug, $meta ), true, false );
-				$html    .= "<option value='{$term->slug}'{$selected}>{$term->name}</option>";
+				$html .= sprintf(
+					$option,
+					$term->slug,
+					selected( in_array( $term->slug, $meta ), true, false ),
+					$term->name
+				);
 			}
 			$html .= '</select>';
 			foreach ( $terms as $term )
@@ -254,5 +302,5 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
 
 			return $meta;
 		}
-	} // END Class RWMB_Taxonomy_Field
-} // endif;
+	}
+}
