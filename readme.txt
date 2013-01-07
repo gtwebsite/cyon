@@ -25,7 +25,6 @@ Widgets - to which page appear
 * Added Contact form widget / shortcode
 * Added background image on pages, posts, and categories
 * Added Localization
-* Updated Video player
 * Updated Post Format
 * Updated Google fonts
 * Updated Homepage slider

@@ -339,17 +339,11 @@ function cyon_video( $atts, $content = null ) {
 		if(of_get_option('responsive')==1){ $style=' style="width:100%; height:100%;"'; }
 		$domain = parse_url(strtolower($atts['src']));
 		if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com'){
-			//$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/youtube" src="'.$atts['src'].'" preload="none"'.$style.' />';
-			if(of_get_option('responsive')==1){ $html .= '<div class="flex-video">'; }
-			$html .= '<iframe width="'.$atts['width'].'" height="'.$atts['height'].'" src="http://www.youtube.com/embed/'.get_youtube_id($atts['src']).'?showinfo=0" frameborder="0" allowfullscreen></iframe>';
-			if(of_get_option('responsive')==1){ $html .= '</div>'; }
+			$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/youtube" src="'.$atts['src'].'" preload="none"'.$style.' />';
 		}elseif($domain['host']=='www.vimeo.com' || $domain['host']=='vimeo.com'){
-			//$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/vimeo" src="'.$atts['src'].'" preload="none"'.$style.' />';
-			if(of_get_option('responsive')==1){ $html .= '<div class="flex-video flex-video-vimeo">'; }
-			$html .= '<iframe src="http://player.vimeo.com/video/'.get_vimeo_id($atts['src']).'" width="'.$atts['width'].'" height="'.$atts['height'].'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
-			if(of_get_option('responsive')==1){ $html .= '</div>'; }
+			$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/vimeo" src="'.$atts['src'].'" preload="none"'.$style.' />';
 		}elseif($domain['scheme']=='rtmp'){
-			$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/flv" src="'.$atts['src'].'" autoplay'.$style.' /></video>';
+			$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/flv" src="'.$atts['src'].'" autoplay'.$style.' />';
 		}else{
 			$type = '';
 			$sources = explode(",", $atts['src']);
@@ -377,14 +371,14 @@ function cyon_video( $atts, $content = null ) {
 				if($type=='mp4' || $type=='m4v' || $type=='mov' || $type=='flv'){
 					$html .= '<object width="'.$atts['width'].'" height="'.$atts['height'].'" type="application/x-shockwave-flash" data="'.get_template_directory_uri().'/assets/js/jquery.flashmediaelement.swf"><param name="movie" value="'.get_template_directory_uri().'/assets/js/jquery.flashmediaelement.swf" /><param name="flashvars" value="controls=true&poster='.$atts['poster'].'&file='.$sources[$i].'" /><img src="'.$atts['poster'].'" width="'.$atts['width'].'" height="'.$atts['height'].'" title="'.__('No video playback capabilities').'" /></object>';
 				}
-				if($atts['subtitles']!=''){
-					$html .= '<track kind="subtitles" src="'.$atts['subtitles'].'" srclang="en" />';
-				}
-				if($atts['chapters']!=''){
-					$html .= '<track kind="chapters" src="'.$atts['chapters'].'" srclang="en" />';
-				}
-				$html .= '</video>';
 			}
+			if($atts['subtitles']!=''){
+				$html .= '<track kind="subtitles" src="'.$atts['subtitles'].'" srclang="en" />';
+			}
+			if($atts['chapters']!=''){
+				$html .= '<track kind="chapters" src="'.$atts['chapters'].'" srclang="en" />';
+			}
+			$html .= '</video>';
 		}
 		ob_start();
 			add_action('wp_footer','cyon_video_audio_js_css',20);
@@ -395,33 +389,6 @@ function cyon_video( $atts, $content = null ) {
 	return $html;
 }
 add_shortcode('video','cyon_video'); 
-
-if (!function_exists('get_youtube_id')){
-	function get_youtube_id($content) {
-	
-		// find the youtube-based URL in the post
-		$urls = array();
-		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $content, $urls);
-		$youtube_url = $urls[0][0];
-	
-		// next, locate the youtube video id
-		$youtube_id = '';
-		if(strlen(trim($youtube_url)) > 0) {
-			parse_str( parse_url( $youtube_url, PHP_URL_QUERY ) );
-			$youtube_id = $v;
-		} // end if
-	
-		return $youtube_id; 
-	
-	} // end get_youtube_id
-}
-if (!function_exists('get_vimeo_id')){
-	function get_vimeo_id($content) {
-	
-		return (int) substr(parse_url($content, PHP_URL_PATH), 1);; 
-	
-	} 
-}
 
 /* =Audio
 use [audio width='480' src='']
