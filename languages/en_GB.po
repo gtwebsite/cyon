@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cyon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-06 23:07+0800\n"
-"PO-Revision-Date: 2013-01-06 23:09+0800\n"
+"POT-Creation-Date: 2013-01-08 01:57+0800\n"
+"PO-Revision-Date: 2013-01-08 01:57+0800\n"
 "Last-Translator: Archie Jereos <eightworks@yahoo.com>\n"
 "Language-Team: Gtwebsite <admin@gtwebsite.com>\n"
 "MIME-Version: 1.0\n"
@@ -1407,92 +1407,92 @@ msgstr ""
 msgid "No product categories exist."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:387
+#: ../includes/shortcodes/common.php:393
 msgid "No video source specified."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:416
+#: ../includes/shortcodes/common.php:449
 msgid "No audio source specified."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:819
-#: ../includes/shortcodes/common.php:921
+#: ../includes/shortcodes/common.php:852
+#: ../includes/shortcodes/common.php:954
 #: ../includes/widgets/contact-form.php:69
 #: ../includes/widgets/newsletter.php:72
 msgid "Submit"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:838
+#: ../includes/shortcodes/common.php:871
 #: ../includes/widgets/newsletter.php:88
 msgid "Please enter your email address."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:847
-#: ../includes/shortcodes/common.php:960
+#: ../includes/shortcodes/common.php:880
+#: ../includes/shortcodes/common.php:993
 #: ../includes/widgets/contact-form.php:105
 #: ../includes/widgets/newsletter.php:97
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:868
+#: ../includes/shortcodes/common.php:901
 #: ../includes/widgets/newsletter.php:118
 msgid "Your email has been subscribed to our mailing list."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:870
-#: ../includes/shortcodes/common.php:985
+#: ../includes/shortcodes/common.php:903
+#: ../includes/shortcodes/common.php:1018
 #: ../includes/widgets/contact-form.php:130
 #: ../includes/widgets/newsletter.php:120
 msgid "There was a problem in the server. Please try again later."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:888
-#: ../includes/shortcodes/common.php:1008
+#: ../includes/shortcodes/common.php:921
+#: ../includes/shortcodes/common.php:1041
 #: ../includes/widgets/contact-form.php:161
 #: ../includes/widgets/newsletter.php:146
 msgid "Security check"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:890
+#: ../includes/shortcodes/common.php:923
 #: ../includes/widgets/newsletter.php:148
 msgid "New subscriber from"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:919
-#: ../includes/shortcodes/common.php:1013
+#: ../includes/shortcodes/common.php:952
+#: ../includes/shortcodes/common.php:1046
 #: ../includes/widgets/contact-form.php:67
 #: ../includes/widgets/contact-form.php:166
 #: ../includes/widgets/contact.php:32
 msgid "Phone"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:920
+#: ../includes/shortcodes/common.php:953
 #: ../includes/widgets/contact-form.php:68
 msgid "Messsage"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:983
+#: ../includes/shortcodes/common.php:1016
 #: ../includes/widgets/contact-form.php:128
 msgid "Your inquiry has been sent. We will get back to you shortly"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:998
+#: ../includes/shortcodes/common.php:1031
 #: ../includes/widgets/contact-form.php:143
 msgid "Empty field(s) required."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1010
+#: ../includes/shortcodes/common.php:1043
 #: ../includes/widgets/contact-form.php:163
 msgid "New inquiry from"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1014
+#: ../includes/shortcodes/common.php:1047
 #: ../includes/widgets/contact-form.php:68
 #: ../includes/widgets/contact-form.php:167
 msgid "Message"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1106
+#: ../includes/shortcodes/common.php:1139
 msgid "Submit Form"
 msgstr ""
 
@@ -1530,6 +1530,7 @@ msgid "Ad"
 msgstr ""
 
 #: ../includes/widgets/ads.php:67
+#: ../includes/widgets/media.php:25
 msgid "Image URL"
 msgstr ""
 
@@ -1684,8 +1685,8 @@ msgstr ""
 msgid "Cyon Media Player"
 msgstr ""
 
-#: ../includes/widgets/media.php:22
-msgid "Media URLs (comma separated for alternative files)"
+#: ../includes/widgets/media.php:24
+msgid "Media URL (comma separated for alternative local file formats)"
 msgstr ""
 
 #: ../includes/widgets/newsletter.php:10

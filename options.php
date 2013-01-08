@@ -725,7 +725,7 @@ function optionsframework_options() {
 						'id' 		=> 'homepage_slider_pagination_layout',
 						'std' 		=> 'top-right',
 						'type' 		=> 'select',
-						'options' 	=> array('top-center'=>__('Top Center','cyon'), 'top-left'=>__('Top Left','cyon'), 'top-right'=>__('Top Right','cyon', 'bottom-center'=>__('Bottom Center','cyon'), 'bottom-left'=>__('Bottom Left','cyon'), 'bottom-right'=>__('Bottom Right','cyon')));
+						'options' 	=> array('top-center'=>__('Top Center','cyon'), 'top-left'=>__('Top Left','cyon'), 'top-right'=>__('Top Right','cyon'), 'bottom-center'=>__('Bottom Center','cyon'), 'bottom-left'=>__('Bottom Left','cyon'), 'bottom-right'=>__('Bottom Right','cyon')));
 
 	$options[] = array( 'type'		=> 'section_end'); 
 

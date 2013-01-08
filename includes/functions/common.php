@@ -620,13 +620,13 @@ function cyon_post_content_featured_image_content(){
 				<?php }else{
 				$icon = 'facetime_video';
 					?>
-				<a href="<?php echo rwmb_meta( 'cyon_video_url' ); ?>" <?php if(of_get_option('lightbox_activate')==1){ ?>class="fancybox-media"<?php }else{ ?>target="_blank"<?php } ?>><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="icon-box icon2x-<?php echo $icon; ?>"></span></a>
+				<a href="<?php echo rwmb_meta( 'cyon_video_url' ); ?>" <?php if(of_get_option('lightbox_activate')==1){ ?>class="fancybox-media"<?php }else{ ?>target="_blank"<?php } ?>><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="status-box"><span class="icon-box icon2x-<?php echo $icon; ?>"></span></span></a>
 				<?php }	?>
 			<?php }elseif(has_post_format('image')){
 				$icon = 'zoom_in';
 				?>
 				<?php $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' ); ?>
-				<a href="<?php echo $image_attributes[0]; ?>" <?php if(of_get_option('lightbox_activate')==1){ ?>class="fancybox"<?php }else{ ?>target="_blank"<?php } ?>><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="icon-box icon2x-<?php echo $icon; ?>"></span></a>
+				<a href="<?php echo $image_attributes[0]; ?>" <?php if(of_get_option('lightbox_activate')==1){ ?>class="fancybox"<?php }else{ ?>target="_blank"<?php } ?>><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="status-box"><span class="icon-box icon2x-<?php echo $icon; ?>"></span></span></a>
 			<?php }else{ ?>
 				<?php 
 				if(has_post_format('link')){
@@ -637,7 +637,7 @@ function cyon_post_content_featured_image_content(){
 					$icon = 'circle_info';
 				}
 				?>
-				<a href="<?php echo $url; ?>"><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="icon-box icon2x-<?php echo $icon; ?>"></span></a>
+				<a href="<?php echo $url; ?>"><?php the_post_thumbnail( of_get_option('content_thumbnail_size') ); ?><span class="status-box"><span class="icon-box icon2x-<?php echo $icon; ?>"></span></span></a>
 				<?php if(has_post_format('audio')){ ?>
 					<?php
 					add_action('wp_footer','cyon_video_audio_js_css',20);
