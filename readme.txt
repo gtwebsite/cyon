@@ -8,11 +8,9 @@
 slider add thumbnail
 slider feature list
 slider with nivo
-contact page
 testimonials
 sitemap
 table header add colspan
-divider / with go top
 drop cap
 sub page
 Widgets - to which page appear
@@ -25,6 +23,8 @@ Widgets - to which page appear
 * Added Contact form widget / shortcode
 * Added background image on pages, posts, and categories
 * Added Localization
+* Added Back to Top shortcode
+* Updated Horizontal Line
 * Updated Iframe
 * Updated Video player
 * Updated Post Format
@@ -32,6 +32,7 @@ Widgets - to which page appear
 * Updated Homepage slider
 * Updated menu for mobile
 * Updated Meta box to 4.2.3
+* Updated Options Framework to 1.4
 * Fixed few css/php issues
 
 = 1.3.2 =

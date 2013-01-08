@@ -37,8 +37,8 @@
 										a.addImmediate(c,"Icon",'[icon element="" icon="" title="" url=""]Text here[/icon]' );
 										a.addImmediate(c,"Lists",'[lists icon="" cols="" size=""]<br/>[list icon=""]Item name[/list]<br/>[list icon=""]Item name[/list]<br/>[/lists]' );
 										a.addImmediate(c,"Code",'[code inline="yes"][/code]' );
-										a.addImmediate(c,"Horizontal Solid Line",'<hr />' );
-										a.addImmediate(c,"Horizontal Dash Line",'<hr class="dashed" />' );
+										a.addImmediate(c,"Horizontal Line",'[line style=""]' );
+										a.addImmediate(c,"Back to Top",'[backtotop style=""]' );
 
 								c=b.addMenu({title:"Table"});
 										a.addImmediate(c,"Table",'[table caption="" headers="Column 1|Column 2" footers="Footer 1|Footer 2"]<br/>[row color=""]<br/>[data color=""]Data 1[/data]<br/>[data color=""]Data 2[/data]<br/>[/row]<br/>[/table]' );
@@ -72,7 +72,12 @@
 										a.addImmediate(c,"One Seventh Last","[one_seventh_last][/one_seventh_last]" );
 										a.addImmediate(c,"One Eighth","[one_eighth][/one_eighth]" );
 										a.addImmediate(c,"One Eighth Last","[one_eighth_last][/one_eighth_last]" );
-
+/*
+								c=b.addMenu({title:"Columns Visualize"});
+										a.addImmediate(c,"2 Columns", '<div class="row-fluid"><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
+										a.addImmediate(c,"3 Columns", '<div class="row-fluid"><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
+										a.addImmediate(c,"4 Columns", '<div class="row-fluid"><div class="span3"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span3"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span3"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span3"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
+*/
 								c=b.addMenu({title:"Price Grid"});
 										a.addImmediate(c,"New Price Grid",'[pricegrid labels="Setup,Updates" columns="2" bgcolor="#03BCEE"]<br/>[gridcolumn title="Starter" price="$0.00" period="Yearly" link_url="http://" highlighted="yes" best_value="Yes"]<br/>[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]<br/>[/gridcolumn]<br/>[/pricegrid]' );
 										a.addImmediate(c,"Column Normal",'[gridcolumn title="Starter" price="$0.00" period="Yearly" link_url="http://" highlighted="yes" best_value="Yes"]<br/>[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]<br/>[/gridcolumn]' );
@@ -80,10 +85,6 @@
 										a.addImmediate(c,"Option Text",'[gridoption text="$0.00" tooltip_title="" tooltip_text="" /]' );
 										a.addImmediate(c,"Option Check",'[gridoption checked="yes" tooltip_title="" tooltip_text="" /]' );
 								
-								c=b.addMenu({title:"Visuals"});
-										a.addImmediate(c,"2 Columns", '<div class="row-fluid"><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span6"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
-										a.addImmediate(c,"3 Columns", '<div class="row-fluid"><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="span4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div><br>' );
-
 
 							});
 						return d

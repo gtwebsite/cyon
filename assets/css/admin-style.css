@@ -1,8 +1,12 @@
-#optionsframework { max-width:100%; border:0; }
-#optionsframework .group { padding-bottom:0; margin-bottom:0; border:0; background:none; }
-#optionsframework .section .heading { border-bottom:0; margin-bottom:0; }
+#optionsframework { max-width:100%!important; border:0;  }
+#optionsframework .group { padding-bottom:0!important; margin-bottom:0; border:0; background:none; }
+#optionsframework .section .heading { border-bottom:0!important; margin-bottom:0!important; }
 #optionsframework .postbox { margin-bottom:5px; }
-#optionsframework-submit { padding:0; background:none; border:0; }
+#optionsframework .inner-section { padding-bottom:10px; }
+#optionsframework-submit { padding:0!important; background:none!important; border:0!important; }
+#optionsframework .controls input[type=text], #optionsframework .controls select, #optionsframework .controls textarea { width:100%; padding:3px!important; height:auto!important; }
+a.wp-color-result:focus, a.wp-color-result:active { outline:none; }
+#optionsframework .controls input[type=text].wp-color-picker { width:141px!important; }
 
 span.mce_cyon_plugin {
 	background:url(../images/ico-settings.png) 50% 50% no-repeat!important;

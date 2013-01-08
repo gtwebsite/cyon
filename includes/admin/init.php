@@ -44,13 +44,24 @@ function optionsframework_load_scripts2($hook) {
         return;
 	
 	// Enqueued scripts
-	wp_enqueue_script('jquery-ui-core');
-	wp_enqueue_script('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'js/colorpicker.js', array('jquery'));
-	wp_enqueue_script('options-custom', OPTIONS_FRAMEWORK_DIRECTORY.'js/options-custom.js', array('jquery'));
 	wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
 	wp_enqueue_script( 'of-medialibrary-uploader' );
 	wp_enqueue_script( 'media-upload' );
+
+	if ( !wp_script_is( 'wp-color-picker', 'registered' ) ) {
+		wp_register_script( 'iris', OPTIONS_FRAMEWORK_DIRECTORY . 'js/iris.min.js', array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), false, 1 );
+		wp_register_script( 'wp-color-picker', OPTIONS_FRAMEWORK_DIRECTORY . 'js/color-picker.min.js', array( 'jquery', 'iris' ) );
+		$colorpicker_l10n = array(
+			'clear' => __( 'Clear' ),
+			'defaultString' => __( 'Default' ),
+			'pick' => __( 'Select Color' )
+		);
+		wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
+	}
 	
+	// Enqueue custom option panel JS
+	wp_enqueue_script( 'options-custom', OPTIONS_FRAMEWORK_DIRECTORY . 'js/options-custom.js', array( 'jquery','wp-color-picker' ) );
+
 }
 
 /* Loads the CSS */

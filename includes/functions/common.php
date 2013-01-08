@@ -226,11 +226,11 @@ function cyon_header_js_css_hook(){ ?>
 	<!-- Google Fonts -->	
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=<?php echo of_get_option('secondary_font_google'); ?>" />
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
 	</style>
 	<?php }elseif(of_get_option('secondary_font')!='default' && of_get_option('secondary_font')!='google'){ ?>
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
 	</style>
 	<?php } ?>
 
@@ -278,7 +278,7 @@ function cyon_header_js_css_hook(){ ?>
 
 			<?php if ( of_get_option('footer_backtotop') ){ ?>
 			// Back to Top
-			jQuery('#backtotop a').click(function() {
+			jQuery('a.backtotop').click(function() {
 				jQuery('body,html').animate({scrollTop:0},'slow');
 			});	
 			checkheight();
@@ -513,7 +513,7 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu{
 
     function start_el(&$output, $item, $depth, $args){
       // add spacing to the title based on the depth
-      $item->title = str_repeat("&nbsp;", $depth * 4).$item->title;
+      $item->title = str_repeat("&nbsp;&nbsp;-&nbsp;", $depth * 1).$item->title;
 
 
 
@@ -807,7 +807,7 @@ function cyon_footer_backtotop_hook(){
 	if ( of_get_option('footer_backtotop') ){ ?>
 	<!-- Back to Top -->
 	<div id="backtotop">
-		<p><a href="#"><?php _e('Back to Top'); ?> </a></p>
+		<p><a href="#" class="backtotop"><?php _e('Back to Top'); ?> </a></p>
 	</div>
 	<?php }
 }

@@ -77,6 +77,15 @@ hr {
 hr.dashed {
 	border-bottom-style:dashed; border-color:#ccc;
 }
+hr.thick {
+	border-bottom-style:solid; border-bottom-width:5px;
+}
+hr.double {
+	border-bottom-style:double; border-bottom-width:3px;
+}
+hr.dotted {
+	border-bottom-style:dotted; border-color:#ddd;
+}
 
 /* Table */
 table.table, .shop_table {
@@ -261,6 +270,12 @@ div.alignleft:empty, div.alignright:empty {
 .skip-link, .assistive-text {
 	display:none;
 }
+.backtotop-line {
+	font-size:90%; text-align:right; margin-bottom:10px;
+}
+.backtotop-line hr {
+	margin-bottom:0;
+}
 
 /* Social */
 .twitter-share-button {
@@ -288,7 +303,7 @@ div.alignleft:empty, div.alignright:empty {
 .page-header h1, .category-header h1, #container .page-title {
 	font-family: "Segoe UI Light";
 }
-.page-header h1, #container .page-title, .entry-content h1 {
+.page-header h1, #container .page-title, .entry-content h1, .page-content h1 {
 	font-size:260%;
 }
 .category-header h1 {

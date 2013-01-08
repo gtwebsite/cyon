@@ -17,7 +17,7 @@ if ( ! function_exists( 'cyon_banner_init' ) ){
 			'search_items' 			=> __( 'Search Banner' ),
 			'not_found' 			=> __( 'No banner found' ),
 			'not_found_in_trash' 	=> __( 'No banner found in trash' ),
-			'menu_name' 			=> __('Banners')
+			'menu_name' 			=> __('Cyon Banners')
 		);
 		$args = array(
 			'labels' 				=> $labels,

@@ -759,7 +759,7 @@ function cyon_box( $atts, $content = null ) {
 	$style = '';
 	if($atts['width']!=''){
 		$width = (int)$atts['width'] - 60;
-		$style .= ' style="width:'. $width .'px"';
+		$style .= ' style="width:'. $width .'px;  max-width:90%;"';
 	}
 	$classname = 'box';
 	if($atts['color']!=''){
@@ -827,6 +827,40 @@ function cyon_tip( $atts, $content = null ) {
 	return $html;
 }
 add_shortcode('tip','cyon_tip'); 
+
+/* =Horizontal Line
+use [line style=""]
+----------------------------------------------- */
+function cyon_line( $atts, $content = null ) {
+	$atts = shortcode_atts(
+		array(
+			style	=> ''
+		), $atts);
+	$style = '';
+	if($atts['style']){
+		$style = ' class="'.$atts['style'].'"';
+	}
+	$html = '<hr'.$style.' />';
+	return $html;
+}
+add_shortcode('line','cyon_line'); 
+
+/* =Back to Top
+use [backtotop style=""]
+----------------------------------------------- */
+function cyon_backtotop( $atts, $content = null ) {
+	$atts = shortcode_atts(
+		array(
+			style	=> ''
+		), $atts);
+	$style = '';
+	if($atts['style']){
+		$style = ' class="'.$atts['style'].'"';
+	}
+	$html = '<div class="backtotop-line"><hr'.$style.' /><a href="#" class="backtotop">'.__('Back to top','cyon').'</a></div>';
+	return $html;
+}
+add_shortcode('backtotop','cyon_backtotop'); 
 
 
 /* =Newsletter

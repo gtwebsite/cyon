@@ -135,7 +135,6 @@ jQuery(document).ready(function() {
 			jQuery('#section-background_style_image').show();
 			jQuery('#section-background_style_pattern_repeat').fadeOut();
 			jQuery('#section-background_style_pattern_position').fadeOut();
-			jQuery('#section-background_style_image').append('<div id="addition"><input type="button" class="button" value="Add image" /></div>');
 		}else if(bsvalue=='youtube'){
 			jQuery('#section-background_style_youtube').show();
 			jQuery('#section-background_style_image').fadeOut();
