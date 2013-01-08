@@ -1467,6 +1467,9 @@ span.hastip, em.hastip, strong.hastip {
 .widget img {
 	max-width:100%; height:auto;
 }
+.widget iframe {
+	width:100%;
+}
 
 /* Image Widget */
 .widget_sp_image { }

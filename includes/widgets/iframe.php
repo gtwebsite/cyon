@@ -69,7 +69,7 @@ class CyonIframeWidget extends WP_Widget {
 			echo $before_title . $title . $after_title;;
 		}
 		echo '<div class="widget-content">';
-		echo '<iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="'.$scroll.'" marginheight="0" marginwidth="0" src="'.$url.'"></iframe>';
+		echo '<div style="width:100%; height:'.$height.'px; overflow:visible"><iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="'.$scroll.'" marginheight="0" marginwidth="0" src="'.$url.'"></iframe></div>';
     	// Widget code here
  
 		// End widget

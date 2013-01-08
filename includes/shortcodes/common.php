@@ -306,17 +306,17 @@ function cyon_map( $atts, $content = null, $id ) {
 add_shortcode('map','cyon_map'); 
 
 /* =IFrame
-use [iframe width='100%' height='350' scroll='yes' url='http://localhost/']
+use [iframe width='500' height='350' scroll='yes' url='http://localhost/']
 ----------------------------------------------- */
 function cyon_iframe( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
-			width		=> '100%',
+			width		=> '500',
 			height		=> '350',
 			scroll		=> 'yes',
 			url			=> 'http://localhost/'
 		), $atts);
-	return '<iframe width="'.$atts['width'].'" height="'.$atts['height'].'" frameborder="0" scrolling="'.$atts['scroll'].'" marginheight="0" marginwidth="0" src="'.$atts['url'].'"></iframe>';
+	return '<div style="width:'.$atts['width'].'px; max-width:100%; height:'.$atts['height'].'px; overflow:visible;"><iframe style="max-width:100%;" width="'.$atts['width'].'" height="'.$atts['height'].'" frameborder="0" scrolling="'.$atts['scroll'].'" marginheight="0" marginwidth="0" src="'.$atts['url'].'"></iframe></div>';
 }
 add_shortcode('iframe','cyon_iframe'); 
 
