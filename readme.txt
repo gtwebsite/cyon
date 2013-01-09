@@ -5,32 +5,30 @@
 == Description ==
 
 == Future Updates ==
+testimonials
 slider add thumbnail
 slider feature list
-slider with nivo
-testimonials
-sitemap
-table header add colspan
-drop cap
-sub page
 Widgets - to which page appear
 
 
 == Changelog ==
 
 = 1.3.3 =
+* Added Submenu widget
+* Added Sitemap shortcode
 * Added Masonry blog layout
 * Added Contact form widget / shortcode
 * Added background image on pages, posts, and categories
 * Added Localization
 * Added Back to Top shortcode
+* Added Post Format gallery
 * Updated Horizontal Line
 * Updated Iframe
 * Updated Video player
 * Updated Post Format
 * Updated Google fonts
 * Updated Homepage slider
-* Updated menu for mobile
+* Updated Menu function
 * Updated Meta box to 4.2.3
 * Updated Options Framework to 1.4
 * Fixed few css/php issues

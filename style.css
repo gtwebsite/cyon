@@ -355,8 +355,11 @@ article:last-child {
 .page-content ul li {
 	list-style:disc; margin-left:20px;
 }
-.page-content ul li ol li {
-	list-style:square; margin-left:20px;
+.page-content ul li ul li {
+	list-style:circle;
+}
+.page-content ul li ul li ul li {
+	list-style:square; 
 }
 .page-content ol li {
 	list-style:decimal; margin-left:20px;
@@ -377,7 +380,7 @@ article:last-child {
 	position:relative;
 }
 .entry-featured-image span.status-box {
-	position:absolute; top:0; right:0; background:url(assets/images/background.png); display:block; width:48px; height:48px; opacity:.6; filter:alpha(opacity=60);
+	position:absolute; top:0; right:0; background:url(assets/images/background.png); display:block; width:48px; height:48px; opacity:.6; filter:alpha(opacity=60); z-index:10;
 }
 .entry-featured-image span.status-box span {
 	background-image:url(assets/images/icons-white.png); opacity:.4; filter:alpha(opacity=40); position:relative; left:12px; top:-1px;
@@ -515,7 +518,7 @@ p.nocomments {
 
 /* =Flexslider
 ----------------------------------------------- */
-.flexslider { }
+.flexslider { min-height:50px; }
 .flexslider .flex-caption {
 	position:absolute; bottom:0; left:0; z-index:100; width:94%; background:url(assets/images/trans-bg.png); color:#aaa; padding:15px 3%; opacity:.8;
 }
@@ -526,7 +529,10 @@ p.nocomments {
 	padding-top:11px; height:0; overflow:hidden;
 }
 .flexslider .flex-control-nav li {
-	margin:0 2px;
+	margin:0 2px; margin-left:0;
+}
+.flexslider .slides li {
+	margin-left:0;
 }
 .captionlocation1 .flex-caption {
 	left:inherit; padding:15px; width:320px;
@@ -785,6 +791,12 @@ p.nocomments {
 ----------------------------------------------- */
 .cyon-social [class^="icon2x-"], .cyon-social [class*=" icon2x-"] {
 	margin-right:-2px;
+}
+
+/* =Sitemap
+----------------------------------------------- */
+.cyon-sitemap ul.menu ul {
+	margin-bottom:0;
 }
 
 /* =Ads
@@ -1573,7 +1585,7 @@ span.hastip, em.hastip, strong.hastip {
 		margin-bottom:10px;
 	}
 	#drop-nav {
-		width:100%; display:none;
+		width:100%!important; display:none;
 	}
 		/* First Level */
 		#access ul.menu > li, #access .menu > ul > li {
@@ -1588,6 +1600,9 @@ span.hastip, em.hastip, strong.hastip {
 		#access ul.menu > li a:hover, #access ul.menu li:hover > a, #access ul.menu li.current-menu-item > a, #access ul.menu > li.current-menu-parent > a,
 		#access .menu > ul > li a:hover, #access .menu > ul > li:hover > a, #access .menu > ul > li.current-menu-item > a, #access .menu > ul > li.current-menu-parent > a, #access .menu > ul > li.current_page_item > a {
 			background:#f4f4f4; text-decoration:none;
+		}
+		#access ul.menu li:hover {
+			z-index:100; position:relative;
 		}
 		/* Second Level */
 		#access ul.menu > li ul, #access .menu > ul > li ul {

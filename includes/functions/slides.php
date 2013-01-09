@@ -85,16 +85,26 @@ $cyon_meta_boxes[] = array(
 );
 
 
-/* Register Deader JS and CSS */
+/* Register header JS and CSS */
 if ( ! function_exists( 'cyon_header_banner_js_css' ) ){
 	function cyon_header_banner_js_css(){
-		if(is_front_page() && of_get_option('homepage_slider')=='flexslider'){
-			wp_enqueue_script('flexislider');
-			wp_enqueue_style('flexislider_css');
-		}
+		wp_enqueue_script('flexislider');
+		wp_enqueue_style('flexislider_css');
 	}
 }
-add_action ( 'wp_footer', 'cyon_header_banner_js_css');
+if ( ! function_exists( 'cyon_footer_banner_common_hook' ) ){
+	function cyon_footer_banner_common_hook(){ ?>
+		<script type="text/javascript">
+			// Flexslider List
+			jQuery(window).load(function() {
+				jQuery('.flexslider').flexslider({
+					controlNav: false,
+					animation: 'slide'
+				});
+			});
+		</script> 
+	<?php }
+}
 
 if ( ! function_exists( 'cyon_flexslider' ) ){
 	function cyon_flexslider(){
@@ -106,6 +116,8 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 					'orderby' => 'meta_value'
 				);
 		$query = new WP_Query($args);
+		add_action ( 'wp_footer', 'cyon_header_banner_js_css');
+		add_action ( 'wp_footer', 'cyon_footer_banner_hook',100);
 	?>
 	
 		<ul class="slides">
@@ -196,9 +208,7 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 	}
 }
 
-function cyon_banner_footer_hook(){
-	if(is_front_page() && of_get_option('homepage_slider')=='flexslider'){
-	?>
+function cyon_footer_banner_hook(){ ?>
 	<script type="text/javascript">
 		// Flexslider
 		jQuery(window).load(function() {
@@ -216,9 +226,7 @@ function cyon_banner_footer_hook(){
 		});
 	</script> 
 	<?php
-	}
 }
-add_action ( 'wp_footer', 'cyon_banner_footer_hook',100);
 
 
 /* Homepage Slider Hook */
@@ -327,12 +335,9 @@ function cyon_gallery_shortcode($attr){
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
 		$link = wp_get_attachment_image($id, $size, false, false);
-		$output .= '<li style="max-height:'.$attr['maxheight'].'px;">'.$link.'
-				<div class="flex-caption">
-					<h3 style="margin:0!important;">' . wptexturize($attachment->post_title) . '</h3>';
+		$output .= '<li style="max-height:'.$attr['maxheight'].'px;">'.$link.'<div class="flex-caption"><h3 style="margin:0!important;">' . wptexturize($attachment->post_title) . '</h3>';
 		if ( trim($attachment->post_excerpt) ) {
-			$output .= '
-					<div class="flex-content"><p style="margin:4px 0 0 0!important;">' . wptexturize($attachment->post_excerpt) . '</p></div>';
+			$output .= '<div class="flex-content"><p style="margin:4px 0 0 0!important;">' . wptexturize($attachment->post_excerpt) . '</p></div>';
 		}
 		$output .= '</div></li>';
 	}
@@ -363,13 +368,7 @@ function cyon_gallery_shortcode($attr){
 	}
 	$output .= '});});
 	</script>';
-	add_action ( 'wp_footer', 'cyon_gallery_shortcode_js_css');
+	add_action ( 'wp_footer', 'cyon_header_banner_js_css');
 	return $output;
 }
 
-if ( ! function_exists( 'cyon_gallery_shortcode_js_css' ) ){
-	function cyon_gallery_shortcode_js_css(){
-		wp_enqueue_script('flexislider');
-		wp_enqueue_style('flexislider_css');
-	}
-}

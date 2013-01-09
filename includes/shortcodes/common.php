@@ -338,7 +338,7 @@ function cyon_video( $atts, $content = null ) {
 	if($atts['src']!=''){
 		if(of_get_option('responsive')==1){ $style=' style="width:100%; height:100%;"'; }
 		$domain = parse_url(strtolower($atts['src']));
-		if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com'){
+		if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com' || $domain['host']=='youtu.be'){
 			//$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/youtube" src="'.$atts['src'].'" preload="none"'.$style.' />';
 			if(of_get_option('responsive')==1){ $html .= '<div class="flex-video">'; }
 			$html .= '<iframe width="'.$atts['width'].'" height="'.$atts['height'].'" src="http://www.youtube.com/embed/'.get_youtube_id($atts['src']).'?showinfo=0" frameborder="0" allowfullscreen></iframe>';
@@ -397,21 +397,12 @@ function cyon_video( $atts, $content = null ) {
 add_shortcode('video','cyon_video'); 
 
 if (!function_exists('get_youtube_id')){
-	function get_youtube_id($content) {
+	function get_youtube_id($url) {
 	
 		// find the youtube-based URL in the post
-		$urls = array();
-		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $content, $urls);
-		$youtube_url = $urls[0][0];
-	
-		// next, locate the youtube video id
-		$youtube_id = '';
-		if(strlen(trim($youtube_url)) > 0) {
-			parse_str( parse_url( $youtube_url, PHP_URL_QUERY ) );
-			$youtube_id = $v;
-		} // end if
-	
-		return $youtube_id; 
+		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+			return $match[1];
+		}	
 	
 	} // end get_youtube_id
 }
@@ -1175,3 +1166,45 @@ function cyon_custom_form($atts, $content = null){
 	return $html;
 }
 add_shortcode('custom_form','cyon_custom_form'); 
+
+/* =Sitemap
+use [sitemap]
+----------------------------------------------- */
+function cyon_sitemap( $atts, $content = null ) {
+	$html = '<div class="cyon-sitemap row-fluid">';
+	$locations = get_nav_menu_locations();
+	$footer_id = wp_get_nav_menu_object( $locations['footer-menu'] );
+	$footer_items = wp_get_nav_menu_items( $footer_id->term_id );
+	$header_id = wp_get_nav_menu_object( $locations['main-menu'] );
+	$header_items = wp_get_nav_menu_items( $header_id->term_id );
+	$html .= '<div class="span4">';
+			if($header_id->term_id!=''){
+				$html .= '<h3>'.__('Main Menu').':</h3><ul class="menu">'.wp_nav_menu(array('menu'=>$header_id->term_id,'container'=>'','echo'=>false)).'</ul>';
+			}else{
+				$html .= '<h3>'.__('Pages').':</h3><ul class="menu">'.wp_list_pages(array('title_li'=>'','echo'=>false)).'</ul>';
+			}
+			if($footer_id->term_id!='' && $header_id->term_id!=''){
+				$html .= '<h3>'.__('Footer Menu').':</h3><ul class="menu">';
+				foreach ( (array) $footer_items as $key => $footer_item ) {
+					$html .= '<li><a href="'.$footer_item->url.'" title="'.$footer_item->title.'">'.$footer_item->title.'</a></li>';
+				}
+				$html .= '</ul>';
+			}
+	$html .= '</div>';
+	$html .= '<div class="span4">
+				<h3>'.__('Blog Categories').':</h3><ul class="menu">'.wp_list_categories(array('show_count'=>1,'echo'=>false,'title_li'=>'','feed'=>_('feed'))).'</ul>
+				<h3>'.__('Blog Archives').':</h3><ul class="menu">'.wp_get_archives(array('show_post_count'=>true,'echo'=>false)).'</ul>';
+			if (is_plugin_active('woocommerce/woocommerce.php')) {
+				$html .= '<h3>'.__('Product Categories').':</h3><ul class="menu">'.wp_list_categories(array('show_count'=>1,'echo'=>false,'taxonomy'=>'product_cat','title_li'=>'','feed'=>_('feed'))).'</ul>';
+			}
+	$recent_posts = wp_get_recent_posts(array('numberposts'=>50));
+	$html .= '</div><div class="span4">
+				<h3>'.__('Blog Posts').':</h3><ul class="menu">';
+				foreach( $recent_posts as $recent ){
+					$html .= '<li><a href="'.get_permalink($recent['ID']).'" title="'.esc_attr($recent['post_title']).'">'.$recent['post_title'].'</a></li>';
+				}
+	$html .= '</ul></div>';
+	$html .= '</div>';
+	return $html;
+}
+add_shortcode('sitemap','cyon_sitemap'); 

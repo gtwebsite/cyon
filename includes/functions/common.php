@@ -496,8 +496,18 @@ function cyon_header_mainnav_hook(){ ?>
 	<!-- Main Menu -->
 	<nav id="access" role="navigation">
 		<h3 class="assistive-text"><?php _e( 'Main menu', 'cyon' ); ?></h3>
-		<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
-		<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'items_wrap' => '<select id="drop-nav"><option value="">Select a page...</option>%3$s</select>', 'show_description' => false, 'container' => false, 'walker'  => new Walker_Nav_Menu_Dropdown() ) ); ?>
+		<?php
+		$locations = get_nav_menu_locations();
+		$header_id = wp_get_nav_menu_object( $locations['main-menu'] );
+		$header_items = wp_get_nav_menu_items( $header_id->term_id );
+		if($header_id->term_id!=''){
+			wp_nav_menu(array('menu'=>$header_id->term_id,'container'=>''));
+			wp_nav_menu( array( 'theme_location' => 'main-menu', 'items_wrap' => '<select id="drop-nav"><option value="">'.__('Select a page').'...</option>%3$s</select>', 'show_description' => false, 'container' => false, 'walker'  => new Walker_Nav_Menu_Dropdown() ) );
+		}else{
+			echo '<ul class="menu">'.wp_list_pages(array('title_li'=>'','echo'=>false)).'</ul>';
+			echo '<select id="drop-nav"><option value="">'.__('Select a page').'...</option>'.wp_list_pages(array('title_li'=>'','echo'=>false,'walker'=>new Walker_Nav_Page_Dropdown())).'</select>';
+		}
+		?>
 	</nav> <?php
 }
 add_action('cyon_header','cyon_header_mainnav_hook',30);
@@ -539,6 +549,55 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu{
       $output .= "</option>\n"; // replace closing </li> with the option tag
     }
 }
+class Walker_Nav_Page_Dropdown extends Walker_Page{
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+	}
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+	}
+
+	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+		if ( $depth )
+			$indent = str_repeat("&nbsp;&nbsp;-&nbsp;", $depth * 1);
+		else
+			$indent = '';
+
+		extract($args, EXTR_SKIP);
+		$css_class = array('page_item', 'page-item-'.$page->ID);
+		if ( !empty($current_page) ) {
+			$_current_page = get_post( $current_page );
+			if ( in_array( $page->ID, $_current_page->ancestors ) )
+				$css_class[] = 'current_page_ancestor';
+			if ( $page->ID == $current_page ){
+				$css_class[] = 'current_page_item';
+				$selected = ' selected="selected"';
+			}elseif ( $_current_page && $page->ID == $_current_page->post_parent ){
+				$css_class[] = 'current_page_parent';
+			}
+		} elseif ( $page->ID == get_option('page_for_posts') ) {
+			$css_class[] = 'current_page_parent';
+		}
+
+		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+		$output .= '<option value="' . get_permalink($page->ID) . '"'.$selected.'>' . $indent . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after;
+
+		if ( !empty($show_date) ) {
+			if ( 'modified' == $show_date )
+				$time = $page->post_modified;
+			else
+				$time = $page->post_date;
+
+			$output .= " " . mysql2date($date_format, $time);
+		}
+	}
+
+	function end_el( &$output, $page, $depth = 0, $args = array() ) {
+		$output .= "</option>\n";
+	}
+}
+
 
 /* =Before Body hooks
 ----------------------------------------------- */
@@ -584,7 +643,15 @@ function cyon_post_content_featured_image_content(){
 	$pages = of_get_option('content_featured_image' ); ?>
 	<?php if(has_post_thumbnail() && (is_single() && $pages['posts']==1) || (is_page() && $pages['pages']==1)){ ?>
 		<div class="entry-featured-image">
-			<?php the_post_thumbnail('large');?>
+			<?php if(has_post_format('video')){ ?>
+				<?php $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
+				<?php echo do_shortcode('[video src="'.rwmb_meta( 'cyon_video_url' ).'" poster="'.$large_image_url[0].'"]');?>
+			<?php }elseif(has_post_format('audio')){ ?>
+				<?php the_post_thumbnail('large');?>
+				<?php echo do_shortcode('[audio src="'.rwmb_meta( 'cyon_audio_url' ).'"]'); ?>
+			<?php }else{ ?>
+				<?php the_post_thumbnail('large');?>
+			<?php } ?>
 		</div>
 	<?php }elseif(has_post_thumbnail() && (is_category() || is_archive() || is_home()) && $pages['listings']==1 ){ ?>
 		<div class="entry-featured-image">
@@ -650,10 +717,22 @@ function cyon_post_content_featured_image_content(){
 				<?php } ?>
 			<?php } ?>
 		</div>
+	<?php }elseif(has_post_format('gallery') && (is_category() || is_archive() || is_home()) && $pages['listings']==1){
+			/* Register Deader JS and CSS */
+			add_action ( 'wp_footer', 'cyon_header_banner_js_css');
+			add_action ( 'wp_footer', 'cyon_footer_banner_common_hook');
+	?>	<div class="entry-featured-image">
+			<span class="status-box"><span class="icon-box icon2x-camera"></span></span>
+			<div class="flexslider"><ul class="slides">
+			<?php $images = rwmb_meta( 'cyon_gallery_images', 'type=image&size='.of_get_option('content_thumbnail_size') );
+			foreach ( $images as $image ){ ?>
+				<li><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>" /></li>
+			<?php } ?>
+			</ul></div>
+		</div>
 	<?php } ?>
 <?php }
 add_action('cyon_post_content_before','cyon_post_content_featured_image_content',10);
-
 
 /* =After Content Post hooks
 ----------------------------------------------- */
