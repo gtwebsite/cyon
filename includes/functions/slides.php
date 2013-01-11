@@ -17,14 +17,13 @@ if ( ! function_exists( 'cyon_banner_init' ) ){
 			'search_items' 			=> __( 'Search Banner' ),
 			'not_found' 			=> __( 'No banner found' ),
 			'not_found_in_trash' 	=> __( 'No banner found in trash' ),
-			'menu_name' 			=> __('Cyon Banners')
+			'menu_name' 			=> __('Banners')
 		);
 		$args = array(
 			'labels' 				=> $labels,
 			'public' 				=> false,
 			'show_ui' 				=> true,
-			'menu_icon'				=> CYON_DIRECTORY.'/assets/images/ico-sliders.png',
-			'menu_position'			=> 110,
+			'menu_position'			=> 510,
 			'hierarchical'			=> false,
 			'supports' 				=> array('title','editor','thumbnail')
 		);
@@ -63,20 +62,20 @@ add_action( 'manage_cyon_banner_posts_custom_column' , 'cyon_banner_custom_colum
 $prefix = 'cyon_banner_';
 $cyon_meta_boxes[] = array(
 	'id' => 'settings',
-	'title' => 'Settings',
+	'title' => __('Settings'),
 	'pages' => array('cyon_banner'), // multiple post types, accept custom post types
 	'context' => 'normal', // normal, advanced, side (optional)
 	'priority' => 'high', // high, low (optional)
 	'fields' => array(
 		array(
-			'name' => 'URL',
+			'name' => __('URL'),
 			'id' => $prefix .'url',
 			'type' => 'text',
 			'size' => '70',
-			'desc' => 'Example: http://www.website.com/'
+			'desc' => __('Example').': http://www.website.com/'
 		),
 		array(
-			'name' => 'Sort',
+			'name' => __('Sort'),
 			'id' => $prefix .'sort',
 			'type' => 'text',
 			'size' => '10'

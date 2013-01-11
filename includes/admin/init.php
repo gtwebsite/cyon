@@ -27,7 +27,7 @@ function optionsframework_add_page2() {
 	add_action('admin_head', 'of_admin_head');
 
 	// Adds theme menu
-	add_menu_page(__('About Cyon Theme'), __('Cyon Theme'), 'edit_theme_options', 'gtw-theme','cyon_about_page', CYON_DIRECTORY.'/assets/images/ico-settings.png');
+	add_menu_page(__('About Cyon Theme'), __('Cyon Theme'), 'edit_theme_options', 'gtw-theme','cyon_about_page','',500);
 	$of_page = add_submenu_page('gtw-theme', __('Theme Settings'), __('Theme Settings'), 'edit_theme_options', 'gtw-theme-settings', 'optionsframework_page');
 		
 	// Adds actions to hook in the required css and javascript
@@ -83,17 +83,24 @@ function optionsframework_load_styles_update() {
 function cyon_about_page(){ ?>
 	<div class="wrap">
 		<div id="icon-index" class="icon32"><br></div>
-		<h2><?php _e('About Cyon Theme') ?></h2>
+		<h2><?php _e('About') ?> Cyon Theme</h2>
 		<p>Cyon was created for WordPress developers and designers and not intended to be used for front-end users.</p>
-		<h3>Thanks to:</h3>
+		<h3>Credit goes to respective people/projects:</h3>
 		<ul>
-			<li>WPTheming.com for <a href="http://wptheming.com/options-framework-theme/" target="_blank">Options Framework Theme</a></li>
-			<li>Rilwis for <a href="http://www.deluxeblogtips.com/2010/04/how-to-create-meta-box-wordpress-post.html" target="_blank">metaboxes script</a></li>
-			<li>Ohad Raz for <a href="http://en.bainternet.info/2012/wordpress-taxonomies-extra-fields-the-easy-way" target="_blank">Tax Meta Class</a></li>
-			<li>WooThemes for <a href="http://www.woothemes.com/flexslider/" target="_blank">FlexSlider</a></li>
-			<li>Fancyapps.com for <a href="http://fancyapps.com/fancybox/" target="_blank">fancyBox</a></li>
-			<li>Mika Tuupola for <a href="http://www.appelsiini.net/projects/lazyload" target="_blank">LazyLoad</a></li>
-			<li><a href="http://gtwebsite.com" target="_blank">Greater Than Website</a> for making this all possible</li>
+			<li>Options Framework Theme</li>
+			<li>Metaboxes script by Rilwis</a></li>
+			<li>Tax Meta Class script</a></li>
+			<li>FlexSlider</li>
+			<li>FancyBox</li>
+			<li>LazyLoad</li>
+			<li>jQuery Cycle</li>
+			<li>CloudZoom</li>
+			<li>Gmap</li>
+			<li>Media Element JS</li>
+			<li>Supersized</li>
+			<li>Tubular</li>
+			<li>Uniform</li>
+			<li>Poshytip</li>
 		</ul>
 		<p>And to a handful of random tutorials from the web.</p>
 	</div>

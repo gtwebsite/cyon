@@ -5,7 +5,6 @@
 == Description ==
 
 == Future Updates ==
-testimonials
 slider add thumbnail
 slider feature list
 Widgets - to which page appear
@@ -14,6 +13,7 @@ Widgets - to which page appear
 == Changelog ==
 
 = 1.3.3 =
+* Added Testimonial widget / shortcode
 * Added Submenu widget
 * Added Sitemap shortcode
 * Added Masonry blog layout
@@ -31,6 +31,7 @@ Widgets - to which page appear
 * Updated Menu function
 * Updated Meta box to 4.2.3
 * Updated Options Framework to 1.4
+* Updated icons
 * Fixed few css/php issues
 
 = 1.3.2 =

@@ -350,6 +350,9 @@ function cyon_video( $atts, $content = null ) {
 			if(of_get_option('responsive')==1){ $html .= '</div>'; }
 		}elseif($domain['scheme']=='rtmp'){
 			$html .= '<video width="'.$atts['width'].'" height="'.$atts['height'].'" type="video/flv" src="'.$atts['src'].'" autoplay'.$style.' /></video>';
+			ob_start();
+				add_action('wp_footer','cyon_video_audio_js_css',20);
+			ob_get_clean();
 		}else{
 			$type = '';
 			$sources = explode(",", $atts['src']);
@@ -385,10 +388,10 @@ function cyon_video( $atts, $content = null ) {
 				}
 				$html .= '</video>';
 			}
+			ob_start();
+				add_action('wp_footer','cyon_video_audio_js_css',20);
+			ob_get_clean();
 		}
-		ob_start();
-			add_action('wp_footer','cyon_video_audio_js_css',20);
-		ob_get_clean();
 	}else{
 		$html = __('No video source specified.');
 	}
@@ -837,16 +840,17 @@ function cyon_line( $atts, $content = null ) {
 add_shortcode('line','cyon_line'); 
 
 /* =Back to Top
-use [backtotop style=""]
+use [backtotop style='' classname='']
 ----------------------------------------------- */
 function cyon_backtotop( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
-			style	=> ''
+			style	=> '',
+			classname	=> ''
 		), $atts);
 	$style = '';
 	if($atts['style']){
-		$style = ' class="'.$atts['style'].'"';
+		$style = ' class="'.$atts['style'].' '.$atts['classname'].'"';
 	}
 	$html = '<div class="backtotop-line"><hr'.$style.' /><a href="#" class="backtotop">'.__('Back to top','cyon').'</a></div>';
 	return $html;
@@ -862,9 +866,10 @@ function cyon_newsletter( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			email	=> get_bloginfo('admin_email'),
-			name	=> 'no'
+			name	=> 'no',
+			classname => ''
 		), $atts);
-	$html = '<div class="cyon-newsletter newsletter-shortcode"><form action="" method="post" class="cyonform">';
+	$html = '<div class="cyon-newsletter newsletter-shortcode '.$atts['classname'].'"><form action="" method="post" class="cyonform">';
 	$html .= '<fieldset>';
 	if($content!=''){
 		$html .= '<legend>'.$content.'</legend>';
@@ -964,9 +969,10 @@ function cyon_contact_form( $atts, $content = null ) {
 	$nonce = wp_create_nonce('cyon_contact_nonce');
 	$atts = shortcode_atts(
 		array(
-			email	=> get_bloginfo('admin_email')
+			email	=> get_bloginfo('admin_email'),
+			classname => ''
 		), $atts);
-	$html = '<div class="cyon-contact-form contact-form-shortcode"><form action="" method="post" class="cyonform">';
+	$html = '<div class="cyon-contact-form contact-form-shortcode '.$atts['classname'].'"><form action="" method="post" class="cyonform">';
 	$html .= '<fieldset>';
 	if($content!=''){
 		$html .= '<legend>'.$content.'</legend>';

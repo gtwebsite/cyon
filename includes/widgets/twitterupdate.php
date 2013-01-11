@@ -82,8 +82,15 @@ class CyonTwitterWidget extends WP_Widget {
 							timeout:  4000, 
 							fit: 1,
 							height:   'auto',
-							sync:	1 
+							pause: 1,
+							sync:	1, 
+							after: onAfter
 					});
+					function onAfter(curr, next, opts, fwd) {
+						var $ht = jQuery(this).height() + 20;
+						//set the container's height to that of the current slide
+						jQuery(this).parent().animate({height: $ht});
+					}
 				});
 			</script>
 		<?php }

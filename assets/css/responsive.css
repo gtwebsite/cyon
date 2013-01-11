@@ -26,7 +26,7 @@
 	#page {
 		width:auto; max-width:767px;
 	}
-	.widget, #secondary, .general-2right #primary, .general-2left #primary, .wrapper, #branding hgroup, #access, .row-fluid article {
+	.widget, #secondary, .general-2right #primary, .general-2left #primary, .wrapper, #branding hgroup, #access, .row-fluid article, .postlist li, .cyon-sitemap div, .subpages li {
 		width:auto!important; float:none!important; margin-left:0!important; text-align:left;
 	}
 	#primary input[type=text], #primary input[type=email], #primary input[type=phone], #primary textarea, #primary select {
@@ -43,6 +43,9 @@
 	}
 	ol.commentlist .children textarea {
 		width:95%;
+	}
+	.postlist li, .subpages li {
+		margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid #efefef;
 	}
 }
 
@@ -86,6 +89,18 @@
 	}
 	.masonry article .article-wrapper {
 		padding:0; box-shadow:none; border:0; border-radius:none;
+	}
+	.testimonials li {
+		background:#f8f8f8; padding:10px; margin-bottom:10px; border-radius:5px;
+	}
+	.testimonials li .name { 
+		margin:0 15px 0 0;
+	}
+	.testimonials li blockquote {
+		margin-left:0; background:none; padding:0; margin-bottom:0;
+	}
+	.testimonials li blockquote:after {
+		display:none;
 	}
 	.tabs .tab_nav li {
 		float:none; margin-right:0;

@@ -3,6 +3,7 @@
 /* =Includes
 ----------------------------------------------- */
 require_once (CYON_FILEPATH . '/includes/functions/slides.php');			// Slides
+require_once (CYON_FILEPATH . '/includes/functions/testimonials.php');		// Testimonials
 
 /* =Breadcrumbs
 ----------------------------------------------- */
@@ -238,9 +239,6 @@ function cyon_header_js_css_hook(){ ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			
-			// Only load content if jquery is loaded
-			setTimeout(jQuery('#page').fadeIn(), 3000);
-
 			// Uniform Support
 			jQuery('.cyonform input[type=radio], .cyonform input[type=checkbox], .cyonform input[type=file], .cyonform select:not(#rating)').uniform();
 				<?php if (is_plugin_active('woocommerce/woocommerce.php')) { ?>
@@ -454,6 +452,16 @@ add_action('wp_head','cyon_header_meta',1);
 
 /* =Header hooks
 ----------------------------------------------- */
+
+/* Check for jQuery running*/
+function cyon_check_jquery(){ ?>
+	<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {  
+			document.write("foo");
+		}
+	</script>
+<?php }
+add_action('cyon_head','cyon_header_columns_hook',5);
 
 /* Top Columns */
 function cyon_header_columns_hook(){

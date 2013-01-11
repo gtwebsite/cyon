@@ -58,6 +58,7 @@ class CyonMediaWidget extends WP_Widget {
 			echo '<div class="flex-video flex-video-vimeo"><iframe src="http://player.vimeo.com/video/'.get_vimeo_id($instance['text']).'" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>';
 		}elseif($domain['scheme']=='rtmp'){
 			echo '<video type="video/flv" src="'.$instance['text'].'" autoplay style="width:100%; height:100%;" /></video>';
+			add_action('wp_footer','cyon_video_audio_js_css',20);
 		}else{
 			$file = pathinfo($instance['text']);
 			$sources = explode(",", $instance['text']);
@@ -96,11 +97,11 @@ class CyonMediaWidget extends WP_Widget {
 				}
 				echo '</video>';
 			}
+			add_action('wp_footer','cyon_video_audio_js_css',20);
 		}
 		// End widget
 		echo '</div>';
 		echo $after_widget;
-		add_action('wp_footer','cyon_video_audio_js_css',20);
 	}
 }
 

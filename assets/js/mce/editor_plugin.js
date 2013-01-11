@@ -12,33 +12,35 @@
 							var a=this;d.onRenderMenu.add(function(c,b){
 								
 								c=b.addMenu({title:"Boxes"});
-										a.addImmediate(c,"Box", '[box icon="" color="" close="no" title="Title Here" width="" align="" quote="no"]Some content here.[/box]' );
 										a.addImmediate(c,"Accordion", '[accordion title="Title Here"]Some content here.[/accordion]');
-										a.addImmediate(c,"Toggle", '[toggle title="Title Here"]Some content here.[/toggle]' );
+										a.addImmediate(c,"Box", '[box icon="" color="" close="no" title="Title Here" width="" align="" quote="no"]Some content here.[/box]' );
 										a.addImmediate(c,"Tab Group",'[tabs]<br/>[tab title="Title Here" active="false"]Some content here.[/tab]<br/>[tab title="Title Here" active="false"]Some content here.[/tab]<br/>[/tabs]' );
 										a.addImmediate(c,"Tab Content",'[tab title="Title Here" active="false"]Some content here.[/tab]' );
+										a.addImmediate(c,"Toggle", '[toggle title="Title Here"]Some content here.[/toggle]' );
 										a.addImmediate(c,"Tooltip", '[tip text="Some content here."]Hover here.[/tip]');
 								
 								c=b.addMenu({title:"Snippets"});
-										a.addImmediate(c,"Sub Pages", '[subpages excerpt="yes" thumbnail="no" id="" cols=""]' );
-										a.addImmediate(c,"Blog", '[blog excerpt="yes" thumbnail="yes" cols="" items="4" cat_id="1"]' );
-										a.addImmediate(c,"Newsletter", '[newsletter name="yes" email=""]Get the latest tips, news, and special offers delivered to your inbox.[/newsletter]' );
+										a.addImmediate(c,"Blog List", '[blog excerpt="yes" thumbnail="yes" cols="" items="4" cat_id="1"]' );
 										a.addImmediate(c,"Contact Form", '[contact email=""]Contact us for more information about our services[/contact]' );
+										a.addImmediate(c,"Newsletter Form", '[newsletter name="yes" email=""]Get the latest tips, news, and special offers delivered to your inbox.[/newsletter]' );
+										a.addImmediate(c,"Sitemap", '[sitemap]' );
+										a.addImmediate(c,"Sub Pages", '[subpages excerpt="yes" thumbnail="no" id="" cols=""]' );
+										a.addImmediate(c,"Testimonials", '[testimonials id="" style="list"]' );
 
 								c=b.addMenu({title:"Media"});
-										a.addImmediate(c,"Video",'[video src="" width="" height="" poster="" subtitles="" chapters=""]' );
 										a.addImmediate(c,"Audio",'[audio src="" width=""]' );
-										a.addImmediate(c,"Map", '[map width="" height="350" zoom="14" long="" lat="" address="New York, USA"]Some content here.[/map]');
+										a.addImmediate(c,"Video",'[video src="" width="" height="" poster="" subtitles="" chapters=""]' );
 										a.addImmediate(c,"Iframe", '[iframe width="100%" height="350" scroll="true" url=""]');
+										a.addImmediate(c,"Map", '[map width="" height="350" zoom="14" long="" lat="" address="New York, USA"]Some content here.[/map]');
 
 								c=b.addMenu({title:"Typo"});
-										a.addImmediate(c,"Header",'[header size="" icon=""]Title Here[/header]' );
+										a.addImmediate(c,"Back to Top",'[backtotop style=""]' );
 										a.addImmediate(c,"Button",'[button color="" size="" icon="" url="" title=""]Button Name[/button]' );
+										a.addImmediate(c,"Code",'[code inline="yes"][/code]' );
+										a.addImmediate(c,"Header",'[header size="" icon=""]Title Here[/header]' );
+										a.addImmediate(c,"Horizontal Line",'[line style=""]' );
 										a.addImmediate(c,"Icon",'[icon element="" icon="" title="" url=""]Text here[/icon]' );
 										a.addImmediate(c,"Lists",'[lists icon="" cols="" size=""]<br/>[list icon=""]Item name[/list]<br/>[list icon=""]Item name[/list]<br/>[/lists]' );
-										a.addImmediate(c,"Code",'[code inline="yes"][/code]' );
-										a.addImmediate(c,"Horizontal Line",'[line style=""]' );
-										a.addImmediate(c,"Back to Top",'[backtotop style=""]' );
 
 								c=b.addMenu({title:"Table"});
 										a.addImmediate(c,"Table",'[table caption="" headers="Column 1|Column 2" footers="Footer 1|Footer 2"]<br/>[row color=""]<br/>[data color=""]Data 1[/data]<br/>[data color=""]Data 2[/data]<br/>[/row]<br/>[/table]' );

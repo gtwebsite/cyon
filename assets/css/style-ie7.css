@@ -47,7 +47,7 @@ a.btn.has-icon2x span, a.btn.has-icon span {
 
 /* Clearers */
 
-#top, #footer-buckets, .wrapper, nav:after, #home-buckets, .widget-content, .entry-content, article, .page-content #bottom, .navigation, dl, .widget li, .widget > div, .products,  .widget > form, .wp-pagenavi, .grid, #author-info, .box, .cyon-tabs .tab_nav,
+#top, #footer-buckets, .wrapper, nav:after, #home-buckets, .widget-content, .entry-content, article, .page-content #bottom, .navigation, dl, .widget li, .widget > div, .products,  .widget > form, .wp-pagenavi, .grid, #author-info, .box, .cyon-tabs .tab_nav, .testimonials, .testimonials li,
 .woocommerce_tabs ul, .type-product, .single_variation_wrap, .type-product .thumbnails, #review_form form p, #respond p, .col2-set, #order_review, .gform_wrapper .gform_fields > li, .gform_wrapper .ginput_complex, .tabs .tab_nav, .clearfix, .category-archive-meta {
 	zoom:1!important;
 }
