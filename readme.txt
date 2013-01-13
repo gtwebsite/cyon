@@ -12,6 +12,10 @@ Widgets - to which page appear
 
 == Changelog ==
 
+= 1.3.4 =
+* Updated Ad widget
+* Fixed few css/php issues
+
 = 1.3.3 =
 * Added Testimonial widget / shortcode
 * Added Submenu widget

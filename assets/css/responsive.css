@@ -4,6 +4,9 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px){
+	#page { 
+		min-width:auto;
+	}
 	.wrapper {
 		max-width:768px;
 	}
@@ -24,7 +27,7 @@
 		display:block;
 	}
 	#page {
-		width:auto; max-width:767px;
+		width:auto; max-width:767px; min-width:auto;
 	}
 	.widget, #secondary, .general-2right #primary, .general-2left #primary, .wrapper, #branding hgroup, #access, .row-fluid article, .postlist li, .cyon-sitemap div, .subpages li {
 		width:auto!important; float:none!important; margin-left:0!important; text-align:left;

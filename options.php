@@ -1,4 +1,6 @@
 <?php
+if ( !defined('ABSPATH') )
+	die('-1');
 /**
  * A unique identifier is defined to store the options in the database and reference them from the theme.
  * By default it uses the theme name, in lowercase and without spaces, but this can be changed if needed.
@@ -22,7 +24,11 @@ function optionsframework_option_name() {
 
 add_action('optionsframework_custom_scripts', 'optionsframework_custom_scripts');
 
-function optionsframework_custom_scripts() { ?>
+function optionsframework_custom_scripts() {
+		global $pagenow;
+		if ( 'admin.php' == $pagenow && $_GET['page'] == 'gtw-theme-settings' ) {
+
+?>
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
@@ -228,7 +234,7 @@ jQuery(document).ready(function() {
 });
 </script>
  
-<?php
+<?php }
 }
 
 
