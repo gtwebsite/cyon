@@ -123,7 +123,7 @@ wp_register_script('fancybox_buttons', get_template_directory_uri().'/assets/js/
 wp_register_script('mousewheel', get_template_directory_uri().'/assets/js/jquery.mousewheel-3.0.6.pack.js',array('jquery'),'3.0.6');
 wp_register_script('easing', get_template_directory_uri().'/assets/js/jquery.easing.js',array('jquery'),'1.3');
 wp_register_script('flexislider',get_template_directory_uri().'/assets/js/jquery.flexslider-min.js',array('jquery'),'2.1',false);
-wp_register_script('supersized',get_template_directory_uri().'/assets/js/jquery.supersized.min.js',array('jquery'),'3.2.1',false);
+wp_register_script('supersized',get_template_directory_uri().'/assets/js/jquery.supersized.min.js',array('jquery'),'3.2.7',false);
 wp_register_script('tubular',get_template_directory_uri().'/assets/js/jquery.tubular.js',array('jquery'),'0.2.1',false);
 wp_register_script('cloud_zoom',get_template_directory_uri().'/assets/js/jquery.cloudzoom.js',array('jquery'),'2.0.0',false);
 wp_register_script('uniform',get_template_directory_uri().'/assets/js/jquery.uniform.min.js',array('jquery'),'1.8.0',false);
@@ -137,7 +137,7 @@ wp_register_style('fancybox_css', get_template_directory_uri().'/assets/css/jque
 wp_register_style('fancybox_thumbs_css', get_template_directory_uri().'/assets/css/jquery.fancybox-thumbs.css',array(),'1.0.4');
 wp_register_style('fancybox_buttons_css', get_template_directory_uri().'/assets/css/jquery.fancybox-buttons.css',array(),'1.0.2');
 wp_register_style('flexislider_css',get_template_directory_uri().'/assets/css/flexslider.css',array(),'2.1',false);
-wp_register_style('supersized_css',get_template_directory_uri().'/assets/css/supersized.css',array(),'3.2.1',false);
+wp_register_style('supersized_css',get_template_directory_uri().'/assets/css/supersized.css',array(),'3.2.7',false);
 wp_register_style('cloud_zoom_css',get_template_directory_uri().'/assets/css/cloudzoom.css',array(),'2.0.0',false);
 wp_register_style('uniform_css',get_template_directory_uri().'/assets/css/uniform.css',array(),'1.6.0',false);
 wp_register_style('mediaelement_css',get_template_directory_uri().'/assets/css/mediaelementplayer.css',array(),'1.0.0',false);

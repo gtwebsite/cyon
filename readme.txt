@@ -14,6 +14,8 @@ Widgets - to which page appear
 
 = 1.3.4 =
 * Updated Ad widget
+* Updated Supersized 3.2.7
+* Added CSS3 Transitions
 * Fixed few css/php issues
 
 = 1.3.3 =

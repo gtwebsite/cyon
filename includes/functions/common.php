@@ -115,6 +115,7 @@ function cyon_common_scripts(){
 	/* Supersized */
 	if(of_get_option('background_style')=='full'){
 		wp_enqueue_script('supersized');
+		wp_enqueue_script('easing');
 		wp_enqueue_style('supersized_css');
 	}
 
@@ -321,8 +322,8 @@ function cyon_header_js_css_hook(){ ?>
 			jQuery(".fancybox-group").fancybox({
 				openEffect	: 'elastic',
 				closeEffect	: 'elastic',
-				prevEffect : 'none',
-				nextEffect : 'none',
+				prevEffect : 'fade',
+				nextEffect : 'fade',
 				closeBtn  : false,
 				helpers : {
 					title : {
@@ -338,8 +339,8 @@ function cyon_header_js_css_hook(){ ?>
 			jQuery(".fancybox-group").fancybox({
 				openEffect	: 'elastic',
 				closeEffect	: 'elastic',
-				prevEffect : 'none',
-				nextEffect : 'none',
+				prevEffect : 'fade',
+				nextEffect : 'fade',
 				closeBtn  : false,
 				arrows    : false,
 				nextClick : true,
@@ -733,11 +734,11 @@ function cyon_post_content_featured_image_content(){
 			add_action ( 'wp_footer', 'cyon_header_banner_js_css');
 			add_action ( 'wp_footer', 'cyon_footer_banner_common_hook');
 	?>	<div class="entry-featured-image">
-			<span class="status-box"><span class="icon-box icon2x-camera"></span></span>
 			<div class="flexslider"><ul class="slides">
-			<?php $images = rwmb_meta( 'cyon_gallery_images', 'type=image&size='.of_get_option('content_thumbnail_size') );
+			<?php 
+				$images = rwmb_meta( 'cyon_gallery_images', 'type=image&size='.of_get_option('content_thumbnail_size') );
 			foreach ( $images as $image ){ ?>
-				<li><a href="<?php echo the_permalink(); ?>"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>" /></a></li>
+				<li><a href="<?php echo $image['full_url']; ?>" class="fancybox-group" rel="images-<?php the_ID(); ?>"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>" /><span class="status-box"><span class="icon-box icon2x-camera"></span></span></a></li>
 			<?php } ?>
 			</ul></div>
 		</div>

@@ -43,6 +43,10 @@ body {
 
 a {
 	color:#1e7ec8; text-decoration:none;
+	-webkit-transition:color .2s linear;
+	-moz-transition:color .2s linear;
+	-o-transition:color .2s linear;
+	transition:color .2s linear;
 }
 a:hover {
 	color:#c1460a;
@@ -381,6 +385,11 @@ article:last-child {
 }
 .entry-featured-image span.status-box {
 	position:absolute; top:0; right:0; background:url(assets/images/background.png); display:block; width:48px; height:48px; opacity:.6; filter:alpha(opacity=60); z-index:10;
+	-webkit-transition:opacity .2s linear;
+	-moz-transition:opacity .2s linear;
+	-o-transition:opacity .2s linear;
+	transition:opacity .2s linear;
+	
 }
 .entry-featured-image span.status-box span {
 	background-image:url(assets/images/icons-white.png); opacity:.4; filter:alpha(opacity=40); position:relative; left:12px; top:-1px;
@@ -532,7 +541,7 @@ p.nocomments {
 	margin:0 2px; margin-left:0;
 }
 .flexslider .slides li {
-	margin-left:0;
+	margin-left:0; position:relative;
 }
 .captionlocation1 .flex-caption {
 	left:inherit; padding:15px; width:320px;
@@ -1632,6 +1641,10 @@ span.hastip, em.hastip, strong.hastip {
 		}
 		#access ul.menu > li > a, #access .menu > ul > li > a {
 			display:block; height:30px; line-height:30px; padding:0 20px; white-space:nowrap;
+			-webkit-transition:background-color .2s linear;
+			-moz-transition:background-color .2s linear;
+			-o-transition:background-color .2s linear;
+			transition:background-color .2s linear;
 		}
 		#access ul.menu > li a:hover, #access ul.menu li:hover > a, #access ul.menu li.current-menu-item > a, #access ul.menu > li.current-menu-parent > a,
 		#access .menu > ul > li a:hover, #access .menu > ul > li:hover > a, #access .menu > ul > li.current-menu-item > a, #access .menu > ul > li.current-menu-parent > a, #access .menu > ul > li.current_page_item > a {
@@ -1652,6 +1665,10 @@ span.hastip, em.hastip, strong.hastip {
 		}
 		#access ul.menu > li > ul > li a, #access .menu > ul > li > ul > li a {
 			background:#fff; display:block; width:160px; padding:5px 10px; border-bottom:1px solid #efefef;
+			-webkit-transition:background-color .2s linear;
+			-moz-transition:background-color .2s linear;
+			-o-transition:background-color .2s linear;
+			transition:background-color .2s linear;
 		}
 		/* Third Level */
 		#access ul.menu > li > ul > li > ul, #access .menu > ul > li > ul > li > ul {
