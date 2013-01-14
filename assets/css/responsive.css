@@ -5,7 +5,7 @@
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px){
 	#page { 
-		min-width:auto;
+		min-width:100%;
 	}
 	.wrapper {
 		max-width:768px;
@@ -17,6 +17,9 @@
 
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width:767px) {
+	#page { 
+		min-width:100%;
+	}
 	#access ul.menu {
 		display:none;
 	}
@@ -54,6 +57,9 @@
 
 /* Landscape phones and down */
 @media only screen and (max-width:480px) {
+	body { 
+		-webkit-text-size-adjust: 100%
+	}
 	#top div, #top p, #bottom .copyright, #access2 {
 		float:none; text-align:left; width:auto; margin-bottom:10px; margin-left:0; text-align:left;
 	}

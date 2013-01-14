@@ -235,7 +235,6 @@ function cyon_header_js_css_hook(){ ?>
 	</style>
 	<?php } ?>
 
-
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			
@@ -290,14 +289,6 @@ function cyon_header_js_css_hook(){ ?>
 					jQuery('#backtotop').fadeIn();
 				}
 			}
-			<?php } ?>
-			<?php if(CYON_BLOG_LIST_MASONRY==1){ ?>
-			jQuery('.masonry').masonry({
-				itemSelector: 'article',
-				columnWidth: function( containerWidth ) {
-					return containerWidth / <?php echo CYON_BLOG_LIST_LAYOUT; ?>;
-				}
-			});
 			<?php } ?>
 
 			<?php if(of_get_option('lightbox_activate')==1){ ?>
@@ -387,6 +378,18 @@ function cyon_header_js_css_hook(){ ?>
 			
 		});
 	</script> 
+	<?php if(CYON_BLOG_LIST_MASONRY==1){ ?>
+	<script type="text/javascript">
+		jQuery(window).load(function(){
+			jQuery('.masonry').masonry({
+				itemSelector: 'article',
+				columnWidth: function( containerWidth ) {
+					return containerWidth / <?php echo CYON_BLOG_LIST_LAYOUT; ?>;
+				}
+			});
+		});
+	</script> 
+	<?php } ?>
 <?php
  	echo of_get_option('header_scripts');
 }
@@ -734,7 +737,7 @@ function cyon_post_content_featured_image_content(){
 			<div class="flexslider"><ul class="slides">
 			<?php $images = rwmb_meta( 'cyon_gallery_images', 'type=image&size='.of_get_option('content_thumbnail_size') );
 			foreach ( $images as $image ){ ?>
-				<li><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>" /></li>
+				<li><a href="<?php echo the_permalink(); ?>"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>" /></a></li>
 			<?php } ?>
 			</ul></div>
 		</div>

@@ -121,6 +121,7 @@ wp_register_script('fancybox_thumbs', get_template_directory_uri().'/assets/js/j
 wp_register_script('fancybox_media', get_template_directory_uri().'/assets/js/jquery.fancybox-media.js',array('fancybox'),'1.0.0');
 wp_register_script('fancybox_buttons', get_template_directory_uri().'/assets/js/jquery.fancybox-buttons.js',array('fancybox'),'1.0.2');
 wp_register_script('mousewheel', get_template_directory_uri().'/assets/js/jquery.mousewheel-3.0.6.pack.js',array('jquery'),'3.0.6');
+wp_register_script('easing', get_template_directory_uri().'/assets/js/jquery.easing.js',array('jquery'),'1.3');
 wp_register_script('flexislider',get_template_directory_uri().'/assets/js/jquery.flexslider-min.js',array('jquery'),'2.1',false);
 wp_register_script('supersized',get_template_directory_uri().'/assets/js/jquery.supersized.min.js',array('jquery'),'3.2.1',false);
 wp_register_script('tubular',get_template_directory_uri().'/assets/js/jquery.tubular.js',array('jquery'),'0.2.1',false);
