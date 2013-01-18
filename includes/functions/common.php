@@ -228,11 +228,11 @@ function cyon_header_js_css_hook(){ ?>
 	<!-- Google Fonts -->	
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=<?php echo of_get_option('secondary_font_google'); ?>" />
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-title, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2, .type-product h1, .type-product h2, .upsells h2 { font-family:<?php echo of_get_option('secondary_font_google'); ?>; }
 	</style>
 	<?php }elseif(of_get_option('secondary_font')!='default' && of_get_option('secondary_font')!='google'){ ?>
 	<style type="text/css">
-		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-header h1, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
+		.page-header h1, .category-header h1, article h2, .widget h3, #branding hgroup h1, #slider h3, .entry-header h1, .page-title, .page-content h1, .page-content h2, .page-content h3, .page-content h4, .products h2, .type-product h1, .type-product h2, .upsells h2 { font-family:<?php echo of_get_option('secondary_font'); ?>; }
 	</style>
 	<?php } ?>
 
@@ -394,7 +394,7 @@ function cyon_header_js_css_hook(){ ?>
 <?php
  	echo of_get_option('header_scripts');
 }
-add_action ( 'wp_head', 'cyon_header_js_css_hook',100);
+add_action ( 'wp_head', 'cyon_header_js_css_hook',200);
 
 function cyon_header_dark(){ ?>
 	<?php if(of_get_option('theme_color')=='dark'){ ?>
