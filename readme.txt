@@ -13,6 +13,7 @@ Widgets - to which page appear
 == Changelog ==
 
 = 1.3.4 =
+* Updated breadcrumb
 * Updated Ad widget
 * Updated Supersized 3.2.7
 * Added CSS3 Transitions

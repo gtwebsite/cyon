@@ -18,19 +18,25 @@ function cyon_breadcrumb() {
 			}
 			?> </div> <?php
 		}else{
+			$pretext = '<span class="pretext">&raquo;</span>';
 			echo '<dl id="breadcrumb"  itemprop="breadcrumb">';
 			echo '<dt>'.__('You are here').':</dt>';
 			echo '<dd><a href="'.get_option('home').'">'.__('Home').'</a></dd>';
 			if (is_category() || is_single()) {
-				$cat_title = get_the_category('title_li=');
+				$cat_title = get_the_category();
+				$post_type = get_post_type_object(get_post_type());
 				if(is_category()){
-					echo '<dd>&raquo; '.$cat_title[0]->cat_name.'</dd>';
+					echo '<dd>'.$pretext.' '.$cat_title[0]->cat_name.'</dd>';
+				}elseif($cat_title[0]->cat_name=='') {
+					echo '<dd>'.$pretext.' <a href="'.get_post_type_archive_link($post_type->name).'">'.$post_type->labels->name.'</a></dd>';
 				}else{
-					echo '<dd>&raquo; <a href="'.get_category_link( $cat_title[0]->cat_ID).'">'.$cat_title[0]->cat_name.'</a></dd>';
+					echo '<dd>'.$pretext.' <a href="'.get_category_link( $cat_title[0]->cat_ID).'">'.$cat_title[0]->cat_name.'</a></dd>';
 				}
 				if (is_single()) {
-					echo '<dd>&raquo; '.get_the_title().'</dd>';
+					echo '<dd>'.$pretext.' '.get_the_title().'</dd>';
 				}
+			} elseif (is_post_type_archive()) {
+					echo '<dd>'.$pretext.' '.post_type_archive_title('', false).'</dd>';
 			} elseif (is_page()) {
 				$page=get_page_by_title(get_the_title());
 				if($page->post_parent!=0){
@@ -38,37 +44,39 @@ function cyon_breadcrumb() {
 					$breadcrumbs = array();
 					while ($parent_id) {
 						$spage = get_page($parent_id);
-						$breadcrumbs[] = '<dd>&raquo; <a href="' . get_permalink($spage->ID) . '">' . get_the_title($spage->ID) . '</a></dd>';
+						$breadcrumbs[] = '<dd>'.$pretext.' <a href="' . get_permalink($spage->ID) . '">' . get_the_title($spage->ID) . '</a></dd>';
 						$parent_id  = $spage->post_parent;
 					}
 					$breadcrumbs = array_reverse($breadcrumbs);
 					for ($i = 0; $i < count($breadcrumbs); $i++) {
 						echo $breadcrumbs[$i];
 					}
-					//echo '<dd>&raquo; <a href="'.get_permalink($page->post_parent).'">'.get_the_title($page->post_parent).'</a></dd>';
+					//echo '<dd>'.$pretext.' <a href="'.get_permalink($page->post_parent).'">'.get_the_title($page->post_parent).'</a></dd>';
 				}
-				echo '<dd>&raquo; '.get_the_title().'</dd>';
+				echo '<dd>'.$pretext.' '.get_the_title().'</dd>';
 			}elseif (is_home()){
-				echo '<dd>&raquo; '.get_the_title(get_option('page_for_posts', true)).'</dd>';
+				echo '<dd>'.$pretext.' '.get_the_title(get_option('page_for_posts', true)).'</dd>';
+			}elseif (is_front_page()){
+				echo '<dd>'.$pretext.' ddd'.get_the_title(get_option('page_for_posts', true)).'</dd>';
 			}elseif (is_search()){
-				echo '<dd>&raquo; Search results for: '.get_search_query().'</dd>';
+				echo '<dd>'.$pretext.' Search results for: '.get_search_query().'</dd>';
 			}elseif (is_day()){
-				echo '<dd>&raquo; <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></dd>';
-				echo '<dd>&raquo; <a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a></dd>';
-				echo '<dd>&raquo; '.get_the_time('d').'</dd>';
+				echo '<dd>'.$pretext.' <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></dd>';
+				echo '<dd>'.$pretext.' <a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a></dd>';
+				echo '<dd>'.$pretext.' '.get_the_time('d').'</dd>';
 			}elseif (is_month()){
-				echo '<dd>&raquo; <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></dd>';
-				echo '<dd>&raquo; '.get_the_time('F').'</dd>';
+				echo '<dd>'.$pretext.' <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></dd>';
+				echo '<dd>'.$pretext.' '.get_the_time('F').'</dd>';
 			}elseif (is_year()){
-				echo '<dd>&raquo; '.get_the_time('Y').'</dd>';
+				echo '<dd>'.$pretext.' '.get_the_time('Y').'</dd>';
 			}elseif (is_author()){
 				global $author;
 				$userdata = get_userdata($author);
-				echo '<dd>&raquo; '.__('Articles posted by').': '.$userdata->display_name.'</dd>';
+				echo '<dd>'.$pretext.' '.__('Articles posted by').': '.$userdata->display_name.'</dd>';
 			}elseif (is_tag()){
-				echo '<dd>&raquo; '.__('Posts tagged').': '.single_tag_title('', false).'</dd>';
+				echo '<dd>'.$pretext.' '.__('Posts tagged').': '.single_tag_title('', false).'</dd>';
 			}elseif (is_404()){
-				echo '<dd>&raquo; '.__('Error 404').'</dd>';
+				echo '<dd>'.$pretext.' '.__('Error 404').'</dd>';
 			}
 			echo '</dl>';
 		}

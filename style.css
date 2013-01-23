@@ -1726,8 +1726,14 @@ span.hastip, em.hastip, strong.hastip {
 		#breadcrumb {
 			margin-bottom:10px;
 		}
+		#breadcrumb span.pretext {
+			padding-right:3px; position:relative; top:-1px;
+		}
+		#breadcrumb dt {
+			color:#888;
+		}
 		#breadcrumb dt, #breadcrumb dd {
-			display:inline; padding-right:10px;
+			display:inline; padding-right:5px;
 		}
 	
 	#secondary {
