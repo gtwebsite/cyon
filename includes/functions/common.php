@@ -244,6 +244,18 @@ function cyon_header_js_css_hook(){ ?>
 	</style>
 	<?php } ?>
 
+	<?php if(of_get_option('menu_font')=='google'){ ?>
+	<!-- Google Fonts -->	
+	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=<?php echo of_get_option('menu_font_google'); ?>" />
+	<style type="text/css">
+		#access > ul > li > a { font-family:<?php echo of_get_option('menu_font_google'); ?>; }
+	</style>
+	<?php }elseif(of_get_option('menu_font')!='default' && of_get_option('menu_font')!='google'){ ?>
+	<style type="text/css">
+		#access > ul > li > a { font-family:<?php echo of_get_option('menu_font'); ?>; }
+	</style>
+	<?php } ?>
+
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			

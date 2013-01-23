@@ -13,10 +13,11 @@ Widgets - to which page appear
 == Changelog ==
 
 = 1.3.4 =
+* Added CSS3 Transitions
+* Added Menu font
 * Updated breadcrumb
 * Updated Ad widget
 * Updated Supersized 3.2.7
-* Added CSS3 Transitions
 * Fixed few css/php issues
 
 = 1.3.3 =

@@ -125,6 +125,20 @@ jQuery(document).ready(function() {
 	jQuery(document).ready(checksecondaryfont);
 	jQuery('#section-secondary_font select').change(checksecondaryfont);
 
+
+	var checkmenufont = function() {
+		var pfvalue = jQuery('#section-menu_font option:selected').val();
+		if(pfvalue=='google'){
+			jQuery('#section-menu_font_google').show();
+		}else{
+			jQuery('#section-menu_font_google').fadeOut();
+		}
+	}
+
+	jQuery(document).ready(checkmenufont);
+	jQuery('#section-menu_font select').change(checkmenufont);
+	jQuery('#section-menu_font_google').append(sampletext)
+
 	jQuery('.googlefont').each(function(index){
 		jQuery('head').append('<link href="http://fonts.googleapis.com/css?family=' + jQuery(this).find('select option:selected').text() +'" rel="stylesheet" class="font'+ index +'" type="text/css" />');
 		jQuery(this).find('.sampletext').css('font-family',jQuery(this).find('select option:selected').text());
@@ -400,6 +414,21 @@ function optionsframework_options() {
 
 	$options[] = array( 'name'		=> __( 'Google Font as Secondary','cyon' ),
 						'id' 		=> 'secondary_font_google',
+						'desc'		=> '',
+						'std' 		=> 'Droid Sans',
+						'class'		=> 'hidden googlefont',
+						'type' 		=> 'select',
+						'options'	=> $google_fonts_array);
+
+	$options[] = array( 'name' 		=> __('Main Navigation Font','cyon'),
+						'desc' 		=> __('Font use for Main Navigation','cyon'),
+						'id' 		=> 'menu_font',
+						'std'		=> 'default',
+						'type' 		=> 'select',
+						'options' 	=> $custom_fonts);			
+
+	$options[] = array( 'name'		=> __( 'Google Font as Main Navigation','cyon' ),
+						'id' 		=> 'menu_font_google',
 						'desc'		=> '',
 						'std' 		=> 'Droid Sans',
 						'class'		=> 'hidden googlefont',
