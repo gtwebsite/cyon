@@ -762,6 +762,24 @@ p.nocomments {
 	display:inline;
 }
 
+/* =Gallery Widget
+----------------------------------------------- */
+.cyon-image-gallery .columns .thumbnail {
+	float:left; margin-bottom:2px;
+}
+.cyon-image-gallery .columns .thumbnail img {
+	display:block;
+}
+.cyon-image-gallery .columns .first, .cyon-image-gallery .columns .thumbnail:first-child {
+	margin-left:0; clear:both;
+}
+.cyon-image-gallery .columns2 .thumbnail {
+	width:49%; margin-left:1%;
+}
+.cyon-image-gallery .columns3 .thumbnail {
+	width:32.4%; margin-left:1.3%;
+}
+
 /* =Tab Widget
 ----------------------------------------------- */
 .cyon-tabs {
@@ -1478,7 +1496,7 @@ span.hastip, em.hastip, strong.hastip {
 	text-align:right;
 }
 
-/* =Gallery
+/* =Page Gallery
 ----------------------------------------------- */
 .gallery dl { 
 	position:relative; float:left; text-align:center; background:#000 url(assets/images/zoom.png) 50% 50% no-repeat; width:100%; margin-bottom:5px; overflow:hidden;

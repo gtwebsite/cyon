@@ -7,6 +7,7 @@ if ( !defined('ABSPATH') )
 //require_once (CYON_FILEPATH . '/includes/widgets/helloworld.php');		// Sample Widget that says "Hello World"
 require_once (CYON_FILEPATH . '/includes/widgets/twitterupdate.php');		// Twitter updates
 require_once (CYON_FILEPATH . '/includes/widgets/videogallery.php');		// Videos gallery
+require_once (CYON_FILEPATH . '/includes/widgets/imagegallery.php');		// Image gallery
 require_once (CYON_FILEPATH . '/includes/widgets/flickerpic.php');			// Flickr gallery
 require_once (CYON_FILEPATH . '/includes/widgets/facebooklikebox.php');		// Facebook Like Box
 require_once (CYON_FILEPATH . '/includes/widgets/map.php');					// Map

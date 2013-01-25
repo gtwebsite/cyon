@@ -71,7 +71,7 @@ class CyonFbWidget extends WP_Widget {
 			echo $before_title . $title . $after_title;;
 		}
 		echo '<div class="widget-content">';
-		echo '<iframe src="//www.facebook.com/plugins/likebox.php?href='.$url_page.'&amp;height='.$height.'&amp;width=auto&amp;colorscheme='.of_get_option('theme_color').'&amp;show_faces='.$faces.'&amp;border_color=%23'.$border_color.'&amp;stream='.$stream.'&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:'.$height.'px;" allowTransparency="true"></iframe>';
+		echo '<div style="width:100%; height:'.$height.'px; overflow:visible"><iframe src="//www.facebook.com/plugins/likebox.php?href='.$url_page.'&amp;height='.$height.'&amp;width=200&amp;colorscheme='.of_get_option('theme_color').'&amp;show_faces='.$faces.'&amp;border_color=%23'.$border_color.'&amp;stream='.$stream.'&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:'.$height.'px;" allowTransparency="true"></iframe></div>';
     	// Widget code here
  
 		// End widget

@@ -228,7 +228,7 @@ $cyon_meta_boxes[] = array(
 	'context' => 'normal', // normal, advanced, side (optional)
 	'fields' => array(
 		array(
-			'name' => __('Images to show on listing'),
+			'name' => __('Images Excerpt'),
 			'id' => $prefix .'gallery_images',
 			'type' => 'thickbox_image',
 			'std' => ''

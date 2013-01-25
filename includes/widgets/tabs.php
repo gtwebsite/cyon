@@ -81,8 +81,8 @@ class CyonTabsWidget extends WP_Widget {
 					}
 					var current = jQuery(this).attr('href');
 					if(jQuery(jQuery(this).attr('href')).is(':hidden')){
-						jQuery(prev).slideUp('slow', function(){
-							jQuery(current).slideDown(500);
+						jQuery(prev).stop().slideUp('slow', function(){
+							jQuery(current).stop().slideDown(500);
 						});
 					}
 					event.preventDefault();

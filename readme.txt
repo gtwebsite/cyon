@@ -15,6 +15,8 @@ Widgets - to which page appear
 = 1.3.4 =
 * Added CSS3 Transitions
 * Added Menu font
+* Added Gallery widget
+* Remove Cyon slider/banner
 * Updated breadcrumb
 * Updated Ad widget
 * Updated Supersized 3.2.7

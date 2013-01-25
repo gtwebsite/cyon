@@ -22,7 +22,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="<?php if(of_get_option('responsive')==1){ echo 'width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;'; }else{ echo 'width=1024'; } ?>">
+<meta name="viewport" content="<?php if(of_get_option('responsive')==1){ echo 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'; }else{ echo 'width=1024'; } ?>">
 <?php if(of_get_option('responsive')==1){ echo '<meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-status-bar-style" content="black"/>'; } ?>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
 <title><?php wp_title(''); ?></title>
