@@ -1610,7 +1610,7 @@ span.hastip, em.hastip, strong.hastip {
 /* =Layout
 ----------------------------------------------- */
 #page { 
-	position:relative; zoom:1; z-index:3; min-width:1000px;
+	position:relative; zoom:1; z-index:3; min-width:1020px;
 }
 #branding {
 	position:relative; z-index:2;

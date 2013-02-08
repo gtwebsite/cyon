@@ -61,7 +61,7 @@ class CyonAdsWidget extends WP_Widget {
 			'ad_img_10'	=> '',
 			'ad_url_10'	=> 'http://',
 			'ad_name_10'=> '',
-			'cols'		=> '',
+			'cols'		=> 1,
 			'num'		=> 1,
 			'open'		=> 'true'
 		) );
@@ -146,7 +146,22 @@ class CyonAdsWidget extends WP_Widget {
 				}
 				$class_li = ' class="span'.$cols.$margin.'"';
 			}
-			$html .= empty($instance['ad_img_1']) ? '' : '<li'.$class_li.'><a href="'.$instance['ad_url_'.$i].'"'.$target.'><img src="'.$instance['ad_img_'.$i].'" alt="'.$instance['ad_name_'.$i].'" /> <span>'.$instance['ad_name_'.$i].'</span></a></li>';
+			$name = '';
+			if(!empty($instance['ad_name_'.$i])){
+				$name = ' <span>'.$instance['ad_name_'.$i].'</span>';
+			}
+			if(!empty($instance['ad_url_'.$i])){
+				$domain = parse_url(strtolower($instance['ad_url_'.$i]));
+				if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com'){
+					$href = 'http://www.youtube.com/embed/'.get_youtube_id($instance['ad_url_'.$i]).'?showinfo=0&amp;autoplay=1';
+					$target .= ' class="iframe"';
+				}else{
+					$href = $instance['ad_url_'.$i];
+				}
+				$html .= empty($instance['ad_img_1']) ? '' : '<li'.$class_li.'><a href="'.$href.'"'.$target.'><img src="'.$instance['ad_img_'.$i].'" alt="'.$instance['ad_name_'.$i].'" />'.$name.'</a></li>';
+			}else{
+				$html .= empty($instance['ad_img_1']) ? '' : '<li'.$class_li.'><img src="'.$instance['ad_img_'.$i].'" alt="'.$instance['ad_name_'.$i].'" />'.$name.'</li>';
+			}
 			$margin = '';
 		}
 		
@@ -217,8 +232,27 @@ class CyonAdsWidget extends WP_Widget {
 		}
 		return $imageurl;
 	}
-
 }
 
 // Adding your widget to WordPress
 add_action( 'widgets_init', create_function('', 'return register_widget("CyonAdsWidget");') );
+
+if (!function_exists('get_youtube_id')){
+	function get_youtube_id($content) {
+	
+		// find the youtube-based URL in the post
+		$urls = array();
+		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $content, $urls);
+		$youtube_url = $urls[0][0];
+	
+		// next, locate the youtube video id
+		$youtube_id = '';
+		if(strlen(trim($youtube_url)) > 0) {
+			parse_str( parse_url( $youtube_url, PHP_URL_QUERY ) );
+			$youtube_id = $v;
+		} // end if
+	
+		return $youtube_id; 
+	
+	} // end get_youtube_id
+}

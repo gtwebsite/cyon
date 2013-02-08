@@ -128,7 +128,7 @@ class CyonWoocommerceTotalCartWidget extends WP_Widget {
 
 	// Creating your widget
 	function CyonWoocommerceTotalCartWidget(){
-		$widget_ops = array('classname' => 'CyonWoocommerceTotalCartWidget', 'description' => __('Displays a total cart') );
+		$widget_ops = array('classname' => 'cyon-woo-total-cart', 'description' => __('Displays a total cart') );
 		$this->WP_Widget('CyonWoocommerceTotalCartWidget', __('Cyon WooCommerce Total Cart'), $widget_ops);
 	}
  
@@ -168,7 +168,7 @@ class CyonWoocommerceTotalCartWidget extends WP_Widget {
 		echo '<div class="widget-content">';
 		
     	// Widget code here
-		echo '<p><a class="cart-contents" href="'.$woocommerce->cart->get_cart_url().'" title="'.__('View your shopping cart', 'woothemes').'">'.sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count).' '.$woocommerce->cart->get_cart_total().'</a></p>';
+		echo '<p><a class="cart-contents" href="'.$woocommerce->cart->get_cart_url().'" title="'.__('View your shopping cart', 'woothemes').'">'.sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count).' ('.$woocommerce->cart->get_cart_total().') - '.__('View Cart').'</a></p>';
  
 		// End widget
 		echo '</div>';
@@ -180,6 +180,16 @@ class CyonWoocommerceTotalCartWidget extends WP_Widget {
 
 // Adding your widget to WordPress
 add_action( 'widgets_init', create_function('', 'return register_widget("CyonWoocommerceTotalCartWidget");') );
+
+
+/* Total Cart Shortcode
+use [woocart]
+----------------------------------------------- */
+function cyon_woocart( $atts, $content = null ) {
+	global $woocommerce;
+	return '<a class="cart-contents" href="'.$woocommerce->cart->get_cart_url().'" title="'.__('View your shopping cart', 'woothemes').'">'.sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count).' ('.$woocommerce->cart->get_cart_total().') - '.__('View Cart').'</a>';
+}
+add_shortcode('woocart','cyon_woocart');
 
 
 /* Categories Widget */

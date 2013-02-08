@@ -5,7 +5,7 @@ if ( !defined('ABSPATH') )
 /* =Includes
 ----------------------------------------------- */
 /* Meta Box */
-define( 'RWMB_URL', trailingslashit( get_stylesheet_directory_uri() . '/includes/admin/meta-box' ) );
+define( 'RWMB_URL', trailingslashit( get_template_directory_uri() . '/includes/admin/meta-box' ) );
 define( 'RWMB_DIR', trailingslashit( CYON_FILEPATH . '/includes/admin/meta-box' ) );
 require_once (RWMB_DIR . 'meta-box.php');
 
