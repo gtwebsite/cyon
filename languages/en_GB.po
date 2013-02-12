@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cyon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-12 18:36+0800\n"
-"PO-Revision-Date: 2013-02-12 18:36+0800\n"
+"POT-Creation-Date: 2013-02-13 00:23+0800\n"
+"PO-Revision-Date: 2013-02-13 00:23+0800\n"
 "Last-Translator: Archie Jereos <eightworks@yahoo.com>\n"
 "Language-Team: Gtwebsite <admin@gtwebsite.com>\n"
 "MIME-Version: 1.0\n"
@@ -1494,113 +1494,113 @@ msgstr ""
 msgid "No product categories exist."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:398
+#: ../includes/shortcodes/common.php:402
 msgid "No video source specified."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:445
+#: ../includes/shortcodes/common.php:449
 msgid "No audio source specified."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:857
+#: ../includes/shortcodes/common.php:861
 msgid "Back to top"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:884
-#: ../includes/shortcodes/common.php:987
+#: ../includes/shortcodes/common.php:888
+#: ../includes/shortcodes/common.php:991
 #: ../includes/widgets/contact-form.php:69
 #: ../includes/widgets/newsletter.php:72
 msgid "Submit"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:903
+#: ../includes/shortcodes/common.php:907
 #: ../includes/widgets/newsletter.php:88
 msgid "Please enter your email address."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:912
-#: ../includes/shortcodes/common.php:1026
+#: ../includes/shortcodes/common.php:916
+#: ../includes/shortcodes/common.php:1030
 #: ../includes/widgets/contact-form.php:105
 #: ../includes/widgets/newsletter.php:97
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:933
+#: ../includes/shortcodes/common.php:937
 #: ../includes/widgets/newsletter.php:118
 msgid "Your email has been subscribed to our mailing list."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:935
-#: ../includes/shortcodes/common.php:1051
+#: ../includes/shortcodes/common.php:939
+#: ../includes/shortcodes/common.php:1055
 #: ../includes/widgets/contact-form.php:130
 #: ../includes/widgets/newsletter.php:120
 msgid "There was a problem in the server. Please try again later."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:953
-#: ../includes/shortcodes/common.php:1074
+#: ../includes/shortcodes/common.php:957
+#: ../includes/shortcodes/common.php:1078
 #: ../includes/widgets/contact-form.php:161
 #: ../includes/widgets/newsletter.php:146
 msgid "Security check"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:955
+#: ../includes/shortcodes/common.php:959
 #: ../includes/widgets/newsletter.php:148
 msgid "New subscriber from"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:985
-#: ../includes/shortcodes/common.php:1079
+#: ../includes/shortcodes/common.php:989
+#: ../includes/shortcodes/common.php:1083
 #: ../includes/widgets/contact-form.php:67
 #: ../includes/widgets/contact-form.php:166
-#: ../includes/widgets/contact.php:32
+#: ../includes/widgets/contact.php:42
 msgid "Phone"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:986
+#: ../includes/shortcodes/common.php:990
 #: ../includes/widgets/contact-form.php:68
 msgid "Messsage"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1049
+#: ../includes/shortcodes/common.php:1053
 #: ../includes/widgets/contact-form.php:128
 msgid "Your inquiry has been sent. We will get back to you shortly"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1064
+#: ../includes/shortcodes/common.php:1068
 #: ../includes/widgets/contact-form.php:143
 msgid "Empty field(s) required."
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1076
+#: ../includes/shortcodes/common.php:1080
 #: ../includes/widgets/contact-form.php:163
 msgid "New inquiry from"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1080
+#: ../includes/shortcodes/common.php:1084
 #: ../includes/widgets/contact-form.php:68
 #: ../includes/widgets/contact-form.php:167
 msgid "Message"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1172
+#: ../includes/shortcodes/common.php:1176
 msgid "Submit Form"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1203
+#: ../includes/shortcodes/common.php:1207
 msgid "Blog Categories"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1203
-#: ../includes/shortcodes/common.php:1206
+#: ../includes/shortcodes/common.php:1207
+#: ../includes/shortcodes/common.php:1210
 msgid "feed"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1204
+#: ../includes/shortcodes/common.php:1208
 msgid "Blog Archives"
 msgstr ""
 
-#: ../includes/shortcodes/common.php:1206
+#: ../includes/shortcodes/common.php:1210
 msgid "Product Categories"
 msgstr ""
 
@@ -1620,36 +1620,42 @@ msgstr ""
 msgid "Sponsors"
 msgstr ""
 
-#: ../includes/widgets/ads.php:77
+#: ../includes/widgets/ads.php:84
 #: ../includes/widgets/flickerpic.php:32
 #: ../includes/widgets/imagegallery.php:49
 msgid "Columns"
 msgstr ""
 
-#: ../includes/widgets/ads.php:78
-msgid "Open in new window"
-msgstr ""
-
-#: ../includes/widgets/ads.php:79
+#: ../includes/widgets/ads.php:85
 msgid "Number of Ads"
 msgstr ""
 
-#: ../includes/widgets/ads.php:89
 #: ../includes/widgets/ads.php:95
 msgid "Ad"
 msgstr ""
 
-#: ../includes/widgets/ads.php:91
-#: ../includes/widgets/ads.php:95
+#: ../includes/widgets/ads.php:97
 #: ../includes/widgets/media.php:25
 msgid "Image URL"
 msgstr ""
 
-#: ../includes/widgets/ads.php:97
+#: ../includes/widgets/ads.php:101
+msgid "Target"
+msgstr ""
+
+#: ../includes/widgets/ads.php:102
+msgid "Parent window"
+msgstr ""
+
+#: ../includes/widgets/ads.php:103
+msgid "New window"
+msgstr ""
+
+#: ../includes/widgets/ads.php:107
 msgid "Target URL"
 msgstr ""
 
-#: ../includes/widgets/ads.php:215
+#: ../includes/widgets/ads.php:226
 msgid "Insert Into Widget"
 msgstr ""
 
@@ -1685,17 +1691,43 @@ msgstr ""
 msgid "Cyon Contact"
 msgstr ""
 
-#: ../includes/widgets/contact.php:31
+#: ../includes/widgets/contact.php:41
 #: ../includes/widgets/map.php:37
 msgid "Address"
 msgstr ""
 
-#: ../includes/widgets/contact.php:33
+#: ../includes/widgets/contact.php:43
 msgid "Fax"
 msgstr ""
 
-#: ../includes/widgets/contact.php:35
+#: ../includes/widgets/contact.php:45
 msgid "Website"
+msgstr ""
+
+#: ../includes/widgets/contact.php:46
+msgid "Show Map"
+msgstr ""
+
+#: ../includes/widgets/contact.php:48
+#: ../includes/widgets/facebooklikebox.php:32
+#: ../includes/widgets/iframe.php:33
+#: ../includes/widgets/map.php:33
+msgid "Height"
+msgstr ""
+
+#: ../includes/widgets/contact.php:49
+#: ../includes/widgets/map.php:34
+msgid "Zoom"
+msgstr ""
+
+#: ../includes/widgets/contact.php:50
+#: ../includes/widgets/map.php:35
+msgid "Latitude"
+msgstr ""
+
+#: ../includes/widgets/contact.php:51
+#: ../includes/widgets/map.php:36
+msgid "Longetitude"
 msgstr ""
 
 #: ../includes/widgets/facebooklikebox.php:7
@@ -1708,12 +1740,6 @@ msgstr ""
 
 #: ../includes/widgets/facebooklikebox.php:31
 msgid "URL page"
-msgstr ""
-
-#: ../includes/widgets/facebooklikebox.php:32
-#: ../includes/widgets/iframe.php:33
-#: ../includes/widgets/map.php:33
-msgid "Height"
 msgstr ""
 
 #: ../includes/widgets/facebooklikebox.php:33
@@ -1796,18 +1822,6 @@ msgstr ""
 msgid "Cyon Google Map"
 msgstr ""
 
-#: ../includes/widgets/map.php:34
-msgid "Zoom"
-msgstr ""
-
-#: ../includes/widgets/map.php:35
-msgid "Latitude"
-msgstr ""
-
-#: ../includes/widgets/map.php:36
-msgid "Longetitude"
-msgstr ""
-
 #: ../includes/widgets/media.php:7
 msgid "Displays Video/Audio player"
 msgstr ""
@@ -1853,6 +1867,18 @@ msgid "Linkedin"
 msgstr ""
 
 #: ../includes/widgets/social.php:48
+msgid "Youtube"
+msgstr ""
+
+#: ../includes/widgets/social.php:49
+msgid "Vimeo"
+msgstr ""
+
+#: ../includes/widgets/social.php:50
+msgid "Flickr"
+msgstr ""
+
+#: ../includes/widgets/social.php:52
 msgid "RSS"
 msgstr ""
 
