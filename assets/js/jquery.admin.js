@@ -70,18 +70,12 @@ jQuery(document).ready(function(){
 
 	jQuery("a.thickbox-image-widget").live('click', imageWidget.imgHandler);
 
-/*
-	jQuery('input[id^=upload_image_button]').live('click', function() {
-		formfield = jQuery('input[id^=upload_image]', jQuery(this).closest('.widget')).attr('name');
-		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-		return false;
+	jQuery('.cyon_contact_map_check').live('click', function(){
+		if(jQuery(this).is(':checked')){
+			jQuery(this).parents('form').find('fieldset').fadeIn();
+		}else{
+			jQuery(this).parents('form').find('fieldset').fadeOut();
+		}
 	});
-	window.send_to_editor = function(html) {
-		imgurl = jQuery('img',html).attr('src');
-		jQuery('#upload_image').val(imgurl);
-		tb_remove();
-	}
-*/
-	
 });
 

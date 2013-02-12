@@ -17,7 +17,12 @@ class CyonContactWidget extends WP_Widget {
 			'phone'			=> '',
 			'fax'			=> '',
 			'email'			=> '',
-			'website'		=> ''
+			'website'		=> '',
+			'map'			=> 'false',
+			'height'		=> '200',
+			'zoom'			=> '14',
+			'lat'			=> '',
+			'long'			=> ''
 		) );
 		$title = $instance['title'];
 		$address = $instance['address'];
@@ -25,14 +30,26 @@ class CyonContactWidget extends WP_Widget {
 		$fax = $instance['fax'];
 		$email = $instance['email'];
 		$website = $instance['website'];
+		$map = $instance['map'];
+		$height = $instance['height'];
+		$zoom = $instance['zoom'];
+		$lat = $instance['lat'];
+		$long = $instance['long'];
 
 		?>
-		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-		  <p><label for="<?php echo $this->get_field_id('address'); ?>"><?php _e('Address') ?>: <input class="widefat" id="<?php echo $this->get_field_id('address'); ?>" name="<?php echo $this->get_field_name('address'); ?>" type="text" value="<?php echo attribute_escape($address); ?>" /></label></p>
-		  <p><label for="<?php echo $this->get_field_id('phone'); ?>"><?php _e('Phone') ?>: <input class="widefat" id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" type="text" value="<?php echo attribute_escape($phone); ?>" /></label></p>
-		  <p><label for="<?php echo $this->get_field_id('fax'); ?>"><?php _e('Fax') ?>: <input class="widefat" id="<?php echo $this->get_field_id('fax'); ?>" name="<?php echo $this->get_field_name('fax'); ?>" type="text" value="<?php echo attribute_escape($fax); ?>" /></label></p>
-		  <p><label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email') ?>: <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo attribute_escape($email); ?>" /></label></p>
-		  <p><label for="<?php echo $this->get_field_id('website'); ?>"><?php _e('Website') ?>: <input class="widefat" id="<?php echo $this->get_field_id('website'); ?>" name="<?php echo $this->get_field_name('website'); ?>" type="text" value="<?php echo attribute_escape($website); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('address'); ?>"><?php _e('Address') ?>: <input class="widefat" id="<?php echo $this->get_field_id('address'); ?>" name="<?php echo $this->get_field_name('address'); ?>" type="text" value="<?php echo attribute_escape($address); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('phone'); ?>"><?php _e('Phone') ?>: <input class="widefat" id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" type="text" value="<?php echo attribute_escape($phone); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('fax'); ?>"><?php _e('Fax') ?>: <input class="widefat" id="<?php echo $this->get_field_id('fax'); ?>" name="<?php echo $this->get_field_name('fax'); ?>" type="text" value="<?php echo attribute_escape($fax); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email') ?>: <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo attribute_escape($email); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('website'); ?>"><?php _e('Website') ?>: <input class="widefat" id="<?php echo $this->get_field_id('website'); ?>" name="<?php echo $this->get_field_name('website'); ?>" type="text" value="<?php echo attribute_escape($website); ?>" /></label></p>
+		<p><input type="checkbox" class="cyon_contact_map_check" name="<?php echo $this->get_field_name('map'); ?>" id="<?php echo $this->get_field_id('map'); ?>" value="1" <?php echo ($map == "true" ? "checked='checked'" : ""); ?> /> <label for="<?php echo $this->get_field_id('map'); ?>"><?php _e('Show Map') ?></label></p>
+		<fieldset class="cyon_contact_map"<?php echo ($map == "true" ? '' : ' style="display:none;"'); ?>>
+			<p><label for="<?php echo $this->get_field_id('height'); ?>"><?php _e('Height') ?>: <input class="widefat" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo attribute_escape($height); ?>" /></label></p>
+			<p><label for="<?php echo $this->get_field_id('zoom'); ?>"><?php _e('Zoom') ?>: <input class="widefat" id="<?php echo $this->get_field_id('zoom'); ?>" name="<?php echo $this->get_field_name('zoom'); ?>" type="text" value="<?php echo attribute_escape($zoom); ?>" /></label></p>
+			<p><label for="<?php echo $this->get_field_id('lat'); ?>"><?php _e('Latitude') ?>: <input class="widefat" id="<?php echo $this->get_field_id('lat'); ?>" name="<?php echo $this->get_field_name('lat'); ?>" type="text" value="<?php echo attribute_escape($lat); ?>" /></label></p>
+			<p><label for="<?php echo $this->get_field_id('long'); ?>"><?php _e('Longetitude') ?>: <input class="widefat" id="<?php echo $this->get_field_id('long'); ?>" name="<?php echo $this->get_field_name('long'); ?>" type="text" value="<?php echo attribute_escape($long); ?>" /></label></p>
+		</fieldset>
 		<?php
 	}
 
@@ -46,6 +63,11 @@ class CyonContactWidget extends WP_Widget {
 		$instance['fax'] = $new_instance['fax'];
 		$instance['email'] = $new_instance['email'];
 		$instance['website'] = $new_instance['website'];
+		$instance['map'] = (bool)$new_instance['map'];
+		$instance['height'] = $new_instance['height'];
+		$instance['zoom'] = $new_instance['zoom'];
+		$instance['lat'] = $new_instance['lat'];
+		$instance['long'] = $new_instance['long'];
 		return $instance;
 	}
 
@@ -70,12 +92,16 @@ class CyonContactWidget extends WP_Widget {
 		
     	// Widget code here
 		echo $html;
- 
+ 		if($instance['map']==true){
+			echo '<div class="gmap" data-address="'.$instance['address'].'" data-lat="'.$instance['lat'].'" data-long="'.$instance['long'].'" data-zoom="'.$instance['zoom'].'" style="width: 100%; height: '.$instance['height'].'px;">'.$instance['address'].'</div>';
+			wp_enqueue_script('gmap');
+		}
+		
 		// End widget
 		echo '</div>';
 		echo $after_widget;
 	}
-
+	
 }
 
 // Adding your widget to WordPress

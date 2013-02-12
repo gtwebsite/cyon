@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cyon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-14 04:04+0800\n"
-"PO-Revision-Date: 2013-01-14 04:16+0800\n"
+"POT-Creation-Date: 2013-02-12 18:36+0800\n"
+"PO-Revision-Date: 2013-02-12 18:36+0800\n"
 "Last-Translator: Archie Jereos <eightworks@yahoo.com>\n"
 "Language-Team: Gtwebsite <admin@gtwebsite.com>\n"
 "MIME-Version: 1.0\n"
@@ -199,769 +199,781 @@ msgstr ""
 msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
 msgstr ""
 
-#: ../options.php:250
+#: ../options.php:264
 msgid "Blog Posts"
 msgstr ""
 
-#: ../options.php:250
+#: ../options.php:264
 msgid "Blog Listings"
 msgstr ""
 
-#: ../options.php:250
+#: ../options.php:264
 msgid "Pages"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "Facebook"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "Twitter"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "Google+"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "Pinterest"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "Email"
 msgstr ""
 
-#: ../options.php:256
+#: ../options.php:270
 msgid "ShareThis"
 msgstr ""
 
-#: ../options.php:262
+#: ../options.php:276
 msgid "Use Page's Default"
 msgstr ""
 
-#: ../options.php:262
+#: ../options.php:276
 msgid "Single Image"
 msgstr ""
 
-#: ../options.php:265
-#: ../options.php:747
+#: ../options.php:279
+#: ../options.php:776
 msgid "Static Block"
 msgstr ""
 
-#: ../options.php:265
+#: ../options.php:279
 msgid "Twitter Updates"
 msgstr ""
 
-#: ../options.php:268
-#: ../options.php:372
+#: ../options.php:282
+#: ../options.php:386
 msgid "Light"
 msgstr ""
 
-#: ../options.php:268
-#: ../options.php:372
+#: ../options.php:282
+#: ../options.php:386
 msgid "Dark"
 msgstr ""
 
-#: ../options.php:271
+#: ../options.php:285
 msgid "Default"
 msgstr ""
 
-#: ../options.php:277
+#: ../options.php:291
 msgid "Presets"
 msgstr ""
 
-#: ../options.php:277
+#: ../options.php:291
 msgid "Custom"
 msgstr ""
 
-#: ../options.php:283
+#: ../options.php:297
 msgid "None"
 msgstr ""
 
-#: ../options.php:283
+#: ../options.php:297
 msgid "Buttons"
 msgstr ""
 
-#: ../options.php:283
+#: ../options.php:297
 msgid "Thumbnails"
 msgstr ""
 
-#: ../options.php:287
+#: ../options.php:301
 msgid "- None -"
 msgstr ""
 
-#: ../options.php:288
+#: ../options.php:302
 msgid "Header Before"
 msgstr ""
 
-#: ../options.php:289
-#: ../options.php:476
+#: ../options.php:303
+#: ../options.php:505
 msgid "Header"
 msgstr ""
 
-#: ../options.php:290
+#: ../options.php:304
 msgid "Body Before"
 msgstr ""
 
-#: ../options.php:291
+#: ../options.php:305
 msgid "Body After"
 msgstr ""
 
-#: ../options.php:292
+#: ../options.php:306
 msgid "Body Wrapper Before"
 msgstr ""
 
-#: ../options.php:293
+#: ../options.php:307
 msgid "Body Wrapper After"
 msgstr ""
 
-#: ../options.php:294
+#: ../options.php:308
 msgid "Primary Content Before"
 msgstr ""
 
-#: ../options.php:295
+#: ../options.php:309
 msgid "Primary Content After"
 msgstr ""
 
-#: ../options.php:296
+#: ../options.php:310
 msgid "Sidebar Before"
 msgstr ""
 
-#: ../options.php:297
+#: ../options.php:311
 msgid "Sidebar After"
 msgstr ""
 
-#: ../options.php:298
+#: ../options.php:312
 msgid "Post Header Before"
 msgstr ""
 
-#: ../options.php:299
+#: ../options.php:313
 msgid "Post Header After"
 msgstr ""
 
-#: ../options.php:300
+#: ../options.php:314
 msgid "Post Content Before"
 msgstr ""
 
-#: ../options.php:301
+#: ../options.php:315
 msgid "Post Content After"
 msgstr ""
 
-#: ../options.php:302
+#: ../options.php:316
 msgid "Post Footer"
 msgstr ""
 
-#: ../options.php:303
+#: ../options.php:317
 msgid "Homepage Content"
 msgstr ""
 
-#: ../options.php:304
-#: ../options.php:582
+#: ../options.php:318
+#: ../options.php:611
 msgid "Footer"
 msgstr ""
 
-#: ../options.php:305
+#: ../options.php:319
 msgid "Footer After"
 msgstr ""
 
-#: ../options.php:328
+#: ../options.php:342
 msgid "Select a page:"
 msgstr ""
 
-#: ../options.php:338
+#: ../options.php:352
 msgid "Styling"
 msgstr ""
 
-#: ../options.php:341
+#: ../options.php:355
 msgid "Logo and Icons"
 msgstr ""
 
-#: ../options.php:344
+#: ../options.php:358
 msgid "Logo File"
 msgstr ""
 
-#: ../options.php:347
+#: ../options.php:361
 msgid "This will replace the website name text and use the image instead. Also replace the admin logo."
 msgstr ""
 
-#: ../options.php:350
+#: ../options.php:364
 msgid "Favicon File"
 msgstr ""
 
-#: ../options.php:353
+#: ../options.php:367
 msgid "Use 16 x 16 size of ico file."
 msgstr ""
 
-#: ../options.php:356
+#: ../options.php:370
 msgid "iOS Icon File"
 msgstr ""
 
-#: ../options.php:359
+#: ../options.php:373
 msgid "Minimum is 57 x 57 at 72dpi of png file. For retina display, maximum is 114 x 114."
 msgstr ""
 
-#: ../options.php:364
+#: ../options.php:378
 msgid "Theme Selection"
 msgstr ""
 
-#: ../options.php:367
-#: ../options.php:421
+#: ../options.php:381
+#: ../options.php:450
 msgid "Color"
 msgstr ""
 
-#: ../options.php:376
+#: ../options.php:390
 msgid "Typography"
 msgstr ""
 
-#: ../options.php:379
+#: ../options.php:393
 msgid "Primary Font"
 msgstr ""
 
-#: ../options.php:380
+#: ../options.php:394
 msgid "Font use to the whole site"
 msgstr ""
 
-#: ../options.php:386
+#: ../options.php:400
 msgid "Google Font as Primary"
 msgstr ""
 
-#: ../options.php:394
+#: ../options.php:408
 msgid "Secondary Font"
 msgstr ""
 
-#: ../options.php:395
+#: ../options.php:409
 msgid "Font use for Headers"
 msgstr ""
 
-#: ../options.php:401
+#: ../options.php:415
 msgid "Google Font as Secondary"
 msgstr ""
 
-#: ../options.php:411
+#: ../options.php:423
+msgid "Main Navigation Font"
+msgstr ""
+
+#: ../options.php:424
+msgid "Font use for Main Navigation"
+msgstr ""
+
+#: ../options.php:430
+msgid "Google Font as Main Navigation"
+msgstr ""
+
+#: ../options.php:440
 msgid "Background"
 msgstr ""
 
-#: ../options.php:414
+#: ../options.php:443
 msgid "Style"
 msgstr ""
 
-#: ../options.php:419
+#: ../options.php:448
 msgid "Pattern"
 msgstr ""
 
-#: ../options.php:419
+#: ../options.php:448
 msgid "Full Screen Image"
 msgstr ""
 
-#: ../options.php:419
+#: ../options.php:448
 msgid "Youtube Video"
 msgstr ""
 
-#: ../options.php:427
+#: ../options.php:456
 msgid "Image File"
 msgstr ""
 
-#: ../options.php:433
-#: ../options.php:439
+#: ../options.php:462
+#: ../options.php:468
 msgid "Repeat"
 msgstr ""
 
-#: ../options.php:439
+#: ../options.php:468
 msgid "No Repeat"
 msgstr ""
 
-#: ../options.php:439
+#: ../options.php:468
 msgid "Repeat Horizontally"
 msgstr ""
 
-#: ../options.php:439
+#: ../options.php:468
 msgid "Repeat Vertically"
 msgstr ""
 
-#: ../options.php:441
+#: ../options.php:470
 msgid "Position"
 msgstr ""
 
-#: ../options.php:442
+#: ../options.php:471
 msgid "This is horizontal-vertical and can also use top, left, center, bottom, right"
 msgstr ""
 
-#: ../options.php:448
+#: ../options.php:477
 msgid "Youtube ID"
 msgstr ""
 
-#: ../options.php:449
+#: ../options.php:478
 msgid "This doesnt work on mobile phones or iPad"
 msgstr ""
 
-#: ../options.php:457
-#: ../options.php:620
+#: ../options.php:486
+#: ../options.php:649
 msgid "Layout"
 msgstr ""
 
-#: ../options.php:460
+#: ../options.php:489
 msgid "General Layout"
 msgstr ""
 
-#: ../options.php:463
+#: ../options.php:492
 msgid "Default layout of the website"
 msgstr ""
 
-#: ../options.php:479
+#: ../options.php:508
 msgid "Top Left Content"
 msgstr ""
 
-#: ../options.php:482
+#: ../options.php:511
 msgid "This will show at the very top of the page on the left side corner."
 msgstr ""
 
-#: ../options.php:485
+#: ../options.php:514
 msgid "Top Right Content"
 msgstr ""
 
-#: ../options.php:488
+#: ../options.php:517
 msgid "This will show at the very top of the page on the right side corner."
 msgstr ""
 
-#: ../options.php:491
+#: ../options.php:520
 msgid "Logo/Menu Layout"
 msgstr ""
 
-#: ../options.php:504
+#: ../options.php:533
 msgid "Breadcrumbs"
 msgstr ""
 
-#: ../options.php:505
+#: ../options.php:534
 msgid "Yes, use breadcrumbs on inner pages. If you are runnig Woocommerce, this will be ignored."
 msgstr ""
 
-#: ../options.php:512
-#: ../options.php:740
+#: ../options.php:541
+#: ../options.php:769
 msgid "Content"
 msgstr ""
 
-#: ../options.php:515
+#: ../options.php:544
 msgid "Display author"
 msgstr ""
 
-#: ../options.php:520
-#: ../options.php:527
+#: ../options.php:549
+#: ../options.php:556
 msgid "Disable"
 msgstr ""
 
-#: ../options.php:520
-#: ../options.php:527
+#: ../options.php:549
+#: ../options.php:556
 msgid "Enable"
 msgstr ""
 
-#: ../options.php:522
+#: ../options.php:551
 msgid "Commenting to all Post/Page"
 msgstr ""
 
-#: ../options.php:529
+#: ../options.php:558
 msgid "Featured image display"
 msgstr ""
 
-#: ../options.php:536
+#: ../options.php:565
 msgid "Gallery"
 msgstr ""
 
-#: ../options.php:537
+#: ../options.php:566
 msgid "Allow to override default WP Gallery"
 msgstr ""
 
-#: ../options.php:541
+#: ../options.php:570
 msgid "Use default"
 msgstr ""
 
-#: ../options.php:541
+#: ../options.php:570
 msgid "Slider only"
 msgstr ""
 
-#: ../options.php:541
+#: ../options.php:570
 msgid "Slider with carousel"
 msgstr ""
 
-#: ../options.php:545
+#: ../options.php:574
 msgid "Blog List Display"
 msgstr ""
 
-#: ../options.php:548
+#: ../options.php:577
 msgid "Content display"
 msgstr ""
 
-#: ../options.php:553
+#: ../options.php:582
 msgid "Excerpt only"
 msgstr ""
 
-#: ../options.php:553
+#: ../options.php:582
 msgid "Full content"
 msgstr ""
 
-#: ../options.php:555
+#: ../options.php:584
 msgid "List layout"
 msgstr ""
 
-#: ../options.php:567
+#: ../options.php:596
 msgid "Use Masonry (a dynamic grid layout)"
 msgstr ""
 
-#: ../options.php:568
+#: ../options.php:597
 msgid "Yes, use Masonry as default layout"
 msgstr ""
 
-#: ../options.php:573
+#: ../options.php:602
 msgid "Thumbnail size"
 msgstr ""
 
-#: ../options.php:578
+#: ../options.php:607
 msgid "Small"
 msgstr ""
 
-#: ../options.php:578
+#: ../options.php:607
 msgid "Medium"
 msgstr ""
 
-#: ../options.php:578
+#: ../options.php:607
 msgid "Large"
 msgstr ""
 
-#: ../options.php:578
+#: ../options.php:607
 msgid "Full"
 msgstr ""
 
-#: ../options.php:585
+#: ../options.php:614
 msgid "Footer Columns"
 msgstr ""
 
-#: ../options.php:586
+#: ../options.php:615
 msgid "Shows number of footer columns to be used. Check the <a href=\""
 msgstr ""
 
-#: ../options.php:597
+#: ../options.php:626
 msgid "Copyright"
 msgstr ""
 
-#: ../options.php:599
+#: ../options.php:628
 msgid "&copy; "
 msgstr ""
 
-#: ../options.php:602
+#: ../options.php:631
 msgid "Sub Footer"
 msgstr ""
 
-#: ../options.php:604
+#: ../options.php:633
 msgid "This will show at the very bottom of the page."
 msgstr ""
 
-#: ../options.php:608
+#: ../options.php:637
 msgid "Back to Top Button"
 msgstr ""
 
-#: ../options.php:610
+#: ../options.php:639
 msgid "Shows back to top button in all pages"
 msgstr ""
 
-#: ../options.php:617
+#: ../options.php:646
 msgid "Homepage"
 msgstr ""
 
-#: ../options.php:623
+#: ../options.php:652
 msgid "Default layout of Homepage"
 msgstr ""
 
-#: ../options.php:624
+#: ../options.php:653
 msgid "This will override the default layout"
 msgstr ""
 
-#: ../options.php:634
+#: ../options.php:663
 msgid "Show Page Content"
 msgstr ""
 
-#: ../options.php:639
-#: ../options.php:697
-#: ../options.php:718
+#: ../options.php:668
 #: ../options.php:726
+#: ../options.php:747
+#: ../options.php:755
 msgid "Yes"
 msgstr ""
 
-#: ../options.php:639
-#: ../options.php:697
-#: ../options.php:718
+#: ../options.php:668
 #: ../options.php:726
+#: ../options.php:747
+#: ../options.php:755
 msgid "No"
 msgstr ""
 
-#: ../options.php:643
+#: ../options.php:672
 msgid "Middle Buckets"
 msgstr ""
 
-#: ../options.php:646
+#: ../options.php:675
 msgid "Number of Columns"
 msgstr ""
 
-#: ../options.php:647
+#: ../options.php:676
 msgid "Shows number of bucket columns to be used. Check the <a href=\""
 msgstr ""
 
-#: ../options.php:660
+#: ../options.php:689
 msgid "Slider"
 msgstr ""
 
-#: ../options.php:663
+#: ../options.php:692
 msgid "Type of Slider to be used"
 msgstr ""
 
-#: ../options.php:670
+#: ../options.php:699
 msgid "Single Image File"
 msgstr ""
 
-#: ../options.php:676
+#: ../options.php:705
 msgid "Single Image URL when clicked"
 msgstr ""
 
-#: ../options.php:678
+#: ../options.php:707
 msgid "Leave empty if not applicable."
 msgstr ""
 
-#: ../options.php:683
+#: ../options.php:712
 msgid "Animation Style"
 msgstr ""
 
-#: ../options.php:689
+#: ../options.php:718
 msgid "Fade"
 msgstr ""
 
-#: ../options.php:689
+#: ../options.php:718
 msgid "Slide Horizontal"
 msgstr ""
 
-#: ../options.php:689
+#: ../options.php:718
 msgid "Slide Vertical"
 msgstr ""
 
-#: ../options.php:691
+#: ../options.php:720
 msgid "Show caption"
 msgstr ""
 
-#: ../options.php:699
+#: ../options.php:728
 msgid "Caption Layout"
 msgstr ""
 
-#: ../options.php:704
 #: ../options.php:733
+#: ../options.php:762
 msgid "Top Left"
 msgstr ""
 
-#: ../options.php:704
 #: ../options.php:733
+#: ../options.php:762
 msgid "Top Right"
 msgstr ""
 
-#: ../options.php:704
 #: ../options.php:733
+#: ../options.php:762
 msgid "Bottom Left"
 msgstr ""
 
-#: ../options.php:704
 #: ../options.php:733
+#: ../options.php:762
 msgid "Bottom Right"
 msgstr ""
 
-#: ../options.php:706
+#: ../options.php:735
 msgid "Caption Width"
 msgstr ""
 
-#: ../options.php:707
+#: ../options.php:736
 msgid "Use percentage"
 msgstr ""
 
-#: ../options.php:712
+#: ../options.php:741
 msgid "Show navigation arrow"
 msgstr ""
 
-#: ../options.php:720
+#: ../options.php:749
 msgid "Show pagination"
 msgstr ""
 
-#: ../options.php:728
+#: ../options.php:757
 msgid "Pagination Layout"
 msgstr ""
 
-#: ../options.php:733
+#: ../options.php:762
 msgid "Top Center"
 msgstr ""
 
-#: ../options.php:733
+#: ../options.php:762
 msgid "Bottom Center"
 msgstr ""
 
-#: ../options.php:737
+#: ../options.php:766
 msgid "Middle Content"
 msgstr ""
 
-#: ../options.php:742
+#: ../options.php:771
 msgid "This will show above the middle buckets."
 msgstr ""
 
-#: ../options.php:755
+#: ../options.php:784
 msgid "Widgets"
 msgstr ""
 
-#: ../options.php:758
+#: ../options.php:787
 msgid "Widget 1"
 msgstr ""
 
-#: ../options.php:761
-#: ../options.php:791
-#: ../options.php:821
+#: ../options.php:790
+#: ../options.php:820
+#: ../options.php:850
 msgid "Name"
 msgstr ""
 
-#: ../options.php:767
-#: ../options.php:797
-#: ../options.php:827
+#: ../options.php:796
+#: ../options.php:826
+#: ../options.php:856
 msgid "Description"
 msgstr ""
 
-#: ../options.php:773
-#: ../options.php:803
-#: ../options.php:833
+#: ../options.php:802
+#: ../options.php:832
+#: ../options.php:862
 msgid "Location"
 msgstr ""
 
-#: ../options.php:780
-#: ../options.php:810
-#: ../options.php:840
+#: ../options.php:809
+#: ../options.php:839
+#: ../options.php:869
 msgid "Order Number"
 msgstr ""
 
-#: ../options.php:788
+#: ../options.php:817
 msgid "Widget 2"
 msgstr ""
 
-#: ../options.php:818
+#: ../options.php:847
 msgid "Widget 3"
 msgstr ""
 
-#: ../options.php:848
+#: ../options.php:877
 msgid "Configuration"
 msgstr ""
 
-#: ../options.php:851
+#: ../options.php:880
 msgid "Social Settings"
 msgstr ""
 
-#: ../options.php:854
+#: ../options.php:883
 msgid "Pages to appear the social boxes"
 msgstr ""
 
-#: ../options.php:861
+#: ../options.php:890
 msgid "Social Boxes"
 msgstr ""
 
-#: ../options.php:868
+#: ../options.php:897
 msgid "Twitter ID"
 msgstr ""
 
-#: ../options.php:876
+#: ../options.php:905
 msgid "SEO"
 msgstr ""
 
-#: ../options.php:879
+#: ../options.php:908
 msgid "Activate SEO"
 msgstr ""
 
-#: ../options.php:880
+#: ../options.php:909
 msgid "Activates SEO options to all pages and posts."
 msgstr ""
 
-#: ../options.php:885
+#: ../options.php:914
 msgid "Page Title Format"
 msgstr ""
 
-#: ../options.php:887
+#: ../options.php:916
 msgid "Accepts"
 msgstr ""
 
-#: ../options.php:893
+#: ../options.php:922
 msgid "Lightbox"
 msgstr ""
 
-#: ../options.php:896
+#: ../options.php:925
 msgid "Activate Lightbox"
 msgstr ""
 
-#: ../options.php:897
+#: ../options.php:926
 msgid "Activates lightbox in all linked to images, this includes WP Gallery. Supports jpg, png, gif, and bmp."
 msgstr ""
 
-#: ../options.php:902
+#: ../options.php:931
 msgid "Gallery Style"
 msgstr ""
 
-#: ../options.php:911
+#: ../options.php:940
 msgid "Scripts Support"
 msgstr ""
 
-#: ../options.php:914
+#: ../options.php:943
 msgid "Responsiveness"
 msgstr ""
 
-#: ../options.php:915
+#: ../options.php:944
 msgid "Allow special styles mobile devices"
 msgstr ""
 
-#: ../options.php:920
+#: ../options.php:949
 msgid "LazyLoad"
 msgstr ""
 
-#: ../options.php:921
+#: ../options.php:950
 msgid "Activates LazyLoad in all images"
 msgstr ""
 
-#: ../options.php:926
+#: ../options.php:955
 msgid "Header Scripts"
 msgstr ""
 
-#: ../options.php:927
+#: ../options.php:956
 msgid "Scripts and Links placed inside the head tag. Can include &lt;script&gt;, &lt;link&gt; and other tags. Can have Google Analytics here."
 msgstr ""
 
-#: ../options.php:932
+#: ../options.php:961
 msgid "Footer Scripts"
 msgstr ""
 
-#: ../options.php:933
+#: ../options.php:962
 msgid "Scripts placed below the footer just before the end body tag. Can include &lt;script&gt;, &lt;link&gt; and other tags."
 msgstr ""
 
-#: ../options.php:940
+#: ../options.php:969
 msgid "Admin"
 msgstr ""
 
-#: ../options.php:943
+#: ../options.php:972
 msgid "Login"
 msgstr ""
 
-#: ../options.php:946
+#: ../options.php:975
 msgid "Background Color"
 msgstr ""
 
-#: ../options.php:954
+#: ../options.php:983
 msgid "Updates"
 msgstr ""
 
-#: ../options.php:957
+#: ../options.php:986
 msgid "Remove Core Updates"
 msgstr ""
 
-#: ../options.php:958
-#: ../options.php:964
+#: ../options.php:987
+#: ../options.php:993
 msgid "Yes, remove updates and notification"
 msgstr ""
 
-#: ../options.php:963
+#: ../options.php:992
 msgid "Remove Plugin Updates"
 msgstr ""
 
@@ -1069,109 +1081,109 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: ../includes/admin/init.php:197
+#: ../includes/admin/init.php:198
 msgid "Page Settings"
-msgstr ""
-
-#: ../includes/admin/init.php:208
-#: ../includes/admin/init.php:373
-#: ../includes/admin/init.php:385
-msgid "1 Column"
 msgstr ""
 
 #: ../includes/admin/init.php:209
 #: ../includes/admin/init.php:374
-msgid "2 Columns Left"
+#: ../includes/admin/init.php:386
+msgid "1 Column"
 msgstr ""
 
 #: ../includes/admin/init.php:210
 #: ../includes/admin/init.php:375
+msgid "2 Columns Left"
+msgstr ""
+
+#: ../includes/admin/init.php:211
+#: ../includes/admin/init.php:376
 msgid "2 Columns Right"
 msgstr ""
 
-#: ../includes/admin/init.php:214
+#: ../includes/admin/init.php:215
 msgid "Background Image"
 msgstr ""
 
-#: ../includes/admin/init.php:225
+#: ../includes/admin/init.php:226
 msgid "Gallery Settings"
 msgstr ""
 
-#: ../includes/admin/init.php:230
-msgid "Images to show on listing"
+#: ../includes/admin/init.php:231
+msgid "Images Excerpt"
 msgstr ""
 
-#: ../includes/admin/init.php:241
+#: ../includes/admin/init.php:242
 msgid "Link Settings"
 msgstr ""
 
-#: ../includes/admin/init.php:246
-#: ../includes/admin/init.php:284
-#: ../includes/admin/init.php:300
+#: ../includes/admin/init.php:247
+#: ../includes/admin/init.php:285
+#: ../includes/admin/init.php:301
 msgid "URL"
 msgstr ""
 
-#: ../includes/admin/init.php:257
+#: ../includes/admin/init.php:258
 msgid "Quote Settings"
 msgstr ""
 
-#: ../includes/admin/init.php:262
+#: ../includes/admin/init.php:263
 msgid "Author"
 msgstr ""
 
-#: ../includes/admin/init.php:268
+#: ../includes/admin/init.php:269
 msgid "Position / Company"
 msgstr ""
 
-#: ../includes/admin/init.php:279
+#: ../includes/admin/init.php:280
 msgid "Audio Settings"
 msgstr ""
 
-#: ../includes/admin/init.php:295
+#: ../includes/admin/init.php:296
 msgid "Video Settings"
 msgstr ""
 
-#: ../includes/admin/init.php:303
+#: ../includes/admin/init.php:304
 msgid "Supports Youtube, Vimeo, Metacafe, Dailymotion, Twitvid and local video files such as mp4, m4v, mov, wmv, flv, webm, ogv"
 msgstr ""
 
-#: ../includes/admin/init.php:313
+#: ../includes/admin/init.php:314
 msgid "SEO Options"
 msgstr ""
 
-#: ../includes/admin/init.php:318
+#: ../includes/admin/init.php:319
 msgid "Page Title"
 msgstr ""
 
-#: ../includes/admin/init.php:330
+#: ../includes/admin/init.php:331
 msgid "Keywords"
 msgstr ""
 
-#: ../includes/admin/init.php:336
+#: ../includes/admin/init.php:337
 msgid "Hide from search engines"
 msgstr ""
 
-#: ../includes/admin/init.php:378
+#: ../includes/admin/init.php:379
 msgid "Page Layout"
 msgstr ""
 
-#: ../includes/admin/init.php:386
+#: ../includes/admin/init.php:387
 msgid "2 Columns"
 msgstr ""
 
-#: ../includes/admin/init.php:387
+#: ../includes/admin/init.php:388
 msgid "3 Columns"
 msgstr ""
 
-#: ../includes/admin/init.php:388
+#: ../includes/admin/init.php:389
 msgid "4 Columns"
 msgstr ""
 
-#: ../includes/admin/init.php:391
+#: ../includes/admin/init.php:392
 msgid "Listing Layout"
 msgstr ""
 
-#: ../includes/admin/init.php:402
+#: ../includes/admin/init.php:403
 msgid "Use Masonry"
 msgstr ""
 
@@ -1246,55 +1258,55 @@ msgstr ""
 msgid "Choose Image"
 msgstr ""
 
-#: ../includes/functions/common.php:22
+#: ../includes/functions/common.php:23
 msgid "You are here"
 msgstr ""
 
-#: ../includes/functions/common.php:23
+#: ../includes/functions/common.php:24
 msgid "Home"
 msgstr ""
 
-#: ../includes/functions/common.php:67
+#: ../includes/functions/common.php:75
 msgid "Articles posted by"
 msgstr ""
 
-#: ../includes/functions/common.php:69
+#: ../includes/functions/common.php:77
 msgid "Posts tagged"
 msgstr ""
 
-#: ../includes/functions/common.php:71
+#: ../includes/functions/common.php:79
 msgid "Error 404"
 msgstr ""
 
-#: ../includes/functions/common.php:506
+#: ../includes/functions/common.php:530
 msgid "Main menu"
 msgstr ""
 
-#: ../includes/functions/common.php:513
-#: ../includes/functions/common.php:516
+#: ../includes/functions/common.php:537
+#: ../includes/functions/common.php:540
 msgid "Select a page"
 msgstr ""
 
-#: ../includes/functions/common.php:722
+#: ../includes/functions/common.php:746
 msgid "No video playback capabilities"
 msgstr ""
 
-#: ../includes/functions/common.php:787
+#: ../includes/functions/common.php:811
 #: ../includes/functions/slides.php:193
 msgid "Read more"
 msgstr ""
 
-#: ../includes/functions/common.php:803
+#: ../includes/functions/common.php:827
 #, php-format
 msgid "About %s"
 msgstr ""
 
-#: ../includes/functions/common.php:807
+#: ../includes/functions/common.php:831
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../includes/functions/common.php:897
+#: ../includes/functions/common.php:921
 msgid "Back to Top"
 msgstr ""
 
@@ -1428,51 +1440,57 @@ msgid "My Cart"
 msgstr ""
 
 #: ../includes/overrides/woocommerce.php:171
-#: ../includes/overrides/woocommerce.php:312
+#: ../includes/overrides/woocommerce.php:190
+#: ../includes/overrides/woocommerce.php:322
 msgid "View your shopping cart"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:193
+#: ../includes/overrides/woocommerce.php:171
+#: ../includes/overrides/woocommerce.php:190
+msgid "View Cart"
+msgstr ""
+
+#: ../includes/overrides/woocommerce.php:203
 msgid "Displays a categories with images/description"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:194
+#: ../includes/overrides/woocommerce.php:204
 msgid "Cyon WooCommerce Categories"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:201
+#: ../includes/overrides/woocommerce.php:211
 msgid "Categories"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:217
+#: ../includes/overrides/woocommerce.php:227
 msgid "Order by:"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:219
+#: ../includes/overrides/woocommerce.php:229
 msgid "Category Order"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:223
+#: ../includes/overrides/woocommerce.php:233
 msgid "Show image"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:224
+#: ../includes/overrides/woocommerce.php:234
 msgid "Show Description"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:225
+#: ../includes/overrides/woocommerce.php:235
 msgid "Show post counts"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:227
+#: ../includes/overrides/woocommerce.php:237
 msgid "Image Size:"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:229
+#: ../includes/overrides/woocommerce.php:239
 msgid "Thumbnail"
 msgstr ""
 
-#: ../includes/overrides/woocommerce.php:286
+#: ../includes/overrides/woocommerce.php:296
 msgid "No product categories exist."
 msgstr ""
 
@@ -1604,6 +1622,7 @@ msgstr ""
 
 #: ../includes/widgets/ads.php:77
 #: ../includes/widgets/flickerpic.php:32
+#: ../includes/widgets/imagegallery.php:49
 msgid "Columns"
 msgstr ""
 
@@ -1630,7 +1649,7 @@ msgstr ""
 msgid "Target URL"
 msgstr ""
 
-#: ../includes/widgets/ads.php:200
+#: ../includes/widgets/ads.php:215
 msgid "Insert Into Widget"
 msgstr ""
 
@@ -1751,6 +1770,22 @@ msgstr ""
 
 #: ../includes/widgets/iframe.php:35
 msgid "Enable Scrolling"
+msgstr ""
+
+#: ../includes/widgets/imagegallery.php:9
+msgid "Displays Image Gallery from Post"
+msgstr ""
+
+#: ../includes/widgets/imagegallery.php:10
+msgid "Cyon Image Gallery Widget"
+msgstr ""
+
+#: ../includes/widgets/imagegallery.php:32
+msgid "Gallery Post Format"
+msgstr ""
+
+#: ../includes/widgets/imagegallery.php:38
+msgid "Size"
 msgstr ""
 
 #: ../includes/widgets/map.php:7

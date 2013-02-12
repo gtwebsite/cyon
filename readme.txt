@@ -9,8 +9,13 @@ slider add thumbnail
 slider feature list
 Widgets - to which page appear
 
-
 == Changelog ==
+
+= 1.3.5 =
+* Updated Contact widget
+* Updated Socialize widget
+* Updated Ads widget
+* Fixed blog shortcode not getting the excerpt
 
 = 1.3.4 =
 * Added CSS3 Transitions

@@ -34,39 +34,46 @@ class CyonAdsWidget extends WP_Widget {
 			'ad_img_1'	=> '',
 			'ad_url_1'	=> 'http://',
 			'ad_name_1'	=> '',
+			'ad_pop_1'	=> 'parent',
 			'ad_img_2'	=> '',
 			'ad_url_2'	=> 'http://',
 			'ad_name_2'	=> '',
+			'ad_pop_2'	=> 'parent',
 			'ad_img_3'	=> '',
 			'ad_url_3'	=> 'http://',
 			'ad_name_3'	=> '',
+			'ad_pop_3'	=> 'parent',
 			'ad_img_4'	=> '',
 			'ad_url_4'	=> 'http://',
 			'ad_name_4'	=> '',
+			'ad_pop_4'	=> 'parent',
 			'ad_img_5'	=> '',
 			'ad_url_5'	=> 'http://',
 			'ad_name_5'	=> '',
+			'ad_pop_5'	=> 'parent',
 			'ad_img_6'	=> '',
 			'ad_url_6'	=> 'http://',
 			'ad_name_6'	=> '',
+			'ad_pop_7'	=> 'parent',
 			'ad_img_7'	=> '',
 			'ad_url_7'	=> 'http://',
 			'ad_name_7'	=> '',
 			'ad_img_8'	=> '',
 			'ad_url_8'	=> 'http://',
 			'ad_name_8'	=> '',
+			'ad_pop_8'	=> 'parent',
 			'ad_img_9'	=> '',
 			'ad_url_9'	=> 'http://',
 			'ad_name_9'	=> '',
+			'ad_pop_9'	=> 'parent',
 			'ad_img_10'	=> '',
 			'ad_url_10'	=> 'http://',
 			'ad_name_10'=> '',
+			'ad_pop_10'	=> 'parent',
 			'cols'		=> 1,
-			'num'		=> 1,
-			'open'		=> 'true'
+			'num'		=> 1
 		) );
 		$title = $instance['title'];
-		$open = $instance['open'];
 		$cols = $instance['cols'];
 		$num = (int)$instance['num'];
 
@@ -75,7 +82,6 @@ class CyonAdsWidget extends WP_Widget {
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('cols'); ?>"><?php _e('Columns') ?>: <input class="widefat" id="<?php echo $this->get_field_id('cols'); ?>" name="<?php echo $this->get_field_name('cols'); ?>" type="text" value="<?php echo attribute_escape($cols); ?>" /></label></p>
-		<p><input type="checkbox" name="<?php echo $this->get_field_name('open'); ?>" id="<?php echo $this->get_field_id('open'); ?>" value="1" <?php echo ($open == "true" ? "checked='checked'" : ""); ?> /> <label for="<?php echo $this->get_field_id('open'); ?>"><?php _e('Open in new window') ?></label></p>
 		<p><label for="<?php echo $this->get_field_id('num'); ?>"><?php _e('Number of Ads') ?>:</label>
 		  	<select id="<?php echo $this->get_field_id('num'); ?>" name="<?php echo $this->get_field_name('num'); ?>">
 			  <?php for($n=1;$n<=10;$n++){ ?>
@@ -91,9 +97,13 @@ class CyonAdsWidget extends WP_Widget {
 				<input id="<?php echo $this->get_field_id('ad_img_'.$i); ?>" name="<?php echo $this->get_field_name('ad_img_'.$i); ?>" type="text" value="<?php echo attribute_escape($instance['ad_img_'.$i]); ?>" placeholder="<?php _e('Image URL'); ?>" />
 				<a href="<?php echo $image_upload_iframe_src; ?>&TB_iframe=true" id="add_image-<?php echo $this->get_field_id('ad_img_'.$i); ?>" class="thickbox-image-widget" title='<?php echo $image_title; ?>' onClick="imageWidget.setActiveWidget('<?php echo $this->id; ?>',<?php echo $i; ?>);return false;" style="text-decoration:none"><img src='images/media-button-image.gif' alt='<?php echo $image_title; ?>' align="absmiddle" /> <?php echo $image_title; ?></a>
 			</p>
-			<!--
-			<p><label for="<?php echo $this->get_field_id('ad_img_'.$i); ?>"><?php _e('Ad'); echo ' #'.$i ?>: <input class="widefat" id="<?php echo $this->get_field_id('ad_img_'.$i); ?>" name="<?php echo $this->get_field_name('ad_img_'.$i); ?>" type="text" value="<?php echo attribute_escape($instance['ad_img_'.$i]); ?>" placeholder="<?php _e('Image URL'); ?>" /></label></p>
-			-->
+			<p>
+				<select id="<?php echo $this->get_field_id('ad_pop_'.$i); ?>" name="<?php echo $this->get_field_name('ad_pop_'.$i); ?>" placeholder="<?php _e('Target'); ?>">
+				  <option<?php echo $instance['ad_pop_'.$i]=='parent' ? ' selected="selected"' : ''; ?> value="parent"><?php _e('Parent window'); ?></option>
+				  <option<?php echo $instance['ad_pop_'.$i]=='blank' ? ' selected="selected"' : ''; ?> value="blank"><?php _e('New window'); ?></option>
+				  <option<?php echo $instance['ad_pop_'.$i]=='lightbox' ? ' selected="selected"' : ''; ?> value="lightbox"><?php _e('Lightbox'); ?></option>
+				</select>
+			</p>
 			<p><input class="widefat" id="<?php echo $this->get_field_id('ad_url_'.$i); ?>" name="<?php echo $this->get_field_name('ad_url_'.$i); ?>" type="text" value="<?php echo attribute_escape($instance['ad_url_'.$i]); ?>" placeholder="<?php _e('Target URL'); ?>" /></label></p>
 			<p><input class="widefat" id="<?php echo $this->get_field_id('ad_name_'.$i); ?>" name="<?php echo $this->get_field_name('ad_name_'.$i); ?>" type="text" value="<?php echo attribute_escape($instance['ad_name_'.$i]); ?>" placeholder="<?php _e('Name'); ?>" /></label></p>
 		</fieldset>
@@ -105,13 +115,13 @@ class CyonAdsWidget extends WP_Widget {
 		$instance = $old_instance;
 		// Override new values of each fields
 		$instance['title'] = $new_instance['title'];
-		$instance['open'] = (bool)$new_instance['open'];
 		$instance['cols'] = $new_instance['cols'];
 		$instance['num'] = $new_instance['num'];
 		for($i=1;$i<=$instance['num'];$i++){
 			$instance['ad_img_'.$i] = $new_instance['ad_img_'.$i];
 			$instance['ad_url_'.$i] = $new_instance['ad_url_'.$i];
 			$instance['ad_name_'.$i] = $new_instance['ad_name_'.$i];
+			$instance['ad_pop_'.$i] = $new_instance['ad_pop_'.$i];
 		}
 		return $instance;
 	}
@@ -124,16 +134,12 @@ class CyonAdsWidget extends WP_Widget {
 		echo $before_widget;
 		$html = ''; 
 		$title = empty($instance['title']) ? ' ' : apply_filters('widget_title', $instance['title']);
-		$open = $instance['open'];
 		$num = $instance['num'];
 		$cols = $instance['cols'];
 		$target = '';
 		if ($cols>1){
 			$class = ' row-fluid';
 			$cols = (int) 12 / $instance['cols'];
-		}
-		if($open==true){
-			$target = ' target="_blank"';
 		}
 		$count = 0;
 		for($i=1;$i<=$num;$i++){
@@ -147,22 +153,27 @@ class CyonAdsWidget extends WP_Widget {
 				$class_li = ' class="span'.$cols.$margin.'"';
 			}
 			$name = '';
+			$href = $instance['ad_url_'.$i];
+			if($instance['ad_pop_'.$i]=='blank'){
+				$target = ' target="_blank"';
+			}elseif($instance['ad_pop_'.$i]=='lightbox'){
+				$target = ' class="iframe"';
+				$domain = parse_url(strtolower($instance['ad_url_'.$i]));
+				if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com'){
+					$href = 'http://www.youtube.com/embed/'.get_youtube_id($instance['ad_url_'.$i]).'?showinfo=0&amp;autoplay=1';
+				}else{
+					$href = $instance['ad_url_'.$i];
+				}
+			}
 			if(!empty($instance['ad_name_'.$i])){
 				$name = ' <span>'.$instance['ad_name_'.$i].'</span>';
 			}
 			if(!empty($instance['ad_url_'.$i])){
-				$domain = parse_url(strtolower($instance['ad_url_'.$i]));
-				if($domain['host']=='www.youtube.com' || $domain['host']=='youtube.com'){
-					$href = 'http://www.youtube.com/embed/'.get_youtube_id($instance['ad_url_'.$i]).'?showinfo=0&amp;autoplay=1';
-					$target .= ' class="iframe"';
-				}else{
-					$href = $instance['ad_url_'.$i];
-				}
 				$html .= empty($instance['ad_img_1']) ? '' : '<li'.$class_li.'><a href="'.$href.'"'.$target.'><img src="'.$instance['ad_img_'.$i].'" alt="'.$instance['ad_name_'.$i].'" />'.$name.'</a></li>';
 			}else{
 				$html .= empty($instance['ad_img_1']) ? '' : '<li'.$class_li.'><img src="'.$instance['ad_img_'.$i].'" alt="'.$instance['ad_name_'.$i].'" />'.$name.'</li>';
 			}
-			$margin = '';
+			$target = '';
 		}
 		
 		if (!empty($title)){

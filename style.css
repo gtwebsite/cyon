@@ -832,13 +832,13 @@ p.nocomments {
 	margin-bottom:0;
 }
 .cyon-ads h3.widget-title {
-	margin:0 0 10px 0; padding:0; border:0; border-bottom:1px solid #efefef; font-size:100%; text-align:center;
+	margin:0; padding:0; border:0; border-bottom:1px solid #efefef; font-size:100%; text-align:center;
 }
 .cyon-ads ul.widget-content {
 	padding:0; margin:0; border:0;
 }
 .cyon-ads ul.widget-content li {
-	padding:0; margin-bottom:10px; border:0; text-align:center;
+	padding:0; margin:10px 0 0; border:0; text-align:center;
 }
 .cyon-ads ul.widget-content li.no-margin {
 	margin-left:0; clear:left;

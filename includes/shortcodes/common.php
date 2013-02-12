@@ -257,7 +257,11 @@ function cyon_blog( $atts, $content = null ) {
 		}
 		$result .= '<h4><a href="' . get_page_link( $post->ID ) . '">' . $post->post_title . '</a></h4>';
 		if($atts['excerpt']=='yes'){
-			$result .= get_the_excerpt();
+			if($post->post_excerpt){
+				$result .= $post->post_excerpt;
+			}else{
+				$result .= get_the_excerpt();
+			}
 		}
 		$result .= '</li>';
 		echo $option;

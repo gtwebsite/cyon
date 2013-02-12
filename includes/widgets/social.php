@@ -44,6 +44,10 @@ class CyonSocialWidget extends WP_Widget {
 		  <p><label for="<?php echo $this->get_field_id('google_plus'); ?>"><?php _e('Google+') ?>: <input class="widefat" id="<?php echo $this->get_field_id('google_plus'); ?>" name="<?php echo $this->get_field_name('google_plus'); ?>" type="text" value="<?php echo attribute_escape($google_plus); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('twitter'); ?>"><?php _e('Twitter') ?>: <input class="widefat" id="<?php echo $this->get_field_id('twitter'); ?>" name="<?php echo $this->get_field_name('twitter'); ?>" type="text" value="<?php echo attribute_escape($twitter); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('linkedin'); ?>"><?php _e('Linkedin') ?>: <input class="widefat" id="<?php echo $this->get_field_id('linkedin'); ?>" name="<?php echo $this->get_field_name('linkedin'); ?>" type="text" value="<?php echo attribute_escape($linkedin); ?>" /></label></p>
+		  <p><label for="<?php echo $this->get_field_id('pinterest'); ?>"><?php _e('Pinterest') ?>: <input class="widefat" id="<?php echo $this->get_field_id('pinterest'); ?>" name="<?php echo $this->get_field_name('pinterest'); ?>" type="text" value="<?php echo attribute_escape($pinterest); ?>" /></label></p>
+		  <p><label for="<?php echo $this->get_field_id('youtube'); ?>"><?php _e('Youtube') ?>: <input class="widefat" id="<?php echo $this->get_field_id('youtube'); ?>" name="<?php echo $this->get_field_name('youtube'); ?>" type="text" value="<?php echo attribute_escape($youtube); ?>" /></label></p>
+		  <p><label for="<?php echo $this->get_field_id('vimeo'); ?>"><?php _e('Vimeo') ?>: <input class="widefat" id="<?php echo $this->get_field_id('vimeo'); ?>" name="<?php echo $this->get_field_name('vimeo'); ?>" type="text" value="<?php echo attribute_escape($vimeo); ?>" /></label></p>
+		  <p><label for="<?php echo $this->get_field_id('flickr'); ?>"><?php _e('Flickr') ?>: <input class="widefat" id="<?php echo $this->get_field_id('flickr'); ?>" name="<?php echo $this->get_field_name('flickr'); ?>" type="text" value="<?php echo attribute_escape($flickr); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email') ?>: <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo attribute_escape($email); ?>" /></label></p>
 		  <p><label for="<?php echo $this->get_field_id('rss'); ?>"><?php _e('RSS') ?>: <input class="widefat" id="<?php echo $this->get_field_id('rss'); ?>" name="<?php echo $this->get_field_name('rss'); ?>" type="text" value="<?php echo attribute_escape($rss); ?>" /></label></p>
 		<?php
@@ -58,6 +62,10 @@ class CyonSocialWidget extends WP_Widget {
 		$instance['google_plus'] = $new_instance['google_plus'];
 		$instance['twitter'] = $new_instance['twitter'];
 		$instance['linkedin'] = $new_instance['linkedin'];
+		$instance['pinterest'] = $new_instance['pinterest'];
+		$instance['youtube'] = $new_instance['youtube'];
+		$instance['vimeo'] = $new_instance['vimeo'];
+		$instance['flickr'] = $new_instance['flickr'];
 		$instance['email'] = $new_instance['email'];
 		$instance['rss'] = $new_instance['rss'];
 		return $instance;
@@ -75,6 +83,10 @@ class CyonSocialWidget extends WP_Widget {
 		$html .= empty($instance['google_plus']) ? '' : '<a href="'.$instance['google_plus'].'" class="hastip has-icon2x" title="Google+"><span class="icon2x-google_plus"></span></a>';
 		$html .= empty($instance['twitter']) ? '' : '<a href="'.$instance['twitter'].'" class="hastip has-icon2x" title="Twitter"><span class="icon2x-twitter"></span></a>';
 		$html .= empty($instance['linkedin']) ? '' : '<a href="'.$instance['linkedin'].'" class="hastip has-icon2x" title="Linkedin"><span class="icon2x-linked_in"></span></a>';
+		$html .= empty($instance['pinterest']) ? '' : '<a href="'.$instance['pinterest'].'" class="hastip has-icon2x" title="Pinterest"><span class="icon2x-pinterest"></span></a>';
+		$html .= empty($instance['youtube']) ? '' : '<a href="'.$instance['youtube'].'" class="hastip has-icon2x" title="Youtube"><span class="icon2x-youtube"></span></a>';
+		$html .= empty($instance['vimeo']) ? '' : '<a href="'.$instance['vimeo'].'" class="hastip has-icon2x" title="Vimeo"><span class="icon2x-vimeo"></span></a>';
+		$html .= empty($instance['flickr']) ? '' : '<a href="'.$instance['flickr'].'" class="hastip has-icon2x" title="Flickr"><span class="icon2x-flickr"></span></a>';
 		$html .= empty($instance['email']) ? '' : '<a href="mailto:'.$instance['email'].'" class="hastip has-icon2x" title="Email"><span class="icon2x-e-mail"></span></a>';
 		$html .= empty($instance['rss']) ? '' : '<a href="'.$instance['rss'].'" class="hastip has-icon2x" title="RSS"><span class="icon2x-rss"></span></a>';
 		
