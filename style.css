@@ -3,7 +3,7 @@ Theme Name: 	Theme Cyon
 Description: 	A framework theme with a complete theme options panel.
 Author:			Greater Than Website
 Author 			URI: http://gtwebsite.com/
-Version: 		1.3.4
+Version: 		1.3.5
 */
 
 /* =Reset default browser CSS.
@@ -1268,6 +1268,10 @@ ul.cols6 li {
 /* Price Grid */
 .grid {
 	padding:20px 0;
+}
+.grid aside {
+	padding-top:130px;
+	text-align:right;
 }
 .grid ul, .grid ul li {
 	list-style:none; padding:0; margin:0;
