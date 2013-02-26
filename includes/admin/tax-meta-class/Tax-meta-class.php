@@ -111,9 +111,9 @@ class Tax_Meta_Class {
     $this->add_missed_values();
     if (isset($meta_box['use_with_theme'])){
       if ($meta_box['use_with_theme'] === true){
-        $this->SelfPath = get_template_directory_uri() . '/Tax-meta-class';
+        $this->SelfPath = get_bloginfo('template_directory') . '/Tax-meta-class';
       }elseif($meta_box['use_with_theme'] === false){
-        $this->SelfPath = get_stylesheet_directory_uri() .'/includes/admin/tax-meta-class/';
+        $this->SelfPath = get_bloginfo('template_directory') .'/includes/admin/tax-meta-class/';
       }else{
         $this->SelfPath = $meta_box['use_with_theme'];
       }

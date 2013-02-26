@@ -17,10 +17,12 @@ class CyonTwitterWidget extends WP_Widget {
 			'title' 		=> 'Twitter Updates',
 			'count'			=> '3',
 			'style'			=> 'List',
+			'link'			=> 'true'
 		) );
 		$title = $instance['title'];
 		$count = $instance['count'];
 		$style = $instance['style'];
+		$link = $instance['link'];
 		?>
 		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
   		  <p><label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Number of tweets') ?>: <input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo attribute_escape($count); ?>" /></label></p>
@@ -31,6 +33,7 @@ class CyonTwitterWidget extends WP_Widget {
 					<option value="<?php echo $i?>" <?php echo $i == $instance['style'] ? 'selected' : ''?>><?php echo $opt ?></option>
 				<?php endforeach; ?>
 		  </select></label></p>		  
+		  <p><input type="checkbox" name="<?php echo $this->get_field_name('link'); ?>" id="<?php echo $this->get_field_id('link'); ?>" value="1" <?php echo ($link == "true" ? "checked='checked'" : ""); ?> /> <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Show Link') ?></label></p>
 		<?php
 	}
 	// Saving your widget form
@@ -41,6 +44,7 @@ class CyonTwitterWidget extends WP_Widget {
 		$instance['text'] = $new_instance['text'];
 		$instance['count'] = $new_instance['count'];
 		$instance['style'] = $new_instance['style'];
+		$instance['link'] = (bool)$new_instance['link'];
 		return $instance;
 	}
 		
@@ -58,9 +62,13 @@ class CyonTwitterWidget extends WP_Widget {
 		}
 
     	// Widget code here
-		echo '<ul class="widget-content" id="twitter_update_list">';
+		echo '<div class="widget-content"><ul id="twitter_update_list">';
 		echo '<li>Twitter Feed Loading...';
 		echo '</ul>';
+ 		if($instance['link']==true){
+			echo '<p><a href="https://twitter.com/'.of_get_option('social_twitter').'" target="_blank">'.__('Follow us on').' Twitter</a></p>';
+		}
+		echo '</div>';
 		// End widget
 		echo $after_widget;
 		add_action('wp_footer', array(&$this, 'cion_twitter_js'));

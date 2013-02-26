@@ -261,12 +261,6 @@ function cyon_header_js_css_hook(){ ?>
 			
 			// Uniform Support
 			jQuery('.cyonform input[type=radio], .cyonform input[type=checkbox], .cyonform input[type=file], .cyonform select:not(#rating)').uniform();
-				<?php if (is_plugin_active('woocommerce/woocommerce.php')) { ?>
-				// Check woocommerce
-				jQuery('.payment_methods input.input-radio').live('click', function() {
-					jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file], .checkout select:not(#rating)').uniform();
-				});
-				<?php } ?>
 				<?php if (is_plugin_active('gravityforms/gravityforms.php')) { ?>
 				// Check gravity form
 				jQuery(document).bind('gform_post_render', function(){
@@ -333,7 +327,16 @@ function cyon_header_js_css_hook(){ ?>
 				}
 			});
 			jQuery('.iframe').fancybox({
-				type		: 'iframe'
+				type		: 'iframe',
+				maxWidth	: 800,
+				maxHeight	: 600,
+				fitToView	: false,
+				width		: '70%',
+				height		: '70%',
+				autoSize	: false,
+				closeClick	: false,
+				openEffect	: 'none',
+				closeEffect	: 'none'
 			});
 			jQuery('.gallery a').filter(function() {
 				return jQuery(this).attr('href').match(/\.(jpg|jpeg|png|gif|bmp|JPG|JPEG|PNG|GIF|BMP)/);

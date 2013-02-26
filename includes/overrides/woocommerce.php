@@ -32,7 +32,10 @@ function cyon_woo_header_js_css_hook(){ ?>
 				event.preventDefault();
 			});
 			<?php } ?>
-			jQuery('.woocommerce_ordering select, .variations_form select, .shipping_calculator select, .checkout select, .checkout input[type=radio], .checkout input[type=checkbox], #billing_country, #shipping_country').uniform();
+			jQuery('.woocommerce_ordering select, .variations_form select, .checkout input[type=radio], .checkout input[type=checkbox]').uniform();
+			jQuery('.payment_methods input.input-radio').live('click', function() {
+				jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file]').uniform();
+			});
 		});
 	</script>
 	<style media="all" type="text/css">

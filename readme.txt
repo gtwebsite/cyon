@@ -15,6 +15,7 @@ Widgets - to which page appear
 * Updated Contact widget
 * Updated Socialize widget
 * Updated Ads widget
+* Updated Twitter widget
 * Fixed blog shortcode not getting the excerpt
 
 = 1.3.4 =
