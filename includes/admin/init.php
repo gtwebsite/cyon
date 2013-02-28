@@ -40,15 +40,29 @@ function optionsframework_add_page2() {
 	
 }
 
+/* Enqueue scripts for file uploader */
+if ( ! function_exists( 'optionsframework_media_scripts' ) ){
+	add_action( 'admin_enqueue_scripts', 'optionsframework_media_scripts' );
+	function optionsframework_media_scripts() {
+		if ( function_exists( 'wp_enqueue_media' ) )
+			wp_enqueue_media();
+		wp_register_script( 'of-media-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/media-uploader.js', array( 'jquery' ) );
+		wp_enqueue_script( 'of-media-uploader' );
+		wp_localize_script( 'of-media-uploader', 'optionsframework_l10n', array(
+			'upload' => __( 'Upload', 'optionsframework' ),
+			'remove' => __( 'Remove', 'optionsframework' )
+		) );
+	}
+}
+
 /* Loads the javascript */
 function optionsframework_load_scripts2($hook) {
 	if ( 'cyon-theme_page_gtw-theme-settings' != $hook )
         return;
 	
 	// Enqueued scripts
-	wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
-	wp_enqueue_script( 'of-medialibrary-uploader' );
-	wp_enqueue_script( 'media-upload' );
+	//wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/media-uploader.js', array( 'jquery' ) );
+	//wp_enqueue_script( 'of-medialibrary-uploader' );
 
 	if ( !wp_script_is( 'wp-color-picker', 'registered' ) ) {
 		wp_register_script( 'iris', OPTIONS_FRAMEWORK_DIRECTORY . 'js/iris.min.js', array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), false, 1 );
@@ -68,7 +82,8 @@ function optionsframework_load_scripts2($hook) {
 
 /* Loads the CSS */
 function optionsframework_load_styles_update() {
-	wp_enqueue_style('cyontheme', CYON_DIRECTORY.'/assets/css/admin.css');
+	wp_enqueue_style( 'cyontheme', CYON_DIRECTORY.'/assets/css/admin-style.css');
+	wp_enqueue_style( 'optionsframework', OPTIONS_FRAMEWORK_DIRECTORY.'css/optionsframework.css' );
 	$_html = '';
 	$_html .= '<link rel="stylesheet" href="' . site_url() . '/' . WPINC . '/js/thickbox/thickbox.css" type="text/css" media="screen" />' . "\n";
 	$_html .= '<script type="text/javascript">

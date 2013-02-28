@@ -1580,11 +1580,11 @@ span.hastip, em.hastip, strong.hastip {
 }
 
 /* Search */
-.widget_search { }
-.widget_search input[type=text] {
-	width:70%; float:left;
+.widget.widget_search { }
+.widget.widget_search input[type=text] {
+	width:70%!important; float:left;
 }
-.widget_search button {
+.widget.widget_search button {
 	width:22%; float:right;
 }
 

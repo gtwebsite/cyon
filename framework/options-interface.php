@@ -6,18 +6,17 @@
 
 function optionsframework_tabs() {
 	$counter = 0;
-	$optionsframework_settings = get_option('options_framework_theme');
 	$options = optionsframework_options();
 	$menu = '';
 
-	foreach ($options as $value) {
-		$counter++;
+	foreach ( $options as $value ) {
 		// Heading for Navigation
-		if ($value['type'] == "heading") {
-			$id = ! empty( $value['id'] ) ? $value['id'] : $value['name'];
-			$jquery_click_hook = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($id) );
-			$jquery_click_hook = "of-option-" . $jquery_click_hook . $counter;
-			$menu .= '<a id="'.  esc_attr( $jquery_click_hook ) . '-tab" class="nav-tab" title="' . esc_attr( $value['name'] ) . '" href="' . esc_attr( '#'.  $jquery_click_hook ) . '">' . esc_html( $value['name'] ) . '</a>';
+		if ( $value['type'] == "heading" ) {
+			$counter++;
+			$class = '';
+			$class = ! empty( $value['id'] ) ? $value['id'] : $value['name'];
+			$class = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower($class) ) . '-tab';
+			$menu .= '<a id="options-group-'.  $counter . '-tab" class="nav-tab ' . $class .'" title="' . esc_attr( $value['name'] ) . '" href="' . esc_attr( '#options-group-'.  $counter ) . '">' . esc_html( $value['name'] ) . '</a>';
 		}
 	}
 
@@ -31,7 +30,7 @@ function optionsframework_tabs() {
 function optionsframework_fields() {
 
 	global $allowedtags;
-	$optionsframework_settings = get_option('optionsframework');
+	$optionsframework_settings = get_option( 'optionsframework' );
 
 	// Gets the unique option id
 	if ( isset( $optionsframework_settings['id'] ) ) {
@@ -42,14 +41,13 @@ function optionsframework_fields() {
 	};
 
 	$settings = get_option($option_name);
-	$options = optionsframework_options();
+	$options =& _optionsframework_options();
 
 	$counter = 0;
 	$menu = '';
 
 	foreach ( $options as $value ) {
 
-		$counter++;
 		$val = '';
 		$select_value = '';
 		$checked = '';
@@ -112,7 +110,6 @@ function optionsframework_fields() {
 				}
 			}
 		}
-
 
 		// If there is a description save it for labels
 		$explain_value = '';
@@ -243,7 +240,8 @@ function optionsframework_fields() {
 
 		// Uploader
 		case "upload":
-			$output .= optionsframework_medialibrary_uploader( $value['id'], $val, null );
+			$output .= optionsframework_uploader( $value['id'], $val, null );
+			
 			break;
 
 		// Typography
@@ -326,18 +324,19 @@ function optionsframework_fields() {
 
 			// Background Color
 			$default_color = '';
-			if ( isset($value['std']['color']) ) {
+			if ( isset( $value['std']['color'] ) ) {
 				if ( $val !=  $value['std']['color'] )
 					$default_color = ' data-default-color="' .$value['std']['color'] . '" ';
 			}
 			$output .= '<input name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" class="of-color of-background-color"  type="text" value="' . esc_attr( $background['color'] ) . '"' . $default_color .' />';
 
-			// Background Image - New AJAX Uploader using Media Library
-			if (!isset($background['image'])) {
+			// Background Image
+			if ( !isset($background['image']) ) {
 				$background['image'] = '';
 			}
-
-			$output .= optionsframework_medialibrary_uploader( $value['id'], $background['image'], null, '',0,'image');
+			
+			$output .= optionsframework_uploader( $value['id'], $background['image'], null, esc_attr( $option_name . '[' . $value['id'] . '][image]' ) );
+			
 			$class = 'of-background-properties';
 			if ( '' == $background['image'] ) {
 				$class .= ' hide';
@@ -373,7 +372,7 @@ function optionsframework_fields() {
 			$output .= '</div>';
 
 			break;
-
+			
 		// Editor
 		case 'editor':
 			$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
@@ -419,13 +418,14 @@ function optionsframework_fields() {
 
 		// Heading for Navigation
 		case "heading":
-			if ($counter >= 2) {
+			$counter++;
+			if ( $counter >= 2 ) {
 				$output .= '</div>'."\n";
 			}
-			$jquery_click_hook = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($value['name']) );
-			$jquery_click_hook = "of-option-" . $jquery_click_hook . $counter;
-			$menu .= '<a id="'.  esc_attr( $jquery_click_hook ) . '-tab" class="nav-tab" title="' . esc_attr( $value['name'] ) . '" href="' . esc_attr( '#'.  $jquery_click_hook ) . '">' . esc_html( $value['name'] ) . '</a>';
-			$output .= '<div class="group" id="' . esc_attr( $jquery_click_hook ) . '">';
+			$class = '';
+			$class = ! empty( $value['id'] ) ? $value['id'] : $value['name'];
+			$class = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($class) );
+			$output .= '<div id="options-group-' . $counter . '" class="group ' . $class . '">';
 			//$output .= '<h3>' . esc_html( $value['name'] ) . '</h3>' . "\n";  // Not needed anymore because of sections by Gtwebsite - MODIFIED
 			break;
 		}
