@@ -80,7 +80,7 @@ class CyonTwitterWidget extends WP_Widget {
 		wp_register_script('twitter_user_timeline_js','http://api.twitter.com/1/statuses/user_timeline.json?screen_name='.of_get_option('social_twitter').'&include_rts=1&callback=twitterCallback2&count='.$this->count,'','',true);
 		wp_enqueue_script( 'twitter_user_timeline_js' );
 		if ($this->style==2){
-		wp_enqueue_script('jquery_cycle',get_template_directory_uri().'/assets/js/jquery.cycle.all.js','2.9999.5');
+			wp_enqueue_script('jquery_cycle');
 			?>
 			<script type="text/javascript">	
 				jQuery(document).ready(function(){

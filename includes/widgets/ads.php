@@ -143,8 +143,9 @@ class CyonAdsWidget extends WP_Widget {
 		}
 		$count = 0;
 		for($i=1;$i<=$num;$i++){
-			if ($cols>1){
-				$count++;
+			$count++;
+			if ($instance['cols']>1){
+				$margin = '';
 				if($count==1){
 					$margin = ' no-margin';
 				}elseif($count >= $instance['cols']){

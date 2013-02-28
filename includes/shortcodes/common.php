@@ -540,7 +540,7 @@ function cyon_header_style( $atts, $content = null ) {
 add_shortcode('header','cyon_header_style'); 
 
 /* =Inline Icons
-use [icon element='' icon='' classname='' title='' url=''] xxx [/icon]
+use [icon element='' icon='' classname='' title='' url='' size=''] xxx [/icon]
 ----------------------------------------------- */
 function cyon_inline_icon( $atts, $content = null ) {
 	$atts = shortcode_atts(
@@ -549,9 +549,17 @@ function cyon_inline_icon( $atts, $content = null ) {
 			classname	=> '',
 			url			=> '',
 			title		=> '',
-			icon		=> ''
+			icon		=> '',
+			size		=> ''
 		), $atts);
 	$classname = '';
+	if($atts['size']=='large'){
+		$classname .= 'has-icon2x';
+		$iconsize = '2x';
+	}else{
+		$classname .= 'has-icon';
+		$iconsize = '';
+	}
 	$element = $atts['element'];
 	if($atts['classname']){
 		$classname .= ' '.$atts['classname'];
@@ -567,14 +575,14 @@ function cyon_inline_icon( $atts, $content = null ) {
 		$element = 'a';
 	}
 	if($atts['icon']=='' && ($atts['url'] || $atts['element']=='a')){
-		$icon = 'icon-share';
+		$icon = 'icon'.$iconsize.'-share';
 		$element = 'a';
 	}elseif($atts['icon']==''){
-		$icon = 'icon-question-sign';
+		$icon = 'icon'.$iconsize.'-question-sign';
 	}else{
-		$icon = 'icon-'.$atts['icon'];
+		$icon = 'icon'.$iconsize.'-'.$atts['icon'];
 	}
-	$html = '<'.$element.' class="has-icon'.$classname.'"'.$title.$url.'><span class="'.$icon.'"></span> ' . $content . '</'.$element.'>';
+	$html = '<'.$element.' class="'.$classname.'"'.$title.$url.'><span class="'.$icon.'"></span> ' . $content . '</'.$element.'>';
 	return $html;
 }
 add_shortcode('icon','cyon_inline_icon'); 

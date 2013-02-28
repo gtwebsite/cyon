@@ -146,6 +146,7 @@ wp_register_script('poshytip',get_template_directory_uri().'/assets/js/jquery.po
 wp_register_script('mediaelement',get_template_directory_uri().'/assets/js/jquery.mediaelement.min.js',array('jquery'),'2.10.0',false);
 wp_register_script('gmap_api','http://maps.google.com/maps/api/js?sensor=false',array('jquery'),'1.0.0',false);
 wp_register_script('gmap',get_template_directory_uri().'/assets/js/jquery.gmap.min.js',array('gmap_api'),'3.3.0',false);
+wp_register_script('jquery_cycle',get_template_directory_uri().'/assets/js/jquery.cycle.all.js',array('jquery'),'2.9999.5',false);
 
 wp_register_style('responsive_css', get_template_directory_uri().'/assets/css/responsive.css',array(),'1.0.0');
 wp_register_style('fancybox_css', get_template_directory_uri().'/assets/css/jquery.fancybox.css',array(),'2.0.6');

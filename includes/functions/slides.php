@@ -126,26 +126,7 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 				<?php echo get_post_meta(get_the_ID(), 'cyon_banner_url', true) ? '<a href="'.get_post_meta(get_the_ID(), 'cyon_banner_url', true).'">' : '' ?>
 					<img src="<?php echo $image_url[0]; ?>" title="<?php the_title(); ?>" />
 				<?php echo get_post_meta(get_the_ID(), 'cyon_banner_url', true) ? '</a>' : '' ?>
-				<?php if(of_get_option('homepage_slider_caption')==1){ ?>
-				<?php
-					$ctop = 'auto';
-					$cleft = 'auto';
-					$cright = 'auto';
-					$cbottom = 'auto';
-					if(of_get_option('homepage_slider_caption_layout')=='top-right'){
-						$ctop = '0';
-						$cright = '0';
-					}
-					if(of_get_option('homepage_slider_caption_layout')=='top-left'){
-						$ctop = '0';
-					}
-					if(of_get_option('homepage_slider_caption_layout')=='bottom-left'){
-						$cbottom = '0';
-					}
-					if(of_get_option('homepage_slider_caption_layout')=='bottom-right'){
-						$cbottom = '0';
-						$cright = '0';
-					}
+				<?php 
 					$ptop = 'auto';
 					$pleft = 'auto';
 					$pright = 'auto';
@@ -182,6 +163,25 @@ if ( ! function_exists( 'cyon_flexslider' ) ){
 						$pwidth = 'auto';
 						$palign = 'right';
 					}
+					if(of_get_option('homepage_slider_caption')==1){
+						$ctop = 'auto';
+						$cleft = 'auto';
+						$cright = 'auto';
+						$cbottom = 'auto';
+						if(of_get_option('homepage_slider_caption_layout')=='top-right'){
+							$ctop = '0';
+							$cright = '0';
+						}
+						if(of_get_option('homepage_slider_caption_layout')=='top-left'){
+							$ctop = '0';
+						}
+						if(of_get_option('homepage_slider_caption_layout')=='bottom-left'){
+							$cbottom = '0';
+						}
+						if(of_get_option('homepage_slider_caption_layout')=='bottom-right'){
+							$cbottom = '0';
+							$cright = '0';
+						}
 				?>
 				<?php if(of_get_option('homepage_slider_animation')==0){ ?>
 				<div class="flex-caption" style="width:<?php echo of_get_option('homepage_slider_caption_width')-6; ?>%; top:<?php echo $ctop; ?>; left:<?php echo $cleft; ?>; right:<?php echo $cright; ?>; bottom:<?php echo $cbottom; ?>;">

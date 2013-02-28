@@ -39,7 +39,7 @@
 										a.addImmediate(c,"Code",'[code inline="yes"][/code]' );
 										a.addImmediate(c,"Header",'[header size="" icon=""]Title Here[/header]' );
 										a.addImmediate(c,"Horizontal Line",'[line style=""]' );
-										a.addImmediate(c,"Icon",'[icon element="" icon="" title="" url=""]Text here[/icon]' );
+										a.addImmediate(c,"Icon",'[icon element="" icon="" title="" url="" size=""]Text here[/icon]' );
 										a.addImmediate(c,"Lists",'[lists icon="" cols="" size=""]<br/>[list icon=""]Item name[/list]<br/>[list icon=""]Item name[/list]<br/>[/lists]' );
 
 								c=b.addMenu({title:"Table"});

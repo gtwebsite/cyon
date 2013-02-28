@@ -123,6 +123,7 @@ function cyon_testimonial( $atts, $content = null ) {
 	if($atts['style']=='fade'){
 		ob_start();
 			add_action('wp_footer', 'cion_testimonial_js',20);
+			wp_enqueue_script('jquery_cycle');
 		ob_get_clean();
 	}
 	wp_reset_query();
@@ -133,7 +134,6 @@ add_shortcode('testimonials','cyon_testimonial');
 /* Register header JS and CSS */
 if ( ! function_exists( 'cion_testimonial_js' ) ){
 	function cion_testimonial_js() {
-		wp_enqueue_script('jquery_cycle',get_template_directory_uri().'/assets/js/jquery.cycle.all.js','2.9999.5');
 			?>
 			<script type="text/javascript">	
 				jQuery(document).ready(function(){
@@ -245,6 +245,7 @@ class CyonTestimonialWidget extends WP_Widget {
 		echo '</ul>';
 		if($instance['style']=='fade'){
 			add_action('wp_footer', 'cion_testimonial_js',20);
+			wp_enqueue_script('jquery_cycle');
 		}
 		// End widget
 		echo $after_widget;

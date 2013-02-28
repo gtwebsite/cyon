@@ -12,6 +12,7 @@ Widgets - to which page appear
 == Changelog ==
 
 = 1.3.5 =
+* Updated Options Framework to 1.5
 * Updated Contact widget
 * Updated Socialize widget
 * Updated Ads widget
