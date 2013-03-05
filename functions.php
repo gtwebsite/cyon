@@ -236,7 +236,6 @@ function unhook_cyon_functions() {
 	/* Change the order of the hook  */
 	// remove_action('cyon_header','cyon_header_mainnav_hook',30);
 	// add_action('cyon_header','cyon_header_mainnav_hook',10);
-	add_filter('loop_shop_per_page', create_function('$cols', 'return 8;'));
 }
 add_action('init','unhook_cyon_functions');
 

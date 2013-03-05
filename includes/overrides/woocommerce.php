@@ -11,9 +11,9 @@ function cyon_woo_header_js_css_hook(){ ?>
 		jQuery(document).ready(function(){
 			<?php if(is_product()){  ?>
 			CloudZoom.quickStart();
-			jQuery('.woocommerce_tabs').addClass('tabs');
-			jQuery('.woocommerce_tabs .tabs').addClass('tab_nav');
-			jQuery('.woocommerce_tabs').removeClass('woocommerce_tabs');
+			jQuery('.woocommerce-tabs').addClass('tabs');
+			jQuery('.woocommerce-tabs .tabs').addClass('tab_nav');
+			jQuery('.woocommerce-tabs').removeClass('woocommerce-tabs');
 			jQuery('.tabs .tabs').removeClass('tabs');
 			jQuery('.tabs .tab_nav li:first-child').addClass('active');
 			jQuery(jQuery('.tab_nav li.active a').attr('href')).show();
@@ -32,8 +32,12 @@ function cyon_woo_header_js_css_hook(){ ?>
 				event.preventDefault();
 			});
 			<?php } ?>
-			jQuery('.woocommerce_ordering select, .variations_form select, .checkout input[type=radio], .checkout input[type=checkbox]').uniform();
+			jQuery('.woocommerce_ordering select, .variations_form select, .checkout input[type=radio], .checkout input[type=checkbox], .woocommerce-ordering select').uniform();
 			jQuery('.payment_methods input.input-radio').live('click', function() {
+				jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file]').uniform();
+			});
+			jQuery('body').bind('update_checkout', function(){
+				clearTimeout(updateTimer);
 				jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file]').uniform();
 			});
 		});
@@ -62,8 +66,6 @@ add_action( 'wp', 'cyon_woo_init' );
 
 /* Override default breadcrumb */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb',20);
-remove_action( 'cyon_before_body_wrapper', 'cyon_breadcrumb_hook' , 10 );
-add_action( 'cyon_before_body_wrapper', 'woocommerce_breadcrumb', 20, 0 );
 
 
 /* Override Single Product Image */
@@ -122,6 +124,9 @@ function cyon_woocommerce_output_related_products(){
 }
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 add_action( 'woocommerce_after_single_product_summary', 'cyon_woocommerce_output_related_products', 20, 0 );
+
+/* Remove reviews */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
 /* Display 24 products per page */
 add_filter('loop_shop_per_page', create_function('$cols', 'return 24;'));
@@ -332,9 +337,6 @@ add_filter('add_to_cart_fragments', 'cyon_woocommerce_header_add_to_cart_fragmen
 
 /* Replace Pagination */
 function unhook_cyon_woocommerce() {
-	if(function_exists( 'wp_pagenavi' )){
-		remove_action( 'woocommerce_pagination', 'woocommerce_pagination', 10 );
-		add_action( 'woocommerce_pagination', 'wp_pagenavi', 10 );
-	}
+	remove_action('cyon_primary_after','cyon_comments_hook',10);
 }
 add_action('init','unhook_cyon_woocommerce');

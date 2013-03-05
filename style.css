@@ -301,13 +301,13 @@ div.alignleft:empty, div.alignright:empty {
 }
 
 /* Headers */
-.page-header, .category-header, #container .page-title {
+.page-header, .category-header, .page-title {
 	margin-bottom:20px;
 }
-.page-header h1, .category-header h1, #container .page-title {
+.page-header h1, .category-header h1, .page-title {
 	font-family: "Segoe UI Light";
 }
-.page-header h1, #container .page-title, .entry-content h1, .page-content h1 {
+.page-header h1, .page-title, .entry-content h1, .page-content h1 {
 	font-size:260%;
 }
 .category-header h1 {
@@ -375,7 +375,7 @@ article:last-child {
 	margin-bottom:2px;
 }
 .page-content form p {
-	margin-bottom:5px;
+	margin-bottom:10px;
 }
 .entry-content img, .page-content img, .entry-featured-image img, .category-archive-meta img {
 	max-width:100%; height:auto; display:block;
@@ -507,7 +507,10 @@ p.nocomments {
 	padding:3px 0; position:relative;
 }
 #respond .required, .cyonform .required {
-	position:absolute; left:20%; color:#ff0000;
+	position:absolute; left:20%; 
+}
+#respond .required, .cyonform .required, .woocommerce .form-row .required {
+	color:#ff0000;
 }
 #respond .comment-notes .required {
 	position:static;
@@ -1042,7 +1045,7 @@ from: https://gist.github.com/3026455#file-js-video-usage-html
 .box, blockquote, code {
 	background:#f8f8f8; border-radius:5px; border:1px dashed #ddd; padding:1px 5px;
 }
-div.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .validation_error, .entry-content blockquote, .page-content blockquote {
+div.box, .woocommerce_message, .woocommerce_error, .woocommerce-message, .woocommerce-error, .gform_wrapper .validation_error, .entry-content blockquote, .page-content blockquote {
 	padding:10px 15px; position:relative; margin-bottom:20px; border-radius:5px; box-shadow:0 2px 5px rgba(0,0,0,.05), inset 1px 1px rgba(255,255,255,.8); text-shadow:1px 1px rgba(255,255,255,.8);
 }
 .box-blue {
@@ -1057,13 +1060,13 @@ div.box, .woocommerce_message, .woocommerce_error, .gform_wrapper .validation_er
 .box-green h3 {
 	color:#8ebe86;
 }
-.box-yellow, .woocommerce_message {
+.box-yellow, .woocommerce_message, .woocommerce-message {
 	background-color:#fffad2; border-color:#b1af72;
 }
 .box-yellow h3 {
 	color:#b1af72;
 }
-.box-red, .woocommerce_error, .gform_wrapper .validation_error  {
+.box-red, .woocommerce_error, .woocommerce-error, .gform_wrapper .validation_error  {
 	background-color:#ffeaea; border-color:#ff8888;
 }
 .box-red h3 {
@@ -1439,7 +1442,13 @@ span.hastip, em.hastip, strong.hastip {
 .wp-pagenavi {
 	text-align:right; float:right; padding:5px 0; clear:both;
 }
-.wp-pagenavi .current, .wp-pagenavi a {
+.woocommerce-pagination {
+	text-align:center;
+}
+.woocommerce-pagination ul li {
+	display:inline;
+}
+.wp-pagenavi .current, .wp-pagenavi a, .woocommerce-pagination .current, .woocommerce-pagination a {
 	border:1px solid #efefef; padding:3px 10px; margin:0 2px 2px 0; border-radius:3px;
 	background: #ffffff; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f4f4f4 100%); /* FF3.6+ */
@@ -1453,7 +1462,7 @@ span.hastip, em.hastip, strong.hastip {
 .wp-pagenavi span {
 	padding:3px 10px;
 }
-.wp-pagenavi span.current {
+.wp-pagenavi span.current, .woocommerce-pagination .current {
 	background: #f4f4f4; /* Old browsers */
 	background: -moz-linear-gradient(top,  #f4f4f4 0%, #ffffff 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
