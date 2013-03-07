@@ -125,6 +125,13 @@ function cyon_woocommerce_output_related_products(){
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 add_action( 'woocommerce_after_single_product_summary', 'cyon_woocommerce_output_related_products', 20, 0 );
 
+/* Override Upsell Products */
+function cyon_woocommerce_upsell_display(){
+	woocommerce_upsell_display(4,4);
+}
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+add_action( 'woocommerce_after_single_product_summary', 'cyon_woocommerce_upsell_display', 15 );
+
 /* Remove reviews */
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 

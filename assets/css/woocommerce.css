@@ -48,7 +48,7 @@ ins { padding:0; background:none; }
 .products li .added_to_cart { display:none; }
 	
 .stars { float:left; }
-.stars span { position:relative; height:16px; width:80px; display:block; background:url(../images/star.png) repeat-x; }
+.stars span, .star-rating { position:relative; height:16px; width:80px; display:block; background:url(../images/star.png) repeat-x; }
 .stars a { display:block; position:absolute; left:0; top:0; height:16px; overflow:hidden; text-indent:-999px; }
 .stars a:hover, .stars span a:focus { background:url(../images/star.png) 0 -32px repeat-x; }
 .stars .star-1 { width:16px; z-index:10; }
@@ -57,6 +57,11 @@ ins { padding:0; background:none; }
 .stars .star-4 { width:64px; z-index:7; }
 .stars .star-5 { width:80px; z-index:6; }
 .stars a.active { background:url(../images/star.png) 0 -16px repeat-x; }
+
+.star-rating span { display:block; height:16px; background:url(../images/star.png) 0 -16px repeat-x; overflow:hidden; text-indent:-9999px; }
+#comments div[itemprop='aggregateRating'] .star-rating { float:right; position:relative; top:8px; }
+#comments .commentlist .comment_container img { float:left; margin:0 10px 0 0; }
+#comments .commentlist .comment_container .comment-text { margin-left:70px; }
 
 .widget .product_list_widget li { position:relative; min-height:62px; padding-left:80px; }
 .widget .product_list_widget li img { width:60px; height:60px; border:1px solid #efefef; position:absolute; top:10px; left:10px; }
@@ -80,8 +85,7 @@ ins { padding:0; background:none; }
 
 .type-product .summary { float:right; width:400px; }
 .type-product .stock { margin-bottom:10px; font-style:italic; }
-.type-product div[itemprop="description"] { margin:10px 0 0 0; }
-.type-product div[itemprop="description"] p { padding-bottom:10px; }
+.type-product div[itemprop="description"] { margin:5px 0 0 0; }
 .type-product h1 { margin-bottom:20px; font-size:260%; line-height:normal; }
 .type-product h2, .upsells h2 { font-size:160%; margin-bottom:5px; }
 .type-product .product_meta { margin-bottom:20px; }

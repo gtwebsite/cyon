@@ -4,7 +4,7 @@ class CyonSupageWidget extends WP_Widget {
 
 	// Creating your widget
 	function CyonSupageWidget(){
-		$widget_ops = array('classname' => 'cyon-iframe', 'description' => __('Displays supages') );
+		$widget_ops = array('classname' => 'cyon-subpages', 'description' => __('Displays supages') );
 		$this->WP_Widget('CyonSupageWidget', __('Cyon Supage'), $widget_ops);
 	}
  

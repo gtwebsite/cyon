@@ -11,8 +11,13 @@ Widgets - to which page appear
 
 == Changelog ==
 
-= 1.3.5 =
+= 1.4.0 =
 * Updated Options Framework to 1.5
+* Updated for Woocommerce 2.0
+* Updated Contact Form widget
+* Updated Subpage widget
+
+= 1.3.5 =
 * Updated Contact widget
 * Updated Socialize widget
 * Updated Ads widget
