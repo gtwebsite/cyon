@@ -110,10 +110,10 @@ ins { padding:0; background:none; }
 .type-product .shop_attributes th { font-weight:bold; width:30%; }
 .type-product .shop_attributes th, .type-product .shop_attributes td { padding:4px 10px; border-bottom:1px solid #efefef; }
 
-.buttons_added { position:relative; padding-right:30px; }
-.buttons_added input[type=button] { height:14px; line-height:0; position:absolute; top:0; left:43px; width:20px; padding:0; }
-.buttons_added input[type=button].minus { bottom:0; top:auto; }
-.buttons_added input.qty { width:30px; text-align:center; }
+.variations_button .quantity { position:relative; padding-right:30px; }
+.variations_button .quantity input[type=button] { height:14px; line-height:0; position:absolute; top:0; left:43px; width:20px; padding:0; }
+.variations_button .quantity input[type=button].minus { bottom:0; top:auto; }
+.variations_button .quantity input.qty { width:30px; text-align:center; }
 
 article .entry-content .woocommerce_error { margin:0; list-style:none; }
 article .entry-content .woocommerce_error li { margin-left:20px; }

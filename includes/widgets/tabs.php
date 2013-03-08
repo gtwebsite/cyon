@@ -46,11 +46,6 @@ class CyonTabsWidget extends WP_Widget {
 
     	// Widget code here
 		echo $before_widget;
-		$widget_areas = array();
-		foreach ($GLOBALS['wp_registered_sidebars'] as $val) {
-			$widget_areas[$val['id']]=$val['name'];
-		}
-		print_r($widget_areas);
 		echo '<ul class="tab_nav">';
 		echo '';
 		$widgets = wp_get_sidebars_widgets();

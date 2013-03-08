@@ -1,7 +1,9 @@
 /* Only for IE 7 and below */
-
-button, input[type=submit], input[type=reset], input[type=button] {
-	padding:3px 5px;
+.widget .cyonform legend {
+	display:none;
+}
+.cyonform button, .cyonform input[type=submit], .cyonform input[type=reset], .cyonform input[type=button], .cyonform .button, #respond input[type=submit] {
+	line-height:26px; padding:0 5px; 
 }
 a.button {
 	position:relative; top:-5px; padding-top:4px;
@@ -43,6 +45,26 @@ a.btn.has-icon2x span, a.btn.has-icon span {
 }
 #payment .place-order .form-row input {
 	float:none;
+}
+
+/* Grid */
+.grid .cols2 article {
+	width:49.9%;
+}
+.grid .cols3 article {
+	width:33%;
+}
+.grid .cols4 article {
+	width: 24.8%;
+}
+.grid .cols5 article {
+	width:19.8%;
+}
+.grid .cols6 article {
+	width:16.333%;
+}
+.grid article section > ul > li {
+	border-bottom:1px solid #f4f4f4;
 }
 
 /* Clearers */

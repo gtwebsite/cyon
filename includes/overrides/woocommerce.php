@@ -10,7 +10,18 @@ function cyon_woo_header_js_css_hook(){ ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			<?php if(is_product()){  ?>
-			CloudZoom.quickStart();
+			// CloudZoom.quickStart();
+			<?php  if(get_option('woocommerce_enable_lightbox') == 'no'){ ?>
+			jQuery('.zoom').fancybox({
+				openEffect	: 'elastic',
+				closeEffect	: 'elastic',
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+			<?php } ?>
 			jQuery('.woocommerce-tabs').addClass('tabs');
 			jQuery('.woocommerce-tabs .tabs').addClass('tab_nav');
 			jQuery('.woocommerce-tabs').removeClass('woocommerce-tabs');
@@ -114,10 +125,11 @@ function cyon_show_product_images(){
 	?></div>
 	</div>
 <?php }
-if(get_option('woocommerce_frontend_css') == 'no'){
-	remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
-	add_action( 'woocommerce_before_single_product_summary', 'cyon_show_product_images', 20 );
+if(get_option('woocommerce_enable_lightbox') == 'no'){
+	//remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+	//add_action( 'woocommerce_before_single_product_summary', 'cyon_show_product_images', 20 );
 }
+
 /* Override Related Products */
 function cyon_woocommerce_output_related_products(){
 	woocommerce_related_products( 4, 4 );
