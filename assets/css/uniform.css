@@ -44,7 +44,7 @@ div.uploader span.action {
 /* Select */
 
 div.selector {
-	border:1px solid #ccc; border-radius:3px; color:#888; text-shadow:1px 1px 0 #fff; box-shadow:inset 1px 1px 3px rgba(0,0,0,.1), inset -1px -1px 1px #fff;
+	border:1px solid #ccc; border-radius:3px; color:#888; box-shadow:inset 1px 1px 3px rgba(0,0,0,.1), inset -1px -1px 1px #fff;
 	background: #ffffff; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
@@ -213,7 +213,7 @@ div.radio.disabled.active span.checked {
 /* Uploader */
 
 div.uploader {
-	cursor:pointer; border:1px solid #ccc; border-radius:3px; color:#888; text-shadow:1px 1px 0 #fff; box-shadow:inset 1px 1px 3px rgba(0,0,0,.1), inset -1px -1px 1px #fff;
+	cursor:pointer; border:1px solid #ccc; border-radius:3px; color:#888; box-shadow:inset 1px 1px 3px rgba(0,0,0,.1), inset -1px -1px 1px #fff;
 	background: #ffffff; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
@@ -278,7 +278,6 @@ div.selector span {
 div.selector span {
   color: #666;
   width: 158px;
-  text-shadow: 0 1px 0 #fff;
 }
 
 div.selector.disabled span {
@@ -304,7 +303,6 @@ div.uploader {
 div.uploader span.action {
   width: 85px;
   text-align: center;
-  text-shadow: #fff 0px 1px 0px;
   background-color: #fff;
   font-size: 11px;
   font-weight: bold;

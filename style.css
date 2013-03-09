@@ -181,7 +181,7 @@ nav .nav-next {
 
 /* Form */
 .cyonform input[type=text], .cyonform input[type=email], .cyonform input[type=phone], .cyonform input[type=password], .cyonform input[type=submit], .cyonform input[type=button], .cyonform textarea, .cyonform select, .cyonform button, .cyonform .button, .btn, #drop-nav { 
-	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; text-shadow:1px 1px 0 #fff; 
+	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; 
 }
 .cyonform input[type=text], .cyonform input[type=email], .cyonform input[type=phone], .cyonform textarea, .cyonform select, #drop-nav {
 	box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
@@ -249,7 +249,9 @@ form.form-sending fieldset {
 input.error:-moz-placeholder, textarea.error:-moz-placeholder {
 	color:#fff;
 }
-
+.cyonform button, .cyonform input[type=submit], .cyonform input[type=reset], .cyonform input[type=button] {
+	height:auto; padding:5px 10px; line-height:normal;
+}
 
 /* =Classes & IDs
 ----------------------------------------------- */

@@ -31,8 +31,6 @@ ins { padding:0; background:none; }
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-8 */
 }
 .product { position:relative; }
-.quantity { float:left; }
-.quantity input { margin:0 2px; }
 
 .term-description { margin-bottom:20px; }
 .term-description p { margin-bottom:10px; }
@@ -103,6 +101,7 @@ ins { padding:0; background:none; }
 .type-product form.cart .variations_button .quantity { float:left; }
 .type-product form.cart .variations_button button.button { float:right; }
 .type-product form.cart table + .single_add_to_cart_button { margin-top:10px; }
+.type-product form.cart .single_add_to_cart_button { padding:8px 10px; line-height:normal; height:auto; }
 
 .type-product .related  { clear:both; }
 
@@ -110,10 +109,13 @@ ins { padding:0; background:none; }
 .type-product .shop_attributes th { font-weight:bold; width:30%; }
 .type-product .shop_attributes th, .type-product .shop_attributes td { padding:4px 10px; border-bottom:1px solid #efefef; }
 
-.variations_button .quantity { position:relative; padding-right:30px; }
-.variations_button .quantity input[type=button] { height:14px; line-height:0; position:absolute; top:0; left:43px; width:20px; padding:0; }
-.variations_button .quantity input[type=button].minus { bottom:0; top:auto; }
-.variations_button .quantity input.qty { width:30px; text-align:center; }
+.quantity { position:relative; padding-right:30px; float:left; }
+.quantity input { margin:0 2px; }
+.quantity input[type=button] { line-height:14px; position:absolute; top:0; left:43px; width:20px; padding:0; }
+.quantity input[type=button].minus { bottom:0; top:auto; }
+.quantity input.qty { width:30px; height:22px; text-align:center; }
+
+#review_form_wrapper { margin:20px 0 0 0; }
 
 article .entry-content .woocommerce_error { margin:0; list-style:none; }
 article .entry-content .woocommerce_error li { margin-left:20px; }
@@ -215,7 +217,7 @@ dl.customer_details dd {
 .checkout { margin-top:40px; }
 
 .woocommerce_ordering select, .variations_form select, .variations_form input, .variations_form button, .add_to_cart_button, .cart input, .cart button, #commentform input, #commentform textarea, .shipping_calculator input, .shipping_calculator select, .shipping_calculator button, .checkout input[type=text], .checkout input[type=password], .checkout input[type=submit], .checkout select, .checkout textarea, .login input, .checkout_coupon input, .form-row input, .button, #billing_country, .edit { 
-	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; text-shadow:1px 1px 0 #fff; 
+	border:0; margin:0; font-family:inherit; font-size:inherit; border:1px solid #ccc; border-radius:3px; padding:5px; color:#888; white-space:nowrap; line-height:normal; 
 }
 .woocommerce_ordering select, .variations_form select, .shipping_calculator select, .checkout select, .variations_form input, .cart input, #commentform input, #commentform textarea, .shipping_calculator input, .checkout input[type=text], .checkout input[type=password], .checkout select, .checkout textarea, .login input[type=text], .login input[type=password], .checkout_coupon input[type=text], .form-row input, #billing_country {
 	box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
@@ -249,8 +251,11 @@ dl.customer_details dd {
 	background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(242,242,242,1) 5%,rgba(221,221,221,1) 94%,rgba(193,193,193,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#c1c1c1',GradientType=0 ); /* IE6-8 */
 }
+.variations_form button, .add_to_cart_button, .cart button, .cart input[type=submit], #commentform input[type=submit], .checkout input[type=submit], .login input[type=submit], .checkout_coupon input[type=submit], .shipping_calculator button {
+	height:auto; padding:5px 10px; line-height:normal;
+}
 .variations_form button:hover, .add_to_cart_button:hover, .cart button:hover, #commentform input[type=submit]:hover, .cart input[type=submit]:hover, .shipping_calculator button:hover, .checkout input[type=submit]:hover, .login input[type=submit]:hover, .checkout_coupon input[type=submit]:hover, .button:hover, .edit:hover {
-	color:#222; border-color:#aaa; text-shadow:1px 1px 0 #fff;
+	color:#222; border-color:#aaa; 
 	background: rgb(240,249,255); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjlmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2NiZWJmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
