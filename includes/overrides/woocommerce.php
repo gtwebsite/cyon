@@ -1,5 +1,8 @@
 <?php
 
+/* Declare Support */
+add_theme_support( 'woocommerce' );
+
 /* Add own CSS and JS */
 function cyon_woo_header_js_css_hook(){ ?>
 	<?php if(get_option('woocommerce_frontend_css') == 'no'){ ?>
@@ -43,13 +46,16 @@ function cyon_woo_header_js_css_hook(){ ?>
 				event.preventDefault();
 			});
 			<?php } ?>
-			jQuery('.woocommerce_ordering select, .variations_form select, .checkout input[type=radio], .checkout input[type=checkbox], .woocommerce-ordering select').uniform();
+			jQuery('.woocommerce_ordering select, .variations_form select, .checkout input[type=radio], .checkout input[type=checkbox], .woocommerce-ordering select, select.state_select').uniform();
 			jQuery('.payment_methods input.input-radio').live('click', function() {
 				jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file]').uniform();
 			});
 			jQuery('body').bind('update_checkout', function(){
 				clearTimeout(updateTimer);
 				jQuery('.checkout input[type=radio], .checkout input[type=checkbox], .checkout input[type=file]').uniform();
+			});
+			jQuery('select.country_to_state').live('change', function() {
+				jQuery('select.state_select').uniform();
 			});
 		});
 	</script>
@@ -78,6 +84,24 @@ add_action( 'wp', 'cyon_woo_init' );
 /* Override default breadcrumb */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb',20);
 
+/* Override default container */
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+add_action('woocommerce_before_main_content', 'cyon_woocommerce_output_content_wrapper', 10);
+add_action('woocommerce_after_main_content', 'cyon_woocommerce_output_content_wrapper_end', 10);
+ 
+function cyon_woocommerce_output_content_wrapper() { ?>
+		<!-- Center -->
+		<div id="primary">
+			<?php cyon_primary_before(); ?>
+			<div id="content" role="main">		
+<?php }
+ 
+function cyon_woocommerce_output_content_wrapper_end() { ?>
+			</div>
+			<?php cyon_primary_after(); ?>
+		</div>
+<?php }
 
 /* Override Single Product Image */
 function cyon_show_product_images(){

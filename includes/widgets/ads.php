@@ -32,42 +32,42 @@ class CyonAdsWidget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array(
 			'title' 		=> __('Sponsors'),
 			'ad_img_1'	=> '',
-			'ad_url_1'	=> 'http://',
+			'ad_url_1'	=> '',
 			'ad_name_1'	=> '',
 			'ad_pop_1'	=> 'parent',
 			'ad_img_2'	=> '',
-			'ad_url_2'	=> 'http://',
+			'ad_url_2'	=> '',
 			'ad_name_2'	=> '',
 			'ad_pop_2'	=> 'parent',
 			'ad_img_3'	=> '',
-			'ad_url_3'	=> 'http://',
+			'ad_url_3'	=> '',
 			'ad_name_3'	=> '',
 			'ad_pop_3'	=> 'parent',
 			'ad_img_4'	=> '',
-			'ad_url_4'	=> 'http://',
+			'ad_url_4'	=> '',
 			'ad_name_4'	=> '',
 			'ad_pop_4'	=> 'parent',
 			'ad_img_5'	=> '',
-			'ad_url_5'	=> 'http://',
+			'ad_url_5'	=> '',
 			'ad_name_5'	=> '',
 			'ad_pop_5'	=> 'parent',
 			'ad_img_6'	=> '',
-			'ad_url_6'	=> 'http://',
+			'ad_url_6'	=> '',
 			'ad_name_6'	=> '',
 			'ad_pop_7'	=> 'parent',
 			'ad_img_7'	=> '',
-			'ad_url_7'	=> 'http://',
+			'ad_url_7'	=> '',
 			'ad_name_7'	=> '',
 			'ad_img_8'	=> '',
-			'ad_url_8'	=> 'http://',
+			'ad_url_8'	=> '',
 			'ad_name_8'	=> '',
 			'ad_pop_8'	=> 'parent',
 			'ad_img_9'	=> '',
-			'ad_url_9'	=> 'http://',
+			'ad_url_9'	=> '',
 			'ad_name_9'	=> '',
 			'ad_pop_9'	=> 'parent',
 			'ad_img_10'	=> '',
-			'ad_url_10'	=> 'http://',
+			'ad_url_10'	=> '',
 			'ad_name_10'=> '',
 			'ad_pop_10'	=> 'parent',
 			'cols'		=> 1,
@@ -238,9 +238,9 @@ class CyonAdsWidget extends WP_Widget {
 
 	function https_cleanup( $imageurl = '' ) {
 		if( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) {
-			$imageurl = str_replace('http://', 'https://', $imageurl);
+			$imageurl = str_replace('', 'https://', $imageurl);
 		} else {
-			$imageurl = str_replace('https://', 'http://', $imageurl);
+			$imageurl = str_replace('https://', '', $imageurl);
 		}
 		return $imageurl;
 	}

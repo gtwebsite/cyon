@@ -10,10 +10,10 @@ ins { padding:0; background:none; }
 .woocommerce-ordering { float:right; margin-bottom:20px; }
 
 .products { clear:both; }
-.products li .add_to_cart_button { position:relative; }
+.products li .add_to_cart_button { position:relative; height:30px; line-height:30px; padding-top:0; padding-bottom:0; }
 .products li .loading { cursor:default; background:#fff; color:#000; }
-.products li .loading:before { content:''; width:16px; height:16px; float:right; position:absolute; top:7px; left:9px; background:url(../images/ajax-loader.gif) no-repeat 50% 50%; }
-.products li .added::before { content:''; width:16px; height:16px; float:right; position:absolute; top:7px; left:9px; background:url(../images/success.png) no-repeat 50% 50%; }
+.products li .loading:before { content:''; width:16px; height:16px; float:left; position:relative; top:7px; background:url(../images/ajax-loader.gif) no-repeat 50% 50%; }
+.products li .added::before { content:''; width:16px; height:16px; float:left; position:relative; top:7px; background:url(../images/success.png) no-repeat 50% 50%; }
 
 .price, .amount { color:#3b9c00; }
 .price ins .amount { font-size:150%; }
@@ -252,7 +252,7 @@ dl.customer_details dd {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#c1c1c1',GradientType=0 ); /* IE6-8 */
 }
 .variations_form button, .add_to_cart_button, .cart button, .cart input[type=submit], #commentform input[type=submit], .checkout input[type=submit], .login input[type=submit], .checkout_coupon input[type=submit], .shipping_calculator button {
-	height:auto; padding:5px 10px; line-height:normal;
+	height:auto; padding:7px 10px; line-height:normal;
 }
 .variations_form button:hover, .add_to_cart_button:hover, .cart button:hover, #commentform input[type=submit]:hover, .cart input[type=submit]:hover, .shipping_calculator button:hover, .checkout input[type=submit]:hover, .login input[type=submit]:hover, .checkout_coupon input[type=submit]:hover, .button:hover, .edit:hover {
 	color:#222; border-color:#aaa; 

@@ -12,12 +12,22 @@ class CyonSupageWidget extends WP_Widget {
 	function form($instance){
 		// Start adding your fields here
 		$instance = wp_parse_args( (array) $instance, array(
-			'title' 		=> 'Subpages'
+			'title' 		=> 'Subpages',
+			'depths' 		=> '0'
 		) );
 		$title = $instance['title'];
+		$depths = $instance['depths'];
 
 		?>
-		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+			<p><label for="<?php echo $this->get_field_id('depths'); ?>"><?php _e('Depths') ?>:</label>
+				<?php $options = array( '0'=>__('Nested'), '-1'=>__('Flat'), '1'=>__('Top-level pages'), '2'=>__('Up to 2 depths'), '3'=>__('Up to 3 depths')); ?>
+				<select id="<?php echo $this->get_field_id('depths'); ?>" name="<?php echo $this->get_field_name('depths'); ?>" class="widefat">
+				<?php foreach ( $options as $i=>$opt ) : ?>
+					<option value="<?php echo $i?>" <?php echo $i == $instance['depths'] ? 'selected' : ''?>><?php echo $opt ?></option>
+				<?php endforeach; ?>
+				</select>
+			</p>
 
 		<?php
 	}
@@ -27,6 +37,7 @@ class CyonSupageWidget extends WP_Widget {
 		$instance = $old_instance;
 		// Override new values of each fields
 		$instance['title'] = $new_instance['title'];
+		$instance['depths'] = $new_instance['depths'];
 
 		return $instance;
 	}
@@ -55,7 +66,7 @@ class CyonSupageWidget extends WP_Widget {
 				echo $before_title . $title . $after_title;;
 			}
 			echo '<ul class="widget-content">';
-			echo wp_list_pages(array('child_of'=>$parent,'title_li'=>''));
+			echo wp_list_pages(array('child_of'=>$parent,'title_li'=>'','depth'=>$instance['depths']));
 			// Widget code here
 	 
 			// End widget

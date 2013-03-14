@@ -26,7 +26,7 @@ class CyonTwitterWidget extends WP_Widget {
 		?>
 		  <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title') ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
   		  <p><label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Number of tweets') ?>: <input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo attribute_escape($count); ?>" /></label></p>
-			<?php $options = array( 1=>'List', 'Fade');
+			<?php $options = array( 1=>__('List'), __('Fade'));
 			?>
   		  <p><label for="<?php echo $this->get_field_id('style'); ?>"><?php _e('View Style') ?>: <select class="widefat" id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>">
 				<?php foreach ( $options as $i=>$opt ) : ?>

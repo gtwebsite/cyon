@@ -11,6 +11,10 @@ Widgets - to which page appear
 
 == Changelog ==
 
+= 1.4.1 =
+* Updated Woocommerce override
+* Updated Subpage widget
+
 = 1.4.0 =
 * Updated Options Framework to 1.5
 * Updated for Woocommerce 2.0
