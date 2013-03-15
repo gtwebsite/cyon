@@ -12,6 +12,7 @@ Widgets - to which page appear
 == Changelog ==
 
 = 1.4.1 =
+* Updated gutter width of grid
 * Updated Woocommerce override
 * Updated Subpage widget
 
