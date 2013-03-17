@@ -4,7 +4,7 @@ if ( !defined('ABSPATH') )
 
 /* =Includes
 ----------------------------------------------- */
-if (is_plugin_active('woocommerce/woocommerce.php')) {
+if ( class_exists( 'Woocommerce' ) ) {
 	require_once (CYON_FILEPATH . '/includes/overrides/woocommerce.php');	// Woocommerce
 }
 
