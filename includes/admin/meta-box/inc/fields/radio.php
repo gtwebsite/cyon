@@ -18,7 +18,7 @@ if ( ! class_exists( 'RWMB_Radio_Field' ) )
 		static function html( $html, $meta, $field )
 		{
 			$html = '';
-			$tpl = '<label><input type="radio" class="rwmb-radio" name="%s" value="%s" %s /> %s</label><br>';
+			$tpl = '<label><input type="radio" class="rwmb-radio" name="%s" value="%s" %s /> %s</label>';
 
 			foreach ( $field['options'] as $value => $label )
 			{

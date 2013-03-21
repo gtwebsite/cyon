@@ -692,20 +692,20 @@ class Tax_Meta_Class {
     if (isset($field['group'])){
       if ($group == 'end'){
         if ( isset($field['desc']) && $field['desc'] != '' ) {
-          echo "<div class='desc-field'>{$field['desc']}</div></td>";
+          echo "<p class='description'>{$field['desc']}</p></td>";
         } else {
           echo "</td>";
         }
       }else {
         if ( isset($field['desc']) && $field['desc'] != '' ) {
-          echo "<div class='desc-field'>{$field['desc']}</div><br/>";  
+          echo "<p class='description'>{$field['desc']}</p><br/>";  
         }else{
           echo '<br/>';
         }  
       }    
     }else{
       if ( isset($field['desc']) && $field['desc'] != '' ) {
-        echo "<div class='desc-field'>{$field['desc']}</div>";
+        echo "<p class='description'>{$field['desc']}</p>";
       }
       if ($this->_form_type == 'edit'){
         echo '<td>';  
@@ -784,7 +784,7 @@ class Tax_Meta_Class {
       $meta = (array) $meta;
       
     $this->show_field_begin( $field, $meta );
-      echo "<select class='at-select' style='{$field['style']}' name='{$field['id']}" . ( $field['multiple'] ? "[]' id='{$field['id']}' multiple='multiple'" : "'" ) . ">";
+      echo "<select class='at-select' style='{$field['style']}' id='{$field['id']}' name='{$field['id']}" . ( $field['multiple'] ? "[]' multiple='multiple'" : "'" ) . ">";
       foreach ( $field['options'] as $key => $value ) {
         echo "<option value='{$key}'" . selected( in_array( $key, $meta ), true, false ) . ">{$value}</option>";
       }
@@ -845,7 +845,7 @@ class Tax_Meta_Class {
       echo "<textarea style='{$field['style']}' class='at-wysiwyg theEditor large-text' name='{$field['id']}' id='{$field['id']}' cols='60' rows='10'>{$meta}</textarea>";
     }else{
       // Use new wp_editor() since WP 3.3
-      wp_editor( stripslashes(html_entity_decode($meta)), $field['id'], array( 'editor_class' => 'at-wysiwyg' ) );
+      wp_editor( stripslashes(html_entity_decode($meta)), $field['id'].'_editor' , array( 'editor_class' => 'at-wysiwyg', 'textarea_name' => $field['id'] ) );
     }
     $this->show_field_end( $field, $meta );
   }

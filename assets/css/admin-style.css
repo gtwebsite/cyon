@@ -37,3 +37,5 @@ span.mce_cyon_plugin {
 #adminmenu #menu-posts-cyon_testimonial .wp-menu-open div.wp-menu-image, #adminmenu #menu-posts-cyon_testimonial a:hover div.wp-menu-image {
 	background-position: -64px 0;
 }
+
+.rwmb-radio-wrapper label { display:block; margin-bottom:3px; float:left; clear:both; }

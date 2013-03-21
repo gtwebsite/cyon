@@ -1262,6 +1262,7 @@ ul.cols6 li {
 .row-fluid .offset1:first-child{margin-left:8.433734939759036%;*margin-left:8.313253012048191%;}
 [class*="span"].hide,.row-fluid [class*="span"].hide{display:none;}
 [class*="span"].pull-right,.row-fluid [class*="span"].pull-right{float:right;}
+.row-fluid .first-child { margin-left:0; clear:both; }
 
 /* Price Grid */
 .grid {

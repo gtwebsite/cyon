@@ -2,16 +2,16 @@
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'RWMB_Datetime_Field' ) )
+if ( !class_exists( 'RWMB_Datetime_Field' ) )
 {
 	class RWMB_Datetime_Field
 	{
 		/**
 		 * Enqueue scripts and styles
 		 *
-		 * @return	void
+		 * @return void
 		 */
-		static function admin_enqueue_scripts( )
+		static function admin_enqueue_scripts()
 		{
 			$url = RWMB_CSS_URL . 'jqueryui';
 			wp_register_style( 'jquery-ui-core', "{$url}/jquery.ui.core.css", array(), '1.8.17' );
@@ -37,13 +37,33 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 		static function html( $html, $meta, $field )
 		{
 			return sprintf(
-				'<input type="text" class="rwmb-datetime" name="%s" value="%s" id="%s" size="%s" data-options="%s" />',
+				'<input type="text" class="rwmb-datetime" name="%s" value="%s" id="%s" size="%s" data-options="%s">',
 				$field['field_name'],
-				$meta,
+				isset( $field['timestamp'] ) && $field['timestamp'] ? date( self::translate_format( $field ), $meta ) : $meta,
 				isset( $field['clone'] ) && $field['clone'] ? '' : $field['id'],
 				$field['size'],
 				esc_attr( json_encode( $field['js_options'] ) )
 			);
+		}
+
+		/**
+		 * Calculates the timestamp from the datetime string and returns it
+		 * if $field['timestamp'] is set or the datetime string if not
+		 *
+		 * @param mixed $new
+		 * @param mixed $old
+		 * @param int   $post_id
+		 * @param array $field
+		 *
+		 * @return string|int
+		 */
+		static function value( $new, $old, $post_id, $field )
+		{
+			if ( !$field['timestamp'] )
+				return $new;
+
+			$d = DateTime::createFromFormat( self::translate_format( $field ), $new );
+			return $d ? $d->getTimestamp() : 0;
 		}
 
 		/**
@@ -58,6 +78,7 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 			$field = wp_parse_args( $field, array(
 				'size'       => 30,
 				'js_options' => array(),
+				'timestamp'  => false,
 			) );
 
 			// Deprecate 'format', but keep it for backward compatible
@@ -66,9 +87,38 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 				'dateFormat'      => empty( $field['format'] ) ? 'yy-mm-dd' : $field['format'],
 				'timeFormat'      => 'hh:mm',
 				'showButtonPanel' => true,
+				'separator'       => ' ',
 			) );
 
 			return $field;
+		}
+
+		// Missing: 't' => '', T' => '', 'm' => '', 's' => ''
+		static $time_format_translation = array(
+			'H'  => 'H', 'HH' => 'H', 'h' => 'H', 'hh' => 'H',
+			'mm' => 'i', 'ss' => 's', 'l' => 'u', 'tt' => 'a', 'TT' => 'A'
+		);
+
+		// Missing:  'o' => '', '!' => '', 'oo' => '', '@' => '', "''" => "'"
+		static $date_format_translation = array(
+			'd' => 'j', 'dd' => 'd', 'oo' => 'z', 'D' => 'D', 'DD' => 'l',
+			'm' => 'n', 'mm' => 'm', 'M' => 'M', 'MM' => 'F', 'y' => 'y', 'yy' => 'Y'
+		);
+
+		/**
+		 * Returns a date() compatible format string from the JavaScript format
+		 *
+		 * @see http://www.php.net/manual/en/function.date.php
+		 *
+		 * @param array $field
+		 *
+		 * @return string
+		 */
+		static function translate_format( $field )
+		{
+			return strtr( $field['js_options']['dateFormat'], self::$date_format_translation )
+				. $field['js_options']['separator']
+				. strtr( $field['js_options']['timeFormat'], self::$time_format_translation );
 		}
 	}
 }

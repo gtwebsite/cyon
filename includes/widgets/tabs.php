@@ -50,10 +50,12 @@ class CyonTabsWidget extends WP_Widget {
 		echo '';
 		$widgets = wp_get_sidebars_widgets();
 		$widgetarea = $widgets[$instance['widgetarea']];
-		foreach($widgetarea as $widget){
-			$title = $this->get_widget_titles($wp_registered_widgets[$widget]);
-			echo '<li><a href="#'.$widget.'">'.$title['given_title'].'</a></li>';
-			//echo $widget;
+		if(count($widgetarea)>0){
+			foreach($widgetarea as $widget){
+				$title = $this->get_widget_titles($wp_registered_widgets[$widget]);
+				echo '<li><a href="#'.$widget.'">'.$title['given_title'].'</a></li>';
+				//echo $widget;
+			}
 		}
 		echo '</ul>';
 		//print_r($wp_registered_widgets['cyonsocialwidget-3']);

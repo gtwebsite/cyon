@@ -370,6 +370,18 @@ add_action( 'admin_init', 'cyon_register_meta_boxes' );
 
 /* =Adding Taxonomy Meta boxes on Post Categories
 ----------------------------------------------- */
+function hide_category_description() {
+    global $current_screen;
+	if ( $current_screen->id == 'edit-category' ) { ?>
+		<script type="text/javascript">
+			jQuery(function($) {
+				$('textarea#description:not(.at-wysiwyg)').attr('id','').closest('tr.form-field').hide();
+			}); 
+		</script> <?php
+	} 
+} 
+
+
 if (is_admin()){
 	if ( class_exists( 'Tax_Meta_Class' ) ){
 		$prefix = 'cyon_';
@@ -383,7 +395,18 @@ if (is_admin()){
 			'use_with_theme' => false 
 		);
 		$new_cat_meta = new Tax_Meta_Class($config);
-		
+
+/*		if ( $_GET['action'] == 'edit' && $_GET['taxonomy'] == 'category' ) { 
+			remove_filter( 'pre_term_description', 'wp_filter_kses' );
+			remove_filter( 'term_description', 'wp_kses_data' );
+			add_action('admin_head', 'hide_category_description'); 
+			$new_cat_meta->addWysiwyg( 'description',
+							array(
+									'name' => __('Description', 'cyon'),
+									'desc'=> __('The description is not prominent by default; however, some themes may show it.', 'cyon')
+							));
+		}
+*/
 		$new_cat_meta->addSelect( $prefix.'cat_layout',
 						array(
 								'default' 			=> __('Default', 'cyon'),

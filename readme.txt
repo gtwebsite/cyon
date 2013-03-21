@@ -15,6 +15,7 @@ Widgets - to which page appear
 * Updated gutter width of grid
 * Updated Woocommerce override
 * Updated Subpage widget
+* Updated Metabox to 4.2.4
 
 = 1.4.0 =
 * Updated Options Framework to 1.5
