@@ -45,7 +45,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 			$field_id = isset( $_POST['field_id'] ) ? $_POST['field_id'] : 0;
 			$order    = isset( $_POST['order'] ) ? $_POST['order'] : 0;
 
-			check_ajax_referer( "rwmb-reorder-images_{$field_id}" );
+			check_admin_referer( "rwmb-reorder-images_{$field_id}" );
 
 			parse_str( $order, $items );
 			$items = $items['item'];
@@ -78,8 +78,13 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 			$i18n_title = _x( 'Upload images', 'image upload', 'rwmb' );
 			$i18n_more  = _x( '+ Add new image', 'image upload', 'rwmb' );
 
+			$html  = wp_nonce_field( "rwmb-delete-file_{$field['id']}", "nonce-delete-file_{$field['id']}", false, false );
+			$html .= wp_nonce_field( "rwmb-reorder-images_{$field['id']}", "nonce-reorder-images_{$field['id']}", false, false );
+			$html .= "<input type='hidden' class='field-id' value='{$field['id']}' />";
+
 			// Uploaded images
-			$html .= self::get_uploaded_images( $meta, $field );
+			if ( ! empty( $meta ) )
+				$html .= self::get_uploaded_images( $meta, $field );
 
 			// Show form upload
 			$html .= sprintf(
@@ -106,25 +111,11 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 		 */
 		static function get_uploaded_images( $images, $field )
 		{
-			$reorder_nonce = wp_create_nonce( "rwmb-reorder-images_{$field['id']}" );
-			$delete_nonce = wp_create_nonce( "rwmb-delete-file_{$field['id']}" );
-			$classes = array('rwmb-images', 'rwmb-uploaded');
-			if ( count( $images ) <= 0  )
-				$classes[] = 'hidden';
-			$ul = '<ul class="%s" data-field_id="%s" data-delete_nonce="%s" data-reorder_nonce="%s" data-force_delete="%s" data-max_file_uploads="%s">';
-			$html = sprintf(
-				$ul,
-				implode( ' ', $classes ),
-				$field['id'],
-				$delete_nonce,
-				$reorder_nonce,
-				$field['force_delete'] ? 1 : 0,
-				$field['max_file_uploads']
-			);
+			$html = '<ul class="rwmb-images rwmb-uploaded">';
 
 			foreach ( $images as $image )
 			{
-				$html .= self::img_html( $image );
+				$html .= self::img_html( $image, $field );
 			}
 
 			$html .= '</ul>';
@@ -140,7 +131,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 		 *
 		 * @return string
 		 */
-		static function img_html( $image )
+		static function img_html( $image, $field )
 		{
 			$i18n_delete = _x( 'Delete', 'image upload', 'rwmb' );
 			$i18n_edit   = _x( 'Edit', 'image upload', 'rwmb' );
@@ -149,7 +140,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 					<img src="%s" />
 					<div class="rwmb-image-bar">
 						<a title="%s" class="rwmb-edit-file" href="%s" target="_blank">%s</a> |
-						<a title="%s" class="rwmb-delete-file" href="#" data-attachment_id="%s">×</a>
+						<a title="%s" class="rwmb-delete-file" href="#" data-field_id="%s" data-attachment_id="%s" data-force_delete="%s">%s</a>
 					</div>
 				</li>
 			';
@@ -163,7 +154,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 				$image,
 				$src,
 				$i18n_edit, $link, $i18n_edit,
-				$i18n_delete, $image
+				$i18n_delete, $field['id'], $image, $field['force_delete'] ? 1 : 0, $i18n_delete
 			);
 		}
 
@@ -186,7 +177,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 			if ( empty( $meta ) )
 				return array();
 
-			$meta = implode( ',' , (array) $meta );
+			$meta = implode( ',' , $meta );
 
 			// Re-arrange images with 'menu_order'
 			$meta = $wpdb->get_col( "

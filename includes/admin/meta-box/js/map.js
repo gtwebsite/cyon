@@ -1,3 +1,4 @@
+
 var marker, map, geocoder;
 
 jQuery( document ).ready( function ()
@@ -64,7 +65,6 @@ jQuery( document ).ready( function ()
       for ( loop = 0; loop < fieldList.length; loop++ )
       {
          address += jQuery( '#' + fieldList[loop] ).val();
-         if(loop+1 < fieldList.length) {  address += ', '; }
       }
 
       address = address.replace( /\n/g, ',' );

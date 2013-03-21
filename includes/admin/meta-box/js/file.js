@@ -3,34 +3,26 @@ jQuery( document ).ready( function( $ )
 	// Add more file
 	$( '.rwmb-add-file' ).click( function()
 	{
-		var $this = $( this ), 
-			$fields = $this.siblings( '.file-input' ),
-			$first = $fields.first(),
-			$fileList = $this.closest('.rwmb-input').find( '.rwmb-uploaded' ),
-			fileCount = $fileList.children('li').length,
-			maxFileUploads = $fileList.data( 'max_file_uploads' );
-			
-			console.log( $fileList )
-		if( ($fields.length + fileCount) < maxFileUploads || maxFileUploads <= 0) {
-			$first.clone().insertBefore( $this );
-		} 
+		var $this = $( this ), $first = $this.parent().find( '.file-input:first' );
+
+		$first.clone().insertBefore( $this );
 
 		return false;
 	} );
 
 	// Delete file via Ajax
-	$( '.rwmb-uploaded' ).on( 'click', '.rwmb-delete-file', function()
+	$( '.rwmb-uploaded' ).delegate( '.rwmb-delete-file', 'click', function()
 	{
 		var $this = $( this ),
 			$parent = $this.parents( 'li' ),
-			$container = $this.closest('.rwmb-uploaded')
+			field_id = $this.data( 'field_id' ),
 			data = {
 				action       : 'rwmb_delete_file',
-				_ajax_nonce  : $container.data('delete_nonce'),
+				_wpnonce     : $( '#nonce-delete-file_' + field_id ).val(),
 				post_id      : $( '#post_ID' ).val(),
-				field_id     : $container.data( 'field_id' ),
+				field_id     : field_id,
 				attachment_id: $this.data( 'attachment_id' ),
-				force_delete : $container.data( 'force_delete' )
+				force_delete : $this.data( 'force_delete' )
 			};
 
 		$.post( ajaxurl, data, function( r )
@@ -39,15 +31,8 @@ jQuery( document ).ready( function( $ )
 
 			if ( res.errors )
 				alert( res.responses[0].errors[0].message );
-			else 
-			{
+			else
 				$parent.remove();
-				$container.siblings('.new-files').removeClass('hidden');
-				if( $container.children('li').length <=0 )
-				{
-					$container.addClass( 'hidden' );	
-				}
-			}
 		}, 'xml' );
 
 		return false;

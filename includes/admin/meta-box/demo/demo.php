@@ -42,9 +42,6 @@ $meta_boxes[] = array(
 	// Order of meta box: high (default), low. Optional.
 	'priority' => 'high',
 
-	// Auto save: true, false (default). Optional.
-	'autosave' => true,
-
 	// List of meta fields
 	'fields' => array(
 		// TEXT
@@ -93,7 +90,6 @@ $meta_boxes[] = array(
 			),
 			// Select multiple values, optional. Default is false.
 			'multiple' => false,
-			'default'	=>'Select an Item'
 		),
 		// HIDDEN
 		array(
@@ -220,21 +216,6 @@ $meta_boxes[] = array(
 				'args' => array()
 			),
 		),
-		// POSTS
-		array(
-			'name'    => 'Posts (Pages)',
-			'id'      => "{$prefix}pages",
-			'type'    => 'posts',
-			//Post type
-			'post_type' => 'page',
-			//Field type, either select or select_advanced.  Default is select_advanced
-			'field_type'=> 'select_advanced',
-			//Query arguments.  Not setting will default to all published posts
-			'query_vars' => array(
-				'post_status' => 'publish',
-				'posts_per_page'=>'-1'
-			)
-		),
 		// WYSIWYG/RICH TEXT EDITOR
 		array(
 			'name' => 'WYSIWYG / Rich Text Editor',
@@ -255,14 +236,6 @@ $meta_boxes[] = array(
 			'id'   => "{$prefix}file",
 			'type' => 'file',
 		),
-		// FILE UPLOAD Advanced
-		array(
-			'name' => 'File Upload',
-			'id'   => "{$prefix}file_advanced",
-			'type' => 'file_advanced',
-			'max_file_uploads' => 4,
-			'mime_type' => 'application,audio,video'		//Leave blank for all file types
-		),
 		// IMAGE UPLOAD
 		array(
 			'name' => 'Image Upload',
@@ -280,13 +253,6 @@ $meta_boxes[] = array(
 			'name'             => 'Plupload Image Upload',
 			'id'               => "{$prefix}plupload",
 			'type'             => 'plupload_image',
-			'max_file_uploads' => 4,
-		),
-		// IMAGE ADVANCED (WP 3.5+)
-		array(
-			'name'             => 'Image Advanced Upload',
-			'id'               => "{$prefix}imgadv",
-			'type'             => 'image_advanced',
 			'max_file_uploads' => 4,
 		),
 	)
