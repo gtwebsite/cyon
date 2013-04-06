@@ -468,7 +468,7 @@ add_filter( 'wp_title', 'cyon_wp_title' );
 function cyon_header_meta(){
 	global $post;
 	if(of_get_option('seo_activate')==1 && (is_page() || is_single())){
-		echo get_post_meta($post->ID,'cyon_meta_desc',true)!='' ? '<meta name="description" content="'.get_post_meta($post->ID,'cyon_meta_desc',true).'" />' : '';
+		echo get_post_meta($post->ID,'cyon_meta_desc',true)!='' ? '<meta name="description" content="'.get_post_meta($post->ID,'cyon_meta_desc',true).'" />' : '<meta name="description" content="'.get_the_excerpt().'" />';
 		echo get_post_meta($post->ID,'cyon_meta_keywords',true)!='' ? '<meta name="keywords" content="'.get_post_meta($post->ID,'cyon_meta_keywords',true).'" />' : '';
 		if(get_post_meta($post->ID,'cyon_robot',true)){
 			add_action('wp_head','wp_no_robots');

@@ -146,7 +146,10 @@ function cyon_newsletter_email() {
 	if (! wp_verify_nonce($_REQUEST['nonce'], 'cyon_newsletter_nonce') ) die(__('Security check')); 
 	if(isset($_REQUEST['nonce']) && isset($_REQUEST['email'])) {
 		$subject = __('New subscriber from').' '.get_bloginfo('name');
-		$body = __('Name').': <b>'.$_REQUEST['email'].'</b><br>';
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= 'From: '.$_REQUEST['name'].' <'.$_REQUEST['email'].'>' . "\r\n";
+		$body = __('Name').': <b>'.$_REQUEST['name'].'</b><br>';
 		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
 		if( mail($_REQUEST['emailto'], $subject, $body) ) {
 			echo 1;
