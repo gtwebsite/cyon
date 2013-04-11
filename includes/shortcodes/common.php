@@ -27,7 +27,7 @@ function cyon_toggle( $atts, $content = null ) {
 			title => 'Title Here'
 		), $atts);
 		
-	$toggle_content .= '<div class="toggle"><h3 class="toggle-title">' . $atts['title'] . '</h3><div class="toggle-content">'. $content . '</div></div>';
+	$toggle_content .= '<div class="toggle"><h3 class="toggle-title">' . $atts['title'] . '</h3><div class="toggle-content">'. do_shortcode($content) . '</div></div>';
 
 	ob_start();
         add_action('wp_footer','cyon_toggle_js_css',10);
@@ -66,7 +66,7 @@ function cyon_accordion( $atts, $content = null ) {
 		array(
 			title => 'Title Here'
 		), $atts);
-	$accordion_content = array('<div class="accordion"> <h3 class="accordion-title">' . $atts['title'] . '</h3><div class="accordion-content">'. $content . '</div></div>');
+	$accordion_content = array('<div class="accordion"> <h3 class="accordion-title">' . $atts['title'] . '</h3><div class="accordion-content">'. do_shortcode($content) . '</div></div>');
 	ob_start();
         add_action('wp_footer','cyon_accordion_js_css',10);
     ob_get_clean();
@@ -112,7 +112,7 @@ function cyon_tabs( $atts, $content = null ) {
 	}
 	$html .= '</ul>';
 	foreach( $GLOBALS['tabs'] as $tab ){
-		$html .= '<div id="tab_'.$tab['index'].'" class="panel"><h3>'.$tab['title'].'</h3>'.$tab['content'].'</div>';
+		$html .= '<div id="tab_'.$tab['index'].'" class="panel"><h3>'.$tab['title'].'</h3>'.do_shortcode($tab['content']).'</div>';
 	}
 	$html .= '</div>';
 	ob_start();
