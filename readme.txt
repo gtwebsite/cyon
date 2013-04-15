@@ -252,7 +252,7 @@ Widgets - to which page appear
 * cyon_post_header_after
 	Single Meta: cyon_post_header_single_meta_hook, 10
 * cyon_post_content_before
-	Featured Image: cyon_post_content_featured_image, 10
+	Featured Image: cyon_post_content_featured_image_content, 10
 * cyon_post_content_after
 	Read more: cyon_readmore, 10
 	Social Buttons: cyon_socialshare_hook, 20
