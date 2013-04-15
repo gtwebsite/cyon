@@ -151,7 +151,7 @@ function cyon_newsletter_email() {
 		$headers .= 'From: '.$_REQUEST['name'].' <'.$_REQUEST['email'].'>' . "\r\n";
 		$body = __('Name').': <b>'.$_REQUEST['name'].'</b><br>';
 		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
-		if( mail($_REQUEST['emailto'], $subject, $body) ) {
+		if( mail($_REQUEST['emailto'], $subject, $body, $headers) ) {
 			echo 1;
 		} else {
 			echo 0;
