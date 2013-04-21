@@ -191,11 +191,18 @@ function cyon_contact_email() {
 		$body .= __('Phone').': <b>'.$_REQUEST['phone'].'</b><br>';
 		$body .= __('Selected').': <b>'.$_REQUEST['dropdown'].'</b><br>';
 		$body .= __('Message').': <b>'.$_REQUEST['message'].'</b>';
-		if( mail($_REQUEST['emailto'], $subject, $body, $headers) ) {
-			echo 1;
-		} else {
+
+		$content['comment_author'] = $_REQUEST['name'];
+		$content['comment_author_email'] = $_REQUEST['email'];
+		$content['comment_author_url'] = '';
+		$content['comment_content'] = $_REQUEST['message'];
+	
+		if (cyon_checkspam ($content)) {
 			echo 0;
+		} else {
+			echo 1;
 		}
+
 	}
 	die();
 } }

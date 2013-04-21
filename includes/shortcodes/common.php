@@ -970,6 +970,19 @@ function cyon_newsletter_email() {
 		$headers .= 'From: '.$_REQUEST['name'].' <'.$_REQUEST['email'].'>' . "\r\n";
 		$body = __('Name').': <b>'.$_REQUEST['name'].'</b><br>';
 		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
+
+		$content['comment_author'] = $_REQUEST['name'];
+		$content['comment_author_email'] = $_REQUEST['email'];
+		$content['comment_author_url'] = '';
+		$content['comment_content'] = '';
+	
+		/* Check spam */
+		if (cyon_checkspam ($content)) {
+			echo 0;
+			die();
+		}
+
+		/* Send mail */
 		if( mail($_REQUEST['emailto'], $subject, $body, $headers) ) {
 			echo 1;
 		} else {
@@ -1096,6 +1109,19 @@ function cyon_contact_email() {
 		$body .= __('Email').': <b>'.$_REQUEST['email'].'</b><br>';
 		$body .= __('Phone').': <b>'.$_REQUEST['phone'].'</b><br>';
 		$body .= __('Message').': <b>'.$_REQUEST['message'].'</b>';
+
+		$content['comment_author'] = $_REQUEST['name'];
+		$content['comment_author_email'] = $_REQUEST['email'];
+		$content['comment_author_url'] = '';
+		$content['comment_content'] = $_REQUEST['message'];
+	
+		/* Check spam */
+		if (cyon_checkspam ($content)) {
+			echo 0;
+			die();
+		}
+
+		/* Send mail */
 		if( mail($_REQUEST['emailto'], $subject, $body, $headers) ) {
 			echo 1;
 		} else {

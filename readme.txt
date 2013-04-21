@@ -13,6 +13,7 @@ Widgets - to which page appear
 
 = 1.4.2 =
 * Updated tabs, toggle, accordion shortcode
+* Added Akismet support for the forms
 
 = 1.4.1 =
 * Updated gutter width of grid
