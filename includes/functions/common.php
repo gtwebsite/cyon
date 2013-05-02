@@ -121,7 +121,7 @@ function cyon_common_scripts(){
 
 	
 	/* Supersized */
-	if(of_get_option('background_style')=='full'){
+	if(of_get_option('background_style')=='full' || of_get_option('background_style')=='full_slide'){
 		wp_enqueue_script('supersized');
 		wp_enqueue_script('easing');
 		wp_enqueue_style('supersized_css');
@@ -183,6 +183,27 @@ function cyon_check_page_bg(){
 	}elseif(get_post_meta($post->ID,'cyon_background',true)!=''){
 		$image_attributes = wp_get_attachment_image_src( get_post_meta($post->ID,'cyon_background',true),'full' );
 		$page_bg = $image_attributes[0];
+	}elseif(of_get_option('background_style')=='full_slide' && ((is_front_page() && of_get_option('background_style_full_option')=='homepage') || of_get_option('background_style_full_option')=='allpages')){
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type' => 'cyon_banner',
+			'meta_key' => 'cyon_banner_sort',
+			'order' => 'ASC',
+			'orderby' => 'meta_value'
+		  );
+		$attachments = new WP_Query($args);
+		$page_bg = '';
+		$counter = 0;
+		while ( $attachments->have_posts() ) : $attachments->the_post();
+			$counter++;
+			if($post_count==$counter) {
+				$comma = '';
+			}else{
+				$comma = ',';
+			}
+			$image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+			$page_bg .= "{image : '".$image_url[0]."', title : ''}".$comma;
+		endwhile;
 	}else{
 		$page_bg = of_get_option('background_style_image');
 	}
@@ -276,10 +297,15 @@ function cyon_header_js_css_hook(){ ?>
 			});
 			<?php } ?>
 
-			<?php if(of_get_option('background_style')=='full' && CYON_PAGE_BG_IMAGE<>''){ ?>
+			<?php if((of_get_option('background_style')=='full_slide' && CYON_PAGE_BG_IMAGE<>'') || (!is_front_page() && of_get_option('background_style_full_option')=='allpages')){ ?>
 			// Supersized Support
 			jQuery.supersized({ 
-				slides  :  	[ {image : '<?php echo CYON_PAGE_BG_IMAGE ?>', title : ''} ]
+				<?php if(is_front_page()){ ?>
+				slides  :  	[ <?php echo CYON_PAGE_BG_IMAGE; ?> ],
+				<?php }else{ ?>
+				slides  :  	[ {image : '<?php echo CYON_PAGE_BG_IMAGE ?>', title : ''} ],
+				<?php } ?>
+				vertical_center: 0
 			});
 			<?php } ?>
 
