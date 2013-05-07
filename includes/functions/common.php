@@ -454,7 +454,7 @@ add_action ( 'wp_head', 'cyon_header_dark',200);
 
 /* Hook JS/CSS script Footer */
 function cyon_footer_js_css_hook(){
-	echo of_get_option('footer_scripts_hook'); ?>
+	echo of_get_option('footer_scripts'); ?>
 <?php }
 add_action ( 'wp_footer', 'cyon_footer_js_css_hook', 100);
 
