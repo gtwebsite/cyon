@@ -297,10 +297,10 @@ function cyon_header_js_css_hook(){ ?>
 			});
 			<?php } ?>
 
-			<?php if((of_get_option('background_style')=='full_slide' && CYON_PAGE_BG_IMAGE<>'') || (!is_front_page() && of_get_option('background_style_full_option')=='allpages')){ ?>
+			<?php if(((of_get_option('background_style')=='full_slide' || of_get_option('background_style')=='full') && CYON_PAGE_BG_IMAGE<>'') && (of_get_option('background_style_full_option')=='allpages' || (is_front_page() && of_get_option('background_style_full_option')=='homepage'))){ ?>
 			// Supersized Support
 			jQuery.supersized({ 
-				<?php if(is_front_page()){ ?>
+				<?php if(of_get_option('background_style')=='full_slide'){ ?>
 				slides  :  	[ <?php echo CYON_PAGE_BG_IMAGE; ?> ],
 				<?php }else{ ?>
 				slides  :  	[ {image : '<?php echo CYON_PAGE_BG_IMAGE ?>', title : ''} ],
