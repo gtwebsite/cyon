@@ -352,7 +352,7 @@ article:last-child {
 .page-content h6 {
 	font-size:100%; margin-bottom:3px; font-weight:bold;
 }
-.page-content p {
+.page-content p, .textwidget p {
 	margin-bottom:20px;
 }
 .page-content ul, .page-content ol {

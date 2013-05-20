@@ -596,7 +596,7 @@ function optionsframework_options() {
 						'id' 		=> 'content_blog_post',
 						'std'		=> 'excerpt',
 						'type' 		=> 'radio',
-						'options' 	=> array('excerpt'=>__('Excerpt only','cyon'), 'full'=>__('Full content','cyon')));			
+						'options' 	=> array('none'=>__('None','cyon'), 'excerpt'=>__('Excerpt only','cyon'), 'full'=>__('Full content','cyon')));			
 
 	$options[] = array( 'name' 		=> __( 'List layout','cyon' ),
 						'desc' 		=> '',
@@ -621,7 +621,7 @@ function optionsframework_options() {
 						'id' 		=> 'content_thumbnail_size',
 						'std'		=> 'large',
 						'type' 		=> 'radio',
-						'options' 	=> array('small'=>__('Small','cyon'), 'medium'=>__('Medium','cyon'), 'large'=>__('Large','cyon'), 'full'=>__('Full','cyon')));			
+						'options' 	=> array('thumbnail'=>__('Small','cyon'), 'medium'=>__('Medium','cyon'), 'large'=>__('Large','cyon'), 'full'=>__('Full','cyon')));			
 
 	$options[] = array( 'type'		=> 'section_end'); 
 
