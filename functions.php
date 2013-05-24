@@ -69,7 +69,7 @@ function cyon_widgets_init() {
 	}elseif(of_get_option('homepage_bucket_layout')=='bucket-2columns'){
 		$homeclass = ' span6';
 	}else{
-		$homeclass = ' span12';
+		$homeclass = '';
 	}
 
 	/* Check footer bucket columns */
@@ -80,7 +80,7 @@ function cyon_widgets_init() {
 	}elseif(of_get_option('footer_bucket_layout')=='bucket-2columns'){
 		$footclass = ' span6';
 	}else{
-		$footclass = ' span12';
+		$footclass = '';
 	}
 
 	register_sidebar( array(

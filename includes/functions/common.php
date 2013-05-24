@@ -519,15 +519,22 @@ add_action('cyon_head','cyon_header_columns_hook',5);
 /* Top Columns */
 function cyon_header_columns_hook(){
 	if(of_get_option('top_left_content') || of_get_option('top_right_content')){ ?>
+	<?php
+		$class='';
+		$span='';
+		if(of_get_option('top_left_content') !='' && of_get_option('top_right_content') !='' ){
+			$class=' class="row-fluid"';
+			$span=' span6';
+		} ?>
 	<!-- Top Contents -->
-	<div id="top" class="row-fluid">
+	<div id="top"<?php echo $class; ?>>
 		<?php if(of_get_option('top_left_content')){ ?>
-		<div class="span6">
+		<div class="left<?php echo $span; ?>">
 			<p><?php echo do_shortcode(of_get_option('top_left_content', true)); ?></p>
 		</div>
 		<?php } ?>
 		<?php if(of_get_option('top_right_content')){ ?>
-		<div class="span6 right">
+		<div class="right<?php echo $span; ?>">
 			<p><?php echo do_shortcode(of_get_option('top_right_content', true)); ?></p>
 		</div>
 		<?php } ?>
@@ -888,8 +895,14 @@ add_action('cyon_home_content','cyon_homepage_middle_block_hook',20);
 /* Widgets Columns */
 function cyon_homepage_columns_hook(){
 	if ( is_active_sidebar( 'home-columns' ) && is_front_page() ){ ?>
+	<?php
+		$class='';
+		if(of_get_option('homepage_bucket_layout')!='bucket-1column'){
+			$class=' class="row-fluid"';
+		}
+	?>
 		<!-- Homepage Buckets -->
-		<div id="home-buckets" class="row-fluid">
+		<div id="home-buckets"<?php echo $class; ?>>
 			<?php dynamic_sidebar( 'home-columns' ); ?>
 		</div>
 	<?php }
@@ -914,7 +927,13 @@ add_action('cyon_home_content','cyon_homepage_content_hook',40);
 function cyon_footer_columns_hook(){
 	if ( ! is_404() && is_active_sidebar( 'footer-columns' ) ){ ?>
 	<!-- Footer Columns -->
-	<div id="footer-buckets" role="complementary" class="row-fluid">
+	<?php
+		$class='';
+		if(of_get_option('footer_bucket_layout')!='bucket-1column'){
+			$class=' class="row-fluid"';
+		}
+	?>
+	<div id="footer-buckets" role="complementary"<?php echo $class; ?>>
 		<?php dynamic_sidebar( 'footer-columns' ); ?>
 	</div>
 	<?php }
@@ -924,9 +943,16 @@ add_action('cyon_footer','cyon_footer_columns_hook',10);
 /* Copyright */
 function cyon_footer_copyright_hook(){ ?>
 	<!-- Copyright -->
-	<div id="bottom" class="row-fluid">
-		<?php echo of_get_option('footer_copyright') != '' ? '<div class="copyright span6"><p>'.do_shortcode(of_get_option('footer_copyright')).'</p></div>' : ''; ?>
-		<?php wp_nav_menu( array( 'theme_location' => 'footer-menu', 'depth' => '1', 'container_id' => 'access2', 'container_class' => 'span6', 'fallback_cb' => false ) ); ?>
+	<?php
+		$class='';
+		$span='';
+		if(of_get_option('footer_copyright') !='' && has_nav_menu( 'footer-menu' ) ){
+			$class=' class="row-fluid"';
+			$span='span6';
+		} ?>
+	<div id="bottom"<?php echo $class; ?>>
+		<?php echo of_get_option('footer_copyright') != '' ? '<div class="copyright '.$span.'"><p>'.do_shortcode(of_get_option('footer_copyright')).'</p></div>' : ''; ?>
+		<?php wp_nav_menu( array( 'theme_location' => 'footer-menu', 'depth' => '1', 'container_id' => 'access2', 'container_class' => $span, 'fallback_cb' => false ) ); ?>
 	</div><?php
 }
 add_action('cyon_footer','cyon_footer_copyright_hook',20);
