@@ -243,11 +243,6 @@ function cyon_banner_hook(){
 				<?php } ?>
 			<?php } ?>
 		</div>
-	<?php }elseif(of_get_option('homepage_slider')=='default' && has_post_thumbnail() && (is_home() || is_front_page())){ ?>
-		<!-- Banner -->
-		<div id="slider" class="singleimage">
-			<?php the_post_thumbnail( $post->ID, 'post-thumbnail' ); ?>
-		</div>
 	<?php }
 }
 add_action('cyon_home_content','cyon_banner_hook',10);
