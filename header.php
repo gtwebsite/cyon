@@ -47,7 +47,7 @@
 			<div class="wrapper">
 
 				<!-- Screen Readers -->
-				<ul class="skip-link">
+				<ul class="skip-link hide-text">
 					<li><a href="#primary" title="<?php esc_attr_e( 'Skip to primary content', 'cyon' ); ?>"><?php _e( 'Skip to primary content', 'cyon' ); ?></a></li>
 					<li><a href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'cyon' ); ?>"><?php _e( 'Skip to secondary content', 'cyon' ); ?></a></li>
 				</ul>
